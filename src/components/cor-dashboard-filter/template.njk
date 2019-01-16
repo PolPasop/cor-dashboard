@@ -1,0 +1,13 @@
+<div class="cor-dashboard-filter">
+    <h2 class="cor-dashboard-filter__title"></h2>
+    <ul class="cor-dashboard-filter__list">
+
+        {% for item in items %}
+        <li class="cor-dashboard-filter__list__item">
+            <a class="cor-dashboard-filter__list__item__link" href="{{ item.link }}">
+                {{ item.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

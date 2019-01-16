@@ -1,0 +1,22 @@
+{
+  "name": "cor-dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --watch views/**/* ./server.js -e ts",
+    "css": "postcss src/style.css -u postcss-import --base src --dir public/stylesheets -w"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "nunjucks": "^3.1.7",
+    "postcss-cli": "^6.1.1",
+    "postcss-import": "^12.0.1"
+  }
+}
