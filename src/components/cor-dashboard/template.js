@@ -8,8 +8,8 @@ export default {
 
   html() {
     return `
-    <div class="cor-dashboard cor-l-dashboard">
-      <aside class="cor-o-dashboard__sidebar">
+    <div class="cor-dashboard">
+      <aside class="cor-dashboard__sidebar">
         <cor-dashboard-sidebar></cor-dashboard-sidebar>
       </aside>
       <main>

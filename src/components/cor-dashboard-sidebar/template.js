@@ -1,5 +1,6 @@
 import CodDashboardFilter from '../cor-dashboard-filter/cor-dashboard-filter.js';
 
+
 export default {
   render() {
     return `${this.css()}
@@ -7,7 +8,20 @@ export default {
   },
 
   html() {
+      console.log();
     return `
+    <h1>CoR Dashboard</h1>
+    <ul>
+        <li>
+            <a href="">News</a>
+        </li>
+        <li>
+            <a href="">News</a>
+        </li>
+        <li>
+            <a href="">Br</a>
+        </li>
+    </ul>
     <cor-dashboard-filter></cor-dashboard-filter>
     `
   },
