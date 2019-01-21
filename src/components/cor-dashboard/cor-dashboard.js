@@ -6,6 +6,10 @@ export default class CorDashboard extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = Template.render();
   }
+
+  connectedCallback() {
+    console.log("The Cor Dashboard is there")
+  }
 }
 
 if (!customElements.get('cor-dashboard')) {
