@@ -2,18 +2,11 @@
 
 The dashboard is an overview of the content of the CoR website with a focus on the translation activity. It offers a preview of the contant already published and being translated.
 
-
-il permet de constater les tendances
-
-permet de s'assurer que lors d'évènement impliquant une certaine langue, du contenu est bien disponble pour cette langue.
-
-se fixer des objectifs et avoir un indicateur
-
-objectif: Pour [date personnalisée],  l'objectif est d'obtenir un taux de traduction de [X]% pour les langues suivantes [langues]
+During some events, the dashboard can help to check if relevant content is available for targeted users.
 
 Objectives:
-- show an overview of all the content of the website. The overview can be filtered.
-- to check the translations
+- show an overview of all the content of the website. The overview can be filtered
+- check the availability of translated content
 
 
 
@@ -55,7 +48,7 @@ The results can be filtered on the following criterias:
   - personalised
 - Languages
 
-## Vues
+## Views
 
 The application provides two type of views:
 
@@ -86,6 +79,10 @@ Each item can display:
 - category
 - picture
 - introduction
-- for each lang: tranbslation indicator (translated, translation in progress, not translated)
+- for each lang: translation indicator (translated, translation in progress, not translated)
 
 By clicking on a language, the items shows the translation.
+
+(improvements)
+- "not translated" filter for each language
+

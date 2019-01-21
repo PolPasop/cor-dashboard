@@ -1,9 +1,19 @@
 const data = [
     {
-        name: "test"
+        name: "Themes",
+        items: [
+            "theme1",
+            "theme2",
+            "theme3"
+        ]
     },
     {
-        name: "test2"
+        name: "Date",
+        items: [
+            "Date 1",
+            "Date 2",
+            "Date 3"
+        ]
     }
 ]
 
@@ -18,7 +28,41 @@ export default class CorDashboardFilter extends HTMLElement {
 
     connectedCallback() {
         console.log("The filter is ready");
+        this._collapse;
+        this.addEventListener('click', this._onClick);
     }
+
+    _onClick(event) {
+        this._toggleExpanded();
+    }
+
+    _toggleExpanded() {
+ 
+        this.expanded = !this.expanded;
+        this.dispatchEvent(new CustomEvent('change', {
+            detail: {
+                expanded: this.expanded,
+            },
+            bubbles: true,
+        }));
+    }
+
+    get expanded() {
+        return this.hasAttribute('expanded');
+    }
+
+    set expanded(value) {
+        const isExpanded = Boolean(value);
+        if (isExpanded)
+          this.setAttribute('expanded', '');
+        else
+          this.removeAttribute('expanded');
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        const hasValue = newValue !== null;
+        this.setAttribute('aria-checked', hasValue);
+      }
 }
 
 if (!customElements.get('cor-dashboard-filter')) {
