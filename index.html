@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ title }}</title>
+
+  <link rel="stylesheet" href="src/style.css" />
+
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+  <script type="module" src="src/components/cor-dashboard/cor-dashboard.js"></script>
+</head>
+<body>
+
+  <h1>test</h1>
+  <cor-dashboard></cor-dashboard>
+
+  <script>
+  const expandableElements = document.querySelectorAll(".expandable a");
+  const expandableElements2 = document.querySelectorAll('[data-toggle]');
+  // const toggleClass = (el, class) => el.classList.toggle(class);
+  const toggleClass = (el, className) => el.classList.toggle(className);
+
+console.log(expandableElements, expandableElements2);
+
+
+  const debug = ob => {
+    console.log(ob);
+  }
+
+  expandableElements.forEach( el => el.addEventListener('click', (e) => {
+    toggleClass(e.target.parentElement, "expanded");
+  }));
+
+  expandableElements.forEach( el => el.addEventListener('click', (e) => {
+    console.log("uih");
+  }));
+
+  
+  /*
+  
+    
+    
+    expandableElements.forEach( el => el.addEventListener('click', toggleClass(el, 'expanded')));
+*/
+  </script>
+
+</body>
+</html>
