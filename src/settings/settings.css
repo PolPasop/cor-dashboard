@@ -1,7 +1,17 @@
 /*
  * Settings
  */
+
 :root {
+  
+  /* Breakpoints*/
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* Colors */
   --gray-50 : #FAFAFA;
   --gray-100: #F5F5F5;
   --gray-200: #EEEEEE;
@@ -12,8 +22,24 @@
   --gray-700: #616161;
   --gray-800: #424242;
   --gray-900: #212121;
-  --danger-theme: {
-    color: white;
-    background-color: red;
-  }
+
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+  /* Fonts */
+  --global-baseline: 6px;
+  --global-font-size: 14px;
+  --global-line-height: calc(var(--global-baseline) * 4);
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+  --radius: 4px;
+  --transition: all 300ms ease-in-out;
+
 }

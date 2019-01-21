@@ -1,5 +1,7 @@
 html {
-    line-height: 1.15;   
+    font-size: calc(var(--global-font-size / 16px) * 1em);
+    line-height: calc(var(--global-line-heigh) / var(--global-font-size) );   
     font-family: sans-serif;
     font-size: 1rem;
+    min-height: 100%;
 }

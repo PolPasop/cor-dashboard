@@ -29,15 +29,22 @@ export default class CorDashboardFilter extends HTMLElement {
     connectedCallback() {
         console.log("The filter is ready");
         this._collapse;
-        this.addEventListener('click', this._onClick);
+        this._trigger = this.shadowRoot.querySelector('[data-target]');
+        if (!this._trigger)
+            return;
+        this._target = this.shadowRoot.querySelector(`${this._trigger.dataset.target}`);
+        if (!this._target)
+            return;
+        this._trigger.addEventListener('click', this._onClick);
     }
 
     _onClick(event) {
+        console.log("clickkk");
         this._toggleExpanded();
     }
-
+    
     _toggleExpanded() {
- 
+        
         this.expanded = !this.expanded;
         this.dispatchEvent(new CustomEvent('change', {
             detail: {

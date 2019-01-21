@@ -1,6 +1,0 @@
-
-
-p {
-  color: var(--gray-300);
-  @apply --danger-theme;
-}

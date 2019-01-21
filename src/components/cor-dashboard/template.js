@@ -1,4 +1,4 @@
-import CorDashboardSidebar from '../cor-dashboard-sidebar/cor-dashboard-sidebar.js'
+import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js'
 
 export default {
   render() {
@@ -9,8 +9,11 @@ export default {
   html() {
     return `
     <div class="cor-dashboard">
+      <div class="cor-dashboard__navbar">
+        <h1 class="cor-dashboard__navbar__brand">European Committee of the Regions</h1>
+      </div>
       <aside class="cor-dashboard__sidebar">
-        <cor-dashboard-sidebar></cor-dashboard-sidebar>
+        <cor-dashboard-nav></cor-dashboard-nav>
       </aside>
       <main>
         
