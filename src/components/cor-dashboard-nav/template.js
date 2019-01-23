@@ -1,22 +1,28 @@
 const navitems = [
 
       {
-        name: "Dashboard"
+        name: "Dashboard",
+        target: ""
       },
       {
-        name: "News"
+        name: "News",
+        target: "news"
       },
       {
-        name: "Events"
+        name: "Events",
+        target: "events"
       },
       {
-        name: "Opinions"
+        name: "Opinions",
+        target: ""
       },
       {
-        name: "Studies"
+        name: "Studies",
+        target: ""
       },
       {
-        name: "Brochures"
+        name: "Brochures",
+        target: ""
       }
 ];
 
@@ -36,7 +42,7 @@ export default {
     <ul class="cor-dashboard__nav">
         ${navitems.map(navitem => `
           <li class="cor-dashboard__nav__item">
-            <a class="cor-dashboard__nav-link" href="#">${navitem.name}</a>
+            <a class="cor-dashboard__nav-link" href="#" data-target="${navitem.target}">${navitem.name}</a>
           </li>
         `).join('')}
     </ul>

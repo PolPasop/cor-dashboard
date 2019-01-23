@@ -42,4 +42,18 @@
   padding: .5rem 1rem;
 }
 
+/*
+ * Header
+ */
+header {
+  border-bottom: solid 1px var(--gray-300);
+  display: flex;
+  padding: 2rem 1rem;
+  align-items: center;
+}
 
+header h1 {
+  font-size: 3rem;
+  font-weight: 100;
+  margin: 0 1rem 0;
+}

@@ -10,9 +10,40 @@ const data = [
     {
         name: "Date",
         items: [
-            "Date 1",
-            "Date 2",
-            "Date 3"
+            "Today",
+            "This week",
+            "This month",
+            "This year",
+            "Personalised"
+        ]
+    },
+    {
+        name: "Language",
+        items: [
+            "BG",
+            "CS",
+            "DA",
+            "DE",
+            "EL",
+            "EN",
+            "ES",
+            "ET",
+            "FI",
+            "FR",
+            "GA",
+            "HR",
+            "HU",
+            "IT",
+            "LT",
+            "LV",
+            "MT",
+            "NL",
+            "PL",
+            "PT",
+            "RO",
+            "SK",
+            "SL",
+            "SV"
         ]
     }
 ]

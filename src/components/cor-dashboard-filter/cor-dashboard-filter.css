@@ -1,14 +1,38 @@
+a{
+    text-decoration: none;
+}
+
 .cor-dashboard-filter__title {
-    font-size: 1rem;
+    margin: 1rem 0 0;
+}
+
+.cor-dashboard-filter__title > a {
+    display: flex;
+    font-size: var(--global-font-size);
+    font-weight: 100;
+    padding: .5rem 1rem;
+    color: var(--gray-500);
+    text-decoration: none;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.cor-dashboard-filter__list {
+    margin-top: .5rem;
+    padding: 0;
 }
 
 .cor-dashboard-filter li {
-    padding: .5rem 0;
+    list-style: none;
+    padding: .5rem 1rem;
 }
 
-.cor-dashboard-filter a {
+.cor-dashboard-filter__list a {
     color: #333;
-    display: flex;
+    font-size: var(--global-font-size);
+    font-weight: 600;
+    margin-top: .5rem;
+    padding: 0;
 }
 
 .cor-dashboard-filter a svg {
@@ -35,9 +59,10 @@
 .cor-dashboard-filter .expandable > a:after {
     background: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.69336 4.78587L8.17681 0.278019C8.24173 0.19104 8.31938 0.121663 8.40524 0.0739349C8.49109 0.0262073 8.58344 0.00108514 8.67688 3.43842e-05C8.77032 -0.00101637 8.86298 0.0220253 8.94947 0.067815C9.03595 0.113605 9.11453 0.181225 9.1806 0.266731C9.24668 0.352237 9.29893 0.453916 9.33431 0.565835C9.3697 0.677754 9.3875 0.797671 9.38669 0.91859C9.38588 1.03951 9.36647 1.15901 9.32959 1.27011C9.2927 1.38122 9.23909 1.48171 9.17188 1.56572L5.19089 6.71741C5.05893 6.88814 4.87996 6.98405 4.69336 6.98405C4.50676 6.98405 4.32779 6.88814 4.19582 6.71741L0.21484 1.56572C0.147626 1.48171 0.094015 1.38122 0.0571334 1.27011C0.0202517 1.15901 0.000838542 1.03951 2.65705e-05 0.91859C-0.000785401 0.797671 0.0170201 0.677754 0.0524041 0.565835C0.0877881 0.453916 0.140042 0.352237 0.206117 0.266731C0.272192 0.181225 0.350764 0.113605 0.43725 0.067815C0.523735 0.0220253 0.616402 -0.00101637 0.709842 3.43842e-05C0.803282 0.00108514 0.895626 0.0262073 0.981483 0.0739349C1.06734 0.121663 1.14499 0.19104 1.20991 0.278019L4.69336 4.78587Z' fill='%23757373'/%3E%3C/svg%3E%0A") 0 0 no-repeat;
     content: "";
+    display: inline-block;
     margin-left: 1rem;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 7px;
     transition: transform .2s ease-in-out;
 }
 

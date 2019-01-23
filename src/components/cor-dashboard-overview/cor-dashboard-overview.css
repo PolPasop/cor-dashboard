@@ -1,0 +1,6 @@
+.cor-dashboard-overview,
+:host {
+    align-content: space-between;
+    display: flex;
+    padding: 1rem;
+}

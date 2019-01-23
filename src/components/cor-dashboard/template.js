@@ -1,4 +1,5 @@
 import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js'
+import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overview.js'
 
 export default {
   render() {
@@ -16,7 +17,11 @@ export default {
         <cor-dashboard-nav></cor-dashboard-nav>
       </aside>
       <main>
-        
+        <header>
+          <img src="public/images/CoRlogo.png" />
+          <h1>Dashboard</h1>
+        </header>
+        <cor-dashboard-overview></cor-dashboard-overview>
       </main>
     </div>
     `
