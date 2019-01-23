@@ -8,10 +8,23 @@ export default class CorDashboardOverview extends Component {
         this.shadowRoot.innerHTML = Template.render();
     }
 
+    show(target) {
+        console.log("show:", target);
+        this.shadowRoot.querySelectorAll(`cor-dashboard-card:not([category=${target}])`).forEach(
+            el => el.classList.add('hidden')
+        );
+        this.shadowRoot.querySelectorAll(`cor-dashboard-card[category=${target}]`).forEach(
+            el => el.classList.remove('hidden')
+        );
+    }
+
     connectedCallback() {
-        const {root} = this;
-        const source = "user-name";
-        const update = () => console.log("Name changed to", root[source]);
+        const {root} = this.root;
+        const source = "filter";
+        const update = () => {
+            console.log("Name changed to", root[source]);
+            this.show(root[source])
+        };
     
         new MutationObserver(update).observe(root, {
             attributes: true,

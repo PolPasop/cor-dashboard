@@ -8,3 +8,12 @@
 .cor-dashboard-card__body {
     padding: 1rem;
 }
+
+
+:host {
+    transition: opacity 300ms ease-in-out;
+}
+
+:host(.hidden) {
+    opacity: 0;
+}

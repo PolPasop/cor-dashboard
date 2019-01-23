@@ -9,25 +9,25 @@ export default {
     html() {
         return `
             <cor-dashboard-card category="news">
-                <span slot="title">New title</span>
+                <span slot="title">News title</span>
                 <span slor="total">45</span>
                 <span slot="body">New body</span>
             </cor-dashboard-card>
 
             <cor-dashboard-card category="events">
-                <span slot="title">New title</span>
+                <span slot="title">Event title</span>
                 <span slor="total">45</span>
                 <span slot="body">New body</span>
             </cor-dashboard-card>
 
             <cor-dashboard-card category="news">
-                <span slot="title">New title</span>
+                <span slot="title">News title</span>
                 <span slor="total">45</span>
                 <span slot="body">New body</span>
             </cor-dashboard-card>
 
             <cor-dashboard-card category="events">
-                <span slot="title">New title</span>
+                <span slot="title">Event title</span>
                 <span slor="total">45</span>
                 <span slot="body">New body</span>
             </cor-dashboard-card>

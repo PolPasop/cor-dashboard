@@ -10,14 +10,21 @@ export default class CorDashboard extends Component {
   }
 
   store({detail}) {
+    console.log("in store");
     switch (detail.type) {
       case "change-name":
+        console.log("in change name");
         this.update("user-name", detail.text);
         break;
+      case "filter":
+        console.log("in filter");
+          this.update("filter", detail.text);
+          break;
     }
   }
 
   update(key, value) {
+    console.log("in update", key, value);
     this[key] = value;
     this.setAttribute(key, value);
   }
