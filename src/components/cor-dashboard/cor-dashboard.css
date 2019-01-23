@@ -18,7 +18,7 @@
 .cor-dashboard__sidebar {
   background-color: #f8f9fa;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-  height: 100vh;
+  min-height: 100vh;
   padding: 1rem 1rem;
 }
 
