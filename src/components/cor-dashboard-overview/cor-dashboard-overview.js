@@ -1,3 +1,8 @@
+/*
+    This component observes the state changes. Whenever a specific attribute
+    is updated, it changes the displays
+*/
+
 import Component from '../component.js';
 import Template from './template.js';
 

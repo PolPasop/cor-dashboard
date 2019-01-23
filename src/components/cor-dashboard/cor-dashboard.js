@@ -1,3 +1,12 @@
+/*
+  The root component listens to dispatched actions and updates its
+  properties based on action types. The objects, arrays, etc. assigned
+  to these properties are the single source of truth and represent
+  the global app state. The element's attributes are also updated so
+  that components observing them can react to specific state changes.
+  Global app state from @bdc
+*/
+
 import Component from '../component.js';
 import Template from './template.js';
 
