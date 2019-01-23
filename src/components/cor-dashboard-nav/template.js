@@ -6,7 +6,18 @@ const navitems = [
       },
       {
         name: "News",
-        target: "news"
+        target: "news",
+        subitems: [
+          {
+            name: "Regional news"
+          },
+          {
+            name: "Press release"
+          },
+          {
+            name: "Success story"
+          }
+        ]
       },
       {
         name: "Events",
@@ -43,6 +54,7 @@ export default {
         ${navitems.map(navitem => `
           <li class="cor-dashboard__nav__item">
             <a class="cor-dashboard__nav-link" href="#" data-target="${navitem.target}">${navitem.name}</a>
+            ${ navitem.subitems ? `<ul>${navitem.subitems.map(subitem => `<li><a class="cor-dashboard__nav-link">${subitem.name}</a></li>`).join('')}</ul>` : ``}
           </li>
         `).join('')}
     </ul>

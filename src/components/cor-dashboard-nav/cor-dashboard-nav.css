@@ -29,3 +29,11 @@
 }
 
 
+.cor-dashboard__nav__item ul {
+    list-style: none;
+    margin-left: 1.5rem;
+}
+
+.cor-dashboard__nav__item ul a {
+    font-weight: 100;
+}
