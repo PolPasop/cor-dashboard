@@ -2,9 +2,16 @@ const data = [
     {
         name: "Themes",
         items: [
-            "theme1",
-            "theme2",
-            "theme3"
+            "Agriculture and Fisheries",
+            "Citizenship, Governance and Institutional Affairs",
+            "Cohesion Policy, Structural funds and EU Budget",
+            "Consumer Policy, Health and Tourism",
+            "Economic and monetary policy",
+            "Environment, Climate Change and Energy",
+            "Migration and External relations",
+            "Research, Innovation and Digital Single Market",
+            "Social Policy, Education, Employment and Culture",
+            "Transport"
         ]
     },
     {
