@@ -10,12 +10,20 @@ export default {
   html() {
     return `
     <div class="cor-dashboard">
+      
+      <!-- Topbar -->
       <div class="cor-dashboard__navbar">
         <h1 class="cor-dashboard__navbar__brand">European Committee of the Regions</h1>
       </div>
+      <!-- /Topbar -->
+
+      <!-- Sidebar -->
       <aside class="cor-dashboard__sidebar">
         <cor-dashboard-nav></cor-dashboard-nav>
       </aside>
+      <!-- /Sidebar -->
+
+      <!-- Main -->
       <main>
         <header>
           <img src="public/images/CoRlogo.png" />
@@ -23,6 +31,8 @@ export default {
         </header>
         <cor-dashboard-overview></cor-dashboard-overview>
       </main>
+      <!-- /Main -->
+      
     </div>
     `
   },

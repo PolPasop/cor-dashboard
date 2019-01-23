@@ -6,15 +6,29 @@ export default {
 
     html() {
         return `
+
+            <!-- Card item -->
             <div class="cor-dashboard-card">
                 <div class="cor-dashboard-card__body">
-                <h2 class="cor-dashboard-card__title">
-                    <slot name="title">title</slot>
-                    <slot name="total">1</slot>
-                </h2>
-                    <slot name="body">body</slot>
+                
+                    <!-- Title of the card -->
+                    <h2 class="cor-dashboard-card__title">
+                        <slot name="title">title</slot>
+                        <span class="cor-dashboard-card__title__total">
+                            <slot name="total">1</slot>
+                        </span>
+                    </h2>
+                    <!-- /Title of the card -->
+                    
+                    <!-- Content of the card -->
+                    <div>
+                        <slot name="body">body</slot>
+                    </div>
+                    <!-- /Content of the card -->
+
                 </div>
             </div>
+            <!-- /Card item -->
         `
     },
 

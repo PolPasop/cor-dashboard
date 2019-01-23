@@ -1,5 +1,32 @@
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
 
+const data = [
+    {
+        title: "News Title",
+        category: "news",
+        total: "45",
+        body: "Card Body"
+    },
+    {
+        title: "Event Title",
+        category: "events",
+        total: "45",
+        body: "Card Body"
+    },
+    {
+        title: "News Title",
+        category: "news",
+        total: "45",
+        body: "Card Body"
+    },
+    {
+        title: "Event Title",
+        category: "events",
+        total: "45",
+        body: "Card Body"
+    }
+];
+
 export default {
     render() {
         return  `${this.css()}
@@ -7,30 +34,15 @@ export default {
     },
 
     html() {
-        return `
-            <cor-dashboard-card category="news">
-                <span slot="title">News title</span>
-                <span slor="total">45</span>
-                <span slot="body">New body</span>
+        return `${data.map( item => `
+
+            <cor-dashboard-card category="${item.category}">
+                <span slot="title">${item.title}</span>
+                <span slot="total">${item.total}</span>
+                <span slot="body">${item.body}</span>
             </cor-dashboard-card>
 
-            <cor-dashboard-card category="events">
-                <span slot="title">Event title</span>
-                <span slor="total">45</span>
-                <span slot="body">New body</span>
-            </cor-dashboard-card>
-
-            <cor-dashboard-card category="news">
-                <span slot="title">News title</span>
-                <span slor="total">45</span>
-                <span slot="body">New body</span>
-            </cor-dashboard-card>
-
-            <cor-dashboard-card category="events">
-                <span slot="title">Event title</span>
-                <span slor="total">45</span>
-                <span slot="body">New body</span>
-            </cor-dashboard-card>
+            `).join('')}
         `
     },
 

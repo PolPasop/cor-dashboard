@@ -48,19 +48,31 @@ export default {
   },
 
   html() {
-      console.log(navitems);
     return `
+
+    <!-- Menu -->
     <ul class="cor-dashboard__nav">
         ${navitems.map(navitem => `
           <li class="cor-dashboard__nav__item">
             <a class="cor-dashboard__nav-link" href="#" data-target="${navitem.target}">${navitem.name}</a>
-            ${ navitem.subitems ? `<ul>${navitem.subitems.map(subitem => `<li><a class="cor-dashboard__nav-link">${subitem.name}</a></li>`).join('')}</ul>` : ``}
+            
+            <!-- Sub menu -->
+            ${ navitem.subitems ? `
+              <ul>${navitem.subitems.map(subitem => `
+                <li>
+                  <a class="cor-dashboard__nav-link">${subitem.name}</a>
+                </li>`).join('')}
+              </ul>` : ``}
+            <!-- /Sub menu -->
+
           </li>
         `).join('')}
     </ul>
-    <cor-dashboard-filter>
-      <span slot="name">sloot</slot>
-    </cor-dashboard-filter>
+    <!-- /Menu -->
+    
+    <!-- Filtres -->
+    <cor-dashboard-filter></cor-dashboard-filter>
+    <!-- /Filtres -->
     `
   },
 
