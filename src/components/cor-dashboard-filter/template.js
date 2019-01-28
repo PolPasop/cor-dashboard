@@ -5,7 +5,6 @@ export default {
     },
 
     html(data) {
-        console.log("data:", data);
         return `
         
         ${data.map( filter => `

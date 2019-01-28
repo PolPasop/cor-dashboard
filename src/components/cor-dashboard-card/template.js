@@ -21,7 +21,7 @@ export default {
                 
                 <!-- Content of the card -->
                 <div class="cor-dashboard-card__body">
-                    <slot name="chart"><cor-dashboard-donut-chart></cor-dashboard-donut-chart></slot>
+                    <slot name="chart"></slot>
                     <slot name="data"></slot>
                     <slot name="body"></slot>
                 </div>

@@ -1,13 +1,14 @@
+import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
 import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js'
 import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overview.js'
 
 export default {
-  render() {
+  render(globalData) {
     return `${this.css()}
-    ${this.html()}`;
+    ${this.html(globalData)}`;
   },
 
-  html() {
+  html(globalData) {
     return `
     <div class="cor-dashboard">
       
@@ -29,7 +30,30 @@ export default {
           <img src="public/images/CoRlogo.png" />
           <h1>Dashboard</h1>
         </header>
-        <cor-dashboard-overview></cor-dashboard-overview>
+        
+        <cor-dashboard-overview>
+
+          ${globalData.map( card => `
+            <cor-dashboard-card category="${card.category}">
+                <span slot="title">${card.title}</span>
+                <span slot="total">${card.total}</span>
+                <span slot="body">${card.body}</span>
+                    
+                ${ (card.itemdata) ? 
+                    `
+                    <span slot="chart"><cor-dashboard-donut-chart></cor-dashboard-donut-chart></slot>
+                    <ol slot="data">
+                        ${(card.itemdata).map( el => `
+                        <li>${el.label} ${el.total}</li>
+                        ` ).join('')}
+                    </ol>
+                    ` 
+                    : `` }
+
+            </cor-dashboard-card>
+          `).join('')}
+
+        </cor-dashboard-overview>
       </main>
       <!-- /Main -->
       

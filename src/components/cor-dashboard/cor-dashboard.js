@@ -9,13 +9,16 @@
 
 import Component from '../component.js';
 import Template from './template.js';
+import Data from './data.js';
 
 export default class CorDashboard extends Component {
   constructor() {
     super();
+    const globalData = Data.DATA;
     // this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = Template.render();
+    this.shadowRoot.innerHTML = Template.render(globalData);
     this.addEventListener("state-update", this.store);
+    
   }
 
   store({detail}) {
