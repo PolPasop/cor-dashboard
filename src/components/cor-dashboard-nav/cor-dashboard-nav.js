@@ -6,7 +6,6 @@ export default class CorDashboardNav extends Component {
     super();
     // this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = Template.render();
-    console.log(this);
   }
 
   set name(text) {
@@ -17,12 +16,10 @@ export default class CorDashboardNav extends Component {
   
 
   connectedCallback() {
-    console.log("The Cor Dashboard Nav is there")
     this._triggers = this.shadowRoot.querySelectorAll('[data-target]');
     this._triggers.forEach(
       trigger => trigger.addEventListener('click', e => this.onClick(e))
     );
-    console.log("triggers:",this._triggers);
   }
 
   show(target) {

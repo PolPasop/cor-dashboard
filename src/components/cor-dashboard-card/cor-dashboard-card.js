@@ -1,7 +1,6 @@
 import Component from '../component.js';
 import Template from './template.js';
 
-
 export default class CorDashboardCard extends Component {
     constructor() {
         super();
@@ -10,8 +9,12 @@ export default class CorDashboardCard extends Component {
     }
 
     connectedCallback() {
-
+        
+        if(this.querySelector("#donut-chart")) {
+            this.chart();
+        }
     }
+
 }
 
 if (!customElements.get('cor-dashboard-card')) {

@@ -1,45 +1,30 @@
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
-
-const data = [
-    {
-        title: "News Title",
-        category: "news",
-        total: "45",
-        body: "Card Body"
-    },
-    {
-        title: "Event Title",
-        category: "events",
-        total: "45",
-        body: "Card Body"
-    },
-    {
-        title: "News Title",
-        category: "news",
-        total: "45",
-        body: "Card Body"
-    },
-    {
-        title: "Event Title",
-        category: "events",
-        total: "45",
-        body: "Card Body"
-    }
-];
+import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-donut-chart.js'
 
 export default {
-    render() {
+    render(data) {
         return  `${this.css()}
-        ${this.html()}`;
+        ${this.html(data)}`;
     },
 
-    html() {
+    html(data) {
         return `${data.map( item => `
 
             <cor-dashboard-card category="${item.category}">
                 <span slot="title">${item.title}</span>
                 <span slot="total">${item.total}</span>
                 <span slot="body">${item.body}</span>
+                    
+                ${ (item.itemdata) ? 
+                    `
+                    <ol slot="data">
+                        ${(item.itemdata).map( el => `
+                        <li>${el.label} ${el.total}</li>
+                        ` ).join('')}
+                    </ol>
+                    ` 
+                    : `` }
+
             </cor-dashboard-card>
 
             `).join('')}

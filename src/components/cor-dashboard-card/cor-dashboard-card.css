@@ -2,13 +2,9 @@
     border: solid 1px var(--gray-200);
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
-    margin: .5rem
+    margin: .5rem;
+    width: 18rem;
 }
-
-.cor-dashboard-card__body {
-    padding: 1rem;
-}
-
 
 :host {
     transition: opacity 300ms ease-in-out;
@@ -16,4 +12,24 @@
 
 :host(.hidden) {
     opacity: 0;
+}
+
+/* Layout of the card */
+.cor-dashboard-card__title,
+.cor-dashboard-card__body {
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Title of the card */
+.cor-dashboard-card__title {
+    border-bottom: solid 1px var(--gray-200);
+    display: flex
+}
+
+/* Number in the title of the carg*/
+.cor-dashboard-card__title__total {
+    color: var(--gray-500);
+    font-weight: 100;
+    margin-left: auto;
 }
