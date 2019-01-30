@@ -14,12 +14,22 @@
     opacity: 0;
 }
 
+ol {
+    list-style: none;
+    padding: 0;
+}
+
 /* Layout of the card */
 .cor-dashboard-card__title,
 .cor-dashboard-card__body {
     margin: 0;
     padding: 1rem;
 }
+
+.cor-dashboard-card__body { 
+    padding: 0 1rem;
+}
+
 
 /* Title of the card */
 .cor-dashboard-card__title {

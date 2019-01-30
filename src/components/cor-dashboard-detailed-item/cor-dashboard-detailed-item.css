@@ -1,0 +1,36 @@
+:host {
+    border-bottom: solid 1px var(--gray-200);
+    display: block;
+    padding: 1.5rem;
+}
+
+.cor-dashboard-detailed-item__languages-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+::slotted(li) {
+    border: solid 1px red;
+    background: var(--gray-200);
+    border-radius: 10px;
+    content: "";
+    height: 10px;
+    width: 10px;
+}
+
+::slotted(li span)  {
+    background: purple;
+}
+
+::slotted(img) {
+    border-radius: 4px;
+    float: left;
+    margin-right: 1.5rem;
+    width: 100px;
+}
+
+.cor-dashboard-detailed-item__intro-container {
+    overflow: hidden;
+}

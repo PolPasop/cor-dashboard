@@ -9,7 +9,7 @@ export default {
 
     html() {
         return `
-            <slot>No results</slot>
+            <slot>No overview results</slot>
             `
     },
 

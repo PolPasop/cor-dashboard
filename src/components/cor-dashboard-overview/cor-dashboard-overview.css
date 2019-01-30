@@ -1,6 +1,7 @@
 .cor-dashboard-overview,
 :host {
     align-content: space-between;
+    align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     padding: 1rem;

@@ -14,7 +14,7 @@ import Data from './data.js';
 export default class CorDashboard extends Component {
   constructor() {
     super();
-    const globalData = Data.DATA;
+    const globalData = Data;
     // this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = Template.render(globalData);
     this.addEventListener("state-update", this.store);
@@ -43,6 +43,14 @@ export default class CorDashboard extends Component {
 
   connectedCallback() {
     console.log("The Cor Dashboard is there")
+    this._renderCards();
+  }
+
+  _renderCards() {
+      this.cardList = this.shadowRoot.querySelector("#cor-dashboard-cardslist");
+      let todoItem = document.createElement('cor-dashboard-card');
+      todoItem.setProperty('tcheu', "cnetnu de tcheu");
+      this.cardList.appendChild(todoItem);
   }
 }
 

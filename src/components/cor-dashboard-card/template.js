@@ -21,9 +21,15 @@ export default {
                 
                 <!-- Content of the card -->
                 <div class="cor-dashboard-card__body">
-                    <slot name="chart"></slot>
-                    <slot name="data"></slot>
-                    <slot name="body"></slot>
+                    <slot name="card-content">
+                        
+                            <slot name="chart"></slot>
+                            <slot name="data"></slot>
+                            <ol>
+                                <slot name="category"></slot>
+                            </ol>
+                            </slot>
+                    </slot>
                 </div>
                 <!-- /Content of the card -->
             

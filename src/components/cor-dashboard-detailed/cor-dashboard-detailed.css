@@ -1,0 +1,20 @@
+:host {
+    display: block;
+    border: solid 1px var(--gray-200);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
+    margin: .5rem;
+}
+
+.cor-dashboard-detailed__title {
+    border-bottom: solid 1px var(--gray-200);
+    color: var(--gray-600);
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 1.5rem;
+}
+
+.cor-dashboard-detailed__body {
+    padding: 1.5rem;
+}
