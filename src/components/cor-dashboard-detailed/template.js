@@ -8,7 +8,13 @@ export default {
 
     html() {
         return `
-            <p class="cor-dashboard-detailed__title"><slot name="number-of-items"></slot> News</p>
+            <p class="cor-dashboard-detailed__title">
+                <slot name="number-of-items"></slot> News
+                <select>
+                    <option value="">Sort by</option>
+                    <option value="date">Date</option>
+            </select>
+            </p>
             <slot></slot>
             
         `

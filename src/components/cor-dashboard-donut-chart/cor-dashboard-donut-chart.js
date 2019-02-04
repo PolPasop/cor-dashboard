@@ -2,23 +2,23 @@ import Component from '../component.js';
 import Template from './template.js';
 
 const seedData = [{
-    "label": "FR",
+    "label": "News",
     "value": 80,
     "link": "https://facebook.github.io/react/"
   }, {
-    "label": "EN",
+    "label": "Events",
     "value": 100,
     "link": "https://redux.js.org/"
   }, {
-    "label": "BU",
+    "label": "Opinions",
     "value": 25,
     "link": "https://vuejs.org/"
   }, {
-    "label": "DE",
+    "label": "Studies",
     "value": 15,
     "link": "https://angularjs.org/"
   }, {
-    "label": "ES",
+    "label": "Brochures",
     "value": 5,
     "link": "https://meteorhacks.com/meteor-js-web-framework-for-everyone"
   }];

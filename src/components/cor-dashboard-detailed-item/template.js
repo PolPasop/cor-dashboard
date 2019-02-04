@@ -1,3 +1,5 @@
+import CorDashboardLanguagesOverview from '../cor-dashboard-languages-overview/cor-dashboard-languages-overview.js'
+
 export default {
     render() {
         return `
@@ -27,7 +29,11 @@ export default {
                 
                 <ul class="cor-dashboard-detailed-item__languages-list" slot="languages">
                     <slot class="cor-dashboard-detailed-item__languages-list__item" name="language">
-                        <li class="cor-dashboard-detailed-item__languages-list__item">No language</li>
+                        <li class="cor-dashboard-detailed-item__languages-list__item">
+                            <cor-dashboard-languages-overview>
+                                <span slot="language-label">lang</slot>
+                            <cor-dashboard-languages-overview>
+                        </li>
                     </slot>
                 </ul>
 

@@ -20,7 +20,7 @@ export default {
             ]
         },
         {
-            title: "Event",
+            title: "Events",
             category: "events",
             total: "45",
             body: "Card Body"
@@ -92,7 +92,7 @@ export default {
             date: "10/12/2018",
             theme: "Theme",
             label: "Press release",
-            picture: "yes",
+            picture: "http://placeimg.com/640/480/any",
             intro: "Lorem intro",
             languages: [
                 {
@@ -100,83 +100,96 @@ export default {
                     status: "translated"
                 },
                 {
-                    label:"HR",
-                    status: "translated"
-                },
-                {
                     label:"CS",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
                     label:"DA",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
-                    label:"NL",
+                    label:"DE",
+                    status: "draft"
+                },
+                {
+                    label:"EL",
                     status: "translated"
                 },
                 {
                     label:"EN",
-                    status: "translated"
+                    status: "draft"
+                },
+                {
+                    label:"ES",
+                    status: "draft"
                 },
                 {
                     label:"ET",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
                     label:"FI",
-                    status: "translated"
+                    status: ""
                 },
                 {
                     label:"FR",
-                    status: "translated"
-                }
-            ]
-        },
-        {
-            contenttype: "News",
-            title: "News title",
-            date: "10/12/2018",
-            theme: "Theme",
-            label: "Press release",
-            picture: "yes",
-            intro: "Lorem intro",
-            languages: [
+                    status: ""
+                },
                 {
-                    label:"BG",
-                    status: "translated"
+                    label:"GA",
+                    status: "draft"
                 },
                 {
                     label:"HR",
+                    status: "draft"
+                },
+                {
+                    label:"HU",
                     status: "translated"
                 },
                 {
-                    label:"CS",
-                    status: "translated"
+                    label:"IT",
+                    status: "draft"
                 },
                 {
-                    label:"DA",
-                    status: "translated"
+                    label:"LT",
+                    status: ""
+                },
+                {
+                    label:"LV",
+                    status: "draft"
+                },
+                {
+                    label:"MT",
+                    status: "draft"
                 },
                 {
                     label:"NL",
+                    status: "draft"
+                },
+                {
+                    label:"PL",
+                    status: ""
+                },
+                {
+                    label:"PT",
                     status: "translated"
                 },
                 {
-                    label:"EN",
-                    status: "translated"
+                    label:"RO",
+                    status: "draft"
                 },
                 {
-                    label:"ET",
-                    status: "translated"
+                    label:"SK",
+                    status: ""
                 },
                 {
-                    label:"FI",
-                    status: "translated"
+                    label:"SL",
+                    status: "draft"
                 },
                 {
-                    label:"FR",
-                    status: "translated"
+                    label:"SV",
+                    status: ""
                 }
             ]
         },
@@ -194,36 +207,202 @@ export default {
                     status: "translated"
                 },
                 {
-                    label:"HR",
-                    status: "translated"
-                },
-                {
                     label:"CS",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
                     label:"DA",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
-                    label:"NL",
+                    label:"DE",
+                    status: "draft"
+                },
+                {
+                    label:"EL",
                     status: "translated"
                 },
                 {
                     label:"EN",
-                    status: "translated"
+                    status: "draft"
+                },
+                {
+                    label:"ES",
+                    status: "draft"
                 },
                 {
                     label:"ET",
-                    status: "translated"
+                    status: "draft"
                 },
                 {
                     label:"FI",
-                    status: "translated"
+                    status: ""
                 },
                 {
                     label:"FR",
+                    status: ""
+                },
+                {
+                    label:"GA",
+                    status: "draft"
+                },
+                {
+                    label:"HR",
+                    status: "draft"
+                },
+                {
+                    label:"HU",
                     status: "translated"
+                },
+                {
+                    label:"IT",
+                    status: "draft"
+                },
+                {
+                    label:"LT",
+                    status: ""
+                },
+                {
+                    label:"LV",
+                    status: "draft"
+                },
+                {
+                    label:"MT",
+                    status: "draft"
+                },
+                {
+                    label:"NL",
+                    status: "draft"
+                },
+                {
+                    label:"PL",
+                    status: ""
+                },
+                {
+                    label:"PT",
+                    status: "translated"
+                },
+                {
+                    label:"RO",
+                    status: "draft"
+                },
+                {
+                    label:"SK",
+                    status: ""
+                },
+                {
+                    label:"SL",
+                    status: "draft"
+                },
+                {
+                    label:"SV",
+                    status: ""
+                }
+            ]
+        },{
+            contenttype: "News",
+            title: "News title",
+            date: "10/12/2018",
+            theme: "Theme",
+            label: "Press release",
+            picture: "http://placeimg.com/640/480/any",
+            intro: "Lorem intro",
+            languages: [
+                {
+                    label:"BG",
+                    status: "translated"
+                },
+                {
+                    label:"CS",
+                    status: "draft"
+                },
+                {
+                    label:"DA",
+                    status: "draft"
+                },
+                {
+                    label:"DE",
+                    status: "draft"
+                },
+                {
+                    label:"EL",
+                    status: "translated"
+                },
+                {
+                    label:"EN",
+                    status: "draft"
+                },
+                {
+                    label:"ES",
+                    status: "draft"
+                },
+                {
+                    label:"ET",
+                    status: "draft"
+                },
+                {
+                    label:"FI",
+                    status: ""
+                },
+                {
+                    label:"FR",
+                    status: ""
+                },
+                {
+                    label:"GA",
+                    status: "draft"
+                },
+                {
+                    label:"HR",
+                    status: "draft"
+                },
+                {
+                    label:"HU",
+                    status: "translated"
+                },
+                {
+                    label:"IT",
+                    status: "draft"
+                },
+                {
+                    label:"LT",
+                    status: ""
+                },
+                {
+                    label:"LV",
+                    status: "draft"
+                },
+                {
+                    label:"MT",
+                    status: "draft"
+                },
+                {
+                    label:"NL",
+                    status: "draft"
+                },
+                {
+                    label:"PL",
+                    status: ""
+                },
+                {
+                    label:"PT",
+                    status: "translated"
+                },
+                {
+                    label:"RO",
+                    status: "draft"
+                },
+                {
+                    label:"SK",
+                    status: ""
+                },
+                {
+                    label:"SL",
+                    status: "draft"
+                },
+                {
+                    label:"SV",
+                    status: ""
                 }
             ]
         }

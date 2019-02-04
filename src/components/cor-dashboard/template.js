@@ -4,6 +4,7 @@ import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overvi
 import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detailed.js'
 import CorDashboardDetailedItem from '../cor-dashboard-detailed-item/cor-dashboard-detailed-item.js'
 
+
 export default {
   render(globalData) {
     return `${this.css()}
@@ -93,14 +94,20 @@ export default {
                   <span slot="contenttype">${item.contenttype}</span>
                   <span slot="title">${item.title}</span>
                   <span slot="date">${item.date}</span>
-                  <span slot="theme">${item.theme}</span>
+                  <span slot="theme" class="cor-dashboard-detailed-item__theme">${item.theme}</span>
                   <span slot="label">${item.label}</span>
                   <img slot="picture" src="${item.picture}" />
                   <span slot="intro">${item.intro}</span>
-
+                  
+                  
                   ${item.languages.map( language => `
-                    <li class="cor-dashboard-detailed-item__languages-list__item" slot="language" data-status="${language.status}"><span>${language.label}</span></li>
+                    <li class="cor-dashboard-detailed-item__languages-list__item" slot="language">
+                      <cor-dashboard-languages-overview data-status="${language.status}">
+                        <span slot="language-label">${language.label}</span>
+                      </cor-dashboard-languages-overview>
+                    </li>
                   `).join('')}
+                  
 
             </cor-dashboard-detailed-item>
           

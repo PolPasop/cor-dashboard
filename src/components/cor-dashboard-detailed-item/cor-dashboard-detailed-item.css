@@ -11,17 +11,14 @@
     padding: 0;
 }
 
-::slotted(li) {
+span {
     border: solid 1px red;
     background: var(--gray-200);
     border-radius: 10px;
     content: "";
+    display: block;
     height: 10px;
     width: 10px;
-}
-
-::slotted(li span)  {
-    background: purple;
 }
 
 ::slotted(img) {
@@ -33,4 +30,10 @@
 
 .cor-dashboard-detailed-item__intro-container {
     overflow: hidden;
+}
+
+.cor-dashboard-detailed-item__theme {
+    background: var(--gray-500);
+    color: #fff;
+    padding: 1.5rem;
 }
