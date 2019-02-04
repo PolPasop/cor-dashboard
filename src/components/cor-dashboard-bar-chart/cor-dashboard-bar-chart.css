@@ -17,3 +17,28 @@
     align-items: flex-end;
     justify-content: center;
   }
+
+
+
+  /*
+  .chart  div {
+  border-radius: 10px;
+}
+
+.chart > div {
+  background-color: var(--gray-200);
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin: 5px;
+  width: 20px;
+}
+
+.chart > div div {
+  background-color: steelblue;
+  flex: 1;
+  font: 10px sans-serif;
+  text-align: center;
+  color: white;
+}
+  */

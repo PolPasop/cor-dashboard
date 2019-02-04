@@ -1,3 +1,7 @@
+/*
+ * language overview used in the detailed card 
+ */
+
 import Component from '../component.js'
 import Template from './template.js'
 

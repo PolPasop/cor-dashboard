@@ -48,7 +48,7 @@ export default class CorDashboardBarChart extends Component {
         d3.select(this.shadowRoot.querySelector(".chart"))
             .selectAll("div")
             .data(data)
-        .enter().append("div")
+        .enter().append("div").append("div")
         .transition()
         .duration(1000)
         .style("height", d => x(d.total) + "px")

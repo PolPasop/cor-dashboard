@@ -42,6 +42,7 @@ export default {
                 <span slot="title">${card.title}</span>
                 <span slot="total">${card.total}</span>
                 <span slot="card-content" hidden></span>
+
                     
                 ${ (card.itemdata) ? 
                     `
@@ -78,6 +79,11 @@ export default {
                   </span>
                   ` 
                   : `` }
+
+                  
+                  
+                  
+                  ${ ((card.cardtype) === 'languageOverview') ? `` : `lang no`}
 
             </cor-dashboard-card>
           `).join('')}

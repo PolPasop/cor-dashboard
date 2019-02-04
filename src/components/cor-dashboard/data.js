@@ -22,8 +22,107 @@ export default {
         {
             title: "Events",
             category: "events",
+            cardtype: "languageOverview",
             total: "45",
-            body: "Card Body"
+            body: "Card Body",
+            languages: [
+                {
+                    label:"BG",
+                    total: 50
+                },
+                {
+                    label:"CS",
+                    total: 2
+                },
+                {
+                    label:"DA",
+                    total: 7
+                },
+                {
+                    label:"DE",
+                    total: 87
+                },
+                {
+                    label:"EL",
+                    total: 24
+                },
+                {
+                    label:"EN",
+                    total: 6
+                },
+                {
+                    label:"ES",
+                    total: 78
+                },
+                {
+                    label:"ET",
+                    total: 0
+                },
+                {
+                    label:"FI",
+                    total: 5
+                },
+                {
+                    label:"FR",
+                    total: 3
+                },
+                {
+                    label:"GA",
+                    total: 0
+                },
+                {
+                    label:"HR",
+                    total: 14
+                },
+                {
+                    label:"HU",
+                    total: 3
+                },
+                {
+                    label:"IT",
+                    total: 47
+                },
+                {
+                    label:"LT",
+                    total: 75
+                },
+                {
+                    label:"LV",
+                    total: 26
+                },
+                {
+                    label:"MT",
+                    total: 65
+                },
+                {
+                    label:"NL",
+                    total: 37
+                },
+                {
+                    label:"PL",
+                    total: 0
+                },
+                {
+                    label:"PT",
+                    total: 21
+                },
+                {
+                    label:"RO",
+                    total: 48
+                },
+                {
+                    label:"SK",
+                    total: 23
+                },
+                {
+                    label:"SL",
+                    total: 16
+                },
+                {
+                    label:"SV",
+                    total: 9
+                }
+            ]
         },
         {
             title: "Lang usage",
