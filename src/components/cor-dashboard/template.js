@@ -45,7 +45,20 @@ export default {
                 ${ (card.itemdata) ? 
                     `
                     <div slot="card-content">
-                      <span slot="chart"><cor-dashboard-donut-chart></cor-dashboard-donut-chart></slot>
+                      <span slot="chart">
+
+                        <!-- Check type of chart -->
+                        ${ ((card.chart) === 'donut-chart' ) ? `
+                          <cor-dashboard-donut-chart></cor-dashboard-donut-chart>
+                        ` : ``}
+
+                        ${ ((card.chart) === 'bar-chart' ) ? `
+                          <cor-dashboard-bar-chart></cor-dashboard-bar-chart>
+                        ` : ``}
+                        <!-- /Check type of chart -->
+
+                        
+                      </slot>
                       <ol slot="data">
                           ${(card.itemdata).map( el => `
                           <li>${el.label} ${el.total}</li>

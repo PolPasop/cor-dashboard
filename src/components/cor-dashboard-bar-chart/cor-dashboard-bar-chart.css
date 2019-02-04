@@ -1,0 +1,19 @@
+.chart {
+    align-items: flex-end;
+    display: flex;
+    height: 200px;
+    padding: 1.5rem;
+}
+
+.chart div {
+    flex: 1;
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }

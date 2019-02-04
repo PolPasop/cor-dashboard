@@ -29,7 +29,7 @@ export default {
             title: "Lang usage",
             category: "lang-usage",
             total: "",
-            chart: "donut-chart",
+            chart: "bar-chart",
             body: "Card Body",
             itemdata: [
                 {

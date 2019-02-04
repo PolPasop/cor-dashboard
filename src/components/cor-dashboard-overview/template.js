@@ -1,5 +1,6 @@
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
 import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-donut-chart.js'
+import CorDashboardBarChart from '../cor-dashboard-bar-chart/cor-dashboard-bar-chart.js'
 
 export default {
     render() {

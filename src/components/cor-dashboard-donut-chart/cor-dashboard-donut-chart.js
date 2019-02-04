@@ -101,7 +101,7 @@ export default class CorDashboardDonutChart extends Component {
         .attr("fill", "#fff")
             .text(function(d,i) { return seedData[i].label; })
 
-        g.selectAll(".arc text").call(wrap, arcText.range([0, width]));
+        
         
     }
 

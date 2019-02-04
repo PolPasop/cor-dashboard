@@ -15,7 +15,8 @@ export default {
                 </h1>
                 <p>
                     <slot name="date"></slot> 
-                     | 
+                     
+                    | 
                     <slot name="theme"></slot> 
                     <slot name="label"></slot>
                 </p>
