@@ -1,21 +1,45 @@
 export default {
-    render() {
+    render(data) {
         return `
-            ${ this.html() }
+            ${ this.html(data) }
             ${ this.css() }
         `
     },
 
-    html() {
+    html(data) {
         return `
             <p class="cor-dashboard-detailed__title">
-                <slot name="number-of-items"></slot> News
+            ${data.length} News
                 <select>
                     <option value="">Sort by</option>
                     <option value="date">Date</option>
             </select>
             </p>
-            <slot></slot>
+
+            ${data.map( item => `
+              
+              <cor-dashboard-detailed-item>
+                    <span slot="contenttype">${item.contenttype}</span>
+                    <span slot="title">${item.title}</span>
+                    <span slot="date">${item.date}</span>
+                    <span slot="theme" class="cor-dashboard-detailed-item__theme">${item.theme}</span>
+                    <span slot="label">${item.label}</span>
+                    <img slot="picture" src="${item.picture}" />
+                    <span slot="intro">${item.intro}</span>
+                    
+                    
+                    ${item.languages.map( language => `
+                      <li class="cor-dashboard-detailed-item__languages-list__item" slot="language">
+                        <cor-dashboard-languages-overview data-status="${language.status}">
+                          <span slot="language-label">${language.label}</span>
+                        </cor-dashboard-languages-overview>
+                      </li>
+                    `).join('')}
+                    
+  
+              </cor-dashboard-detailed-item>
+            
+              ` ).join('')}
             
         `
     },

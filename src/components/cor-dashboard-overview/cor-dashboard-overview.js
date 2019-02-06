@@ -10,7 +10,7 @@ export default class CorDashboardOverview extends Component {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = Template.render();
+        this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
     }
 
     show(target) {

@@ -34,92 +34,9 @@ export default {
           <h1>Dashboard</h1>
         </header>
         
-        <cor-dashboard-overview>
+        <cor-dashboard-overview></cor-dashboard-overview>
 
-          ${globalData.DATA.map( card => `
-            <cor-dashboard-card category="${card.category}">
-                <span slot="title">${card.title}</span>
-                <span slot="total">${card.total}</span>
-                <span slot="card-content" hidden></span>
-
-                    
-                ${ (card.itemdata) ? 
-                    `
-                    <div slot="card-content">
-                      <span slot="chart">
-
-                        <!-- Check type of chart -->
-                        ${ ((card.chart) === 'donut-chart' ) ? `
-                          <cor-dashboard-donut-chart></cor-dashboard-donut-chart>
-                        ` : ``}
-
-                        ${ ((card.chart) === 'bar-chart' ) ? `
-                          <cor-dashboard-bar-chart></cor-dashboard-bar-chart>
-                        ` : ``}
-                        <!-- /Check type of chart -->
-
-                        
-                      </slot>
-                      <ol slot="data">
-                          ${(card.itemdata).map( el => `
-                          <li>${el.label} ${el.total}</li>
-                          ` ).join('')}
-                      </ol>
-                    </div>
-                    ` 
-                    : `` }
-
-                ${ (card.newscategories) ? 
-                  `
-                  <span slot="card-content">
-                      ${(card.newscategories).map( el => `
-                      <p slot="category">${el.label} <strong>${el.total}</strong></p>
-                      ` ).join('')}
-                  </span>
-                  ` 
-                  : `` }
-
-                  
-                  
-                  
-                  ${ ((card.cardtype) === 'languageOverview') ? `` : `lang no`}
-
-            </cor-dashboard-card>
-          `).join('')}
-
-        </cor-dashboard-overview>
-
-        <cor-dashboard-detailed>
-          
-          <span slot="number-of-items">${globalData.ITEMS.length}</span>
-
-          ${globalData.ITEMS.map( item => `
-            
-            <cor-dashboard-detailed-item>
-                  <span slot="contenttype">${item.contenttype}</span>
-                  <span slot="title">${item.title}</span>
-                  <span slot="date">${item.date}</span>
-                  <span slot="theme" class="cor-dashboard-detailed-item__theme">${item.theme}</span>
-                  <span slot="label">${item.label}</span>
-                  <img slot="picture" src="${item.picture}" />
-                  <span slot="intro">${item.intro}</span>
-                  
-                  
-                  ${item.languages.map( language => `
-                    <li class="cor-dashboard-detailed-item__languages-list__item" slot="language">
-                      <cor-dashboard-languages-overview data-status="${language.status}">
-                        <span slot="language-label">${language.label}</span>
-                      </cor-dashboard-languages-overview>
-                    </li>
-                  `).join('')}
-                  
-
-            </cor-dashboard-detailed-item>
-          
-            ` ).join('')}
-          
-          
-        </cor-dashboard-detailed>
+        <cor-dashboard-detailed></cor-dashboard-detailed>
       </main>
       <!-- /Main -->
       
