@@ -12,6 +12,7 @@
     "remove": "^0.1.5"
   },
   "devDependencies": {
+    "lit-html": "^1.0.0",
     "nodemon": "^1.18.9",
     "postcss-cli": "^6.1.1",
     "postcss-import": "^12.0.1"

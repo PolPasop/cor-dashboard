@@ -2,6 +2,7 @@ const data = [
     {
         name: "Themes",
         items: [
+            "no theme",
             "Agriculture and Fisheries",
             "Citizenship, Governance and Institutional Affairs",
             "Cohesion Policy, Structural funds and EU Budget",

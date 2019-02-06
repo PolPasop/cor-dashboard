@@ -16,7 +16,8 @@ export default {
                 <span slot="total">${card.total}</span>
                 <span slot="card-content" hidden></span>
 
-                    
+                
+                <!-- Cards with chart -->
                 ${ (card.itemdata) ? 
                     `
                     <div slot="card-content">
@@ -42,24 +43,34 @@ export default {
                     </div>
                     ` 
                     : `` }
+                <!-- /Cards with chart -->
 
+                <!-- Cards displaying categories -->
                 ${ (card.newscategories) ? 
-                `
-                <span slot="card-content">
-                    ${(card.newscategories).map( el => `
-                    <p slot="category">${el.label} <strong>${el.total}</strong></p>
-                    ` ).join('')}
-                </span>
-                ` 
-                : `` }
-
+                    `
+                    <span slot="card-content">
+                        ${(card.newscategories).map( el => `
+                        <p slot="category">${el.label} <strong>${el.total}</strong></p>
+                        ` ).join('')}
+                    </span>
+                    ` 
+                    : `` }
+                <!-- /Cards displaying categories -->
                 
                 
-                
-                ${ ((card.cardtype) === 'languageOverview') ? `` : `lang no`}
+                <!-- Cards displaying all the languages -->
+                ${ ((card.cardtype) === 'languageOverview') ? `
+                    <ol slot="card-content">
+                        ${card.languages.map(
+                            language => `<li>${language.label} ${language.total}</li>`
+                        ).join('')}
+                    </ol>
+                    ` : ``}
+                <!-- /Cards displaying all the languages -->
 
             </cor-dashboard-card>
         `).join('')}
+            
             `
     },
 

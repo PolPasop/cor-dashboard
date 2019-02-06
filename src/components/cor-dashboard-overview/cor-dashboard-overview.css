@@ -7,3 +7,16 @@
     flex-wrap: wrap;
     padding: 1rem;
 }
+
+@supports (display: grid) {
+    .cor-dashboard-overview,
+    :host {
+        /*
+        display :grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 6px;
+        grid-auto-flow: dense;
+        align-content: stretch;
+        */
+    }
+}

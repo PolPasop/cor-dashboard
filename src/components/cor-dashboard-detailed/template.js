@@ -13,7 +13,7 @@ export default {
                 <select>
                     <option value="">Sort by</option>
                     <option value="date">Date</option>
-            </select>
+                </select>
             </p>
 
             ${data.map( item => `

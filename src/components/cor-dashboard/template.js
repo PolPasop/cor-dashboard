@@ -29,9 +29,14 @@ export default {
 
       <!-- Main -->
       <main>
+        
         <header>
           <img src="public/images/CoRlogo.png" />
           <h1>Dashboard</h1>
+          <nav>
+            <a class="active" href="#">Overview</a>
+            <a href="#">Detailed</a>
+          </nav>
         </header>
         
         <cor-dashboard-overview></cor-dashboard-overview>
