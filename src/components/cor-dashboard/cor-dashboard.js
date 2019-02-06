@@ -9,16 +9,15 @@
 
 import Component from '../component.js';
 import Template from './template.js';
-import Data from './data.js';
+
 
 export default class CorDashboard extends Component {
   constructor() {
     super();
-    const globalData = Data;
     // this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = Template.render(globalData);
+    console.log(this.globalData);
+    this.shadowRoot.innerHTML = Template.render(this.globalData);
     this.addEventListener("state-update", this.store);
-    
   }
 
   store({detail}) {
@@ -42,16 +41,9 @@ export default class CorDashboard extends Component {
   }
 
   connectedCallback() {
-    console.log("The Cor Dashboard is there")
-    this._renderCards();
+
   }
 
-  _renderCards() {
-      this.cardList = this.shadowRoot.querySelector("#cor-dashboard-cardslist");
-      let todoItem = document.createElement('cor-dashboard-card');
-      todoItem.setProperty('tcheu', "cnetnu de tcheu");
-      this.cardList.appendChild(todoItem);
-  }
 }
 
 if (!customElements.get('cor-dashboard')) {

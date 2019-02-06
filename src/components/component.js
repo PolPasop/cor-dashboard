@@ -6,12 +6,14 @@
     3. A method to dispatch a custom event.
     Global app state from @bdc
 */
+import Data from './data.js';
 
 export default class extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.root = document.body.firstElementChild;
+        this.globalData = Data;
     }
 
     dispatchUpdate(detail) {

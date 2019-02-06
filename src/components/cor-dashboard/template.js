@@ -12,7 +12,6 @@ export default {
   },
 
   html(globalData) {
-    console.log(globalData);
     return `
     <div class="cor-dashboard">
       

@@ -9,7 +9,6 @@ export default class CorDashboardLanguagesOverview extends Component {
     constructor() {
         super();
         this.shadowRoot.innerHTML = Template.render();
-        console.log("in my test", Template.render());
     }
 }
 

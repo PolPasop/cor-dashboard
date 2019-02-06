@@ -65,7 +65,6 @@ export default class CorDashboardFilter extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log("The filter is ready");
         this._collapse;
         this._trigger = this.shadowRoot.querySelector('[data-target]');
         if (!this._trigger)
@@ -76,14 +75,9 @@ export default class CorDashboardFilter extends HTMLElement {
         this._trigger.addEventListener('click', this._onClick);
     }
 
-    _onClick(event) {
-        console.log("clickkk");
-        this._toggleExpanded();
-    }
-    
-    _toggleExpanded() {
+    _toggleExpanded(target) {
         
-        this.expanded = !this.expanded;
+        target.expanded = !target.expanded;
         this.dispatchEvent(new CustomEvent('change', {
             detail: {
                 expanded: this.expanded,
@@ -91,6 +85,14 @@ export default class CorDashboardFilter extends HTMLElement {
             bubbles: true,
         }));
     }
+    
+    _onClick(event) {
+        console.log("clickkk");
+        console.log(this);
+        this._toggleExpanded(event.target)
+    }
+    
+    
 
     get expanded() {
         return this.hasAttribute('expanded');

@@ -15,12 +15,18 @@ export default class CorDashboardOverview extends Component {
 
     show(target) {
         console.log("show:", target);
-        this.shadowRoot.querySelectorAll(`cor-dashboard-card:not([category=${target}])`).forEach(
-            el => el.classList.add('hidden')
-        );
-        this.shadowRoot.querySelectorAll(`cor-dashboard-card[category=${target}]`).forEach(
-            el => el.classList.remove('hidden')
-        );
+        if(target) {
+            
+            console.log(this);
+            // console.log(this.shadowRoot.querySelectorAll(`*([category=${target}])`));
+            
+            this.shadowRoot.querySelectorAll(`::sl*:not[category=${target}]`).forEach(
+                el => el.classList.add('hidden')
+            );
+            this.shadowRoot.querySelectorAll(`*[category=${target}]`).forEach(
+                el => el.classList.remove('hidden')
+            );
+        }
     }
 
     connectedCallback() {
