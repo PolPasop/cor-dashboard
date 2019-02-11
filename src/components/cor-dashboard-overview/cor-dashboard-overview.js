@@ -16,9 +16,16 @@ export default class CorDashboardOverview extends Component {
         this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
     }
 
-    show(target) {
+    show(view, target) {
+        /*
         console.log(`filter ${target}`, this.globalData.DATA.filter( el => el.category === target));
         console.log("show:", target);
+        */
+       
+
+        if(view) {
+            this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);
+        };
 
         if(target) {
             this.shadowRoot.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === target));
@@ -29,15 +36,18 @@ export default class CorDashboardOverview extends Component {
 
     connectedCallback() {
         const {root} = this.root;
-        const source = "filter";
+
+        /* Filter update */
+        const filter = "filter";
+        const view = "view";
         const update = () => {
-            console.log("Name changed to", root[source]);
-            this.show(root[source])
+            console.log("Name changed to", "view: ", root[view], "filter:", root[filter]);
+            this.show(root[view],root[filter])
         };
     
         new MutationObserver(update).observe(root, {
             attributes: true,
-            attributeFilter: [source]
+            attributeFilter: [filter, view]
         });
 
     }

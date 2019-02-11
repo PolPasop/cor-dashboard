@@ -16,7 +16,7 @@ export default class CorDashboard extends Component {
     super();
     // this.attachShadow({ mode: 'open' });
     console.log(this.globalData);
-    this.shadowRoot.innerHTML = Template.render(this.globalData);
+    this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
     this.addEventListener("state-update", this.store);
   }
 
@@ -31,6 +31,10 @@ export default class CorDashboard extends Component {
         console.log("in filter");
           this.update("filter", detail.text);
           break;
+      case "view":
+        console.log("in view");
+          this.update("view", detail.text);
+          break;
     }
   }
 
@@ -41,7 +45,7 @@ export default class CorDashboard extends Component {
   }
 
   connectedCallback() {
-
+    
   }
 
 }

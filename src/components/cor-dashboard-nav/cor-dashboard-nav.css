@@ -21,7 +21,8 @@
 }
 
 /* Nav Link */
-.cor-dashboard__nav-link {
+.cor-dashboard__nav-link,
+.cor-dashboard__nav-link:visited {
     display: block;
     font-size: var(--global-font-size);
     font-weight: 550;

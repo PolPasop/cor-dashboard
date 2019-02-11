@@ -1,0 +1,168 @@
+body {
+    overflow: visible;
+}
+
+/*bootstrap resets for SharePoint*/
+*, *:before, *:after {
+	-moz-box-sizing: content-box; /*border-box causes many issues with SP*/
+	box-sizing: content-box;
+}
+
+* [class^="span"], * [class^="span"]:before, * [class^="span"]:after {
+	-moz-box-sizing: content-box;	
+	box-sizing: content-box;	
+}
+
+.ms-webpart-controlBox *, .ms-webpart-controlBox *:before, .ms-webpart-controlBox *:after {
+	-moz-box-sizing: content-box !important; /*border-box causes many issues with SP*/
+	box-sizing: content-box !important;
+}
+
+img {
+	max-width: none;
+	width: auto;
+}
+
+* [class^="span"] img {
+	max-width: 100%; /*for images inside span grid*/
+}
+
+.ms-TPBorder{
+	width: 100%;
+}
+#scriptWPQ2 img, img.ms-webpart-menuArrowImg, #applist img {
+	width: auto; /*within a span may still need to have width of image not 100% for SP2013 OOTB features/imges*/
+	max-width: none;
+}
+
+.ms-siteactions-imgspan {
+	float: none;
+	margin: 0px;
+}
+
+#s4-ribbonrow{
+	font-size: 13px;
+}
+#s4-ribbonrow [class*="span"] {
+    float: none;
+    margin-left: 0px;
+    line-height: 1.2em;
+}
+
+input.ms-cui-cb-input {
+	height: 14px;
+    padding: 3px 7px 2px;
+}
+
+select, input[type="file"] {
+    height: auto;
+    line-height: 20px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+.ms-fullWidth, .ms-webpart-chrome{
+	display:block;
+}
+.ms-webpart-cell-vertical {
+    margin-bottom: 20px;
+}
+/*end bootstrap resets*/
+.container{
+	width: 100%;
+	position: relative;
+	-moz-box-sizing: border-box; /*border-box causes many issues with SP*/
+	box-sizing: border-box;	
+
+}
+
+.container *, .container *:before, .container *:after {
+	-moz-box-sizing: border-box; /*border-box causes many issues with SP*/
+	box-sizing: border-box;	
+}
+
+#MSOTlPn_MainTD {
+    position: absolute;
+}
+input[disabled], select[disabled], textarea[disabled]{
+	background-color: #e9ecef !important;
+	cursor: not-allowed;
+	color: #b1b1b1 !important;
+	border-color: #e1e1e1 !important;
+}
+.ms-ToolPaneBody {
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 13px !important;
+}
+.ms-ToolPaneBody label{
+	display: initial;
+}
+.ms-ToolPaneBody input{
+	margin-right:7px;
+}
+
+/* notification box */
+.ms-trcnoti-toast {
+    background-color: red;
+    color: white;
+}
+.ms-trcnoti-border {
+    background-color: red;
+    border-color: red;
+}
+.ms-trcnoti-bg {
+    background-color: red;
+}
+b, strong {
+    font-weight: 700;
+}
+.ms-listedit tr {
+    line-height: 14px;
+}
+
+#DeltaTopNavigation .ms-navedit-editArea
+    {
+        display: none;
+    }
+    
+.dfwp-list{
+	list-style: none;
+	padding: 0;
+}
+
+.cbq-layout-main img {
+    max-width: 100%;
+}
+
+a:hover{
+	color: #004896;
+	text-decoration: none;
+}
+
+img {
+	margin: auto;
+}
+.img-fluid {
+	width: 100%;
+}
+.img-fluid img {
+    width: 100%;
+}
+.ms-webpart-controlBox input {
+    width: 13px !important;
+}
+
+p[class*="pt-ListParagraph"] span:first-child, span[class*="pt-000"] {
+    display: none;
+}
+
+
+p[class*="pt-ListParagraph"], p[class*="pt-000"] {
+    list-style-position: inside;
+    list-style-type: disc;
+    display: list-item;
+}
+/**********************************************************************************************/
+/************* shared / follow buttons **************/
