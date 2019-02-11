@@ -22,19 +22,17 @@ ol {
 /* Layout of the card */
 .cor-dashboard-card__title,
 .cor-dashboard-card__body {
-    margin: 0;
     padding: 1rem;
 }
 
-.cor-dashboard-card__body { 
-    padding: 1rem;
-}
 
 
 /* Title of the card */
 .cor-dashboard-card__title {
     border-bottom: solid 1px var(--gray-200);
-    display: flex
+    display: flex;
+    font-size: var(--h5-font-size);
+    font-weight: bold;
 }
 
 /* Number in the title of the carg*/

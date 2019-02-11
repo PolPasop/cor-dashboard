@@ -23,3 +23,7 @@
 :host([data-status="draft"]):before {
     border-color: var(--gray-500);
 }
+
+.cor-dashboard-languages-overview__label {
+    font-size: .6rem;
+}

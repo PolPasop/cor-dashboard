@@ -31,7 +31,7 @@ export default {
                     ${item.languages.map( language => `
                       <li class="cor-dashboard-detailed-item__languages-list__item" slot="language">
                         <cor-dashboard-languages-overview data-status="${language.status}">
-                          <span slot="language-label">${language.label}</span>
+                          <span slot="language-label" title="language">${language.label}</span>
                         </cor-dashboard-languages-overview>
                       </li>
                     `).join('')}

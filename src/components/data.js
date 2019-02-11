@@ -23,6 +23,7 @@ export default {
             title: "Events",
             category: "events",
             cardtype: "languageOverview",
+            chart: "bar-chart",
             total: "45",
             body: "Card Body",
             languages: [

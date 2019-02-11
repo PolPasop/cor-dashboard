@@ -17,13 +17,15 @@ export default class CorDashboardOverview extends Component {
     }
 
     show(view, target) {
+        const content = this;
         /*
         console.log(`filter ${target}`, this.globalData.DATA.filter( el => el.category === target));
         console.log("show:", target);
         */
        
+        content.style.opacity = 0;
 
-        if(view) {
+        if(view & target) {
             this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);
         };
 
@@ -32,6 +34,10 @@ export default class CorDashboardOverview extends Component {
         } else {
             this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
         }
+
+        setTimeout(function(){
+            content.style.opacity = 1;
+        }, 500);
     }
 
     connectedCallback() {

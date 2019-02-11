@@ -7,7 +7,7 @@ export default {
     },
 
     html() {
-       return `<slot name="language-label">lang label</slot>`
+       return `<slot class="cor-dashboard-languages-overview__label" name="language-label">lang label</slot>`
     },
 
     css() {

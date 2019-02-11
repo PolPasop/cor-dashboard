@@ -10,10 +10,10 @@
     border-bottom: solid 1px var(--gray-200);
     color: var(--gray-600);
     display: flex;
-    font-size: 2rem;
+    font-size: var(--h4-font-size);
     font-weight: bold;
     margin: 0;
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
 }
 
 .cor-dashboard-detailed__body {
@@ -21,5 +21,6 @@
 }
 
 select {
+    font-size: var(--global-font-size);
     margin-left: auto;
 }

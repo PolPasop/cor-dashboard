@@ -18,7 +18,7 @@ export default {
       <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
       </nav>
-      <div class="container-fluid">
+      
         <div class="row no-gutters">
         <!-- Sidebar -->
         <aside class="col-4 col-md-3 col-xl-2 d-md-block bg-light sidebar cor-dashboard__sidebar">
@@ -43,7 +43,7 @@ export default {
         </main>
         <!-- /Main -->
       </div>
-      </div>
+      
     </div>
     `
   },

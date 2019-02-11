@@ -12,7 +12,7 @@ export default {
         return `
             <article>
                 <p><slot name="contenttype">News</slot></p>
-                <h1>
+                <h1 class="cor-dashboard-article__title">
                     <slot name="title">Title of the news</slot>
                 </h1>
                 <p>

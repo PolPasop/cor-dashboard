@@ -18,7 +18,7 @@ export default {
 
                 
                 <!-- Cards with chart -->
-                ${ (card.itemdata) ? 
+                ${ (card.itemdata) ?                     
                     `
                     <div slot="card-content">
                     <span slot="chart">
@@ -34,7 +34,7 @@ export default {
                         <!-- /Check type of chart -->
 
                         
-                    </slot>
+                    </span>
                     <ol slot="data">
                         ${(card.itemdata).map( el => `
                         <li>${el.label} ${el.total}</li>

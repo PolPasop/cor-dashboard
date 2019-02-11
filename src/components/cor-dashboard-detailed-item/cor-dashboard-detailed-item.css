@@ -37,3 +37,8 @@ span {
     color: #fff;
     padding: 1.5rem;
 }
+
+.cor-dashboard-article__title {
+    font-size: var(--h5-font-size);
+    font-weight: bold;
+}
