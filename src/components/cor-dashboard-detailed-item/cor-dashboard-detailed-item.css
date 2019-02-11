@@ -42,3 +42,13 @@ span {
     font-size: var(--h5-font-size);
     font-weight: bold;
 }
+
+.cor-dashboard-article__details {
+    display: flex;
+}
+
+.cor-dashboard-article__details__label {
+    background-color: #007bff;
+    margin-left: auto;
+    padding: .5rem 1rem;
+}

@@ -1,5 +1,5 @@
-import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js';
 import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js';
+import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js';
 import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overview.js';
 import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detailed.js';
 import CorDashboardDetailedItem from '../cor-dashboard-detailed-item/cor-dashboard-detailed-item.js';

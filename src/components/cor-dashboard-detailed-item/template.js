@@ -15,12 +15,12 @@ export default {
                 <h1 class="cor-dashboard-article__title">
                     <slot name="title">Title of the news</slot>
                 </h1>
-                <p>
+                <p class="cor-dashboard-article__details">
                     <slot name="date"></slot> 
                      
                     | 
                     <slot name="theme"></slot> 
-                    <slot name="label"></slot>
+                    <slot name="label" class="cor-dashboard-article__details__label"></slot>
                 </p>
                 <p class="cor-dashboard-detailed-item__intro-container">
                     <slot name="picture"></slot>
