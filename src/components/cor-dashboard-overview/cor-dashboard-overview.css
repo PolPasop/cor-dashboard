@@ -6,7 +6,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 1rem;
-    transition: opacity .5s ease-in-out;
+    /* transition: opacity .5s ease-in-out; */
 }
 
 

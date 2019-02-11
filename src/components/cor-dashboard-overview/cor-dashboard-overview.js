@@ -12,32 +12,31 @@ export default class CorDashboardOverview extends Component {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-
         this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
     }
 
+   
+
     show(view, target) {
-        const content = this;
+        
         /*
         console.log(`filter ${target}`, this.globalData.DATA.filter( el => el.category === target));
         console.log("show:", target);
         */
-       
-        content.style.opacity = 0;
+        
 
+
+        /*
         if(view & target) {
             this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);
         };
+        */
 
         if(target) {
             this.shadowRoot.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === target));
         } else {
             this.shadowRoot.innerHTML = Template.render(this.globalData.DATA);
         }
-
-        setTimeout(function(){
-            content.style.opacity = 1;
-        }, 500);
     }
 
     connectedCallback() {
