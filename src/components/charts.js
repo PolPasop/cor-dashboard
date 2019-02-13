@@ -13,9 +13,13 @@ export default {
 
             d3.select(document.querySelector(selector)).style("background", "red");
         
-        /*
         
-         d3.select(document.querySelector(selector))
+
+            const el = document.createElement("div")
+            
+
+        
+         const myChart =  d3.select(el)
             .selectAll("div")
             .data(data)
         .enter().append("div").append("div")
@@ -23,7 +27,9 @@ export default {
         .duration(1000)
         .style("height", d => x(d.total) + "px")
         .text( d => d.label);
-        */
+        
+        return myChart;
+
         
     }
 }

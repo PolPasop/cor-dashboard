@@ -10,7 +10,7 @@ export default {
     },
 
     createChart(data, selector) {
-        Chart.barChart(data, selector);
+        return Chart.barChart(data, selector);
     },
 
     html(data) {
@@ -83,7 +83,6 @@ export default {
                                     language => `<li>${language.label} ${language.total}</li>`
                                 ).join('')}
                             </ol>
-                            ${ this.createChart(card.languages, "#languagesChart") }
                             ` : ``}
                         <!-- /Cards displaying all the languages -->
 
