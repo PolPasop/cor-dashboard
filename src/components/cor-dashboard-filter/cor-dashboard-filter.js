@@ -61,16 +61,15 @@ import Template from './template.js';
 export default class CorDashboardFilter extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({mode: 'open' });
-        this.shadowRoot.innerHTML = Template.render(data);
+        this.innerHTML = Template.render(data);
     }
 
     connectedCallback() {
         this._collapse;
-        this._trigger = this.shadowRoot.querySelector('[data-target]');
+        this._trigger = this.querySelector('[data-target]');
         if (!this._trigger)
             return;
-        this._target = this.shadowRoot.querySelector(`${this._trigger.dataset.target}`);
+        this._target = this.querySelector(`${this._trigger.dataset.target}`);
         if (!this._target)
             return;
         this._trigger.addEventListener('click', this._onClick);

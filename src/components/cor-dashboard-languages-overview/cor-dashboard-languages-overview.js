@@ -8,7 +8,7 @@ import Template from './template.js'
 export default class CorDashboardLanguagesOverview extends Component {
     constructor() {
         super();
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 }
 

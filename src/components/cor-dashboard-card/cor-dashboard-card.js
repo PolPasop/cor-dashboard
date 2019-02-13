@@ -5,7 +5,7 @@ export default class CorDashboardCard extends Component {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 
     connectedCallback() {

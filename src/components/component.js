@@ -11,7 +11,7 @@ import Data from './data.js';
 export default class extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
+        // this.attachShadow({ mode: 'open' }); */
         this.root = document.body.firstElementChild;
         this.globalData = Data;
     }

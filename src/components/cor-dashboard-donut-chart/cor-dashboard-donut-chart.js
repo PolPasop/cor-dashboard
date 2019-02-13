@@ -27,7 +27,7 @@ export default class CorDashboardDonutChart extends Component {
     constructor() {
         super();
         console.log("donuts");
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
@@ -59,7 +59,7 @@ export default class CorDashboardDonutChart extends Component {
         .sort(null);
 
         // Append SVG attributes and append g to the SVG
-        const svg = d3.select(this.shadowRoot.querySelector("svg"))
+        const svg = d3.select(this.querySelector("svg"))
         .attr("width", width)
         .attr("height", height)
         .append("g")

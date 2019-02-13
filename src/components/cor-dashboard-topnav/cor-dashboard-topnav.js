@@ -4,11 +4,11 @@ import Template from './template.js';
 export default class CorDashboardTopnav extends Component {
     constructor () {
         super();
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
-        this._triggers = this.shadowRoot.querySelectorAll('[data-view]');
+        this._triggers = this.querySelectorAll('[data-view]');
         this._triggers.forEach(
             trigger => trigger.addEventListener('click', e => this.onClick(e))
         );

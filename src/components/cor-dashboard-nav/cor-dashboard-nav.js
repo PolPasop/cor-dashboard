@@ -5,7 +5,7 @@ export default class CorDashboardNav extends Component {
   constructor() {
     super();
     // this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = Template.render();
+    this.innerHTML = Template.render();
   }
 
   set name(text) {
@@ -16,7 +16,7 @@ export default class CorDashboardNav extends Component {
   
 
   connectedCallback() {
-    this._triggers = this.shadowRoot.querySelectorAll('[data-target]');
+    this._triggers = this.querySelectorAll('[data-target]');
     this._triggers.forEach(
       trigger => trigger.addEventListener('click', e => this.onClick(e))
     );

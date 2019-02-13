@@ -2,8 +2,8 @@ import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js';
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js';
 import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overview.js';
 import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detailed.js';
-import CorDashboardDetailedItem from '../cor-dashboard-detailed-item/cor-dashboard-detailed-item.js';
 import CorDashboardTopnav from '../cor-dashboard-topnav/cor-dashboard-topnav.js';
+import CorDashboardMain from '../cor-dashboard-main/cor-dashboard-main.js';
 
 
 export default {
@@ -29,7 +29,7 @@ export default {
         <!-- Main -->
         <main role="main" class="col-8 col-md-9 col-xl-10 ml-sm-auto">
           
-          <header>
+          <header class="cor-dashboard-header">
             <img src="public/images/CoRlogo.png" />
             <h1>Dashboard</h1>
             
@@ -37,9 +37,8 @@ export default {
           </header>
           
           
-          <cor-dashboard-overview></cor-dashboard-overview>
+          <cor-dashboard-main></cor-dashboard-main>
 
-          <cor-dashboard-detailed></cor-dashboard-detailed>
         </main>
         <!-- /Main -->
       </div>
@@ -50,8 +49,6 @@ export default {
 
   css() {
     return `
-      <link rel="stylesheet" href="src/corev15.css" />
-      <link rel="stylesheet" href="src/bootstrap.min.css">
       <link rel="stylesheet" href="src/components/cor-dashboard/cor-dashboard.css"/>
     `
   }

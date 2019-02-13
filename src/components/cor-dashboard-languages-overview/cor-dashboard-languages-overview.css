@@ -1,10 +1,10 @@
-:host {
+.cor-dashboard-languages-overview {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-:host:before {
+.cor-dashboard-languages-overview:before {
     background-color: var(--gray-100);
     border: solid 1px var(--gray-100);
     border-radius: 20px;
@@ -15,12 +15,12 @@
     width: 10px;
 }
 
-:host([data-status="translated"]):before {
+.cor-dashboard-languages-overview[data-status="translated"]:before {
     background-color: var(--gray-500);
     border-color: var(--gray-500);
 }
 
-:host([data-status="draft"]):before {
+.cor-dashboard-languages-overview[data-status="draft"]:before {
     border-color: var(--gray-500);
 }
 

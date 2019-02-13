@@ -29,7 +29,7 @@ const data = [
 export default class CorDashboardBarChart extends Component {
     constructor() {
         super();
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
@@ -45,7 +45,7 @@ export default class CorDashboardBarChart extends Component {
             .range([0, 200]);
         
         
-        d3.select(this.shadowRoot.querySelector(".chart"))
+        d3.select(this.querySelector(".chart"))
             .selectAll("div")
             .data(data)
         .enter().append("div").append("div")

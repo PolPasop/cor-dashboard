@@ -1,4 +1,4 @@
-:host {
+.cor-dashboard-card {
     border: solid 1px var(--gray-200);
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
@@ -6,11 +6,11 @@
     width: 18rem;
 }
 
-:host {
+.cor-dashboard-card {
     transition: opacity 300ms ease-in-out;
 }
 
-:host(.hidden) {
+.cor-dashboard-card.hidden {
     opacity: 0;
 }
 

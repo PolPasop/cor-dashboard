@@ -1,4 +1,4 @@
-:host {
+.cor-dashboard-detailed {
     display: block;
     border: solid 1px var(--gray-200);
     border-radius: 4px;
@@ -20,7 +20,7 @@
     padding: 1.5rem;
 }
 
-select {
+.cor-dashboard-detailed select {
     font-size: var(--global-font-size);
     margin-left: auto;
 }

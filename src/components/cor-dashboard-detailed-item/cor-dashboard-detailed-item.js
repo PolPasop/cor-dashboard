@@ -4,7 +4,7 @@ import Template from './template.js'
 export default class CorDashboardDetailedItem extends Component {
     constructor() {
         super();
-        this.shadowRoot.innerHTML = Template.render();
+        this.innerHTML = Template.render();
     }
 }
 
