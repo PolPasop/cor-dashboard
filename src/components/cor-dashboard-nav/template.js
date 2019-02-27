@@ -2,6 +2,7 @@ const navitems = [
 
       {
         name: "Dashboard",
+        icon: "home",
         target: ""
       },
       {
@@ -54,7 +55,7 @@ export default {
     <ul class="cor-dashboard__nav">
         ${navitems.map(navitem => `
           <li class="cor-dashboard__nav__item">
-            <a class="cor-dashboard__nav-link" href="#" data-target="${navitem.target}">${navitem.name}</a>
+            <a class="cor-dashboard__nav-link cor-dashboard__nav-link--${navitem.icon}" href="#" data-target="${navitem.target}">${navitem.name}</a>
             
             <!-- Sub menu -->
             ${ navitem.subitems ? `

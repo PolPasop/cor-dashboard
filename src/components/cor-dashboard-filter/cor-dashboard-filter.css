@@ -21,6 +21,10 @@ a{
     text-transform: uppercase;
 }
 
+.cor-dashboard-filter__title > a:hover {
+    color: var(--gray-500)
+}
+
 .cor-dashboard-filter__list {
     margin-top: .5rem;
     padding: 0;

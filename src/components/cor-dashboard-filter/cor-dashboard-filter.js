@@ -1,6 +1,7 @@
 const data = [
     {
         name: "Themes",
+        icon: "theme",
         items: [
             "no theme",
             "Agriculture and Fisheries",
@@ -17,6 +18,7 @@ const data = [
     },
     {
         name: "Date",
+        icon: "date",
         items: [
             "Today",
             "This week",
@@ -27,6 +29,7 @@ const data = [
     },
     {
         name: "Language",
+        icon: "language",
         items: [
             "BG",
             "CS",

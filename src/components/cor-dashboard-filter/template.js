@@ -10,7 +10,7 @@ export default {
         ${data.map( filter => `
             <div class="cor-dashboard-filter">
                 <h2 class="cor-dashboard-filter__title">
-                    <a class="cor-dashboard-filter__list__item__link" href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         ${filter.name}
                     </a>
                 </h2>
