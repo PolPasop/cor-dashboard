@@ -1,5 +1,6 @@
 export default {
     barChart(data, selector) {
+        console.log('in');
         console.log(arguments);
         if(!data) return `${console.error("no data")}`;
         if(!selector) return `${console.error("no selector")}`;

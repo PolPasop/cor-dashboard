@@ -1,5 +1,5 @@
 .cor-dashboard-card {
-    border: solid 1px var(--gray-200);
+    background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
     margin: .5rem;
@@ -29,7 +29,9 @@ ol {
 
 /* Title of the card */
 .cor-dashboard-card__title {
+    background-color: var(--cor-secondary);
     border-bottom: solid 1px var(--gray-200);
+    color: var(--europe);
     display: flex;
     font-size: var(--h5-font-size);
     font-weight: bold;
@@ -37,7 +39,17 @@ ol {
 
 /* Number in the title of the carg*/
 .cor-dashboard-card__title__total {
-    color: var(--gray-500);
     font-weight: 100;
     margin-left: auto;
+}
+
+/* Lists in card */
+.cor-dashboard-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+}
+
+.cor-dashboard-card li + li {
+  border-top: solid 1px var(--cor-thirdry);
 }

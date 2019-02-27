@@ -23,14 +23,17 @@
   --gray-800: #424242;
   --gray-900: #212121;
 
-  --primary: #27b1ee;
-  --secondary: #6c757d;
+  --europe: #004896;
+  --cor-primary: #60C0DC;
+  --cor-secondary: #bbd6dd;
+  --cor-thirdry: #c1d9e2;
+  --cor-gray: #E6EDEC;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
-  --dark: #343a40;
+  --cor-dark: #474746;
 
   /* Fonts */
   --global-baseline: 6px;

@@ -1,7 +1,6 @@
 import Component from '../component.js';
 import Template from './template.js';
 
-const dataa = [4, 8, 15, 16, 23, 42];
 
 const data = [
     {
@@ -26,20 +25,19 @@ const data = [
     }
 ];
 
+
 export default class CorDashboardBarChart extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render();
+        console.log("bim");
     }
 
     connectedCallback() {
         this.chart();
     }
 
-    chart() {
-
-      
-        
+    chart() {  
         const x = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.total)])
             .range([0, 200]);

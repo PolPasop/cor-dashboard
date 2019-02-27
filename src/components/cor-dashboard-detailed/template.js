@@ -11,7 +11,7 @@ export default {
 
     html(data) {
         return `
-            <p class="cor-dashboard-detailed__title">
+            <p class="cor-dashboard-card__title cor-dashboard-detailed__title">
             ${data.length} News
                 <select>
                     <option value="">Sort by</option>

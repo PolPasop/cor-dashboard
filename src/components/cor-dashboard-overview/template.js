@@ -1,16 +1,11 @@
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
 import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-donut-chart.js'
 import CorDashboardBarChart from '../cor-dashboard-bar-chart/cor-dashboard-bar-chart.js'
-import Chart from '../charts.js';
 
 export default {
     render(data) {
         return  `${this.css()}
         ${this.html(data)}`;
-    },
-
-    createChart(data, selector) {
-        return Chart.barChart(data, selector);
     },
 
     html(data) {
@@ -38,6 +33,7 @@ export default {
                             <span>
         
                                 <!-- Check type of chart -->
+
                                 ${ ((card.chart) === 'donut-chart' ) ? `
                                 <cor-dashboard-donut-chart></cor-dashboard-donut-chart>
                                 ` : ``}
@@ -46,13 +42,14 @@ export default {
                                 
                                 <cor-dashboard-bar-chart></cor-dashboard-bar-chart>
                                 ` : ``}
+                                
                                 <!-- /Check type of chart -->
         
                                 
                             </span>
                             <ol>
                                 ${(card.itemdata).map( el => `
-                                <li>${el.label} ${el.total}</li>
+                                <li>${el.label} <strong>${el.total}</strong></li>
                                 ` ).join('')}
                             </ol>
                             </div>
@@ -78,9 +75,14 @@ export default {
                         <div id="languagesChart"></div>
                         
                         
-                            <ol>
+                            <ol 
+                                data-data="[
                                 ${card.languages.map(
-                                    language => `<li>${language.label} ${language.total}</li>`
+                                    language => `{${language.label}:${language.total}},`
+                                ).join('')}
+                                ]">
+                                ${card.languages.map(
+                                    language => `<li>${language.label} <strong>${language.total}</strong></li>`
                                 ).join('')}
                             </ol>
                             ` : ``}

@@ -1,4 +1,6 @@
 body {
+    background-color: var(--cor-gray);
+    color: var(--cor-dark);
     font-size: calc(var(--global-font-size / 16px) * 1em);
     line-height: calc(var(--global-line-heigh) / var(--global-font-size) );   
     font-family: sans-serif;
