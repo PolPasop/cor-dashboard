@@ -2,6 +2,28 @@ import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
 import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-donut-chart.js'
 import CorDashboardBarChart from '../cor-dashboard-bar-chart/cor-dashboard-bar-chart.js'
 
+const createDataAttribute = data => {
+    const languagesLenght = data.length;
+    let formatedData = '';
+    data.map( (language, i) => {
+        console.log("language", language)
+        if (languagesLenght === i+1 ) {
+            // last one
+            formatedData += `{
+                "label": "${language.label}",
+                "total": ${language.total}}`;
+        } else {
+            // not last one
+            formatedData += `{
+                "label": "${language.label}",
+                "total": ${language.total}},`;
+        }
+        
+    })
+    console.log("formated", formatedData);
+    return formatedData;
+};
+
 export default {
     render(data) {
         return  `${this.css()}
@@ -40,7 +62,8 @@ export default {
         
                                 ${ ((card.chart) === 'bar-chart' ) ? `
                                 
-                                <cor-dashboard-bar-chart></cor-dashboard-bar-chart>
+                                <cor-dashboard-bar-chart data-data=
+                                '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
                                 ` : ``}
                                 
                                 <!-- /Check type of chart -->
@@ -74,13 +97,9 @@ export default {
                         ${ ((card.cardtype) === 'languageOverview') ? `
                         <div id="languagesChart"></div>
                         
-                        
-                            <ol 
-                                data-data="[
-                                ${card.languages.map(
-                                    language => `{${language.label}:${language.total}},`
-                                ).join('')}
-                                ]">
+                            
+                            <cor-dashboard-bar-chart data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
+                            <ol>
                                 ${card.languages.map(
                                     language => `<li>${language.label} <strong>${language.total}</strong></li>`
                                 ).join('')}

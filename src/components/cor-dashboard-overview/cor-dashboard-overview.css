@@ -4,7 +4,6 @@
     align-items: flex-start;
     background-color: #E6EDEC;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     padding: 1rem;
     /* transition: opacity .5s ease-in-out; */

@@ -8,7 +8,7 @@ export default {
 
     html() {
         return `
-            <div class="chart"></div>
+            <div class="chart"></svg>
         `
     },
 
