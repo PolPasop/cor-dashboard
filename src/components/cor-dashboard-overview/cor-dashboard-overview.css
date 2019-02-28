@@ -22,3 +22,7 @@
         */
     }
 }
+
+.cor-dashboard-card:nth-child(4) {
+    width: 100%;
+}

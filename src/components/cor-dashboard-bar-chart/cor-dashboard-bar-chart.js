@@ -25,8 +25,6 @@ export default class CorDashboardBarChart extends Component {
         console.log("chart2 DATA", data);
 
         var height = 200,
-            width = 720,
-            barWidth = 40,
             barOffset = 20;
 
         var yScale = d3.scaleLinear()
@@ -40,13 +38,11 @@ export default class CorDashboardBarChart extends Component {
 
 
         d3.select(target.querySelector(".chart"))
-            .attr('width', width)
             .attr('height', height)
             .selectAll('div').data(data)
-            .enter().append('div')
-                .style('width', barWidth)
+            .enter().append('div').append('div')
                 .style('height', d => yScale(d.total) + "px")
-                .text( d => d.label);
+                .text( d => `${d.label} ${d.total}`);
     
         /*d3.select(target.querySelector(".chart"))
             .selectAll("div")

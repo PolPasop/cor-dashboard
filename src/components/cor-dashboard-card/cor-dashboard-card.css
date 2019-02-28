@@ -53,3 +53,17 @@ ol {
 .cor-dashboard-card li + li {
   border-top: solid 1px var(--cor-thirdry);
 }
+
+/* Multilinguism card */
+.multilinguismTable {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.multilinguismTable h2,
+.multilinguismTable > ol li:first-child {
+    height: 100px;
+    padding: 0;
+}
+
+/* /Multilinguism card */

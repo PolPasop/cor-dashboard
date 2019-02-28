@@ -107,6 +107,40 @@ export default {
                             ` : ``}
                         <!-- /Cards displaying all the languages -->
 
+
+                        <!-- Multilinguism card -->
+                        ${ ((card.cardtype) === 'multilinguismOverview') ? `
+                            <div class="multilinguismTable">
+                                
+                                
+                                <div>
+                                    <h2>Languages</h2>  
+                                    <ol>
+                                        ${card.multilingualContent[0].translations.map(
+                                            translation => `<li>${translation.label}</li>`
+                                        ).join('')}
+                                    </ol>
+                                </div>
+                      
+                                ${card.multilingualContent.map(
+                                    multilingualContent => `
+                                        <div>
+                                            <h2>${multilingualContent.contenttype} </h2>
+
+                                            <ol>
+                                                ${multilingualContent.translations.map(
+                                                    translation => `<li>${translation.total}</li>`
+                                                ).join('')}
+                                            </ol>
+                                        </div>
+                                    `
+                                ).join('')}
+                            
+                            
+                            </div>
+                            ` : ``}
+                        <!-- /Multilinguism card -->
+
                         
                     </div>
                     <!-- /Content of the card -->

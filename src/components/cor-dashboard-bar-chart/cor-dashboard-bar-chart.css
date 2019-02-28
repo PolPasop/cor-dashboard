@@ -2,7 +2,6 @@
     align-items: flex-end;
     display: flex;
     height: 200px;
-    padding: 1.5rem;
 }
 
 .chart div {
@@ -16,11 +15,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    text-align: center;
   }
-
-
-
-  /*
+  
+/*
   .chart  div {
   border-radius: 10px;
 }
