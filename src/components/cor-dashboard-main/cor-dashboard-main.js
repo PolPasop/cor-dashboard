@@ -15,13 +15,8 @@ export default class CorDashboardMain extends Component {
     */
     
     // 
-    if(view === "detailed") {
-        this.innerHTML = `<cor-dashboard-detailed></cor-dashboard-detailed>`;
-        return false;
-    } else {
-        this.innerHTML = Template.render(this.globalData.DATA);
-    }
-
+    this.innerHTML = Template.render(view, target);
+    
     /*
     if(view & target) {
         this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);

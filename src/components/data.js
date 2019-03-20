@@ -79,6 +79,7 @@ export default {
         },
         {
             title: "Events",
+            size: "full",
             category: "events",
             cardtype: "languageOverview",
             chart: "bar-chart",
@@ -185,6 +186,7 @@ export default {
         },
         {
             title: "Multilinguism",
+            size: "full",
             cardtype: "multilinguismOverview",
             multilingualContent: [
                 {
@@ -192,7 +194,7 @@ export default {
                     translations: [
                         {
                             label:"BG",
-                            total: 50
+                            total: 5
                         },
                         {
                             label:"CS",
@@ -212,7 +214,7 @@ export default {
                         },
                         {
                             label:"EN",
-                            total: 6
+                            total: 78
                         },
                         {
                             label:"ES",

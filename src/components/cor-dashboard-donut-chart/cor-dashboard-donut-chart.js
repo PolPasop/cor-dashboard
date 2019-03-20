@@ -72,6 +72,8 @@ export default class CorDashboardDonutChart extends Component {
         .attr("r", 100)
         .attr("fill", "#fff") ;
 
+        
+
         // Calculate SVG paths and fill in the colours
         const g = svg.selectAll(".arc")
         .data(pie(seedData))
@@ -80,7 +82,7 @@ export default class CorDashboardDonutChart extends Component {
             
         // Make each arc clickable 
         .on("click", function(d, i) {
-        window.location = seedData[i].link;
+          window.location = seedData[i].link;
         });
 
         // Append the path to each g
@@ -90,16 +92,17 @@ export default class CorDashboardDonutChart extends Component {
             return colour(i);
         });
 
-        // Append text labels to each arc
+        // Lines
+        g.append("g")
+          .attr("class", "lines");
+          
+        var polyline = svg.select(".lines").selectAll("polyline")
+          .data(pie(seedData), key);
+      
+          polyline.enter()
+          .append("polyline");
+
         
-        g.append("text")
-        .attr("transform", function(d) {
-            return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .style("text-anchor", "middle")
-        .attr("fill", "#fff")
-            .text(function(d,i) { return seedData[i].label; })
 
         
         

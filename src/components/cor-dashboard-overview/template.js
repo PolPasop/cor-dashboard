@@ -34,7 +34,7 @@ export default {
         return `
             ${data.map( card => `
                 <!-- Card item -->
-                <div class="cor-dashboard-card" category="${card.category}">
+                <div class="cor-dashboard-card" category="${card.category}" size="${card.size}">
                     
                     <!-- Title of the card -->
                     <h2 class="cor-dashboard-card__title">
@@ -110,14 +110,14 @@ export default {
 
                         <!-- Multilinguism card -->
                         ${ ((card.cardtype) === 'multilinguismOverview') ? `
-                            <div class="multilinguismTable">
+                            <div class="cor-dashboard-multilinguismTable">
                                 
                                 
                                 <div>
                                     <h2>Languages</h2>  
                                     <ol>
                                         ${card.multilingualContent[0].translations.map(
-                                            translation => `<li>${translation.label}</li>`
+                                            translation => translation.label === "EN" ? `<li class="cor-dashboard__multilinguismTable__en"><a href="#">${translation.label}</a></li>` : `<li><a href="#">${translation.label}</a></li>` 
                                         ).join('')}
                                     </ol>
                                 </div>
@@ -129,7 +129,7 @@ export default {
 
                                             <ol>
                                                 ${multilingualContent.translations.map(
-                                                    translation => `<li>${translation.total}</li>`
+                                                    translation => translation.label === "EN" ? `<li class="cor-dashboard__multilinguismTable__en"><a href="#">${translation.total}</a></li>` : `<li><a href="#">${translation.total}</a></li>`
                                                 ).join('')}
                                             </ol>
                                         </div>

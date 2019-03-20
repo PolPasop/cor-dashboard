@@ -2,8 +2,7 @@
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
-    margin: .5rem;
-    width: 18rem;
+    margin: 1.5rem;
 }
 
 .cor-dashboard-card {
@@ -55,15 +54,46 @@ ol {
 }
 
 /* Multilinguism card */
-.multilinguismTable {
+.cor-dashboard-multilinguismTable {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
 
-.multilinguismTable h2,
-.multilinguismTable > ol li:first-child {
-    height: 100px;
+.cor-dashboard-multilinguismTable h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.cor-dashboard-multilinguismTable h2,
+.cor-dashboard-multilinguismTable > ol li:first-child {
     padding: 0;
 }
 
+.cor-dashboard-multilinguismTable > div,
+.cor-dashboard-multilinguismTable li {
+    display: block;
+    text-align: center;
+}
+
+.cor-dashboard__multilinguismTable__en {
+    background: steelblue;
+}
+
+.cor-dashboard__multilinguismTable__en a {
+    color: #fff;
+}
 /* /Multilinguism card */
+
+
+
+/* Layout */ 
+@media (min-width: 900px) {
+    .cor-dashboard-card {
+        margin: 1.5rem;
+        width: 25%;
+    }
+
+    [size="full"] {
+        width: calc(50% - 4rem);
+    }
+}

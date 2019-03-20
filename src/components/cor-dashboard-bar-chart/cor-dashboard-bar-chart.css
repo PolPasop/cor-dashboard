@@ -1,6 +1,7 @@
 .chart {
     align-items: flex-end;
     display: flex;
+    flex-wrap: wrap;
     height: 200px;
 }
 
@@ -9,7 +10,6 @@
     font: 10px sans-serif;
     background-color: steelblue;
     text-align: right;
-    padding: 3px;
     margin: 1px;
     color: white;
     display: flex;
