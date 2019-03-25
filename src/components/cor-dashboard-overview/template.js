@@ -82,11 +82,9 @@ export default {
                         <!-- Cards displaying categories -->
                         ${ (card.newscategories) ? 
                             `
-                            <span>
                                 ${(card.newscategories).map( el => `
-                                <p>${el.label} <strong>${el.total}</strong></p>
+                                <p class="cor-dashboard-card__listing-item">${el.label} <strong>${el.total}</strong></p>
                                 ` ).join('')}
-                            </span>
                             ` 
                             : `` }
                         <!-- /Cards displaying categories -->

@@ -44,6 +44,10 @@ a{
     padding: 0;
 }
 
+.cor-dashboard-filter__list__item__link {
+    font-weight: 500;
+}
+
 .cor-dashboard-filter button svg {
     margin-right: .5rem;
 }
@@ -54,6 +58,10 @@ a{
 
 .cor-dashboard-filter a:hover svg path {
     fill: var(--gray-800);
+}
+
+.cor-dashboard-filter__list__item__link.active {
+    font-weight: bold;
 }
 
 /*
@@ -91,3 +99,4 @@ a{
     max-height: 50rem;
     padding: .5rem 1.5rem;
 }
+

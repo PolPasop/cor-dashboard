@@ -17,7 +17,12 @@ export default class CorDashboardOverview extends Component {
 
     show(filter) {
         console.log("filter:", filter);
-        this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === filter));
+        if (filter === "") {
+            this.innerHTML = Template.render(this.globalData.DATA);
+        } else {
+            console.log("filtering on:",filter);
+            this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === filter));
+        }
     }
 
     connectedCallback() {
@@ -36,7 +41,6 @@ export default class CorDashboardOverview extends Component {
         });
     }
   
-
     chart(data) {
         console.log(data);
     }

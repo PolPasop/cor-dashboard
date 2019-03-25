@@ -4,37 +4,6 @@ const navitems = [
         name: "Dashboard",
         icon: "home",
         target: ""
-      },
-      {
-        name: "News",
-        target: "news",
-        subitems: [
-          {
-            name: "Regional news"
-          },
-          {
-            name: "Press release"
-          },
-          {
-            name: "Success story"
-          }
-        ]
-      },
-      {
-        name: "Events",
-        target: "events"
-      },
-      {
-        name: "Opinions",
-        target: ""
-      },
-      {
-        name: "Studies",
-        target: ""
-      },
-      {
-        name: "Brochures",
-        target: ""
       }
 ];
 

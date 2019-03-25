@@ -30,6 +30,10 @@ export default class CorDashboard extends Component {
         console.log("in filter");
           this.update("filter", detail.text);
           break;
+      case "remove-filter":
+        console.log("in remove filter");
+            this.remove("filter", detail.text);
+            break;
       case "view":
         console.log("in view");
           this.update("view", detail.text);
@@ -40,7 +44,28 @@ export default class CorDashboard extends Component {
   update(key, value) {
     console.log("in update", key, value);
     this[key] = value;
-    this.setAttribute(key, value);
+    let valuesOfAttribute = this.getAttribute(key);
+    
+    [valuesOfAttribute] = valuesOfAttribute.split(' ');
+
+    if(!valuesOfAttribute.includes(value)) {
+      this.setAttribute(key, valuesOfAttribute + ' ' + value);
+    }
+
+  }
+
+  remove(key, value) {
+    console.log("in remove", key, value);
+    this[key] = value;
+    let valuesOfAttribute = this.getAttribute(key);
+    
+    [valuesOfAttribute] = valuesOfAttribute.split(' ');
+
+    
+    valuesOfAttribute.filter(el => el !== value)
+
+    this.setAttribute(key, valuesOfAttribute + ' ' + value);
+
   }
 
   connectedCallback() {

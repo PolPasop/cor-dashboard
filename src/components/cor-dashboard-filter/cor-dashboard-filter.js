@@ -1,6 +1,7 @@
 const data = [
     {
         name: "Content Types",
+        filterName: "contenttype",
         icon: "contenttypes",
         items: [
             {
@@ -38,6 +39,7 @@ const data = [
     },
     {
         name: "Themes",
+        filterName: "themes",
         icon: "themes",
         items: [
             {
@@ -89,106 +91,168 @@ const data = [
     },
     {
         name: "Date",
+        filterName: "date",
         icon: "date",
         items: [
-            "Today",
-            "This week",
-            "This month",
-            "This year",
-            "Personalised"
+            {
+                name: "Today",
+                target: ""
+            },
+            {
+                name: "This week",
+                target: ""
+            },
+            {
+                name: "This month",
+                target: ""
+            },
+            {
+                name: "This year",
+                target: ""
+            },
+            {
+                name: "Personalised",
+                target: ""
+            }          
         ]
     },
     {
         name: "Language",
+        filterName: "languages",
         icon: "languages",
         items: [
-            "BG",
-            "CS",
-            "DA",
-            "DE",
-            "EL",
-            "EN",
-            "ES",
-            "ET",
-            "FI",
-            "FR",
-            "GA",
-            "HR",
-            "HU",
-            "IT",
-            "LT",
-            "LV",
-            "MT",
-            "NL",
-            "PL",
-            "PT",
-            "RO",
-            "SK",
-            "SL",
-            "SV"
+            {
+                name: "BG",
+                target: ""
+            },
+            {
+                name: "CS",
+                target: ""
+            },
+            {
+                name: "DA",
+                target: ""
+            },
+            {
+                name: "DE",
+                target: ""
+            },
+            {
+                name: "EL",
+                target: ""
+            },
+            {
+                name: "EN",
+                target: ""
+            },
+            {
+                name: "ES",
+                target: ""
+            },
+            {
+                name: "ET",
+                target: ""
+            },
+            {
+                name: "FI",
+                target: ""
+            },
+            {
+                name: "FR",
+                target: ""
+            },
+            {
+                name: "GA",
+                target: ""
+            },
+            {
+                name: "HR",
+                target: ""
+            },
+            {
+                name: "HU",
+                target: ""
+            },
+            {
+                name: "IT",
+                target: ""
+            },
+            {
+                name: "LT",
+                target: ""
+            },
+            {
+                name: "LV",
+                target: ""
+            },
+            {
+                name: "MT",
+                target: ""
+            },
+            {
+                name: "NL",
+                target: ""
+            },
+            {
+                name: "PL",
+                target: ""
+            },
+            {
+                name: "PT",
+                target: ""
+            },
+            {
+                name: "RO",
+                target: ""
+            },
+            {
+                name: "SK",
+                target: ""
+            },
+            {
+                name: "SL",
+                target: ""
+            },
+            {
+                name: "SV",
+                target: ""
+            },   
         ]
     }
 ]
 
+import Component from '../component.js';
 import Template from './template.js';
 
-export default class CorDashboardFilter extends HTMLElement {
+export default class CorDashboardFilter extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render(data);
-        this.menuTitle = this.querySelector('.cor-dashboard-filter__title');
-        this.menu = this.querySelector('.cor-dashboard-filter__list');
+                
     }
 
     connectedCallback() {
-        this._collapse;
-        this._triggers = this.querySelectorAll('[data-expandtarget]');
-        this._triggers.forEach(trigger => {
-            trigger.addEventListener('click', () => this._onClick(event)); 
-        });
-    }
-
-    _toggleExpanded(target) {
-        console.log(target);
-        target.expanded = !target.expanded;
-        this.dispatchEvent(new CustomEvent('change', {
-            detail: {
-                expanded: this.expanded,
-            },
-            bubbles: true,
-        }));
-    }
-
-    _calculateCollapsedScale() {
-        const collapsed = this.menuTitle.getBoundingClientRect();
-        const expanded = menu.getBoundingClientRect();
-        return {
-            x: collapsed.width / expanded.width,
-            y: collapsed.height / expanded.height
-        }
-    }
+        this._triggers = this.querySelectorAll('[data-filter]');
+        this._triggers.forEach(
+        trigger => trigger.addEventListener('click', e => this.onClick(e))
+        );
+    }  
     
-    _onClick(event) {   
-        this._toggleExpanded(event.target);
-        this._calculateCollapsedScale();
-    }
+    onClick(event) {
+        // this.show(event.target.dataset.target);
+        const text = event.target.dataset.filter;
 
-    get expanded() {
-        return this.hasAttribute('expanded');
-    }
-
-    set expanded(value) {
-        const isExpanded = Boolean(value);
-        if (isExpanded)
-          this.setAttribute('expanded', '');
-        else
-          this.removeAttribute('expanded');
+        if (event.target.classList.contains('active')) {
+            const type = "remove-filter";
+            event.target.classList.remove('active');
+            this.dispatchUpdate({type, text});
+        } else {
+            const type = "filter";
+            event.target.classList.add('active');
+            this.dispatchUpdate({type, text});
+        };
       }
 
-      attributeChangedCallback(name, oldValue, newValue) {
-        const hasValue = newValue !== null;
-        this.setAttribute('aria-checked', hasValue);
-      }
 }
 
 if (!customElements.get('cor-dashboard-filter')) {
