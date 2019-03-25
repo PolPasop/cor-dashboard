@@ -5,13 +5,10 @@ export default class CorDashboardBarChart extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render();
-        console.log("bim");
     }
 
     connectedCallback() {
-        console.log("connected", this);
         const data = this.getAttribute("data-data");
-        console.log("data JSON", data);
         this.chart2(JSON.parse(data), this);
         
         // this.chart(JSON.parse(data));
@@ -22,14 +19,11 @@ export default class CorDashboardBarChart extends Component {
     }
 
     chart2(data, target) {
-        console.log("chart2 DATA", data);
-
         var height = 200,
             barOffset = 20;
 
         var yScale = d3.scaleLinear()
             .domain([0, d3.max(data, d => {
-                console.log(d.total );
                 return d.total;
             })])
             .range([0, height]);

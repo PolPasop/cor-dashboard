@@ -46,7 +46,7 @@ connectedCallback() {
 
     new MutationObserver(update).observe(root, {
         attributes: true,
-        attributeFilter: [filter, view]
+        attributeFilter: [view]
     });
 
 }

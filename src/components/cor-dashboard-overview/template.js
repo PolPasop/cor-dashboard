@@ -6,7 +6,6 @@ const createDataAttribute = data => {
     const languagesLenght = data.length;
     let formatedData = '';
     data.map( (language, i) => {
-        console.log("language", language)
         if (languagesLenght === i+1 ) {
             // last one
             formatedData += `{
@@ -20,7 +19,6 @@ const createDataAttribute = data => {
         }
         
     })
-    console.log("formated", formatedData);
     return formatedData;
 };
 
@@ -31,6 +29,7 @@ export default {
     },
 
     html(data) {
+        console.log(data);
         return `
             ${data.map( card => `
                 <!-- Card item -->

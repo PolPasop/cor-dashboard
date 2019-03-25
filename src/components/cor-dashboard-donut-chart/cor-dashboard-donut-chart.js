@@ -26,7 +26,6 @@ const seedData = [{
 export default class CorDashboardDonutChart extends Component {
     constructor() {
         super();
-        console.log("donuts");
         this.innerHTML = Template.render();
     }
 

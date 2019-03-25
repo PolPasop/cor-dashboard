@@ -1,19 +1,90 @@
 const data = [
     {
-        name: "Themes",
-        icon: "theme",
+        name: "Content Types",
+        icon: "contenttypes",
         items: [
-            "no theme",
-            "Agriculture and Fisheries",
-            "Citizenship, Governance and Institutional Affairs",
-            "Cohesion Policy, Structural funds and EU Budget",
-            "Consumer Policy, Health and Tourism",
-            "Economic and monetary policy",
-            "Environment, Climate Change and Energy",
-            "Migration and External relations",
-            "Research, Innovation and Digital Single Market",
-            "Social Policy, Education, Employment and Culture",
-            "Transport"
+            {
+                name: "News",
+                target: "news",
+                subitems: [
+                    {
+                    name: "Regional news"
+                    },
+                    {
+                    name: "Press release"
+                    },
+                    {
+                    name: "Success story"
+                    }
+                ]
+            },
+            {
+            name: "Events",
+            target: "events"
+            },
+            {
+            name: "Opinions",
+            target: ""
+            },
+            {
+            name: "Studies",
+            target: ""
+            },
+            {
+            name: "Brochures",
+            target: ""
+            }
+        ]
+    },
+    {
+        name: "Themes",
+        icon: "themes",
+        items: [
+            {
+                name: "no theme",
+                target: ""
+            },
+            {
+                name: "Agriculture and Fisheries",
+                target: ""
+            },
+            {
+                name: "Citizenship, Governance and Institutional Affairs",
+                target: ""
+            },
+            {
+                name: "Cohesion Policy, Structural funds and EU Budget",
+                target: ""
+            },
+            {
+                name: "Consumer Policy, Health and Tourism",
+                target: ""
+            },
+            {
+                name: "Economic and monetary policy",
+                target: ""
+            },
+            {
+                name: "Environment, Climate Change and Energy",
+                target: ""
+            },
+            {
+                name: "Migration and External relations",
+                target: ""
+            },
+            {
+                name: "Research, Innovation and Digital Single Market",
+                target: ""
+            },
+            {
+                name: "Social Policy, Education, Employment and Culture",
+                target: ""
+            },
+            {
+                name: "Transport",
+                target: ""
+            }
+
         ]
     },
     {
@@ -29,7 +100,7 @@ const data = [
     },
     {
         name: "Language",
-        icon: "language",
+        icon: "languages",
         items: [
             "BG",
             "CS",
@@ -65,6 +136,8 @@ export default class CorDashboardFilter extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = Template.render(data);
+        this.menuTitle = this.querySelector('.cor-dashboard-filter__title');
+        this.menu = this.querySelector('.cor-dashboard-filter__list');
     }
 
     connectedCallback() {
@@ -85,9 +158,19 @@ export default class CorDashboardFilter extends HTMLElement {
             bubbles: true,
         }));
     }
+
+    _calculateCollapsedScale() {
+        const collapsed = this.menuTitle.getBoundingClientRect();
+        const expanded = menu.getBoundingClientRect();
+        return {
+            x: collapsed.width / expanded.width,
+            y: collapsed.height / expanded.height
+        }
+    }
     
-    _onClick(event) {
+    _onClick(event) {   
         this._toggleExpanded(event.target);
+        this._calculateCollapsedScale();
     }
 
     get expanded() {

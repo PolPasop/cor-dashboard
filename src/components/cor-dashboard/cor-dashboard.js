@@ -15,7 +15,6 @@ export default class CorDashboard extends Component {
   constructor() {
     super();
     // this.attachShadow({ mode: 'open' });
-    console.log(this.globalData);
     this.innerHTML = Template.render(this.globalData.DATA);
     this.addEventListener("state-update", this.store);
   }
