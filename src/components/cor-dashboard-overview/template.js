@@ -51,24 +51,22 @@ export default {
                         ${ (card.itemdata) ?                     
                             `
                             <div>
-                            <span>
         
                                 <!-- Check type of chart -->
 
                                 ${ ((card.chart) === 'donut-chart' ) ? `
-                                <cor-dashboard-donut-chart></cor-dashboard-donut-chart>
+                                <cor-dashboard-donut-chart class="cor-dashboard-donut-chart"></cor-dashboard-donut-chart>
                                 ` : ``}
         
                                 ${ ((card.chart) === 'bar-chart' ) ? `
                                 
-                                <cor-dashboard-bar-chart data-data=
+                                <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
                                 '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
                                 ` : ``}
                                 
                                 <!-- /Check type of chart -->
         
                                 
-                            </span>
                             <ol>
                                 ${(card.itemdata).map( el => `
                                 <li>${el.label} <strong>${el.total}</strong></li>
@@ -95,7 +93,7 @@ export default {
                         <div id="languagesChart"></div>
                         
                             
-                            <cor-dashboard-bar-chart data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
+                            <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
                             <ol>
                                 ${card.languages.map(
                                     language => `<li>${language.label} <strong>${language.total}</strong></li>`

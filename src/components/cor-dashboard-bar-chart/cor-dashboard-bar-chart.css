@@ -1,14 +1,26 @@
 .chart {
     align-items: flex-end;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     height: 200px;
+    justify-content: space-around;
 }
 
-.chart div {
-    flex: 1;
+.chart span {
+  display: none;
+}
+
+.chart  div {
+  border-radius: 8px;
+  width: 10px;
+}
+
+.chart > div {
+    height: 100%;
+    flex: 0;
     font: 10px sans-serif;
-    background-color: steelblue;
+    background-color: rgba(70, 131, 180, 0.308);
     text-align: right;
     margin: 1px;
     color: white;
@@ -17,6 +29,29 @@
     justify-content: center;
     text-align: center;
   }
+
+  .chart > div div {
+    background-color: rgba(70, 131, 180, 1);;
+  }
+
+.cor-dashboard-bar-chart + ol {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cor-dashboard-bar-chart + ol li {
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+  flex-direction: column;
+  font-size: .85em;
+  padding: .5rem 0;
+  align-items: center;
+}
+
+.cor-dashboard-bar-chart + ol li + li {
+  border: none;
+}
   
 /*
   .chart  div {

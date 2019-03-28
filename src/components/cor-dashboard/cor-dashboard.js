@@ -59,10 +59,10 @@ export default class CorDashboard extends Component {
     this[key] = value;
     let valuesOfAttribute = this.getAttribute(key);
     
-    [valuesOfAttribute] = valuesOfAttribute.split(' ');
+    valuesOfAttribute = valuesOfAttribute.split(' ');
 
     
-    valuesOfAttribute.filter(el => el !== value)
+    valuesOfAttribute.filter(el => el !== value);
 
     this.setAttribute(key, valuesOfAttribute + ' ' + value);
 

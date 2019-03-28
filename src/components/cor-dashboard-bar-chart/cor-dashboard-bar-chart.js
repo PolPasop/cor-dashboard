@@ -36,7 +36,7 @@ export default class CorDashboardBarChart extends Component {
             .selectAll('div').data(data)
             .enter().append('div').append('div')
                 .style('height', d => yScale(d.total) + "px")
-                .text( d => `${d.label} ${d.total}`);
+                .append('span').text( d => `${d.label} ${d.total}`);
     
         /*d3.select(target.querySelector(".chart"))
             .selectAll("div")

@@ -4,11 +4,10 @@
     background-color: #E6EDEC;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 800px) {
     .cor-dashboard-overview {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 }
 

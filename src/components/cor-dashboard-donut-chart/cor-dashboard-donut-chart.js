@@ -95,11 +95,14 @@ export default class CorDashboardDonutChart extends Component {
         g.append("g")
           .attr("class", "lines");
           
+        /*
         var polyline = svg.select(".lines").selectAll("polyline")
           .data(pie(seedData), key);
       
           polyline.enter()
           .append("polyline");
+
+          */
 
         
 

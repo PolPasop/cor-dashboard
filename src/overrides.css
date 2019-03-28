@@ -164,5 +164,15 @@ p[class*="pt-ListParagraph"], p[class*="pt-000"] {
     list-style-type: disc;
     display: list-item;
 }
+
+
+/* NEw overrides corev15*/
+.ms-core-overlay {
+    background-color: transparent;
+}
+
+#s4-bodyContainer {
+	padding: 0;
+}
 /**********************************************************************************************/
 /************* shared / follow buttons **************/
