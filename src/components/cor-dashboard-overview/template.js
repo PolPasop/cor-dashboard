@@ -62,16 +62,17 @@ export default {
                                 
                                 <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
                                 '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
-                                ` : ``}
+
+                                <ol>
+                                    ${(card.itemdata).map( el => `
+                                    <li>${el.label} <strong>${el.total}</strong></li>
+                                    ` ).join('')}
+                                </ol>
                                 
+                                ` : ``}
+                            
                                 <!-- /Check type of chart -->
         
-                                
-                            <ol>
-                                ${(card.itemdata).map( el => `
-                                <li>${el.label} <strong>${el.total}</strong></li>
-                                ` ).join('')}
-                            </ol>
                             </div>
                             ` 
                             : `` }

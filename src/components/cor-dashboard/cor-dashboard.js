@@ -46,10 +46,10 @@ export default class CorDashboard extends Component {
     this[key] = value;
     let valuesOfAttribute = this.getAttribute(key);
     
-    [valuesOfAttribute] = valuesOfAttribute.split(' ');
+    valuesOfAttribute = valuesOfAttribute.split(' ');
 
     if(!valuesOfAttribute.includes(value)) {
-      this.setAttribute(key, valuesOfAttribute + ' ' + value);
+      this.setAttribute(key, valuesOfAttribute.join(' ') + ' ' + value);
     }
 
   }
@@ -62,9 +62,9 @@ export default class CorDashboard extends Component {
     valuesOfAttribute = valuesOfAttribute.split(' ');
 
     
-    valuesOfAttribute.filter(el => el !== value);
+    valuesOfAttribute = valuesOfAttribute.filter(el => el !== value);
 
-    this.setAttribute(key, valuesOfAttribute + ' ' + value);
+    this.setAttribute(key, valuesOfAttribute.join(' '));
 
   }
 
