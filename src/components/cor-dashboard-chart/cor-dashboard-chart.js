@@ -4,7 +4,11 @@ import Template from './template.js';
 export default class CorDashboardChart extends Component {
     constructor() {
         super();
-        this.innerHTML = Template.render();
+        
+        // Get the type of chart
+        const typeOfChart = this.dataset.charttype;
+
+        this.innerHTML = Template.render(typeOfChart);
     }
 
     resetState() {

@@ -53,23 +53,11 @@ export default {
                             `
                             <div>
         
-                                <cor-dashboard-chart class="cor-dashboard-chart">
+                                <cor-dashboard-chart class="cor-dashboard-chart" 
+                                    data-charttype="${card.charttype}" 
                                     
-                                    <!-- Check type of chart -->
-
-                                    ${ ((card.chart) === 'donut-chart' ) ? `
-                                    <cor-dashboard-donut-chart class="cor-dashboard-donut-chart"></cor-dashboard-donut-chart>
-                                    ` : ``}
-            
-                                    ${ ((card.chart) === 'bar-chart' ) ? `
-                                    
-                                    <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
-                                    '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
-                                    
-                                    ` : ``}
-                                
-                                    <!-- /Check type of chart -->
-
+                                    data-data=
+                                '[${createDataAttribute(card.itemdata)}]'>
                                 </cor-dashboard-chart>
         
                             </div>

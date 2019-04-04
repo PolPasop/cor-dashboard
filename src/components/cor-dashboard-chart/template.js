@@ -11,10 +11,15 @@ export default {
 
     html(chart) {
         switch (chart) {
+            case "barChart2":
+                return `
+                    <cor-dashboard-bar-chart class="cor-dashboard-bar-chart"></cor-dashboard-bar-chart>
+                `;
+                break;
             case "barChart":
                 return `
-                <button id="cor-dashboard-chart__backbtn">Back</button>
-                <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data="[{
+                <button class="cor-dashboard-chart__backbtn" id="cor-dashboard-chart__backbtn">Back</button>
+                <cor-dashboard-chart class="cor-dashboard-chart" data-charttype="barChart2"  data-data="[{
                   &quot;label&quot;: &quot;BG&quot;,
                   &quot;total&quot;: 50},{
                   &quot;label&quot;: &quot;CS&quot;,
@@ -67,9 +72,7 @@ export default {
       
           
               
-              <div class="chart" height="200">
-          
-          <div><div style="height: 114.943px;"><span>BG 50</span></div></div><div><div style="height: 4.5977px;"><span>CS 2</span></div></div><div><div style="height: 16.092px;"><span>DA 7</span></div></div><div><div style="height: 200px;"><span>DE 87</span></div></div><div><div style="height: 55.1724px;"><span>EL 24</span></div></div><div><div style="height: 13.7931px;"><span>EN 6</span></div></div><div><div style="height: 179.31px;"><span>ES 78</span></div></div><div><div style="height: 0px;"><span>ET 0</span></div></div><div><div style="height: 11.4943px;"><span>FI 5</span></div></div><div><div style="height: 6.89655px;"><span>FR 3</span></div></div><div><div style="height: 0px;"><span>GA 0</span></div></div><div><div style="height: 32.1839px;"><span>HR 14</span></div></div><div><div style="height: 6.89655px;"><span>HU 3</span></div></div><div><div style="height: 108.046px;"><span>IT 47</span></div></div><div><div style="height: 172.414px;"><span>LT 75</span></div></div><div><div style="height: 59.7701px;"><span>LV 26</span></div></div><div><div style="height: 149.425px;"><span>MT 65</span></div></div><div><div style="height: 85.0575px;"><span>NL 37</span></div></div><div><div style="height: 0px;"><span>PL 0</span></div></div><div><div style="height: 48.2759px;"><span>PT 21</span></div></div><div><div style="height: 110.345px;"><span>RO 48</span></div></div><div><div style="height: 52.8736px;"><span>SK 23</span></div></div><div><div style="height: 36.7816px;"><span>SL 16</span></div></div><div><div style="height: 20.6897px;"><span>SV 9</span></div></div></div></cor-dashboard-bar-chart>
+                </cor-dashboard-chart>
            
                 `;
                 break;

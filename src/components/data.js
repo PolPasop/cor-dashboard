@@ -42,7 +42,7 @@ export default {
             title: "Lang usage",
             category: "lang-usage",
             total: "",
-            chart: "bar-chart",
+            charttype: "barChart2",
             body: "Card Body",
             itemdata: [
                 {
@@ -72,7 +72,7 @@ export default {
             category: "lang-usage",
             size: "full",
             total: "",
-            chart: "donut-chart",
+            charttype: "donutChart",
             body: "Card Body",
             itemdata: [
                 {

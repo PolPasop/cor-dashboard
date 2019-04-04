@@ -8,6 +8,7 @@
 
 @import "components/cor-dashboard/cor-dashboard.css";
 @import "components/cor-dashboard-bar-chart/cor-dashboard-bar-chart.css";
+@import "components/cor-dashboard-chart/cor-dashboard-chart.css";
 @import "components/cor-dashboard-card/cor-dashboard-card.css";
 @import "components/cor-dashboard-card-detailed/cor-dashboard-card-detailed.css";
 @import "components/cor-dashboard-detailed/cor-dashboard-detailed.css";
