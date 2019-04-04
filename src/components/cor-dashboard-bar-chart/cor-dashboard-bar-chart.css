@@ -75,3 +75,26 @@
   color: white;
 }
   */
+
+.js-cor-dashboard-barchart__list {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.js-cor-dashboard-barchart__list li {
+  flex: 1;
+}
+
+.cor-dashboard-card .js-cor-dashboard-barchart__list li {
+  border: none;
+  font-size: .85rem;
+  padding: 0;
+  justify-content: center;
+
+}
+
+.cor-dashboard-card .js-cor-dashboard-barchart__list li a {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

@@ -63,11 +63,7 @@ export default {
                                 <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
                                 '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
 
-                                <ol>
-                                    ${(card.itemdata).map( el => `
-                                    <li>${el.label} <strong>${el.total}</strong></li>
-                                    ` ).join('')}
-                                </ol>
+                                
                                 
                                 ` : ``}
                             
@@ -95,11 +91,7 @@ export default {
                         
                             
                             <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
-                            <ol>
-                                ${card.languages.map(
-                                    language => `<li>${language.label} <strong>${language.total}</strong></li>`
-                                ).join('')}
-                            </ol>
+                            
                             ` : ``}
                         <!-- /Cards displaying all the languages -->
 

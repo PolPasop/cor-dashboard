@@ -70,6 +70,7 @@ export default {
         {
             title: "Content types",
             category: "lang-usage",
+            size: "full",
             total: "",
             chart: "donut-chart",
             body: "Card Body",

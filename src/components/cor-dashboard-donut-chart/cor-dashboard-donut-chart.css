@@ -1,4 +1,8 @@
-
+.cor-dashboard-donut-chart {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1.5rem;;
+}
 
 polyline{
 	opacity: .3;
@@ -23,6 +27,10 @@ polyline{
 }
 
 .cor-dashboard-donut-chart ol li {
+    display: block;
+}
+
+.cor-dashboard-donut-chart ol li a {
     display: flex;
     justify-content: flex-start;
     align-items: center;

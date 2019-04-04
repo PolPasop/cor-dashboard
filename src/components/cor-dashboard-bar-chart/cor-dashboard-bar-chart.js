@@ -9,16 +9,14 @@ export default class CorDashboardBarChart extends Component {
 
     connectedCallback() {
         const data = this.getAttribute("data-data");
-        this.chart2(JSON.parse(data), this);
-        
-        // this.chart(JSON.parse(data));
-        /*
-        const newdata2 = newdata.substring(0, newdata.length - 1);
-        console.log("before:", newdata);
-        */
+        this.chart(JSON.parse(data), this);
     }
 
-    chart2(data, target) {
+    chart(data, target) {
+
+        // Sort Data
+        data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
+
         var height = 200,
             barOffset = 20;
 
@@ -28,45 +26,28 @@ export default class CorDashboardBarChart extends Component {
             })])
             .range([0, height]);
 
-        
-
-
+        // Creation of the chart
         d3.select(target.querySelector(".chart"))
             .attr('height', height)
             .selectAll('div').data(data)
             .enter().append('div').append('div')
-                .style('height', d => yScale(d.total) + "px")
-                .append('span').text( d => `${d.label} ${d.total}`);
+            .style('height', d => yScale(d.total) + "px")
+            .append('span').text( d => `${d.label} ${d.total}`);
     
-        /*d3.select(target.querySelector(".chart"))
-            .selectAll("div")
-            .data(data)
-        .enter().append("div").append("div")
-        .transition()
-        .duration(1000)
-        .style("height", d => {
-            console.log(d);
-            return x(d.total) + "px";
-        })
-        .text( d => d.label);
-        */
         
-    }
 
-    chart() {  
-        const x = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.total)])
-            .range([0, 200]);
-        
-        
-        d3.select(this.querySelector(".chart"))
-            .selectAll("div")
+        // Creation of the list
+        d3.select(this)
+            .append('ol')
+            .classed('js-cor-dashboard-barchart__list', true)
+            .selectAll(null)  
             .data(data)
-        .enter().append("div").append("div")
-        .transition()
-        .duration(1000)
-        .style("height", d => x(d.total) + "px")
-        .text( d => d.label);
+            .enter()
+            .append('li')
+            .append('a')
+            .attr('href', d => `#${d.label}`)
+            .html(d => `<span>${d.label}</span> <strong>${d.total}</strong>`)
+            .append('span');
         
     }
 
