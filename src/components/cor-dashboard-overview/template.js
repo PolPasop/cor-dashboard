@@ -1,4 +1,5 @@
 import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js'
+import CorDashboardChart from '../cor-dashboard-chart/cor-dashboard-chart.js'
 import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-donut-chart.js'
 import CorDashboardBarChart from '../cor-dashboard-bar-chart/cor-dashboard-bar-chart.js'
 
@@ -52,22 +53,24 @@ export default {
                             `
                             <div>
         
-                                <!-- Check type of chart -->
+                                <cor-dashboard-chart class="cor-dashboard-chart">
+                                    
+                                    <!-- Check type of chart -->
 
-                                ${ ((card.chart) === 'donut-chart' ) ? `
-                                <cor-dashboard-donut-chart class="cor-dashboard-donut-chart"></cor-dashboard-donut-chart>
-                                ` : ``}
-        
-                                ${ ((card.chart) === 'bar-chart' ) ? `
+                                    ${ ((card.chart) === 'donut-chart' ) ? `
+                                    <cor-dashboard-donut-chart class="cor-dashboard-donut-chart"></cor-dashboard-donut-chart>
+                                    ` : ``}
+            
+                                    ${ ((card.chart) === 'bar-chart' ) ? `
+                                    
+                                    <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
+                                    '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
+                                    
+                                    ` : ``}
                                 
-                                <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data=
-                                '[${createDataAttribute(card.itemdata)}]'></cor-dashboard-bar-chart>
+                                    <!-- /Check type of chart -->
 
-                                
-                                
-                                ` : ``}
-                            
-                                <!-- /Check type of chart -->
+                                </cor-dashboard-chart>
         
                             </div>
                             ` 
@@ -86,7 +89,8 @@ export default {
 
 
                         <!-- Cards displaying all the languages -->
-                        ${ ((card.cardtype) === 'languageOverview') ? `                        
+                        ${ ((card.cardtype) === 'languageOverview') ? `
+                        
                             
                             <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
                             

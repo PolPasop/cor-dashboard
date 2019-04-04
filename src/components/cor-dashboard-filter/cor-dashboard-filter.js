@@ -25,15 +25,15 @@ const data = [
             },
             {
             name: "Opinions",
-            target: ""
+            target: "opinions"
             },
             {
             name: "Studies",
-            target: ""
+            target: "studies"
             },
             {
             name: "Brochures",
-            target: ""
+            target: "brochures"
             }
         ]
     },

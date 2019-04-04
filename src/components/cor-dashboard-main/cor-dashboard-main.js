@@ -40,8 +40,7 @@ connectedCallback() {
     const filter = "filter";
     const view = "view";
     const update = () => {
-        console.log("Name changed to", "view: ", root[view], "filter:", root[filter]);
-        this.show(root[view],root[filter])
+        this.show(root.getAttribute(view),root.getAttribute(filter))
     };
 
     new MutationObserver(update).observe(root, {

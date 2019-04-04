@@ -7,8 +7,10 @@ export default {
     },
 
     html(view) {
+        console.log(view);
         switch(view) {
             case "detailed":
+                console.log("render detailed");
                 return `
                     <div class="cor-dashboard-main">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>

@@ -43,14 +43,24 @@ export default class CorDashboard extends Component {
 
   update(key, value) {
     console.log("in update", key, value);
-    this[key] = value;
+    if(this[key]){
+      this[key] = value;
+    } else {
+      this.setAttribute(key, value);
+    }
+
     let valuesOfAttribute = this.getAttribute(key);
     
-    valuesOfAttribute = valuesOfAttribute.split(' ');
+    if(valuesOfAttribute) {
+      valuesOfAttribute = valuesOfAttribute.split(' ');
 
-    if(!valuesOfAttribute.includes(value)) {
-      this.setAttribute(key, valuesOfAttribute.join(' ') + ' ' + value);
-    }
+      if(!valuesOfAttribute.includes(value)) {
+        const newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value
+        this.setAttribute(key, newListOfVAlues);
+      }
+    } 
+
+    
 
   }
 
