@@ -86,9 +86,7 @@ export default {
 
 
                         <!-- Cards displaying all the languages -->
-                        ${ ((card.cardtype) === 'languageOverview') ? `
-                        <div id="languagesChart"></div>
-                        
+                        ${ ((card.cardtype) === 'languageOverview') ? `                        
                             
                             <cor-dashboard-bar-chart class="cor-dashboard-bar-chart" data-data='[${createDataAttribute(card.languages)}]'></cor-dashboard-bar-chart>
                             
