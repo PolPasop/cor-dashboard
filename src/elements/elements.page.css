@@ -3,7 +3,7 @@ body {
     color: var(--cor-dark);
     font-size: calc(var(--global-font-size / 16px) * 1em);
     line-height: calc(var(--global-line-heigh) / var(--global-font-size) );   
-    font-family: sans-serif;
+    font-family: var(--font-family-sans-serif);
     font-size: 1rem;
     min-height: 100%;
 }

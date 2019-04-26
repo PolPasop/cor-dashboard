@@ -31,8 +31,9 @@
   }
 
   .chart > div div {
-    background-color: rgba(70, 131, 180, 1);;
+    background-color: rgba(70, 131, 180, 1);
   }
+
 
 .cor-dashboard-bar-chart + ol {
   display: flex;

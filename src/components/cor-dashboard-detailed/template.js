@@ -22,29 +22,36 @@ export default {
             ${data.map( item => `
 
             <article class="cor-dashboard-detailed-item">
-                <p>${item.contenttype}</p>
-                <h1 class="cor-dashboard-article__title">${item.title}</h1>
-                <p class="cor-dashboard-article__details">
-                    <span class="cor-dashboard-article__label">${item.label}</span>
-                    <strong>${item.date}</strong>&nbsp;|&nbsp;<span>${item.theme}</span>
-                    
-                </p>
-                <p class="cor-dashboard-detailed-item__intro-container">
-                    <img src="${item.picture}" />
-                    <span >${item.intro}</span>
-                </p>
+
+                <p class="cor-dashboard-detailed-item__contenttype">${item.contenttype}</p>
                 
+                <img src="${item.picture}" />
+                
+                <div>
+                    
+                    <h1 class="cor-dashboard-article__title">${item.title}</h1>
+                    <p class="cor-dashboard-article__details">
+                        ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
+                        <span>${item.date}</span>
+                        ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                    </p>
+                    <p class="cor-dashboard-detailed-item__intro-container">
+                        <span >${item.intro}</span>
+                    </p>
+                    
+                </div>
+
                 <ul class="cor-dashboard-detailed-item__languages-list">
-                
-                    ${item.languages.map( language => `
-                        <li class="cor-dashboard-detailed-item__languages-list__item">
-                        <div class="cor-dashboard-languages-overview" data-status="${language.status}">
-                            <span title="language">${language.label}</span>
-                        </div>
-                        </li>
-                    `).join('')}
                     
-                </ul>
+                        ${item.languages.map( language => `
+                            <li class="cor-dashboard-detailed-item__languages-list__item">
+                            <div class="cor-dashboard-languages-overview" data-status="${language.status}">
+                                <span title="language">${language.label}</span>
+                            </div>
+                            </li>
+                        `).join('')}
+                        
+                    </ul>
 
             </article>
               
