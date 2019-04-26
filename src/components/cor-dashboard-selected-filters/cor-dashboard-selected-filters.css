@@ -1,0 +1,36 @@
+.cor-dashboard-selected-filters {
+    display: block;
+    margin: 1.5rem 1.5rem 0;
+}
+
+.cor-dashboard-selected-filters ul {
+    display: inline-flex;
+    
+}
+
+.cor-dashboard-selected-filters li {
+    background: #fff;
+    border: solid 1px #bbd6dd;
+    border-radius: 20px;
+    font-size: 11px;
+    margin: .5rem;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.cor-dashboard-selected-filters svg {
+    margin-left: .5rem;
+}
+
+.cor-dashboard-selected-filters svg:hover {
+    cursor: pointer;
+}
+
+.cor-dashboard-selected-filters svg path {
+    transition: fill ease-out .2s;
+}
+
+.cor-dashboard-selected-filters svg:hover path {
+    fill: var(--europe);
+}

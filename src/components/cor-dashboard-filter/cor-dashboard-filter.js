@@ -234,7 +234,7 @@ export default class CorDashboardFilter extends Component {
     connectedCallback() {
         this._triggers = this.querySelectorAll('[data-filter]');
         this._triggers.forEach(
-        trigger => trigger.addEventListener('click', e => this.onClick(e))
+            trigger => trigger.addEventListener('click', e => this.onClick(e))
         );
     }  
     

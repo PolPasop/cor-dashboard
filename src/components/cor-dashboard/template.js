@@ -4,6 +4,7 @@ import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overvi
 import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detailed.js';
 import CorDashboardTopnav from '../cor-dashboard-topnav/cor-dashboard-topnav.js';
 import CorDashboardMain from '../cor-dashboard-main/cor-dashboard-main.js';
+import CorDashboardSelectedFilters from '../cor-dashboard-selected-filters/cor-dashboard-selected-filters.js';
 
 
 export default {
@@ -35,8 +36,9 @@ export default {
             
             <cor-dashboard-topnav></cor-dashboard-topnav>
           </header>
-          
-          
+
+          <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
+        
           <cor-dashboard-main></cor-dashboard-main>
 
         </main>

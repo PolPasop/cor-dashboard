@@ -750,7 +750,7 @@ export default {
                 },
                 {
                     label:"EN",
-                    status: "draft"
+                    status: "translated"
                 },
                 {
                     label:"ES",
@@ -857,7 +857,7 @@ export default {
                 },
                 {
                     label:"EN",
-                    status: "draft"
+                    status: "translated"
                 },
                 {
                     label:"ES",
@@ -963,7 +963,7 @@ export default {
                 },
                 {
                     label:"EN",
-                    status: "draft"
+                    status: "translated"
                 },
                 {
                     label:"ES",
@@ -1071,7 +1071,7 @@ export default {
                 },
                 {
                     label:"EN",
-                    status: "draft"
+                    status: "translated"
                 },
                 {
                     label:"ES",
@@ -1179,7 +1179,7 @@ export default {
                 },
                 {
                     label:"EN",
-                    status: "draft"
+                    status: "translated"
                 },
                 {
                     label:"ES",

@@ -16,7 +16,9 @@ export default class CorDashboardBarChart extends Component {
     chart(data, target) {
 
         // Sort Data
-        data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
+        if(data) {
+            data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
+        }
 
         var height = 200,
             barOffset = 20;

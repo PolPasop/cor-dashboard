@@ -97,3 +97,7 @@
 .cor-dashboard-article__label--internationalcoop {
     background-color: var(--cor-color-internationalcoop);
 }
+
+[data-lang="EN"] {
+    font-weight: 800;
+}
