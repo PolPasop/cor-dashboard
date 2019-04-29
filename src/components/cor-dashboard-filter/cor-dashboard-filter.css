@@ -3,7 +3,7 @@ a{
 }
 
 .cor-dashboard-filter {
-    border: solid 1px var(--gray-300);
+    border-top: solid 1px var(--gray-300);
 }
 
 .cor-dashboard-filter__title {
@@ -67,6 +67,10 @@ a{
 /*
  * Expand/Collapse 
  */
+.cor-dashboard-filter__list {
+    overflow: hidden;
+}
+
 .cor-dashboard-filter [data-toggle="collapse"] {
     align-items: center;
 }
@@ -83,20 +87,11 @@ a{
     transition: transform .2s ease-in-out;
 }
 
-.cor-dashboard-filter .expandable.expanded > button:after {
+.cor-dashboard-filter.js-expanded  button:after {
     transform: rotate(180deg);
 }
 
-
-.cor-dashboard-filter .expandable ul{
-    opacity: 0;
-    max-height: 0;
-    transition: opacity .2s ease-out max-height .2s ease-out;
-}
-
-.cor-dashboard-filter .expandable.expanded ul  {
+.cor-dashboard-filter .expandable ul  {
     opacity: 1;
-    max-height: 50rem;
-    padding: .5rem 1.5rem;
 }
 

@@ -8,13 +8,13 @@ export default {
         return `
         
         ${data.map( filter => `
-            <div class="cor-dashboard-filter">
+            <div class="cor-dashboard-filter expandable">
                 <h2 class="cor-dashboard-filter__title">
-                    <button class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" data-toggle="collapse" data-expandtarget="${filter.name}" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" data-toggle="collapse" data-expandtarget="${filter.filterName}" aria-expanded="false" aria-controls="collapseExample">
                         ${filter.name}
                     </button>
                 </h2>
-                <ul class="cor-dashboard-filter__list" id="${filter.name}">
+                <ul class="cor-dashboard-filter__list" id="${filter.filterName}">
                     ${filter.items.map( item => `
                         <li class="cor-dashboard-filter__list__item">
                             <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">

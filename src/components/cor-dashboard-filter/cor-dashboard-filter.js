@@ -228,13 +228,26 @@ export default class CorDashboardFilter extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render(data);
+        
+        // Expand Collapse
+        this._expanded = false;
+        this.querySelectorAll('.expandable > ul').forEach (
+            list => list.style.height = 0
+        );
                 
     }
 
     connectedCallback() {
+        // filters events
         this._triggers = this.querySelectorAll('[data-filter]');
         this._triggers.forEach(
             trigger => trigger.addEventListener('click', e => this.onClick(e))
+        );
+
+        // open close events
+        this._expandTriggers = this.querySelectorAll('[data-expandtarget]');
+        this._expandTriggers.forEach(
+            trigger => trigger.addEventListener('click', e => this.onClickOnExpandCollapse(e))
         );
     }  
     
@@ -251,7 +264,34 @@ export default class CorDashboardFilter extends Component {
             event.target.classList.add('active');
             this.dispatchUpdate({type, text});
         };
-      }
+    }
+
+    onClickOnExpandCollapse(event) {
+        const expandCollapseTarget = document.querySelector(`#${event.target.dataset.expandtarget}`);
+        const parent = event.target.parentNode.parentNode;
+
+        if(!this._expanded) {
+            this.expand(expandCollapseTarget);
+            parent.classList.add('js-expanded');
+        } else if(this._expanded) {
+            this.collapse(expandCollapseTarget)
+            parent.classList.remove('js-expanded');
+        }
+    }
+
+    expand(target) {
+        console.log(target);
+
+        target.style.height = "";
+        this._expanded = true;
+    }
+
+    collapse(target) {
+        console.log(target);
+
+        target.style.height = 0;
+        this._expanded = false;
+    }
 
 }
 
