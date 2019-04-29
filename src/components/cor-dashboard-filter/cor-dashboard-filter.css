@@ -87,11 +87,16 @@ a{
     transition: transform .2s ease-in-out;
 }
 
-.cor-dashboard-filter.js-expanded  button:after {
+.cor-dashboard-filter.js-collapsed  button:after {
     transform: rotate(180deg);
 }
 
-.cor-dashboard-filter .expandable ul  {
+.cor-dashboard-filter.expandable ul {
     opacity: 1;
+    transition: opacity .2s ease-out;
+}
+
+.cor-dashboard-filter.js-collapsed ul  {
+    opacity: 0;
 }
 

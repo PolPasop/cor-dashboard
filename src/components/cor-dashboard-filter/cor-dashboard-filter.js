@@ -229,11 +229,7 @@ export default class CorDashboardFilter extends Component {
         super();
         this.innerHTML = Template.render(data);
         
-        // Expand Collapse
-        this._expanded = false;
-        this.querySelectorAll('.expandable > ul').forEach (
-            list => list.style.height = 0
-        );
+
                 
     }
 
@@ -254,6 +250,7 @@ export default class CorDashboardFilter extends Component {
     onClick(event) {
         // this.show(event.target.dataset.target);
         const text = event.target.dataset.filter;
+        
 
         if (event.target.classList.contains('active')) {
             const type = "remove-filter";
@@ -270,27 +267,30 @@ export default class CorDashboardFilter extends Component {
         const expandCollapseTarget = document.querySelector(`#${event.target.dataset.expandtarget}`);
         const parent = event.target.parentNode.parentNode;
 
-        if(!this._expanded) {
-            this.expand(expandCollapseTarget);
-            parent.classList.add('js-expanded');
-        } else if(this._expanded) {
-            this.collapse(expandCollapseTarget)
-            parent.classList.remove('js-expanded');
+        console.log(this);
+        console.log("is collapsed?",this._collapsed);
+
+        if(!parent.classList.contains("js-collapsed")) {
+            this.collapse(expandCollapseTarget);
+            parent.classList.add('js-collapsed');
+        } else {
+            this.expand(expandCollapseTarget)
+            parent.classList.remove('js-collapsed');
         }
     }
 
     expand(target) {
-        console.log(target);
+        console.log("expand");
 
         target.style.height = "";
-        this._expanded = true;
+        this._collapsed = false;
     }
 
     collapse(target) {
-        console.log(target);
+        console.log("collapse");
 
         target.style.height = 0;
-        this._expanded = false;
+        this._collapsed = true;
     }
 
 }
