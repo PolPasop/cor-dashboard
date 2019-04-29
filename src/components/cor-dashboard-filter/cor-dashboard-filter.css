@@ -12,6 +12,7 @@ a{
 
 .cor-dashboard-filter__title > button {
     border: none;
+    cursor: pointer;
     display: flex;
     font-size: var(--global-font-size);
     font-weight: 100;
@@ -98,5 +99,14 @@ a{
 
 .cor-dashboard-filter.js-collapsed ul  {
     opacity: 0;
+}
+
+.cor-dashboard-filter.expandable.js-collapsed ul li {
+    transform: translateY(-25px);
+}
+
+.cor-dashboard-filter.expandable ul li {
+    transform: translateY(0);
+    transition: transform .15s cubic-bezier(0.45, 0.05, 0.47, 0.91);
 }
 
