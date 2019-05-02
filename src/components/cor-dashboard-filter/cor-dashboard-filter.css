@@ -115,3 +115,12 @@ a{
     transition: transform .15s cubic-bezier(0.45, 0.05, 0.47, 0.91);
 }
 
+/* Specific Layout */
+#languages {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#languages li {
+    border-bottom: 1px dotted var(--gray-300);
+}
