@@ -7,7 +7,7 @@ export default {
     },
 
     html(view) {
-        console.log(view);
+        
         switch(view) {
             case "detailed":
                 console.log("render detailed");

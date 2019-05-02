@@ -34,7 +34,7 @@ export default {
             <img src="public/images/CoRlogo.png" />
             <h1>Dashboard</h1>
             
-            <cor-dashboard-topnav></cor-dashboard-topnav>
+            <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>
 
           <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>

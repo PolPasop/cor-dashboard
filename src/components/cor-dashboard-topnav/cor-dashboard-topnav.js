@@ -15,6 +15,8 @@ export default class CorDashboardTopnav extends Component {
     }
 
     onClick(event) {
+        document.querySelector('[data-view].active').classList.remove('active');
+        event.target.classList.add('active');
         const type = "view";
         const text = event.target.dataset.view;
         this.dispatchUpdate({ type, text});

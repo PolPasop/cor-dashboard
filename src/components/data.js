@@ -832,7 +832,7 @@ export default {
             date: "10/12/2018",
             theme: "Energy efficiency, market and technology; Energy Union and infrastructure",
             label: "",
-            picture: "http://placeimg.com/640/480/any",
+            picture: "",
             intro: "​In response to the Paris Agreement the EU has committed to reduce annual greenhouse gas emissions by 40% by the year 2030 when compared to 1990 levels and by at least 80% by 2050. Energy transformation is a key element in fighting climate change and requires a fast and broad transition across all sectors to a sustainable, low-emission energy system. ",
             languages: [
                 {
