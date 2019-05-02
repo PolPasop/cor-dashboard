@@ -2,14 +2,15 @@ import CorDashboardDonutChart from '../cor-dashboard-donut-chart/cor-dashboard-d
 import CorDashboardBarChart from '../cor-dashboard-bar-chart/cor-dashboard-bar-chart.js'
 
 export default {
-    render(chart) {
+    render(chart, view) {
         return `
             ${this.css()}
-            ${this.html(chart)}
+            ${this.html(chart, view)}
         `
     },
 
-    html(chart) {
+    html(chart, view) {
+        console.log(chart, view);
         switch (chart) {
             case "barChart2":
                 return `
@@ -18,7 +19,10 @@ export default {
                 break;
             case "barChart":
                 return `
-                <button class="cor-dashboard-chart__backbtn" id="cor-dashboard-chart__backbtn">Back</button>
+                <div class="cor-dashboard-bar-chart__header">
+                    <h3>${view}</h3>
+                    <a class="cor-dashboard-chart__backbtn cor_button btn" id="cor-dashboard-chart__backbtn">Back</a>
+                </div>
                 <cor-dashboard-chart class="cor-dashboard-chart" data-charttype="barChart2"  data-data="[{
                   &quot;label&quot;: &quot;BG&quot;,
                   &quot;total&quot;: 50},{

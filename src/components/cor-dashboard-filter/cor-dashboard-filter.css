@@ -37,12 +37,17 @@ a{
     padding: .5rem 1rem;
 }
 
-.cor-dashboard-filter__list a {
+.cor-dashboard-filter__list a,
+.cor-dashboard-filter__list label {
     color: #333;
     font-size: var(--global-font-size);
     font-weight: 100;
     margin-top: .5rem;
     padding: 0;
+}
+
+.cor-dashboard-filter__list div {
+    padding: .5rem 0;
 }
 
 .cor-dashboard-filter__list__item__link {

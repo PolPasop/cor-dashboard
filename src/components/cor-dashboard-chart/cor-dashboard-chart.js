@@ -11,9 +11,9 @@ export default class CorDashboardChart extends Component {
         this.innerHTML = Template.render(typeOfChart);
     }
 
-    resetState() {
+    resetState(ev) {
         this.innerHTML = "";
-        this.innerHTML = Template.render()
+        this.innerHTML = Template.render(ev.target);
     }
 
     backBtn() {
@@ -22,10 +22,11 @@ export default class CorDashboardChart extends Component {
     }
 
     connectedCallback() {
-
+        
         const view = "view";
         const update = () => {
-            this.innerHTML = Template.render("barChart");
+            const views = this.getAttribute(view);
+            this.innerHTML = Template.render("barChart",[views]);
             this.backBtn();
         }
 

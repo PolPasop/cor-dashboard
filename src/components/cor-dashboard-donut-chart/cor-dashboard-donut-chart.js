@@ -79,7 +79,6 @@ export default class CorDashboardDonutChart extends Component {
         const radius = Math.min(width, height) / 2;
 
         const updateChart = event => {
-          console.log(event);
           this.parentNode.setAttribute('view', event.data.label);
           tooltip.style.display = "none";
         };

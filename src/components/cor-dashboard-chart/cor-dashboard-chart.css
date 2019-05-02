@@ -1,0 +1,11 @@
+.cor-dashboard-bar-chart__header {
+    display: flex;
+}
+
+.cor-dashboard-bar-chart__header h3 {
+    margin: 0;
+}
+
+.cor-dashboard-bar-chart__header a {
+    margin-left: auto;
+}
