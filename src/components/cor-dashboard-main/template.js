@@ -10,16 +10,15 @@ export default {
         
         switch(view) {
             case "detailed":
-                console.log("render detailed");
                 return `
-                    <div class="cor-dashboard-main">
+                    <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
                     </div>
                 `;
                 break;
             default:
                return `
-                    <div class="cor-dashboard-main">
+                    <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
                         <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                     </div>
                 `

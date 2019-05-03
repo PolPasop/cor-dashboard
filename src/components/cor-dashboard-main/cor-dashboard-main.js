@@ -5,35 +5,18 @@ export default class CorDashboardMain extends Component {
    constructor() {
        super();
        this.innerHTML = Template.render();
+       this.classList.add('one');
    }
 
    show(view, target) {
     console.log("view:",view,"target:",target);
-    /*
-    console.log(`filter ${target}`, this.globalData.DATA.filter( el => el.category === target));
-    console.log("show:", target);
-    */
-    
-    // 
-    this.innerHTML = Template.render(view, target);
-    
-    /*
-    if(view & target) {
-        this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);
-    };
-    */
 
-    /*
-    if(target) {
-        this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === target));
-    } else {
-        this.innerHTML = Template.render(this.globalData.DATA);
-    }
-    */
-    
+    this.innerHTML = Template.render(view, target);  
 }
 
 connectedCallback() {
+    this.classList.add('two');
+
     const {root} = this.root;
 
     /* Filter update */
