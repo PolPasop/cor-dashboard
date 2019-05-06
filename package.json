@@ -5,7 +5,7 @@
   "scripts": {
     "start": "http-server ./  -c-1",
     "css": "postcss src/style.css -u postcss-import --base src --dir public/stylesheets -w",
-    "build": "./node_modules/.bin/rollup src/components/cor-dashboard/src/cor-dashboard.js --file src/components/cor-dashboard/cor-dashboard.js --format umd --name slider -m -w",
+    "build": "./node_modules/.bin/rollup src/components/cor-dashboard/src/cor-dashboard.js --file src/components/cor-dashboard/cor-dashboard.js --format umd --name dashboard -m -w",
     "build-ie": "./node_modules/.bin/babel src/components/cor-dashboard/cor-dashboard.js --out-file src/components/cor-dashboard/cor-dashboard.build.js"
   },
   "dependencies": {

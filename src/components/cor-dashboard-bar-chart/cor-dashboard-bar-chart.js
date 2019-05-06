@@ -33,16 +33,13 @@ export default class CorDashboardBarChart extends Component {
         var t = d3.transition()
             .duration(750)
             .ease(d3.easeBackInOut);
-
-        // Creation of the chart
+    
+            // Creation of the chart
         d3.select(target.querySelector(".chart"))
             .attr('height', height)
             .selectAll('div').data(data)
             .enter().append('div').append('div').transition(t)
-            .style('height', d => yScale(d.total) + "px")
-            .append('span').text( d => `${d.label} ${d.total}`);
-    
-        
+            .style('height', d => yScale(d.total) + "px");
 
         // Creation of the list
         d3.select(this)
