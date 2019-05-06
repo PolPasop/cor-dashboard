@@ -20,7 +20,7 @@ export default class CorDashboard extends Component {
   }
 
   store({detail}) {
-    console.log("in store");
+    console.log("in store", detail);
     switch (detail.type) {
       case "change-name":
         console.log("in change name");
@@ -28,7 +28,7 @@ export default class CorDashboard extends Component {
         break;
       case "filter":
         console.log("in filter");
-          this.update("filter", detail.text);
+          this.updateFilter("filter", detail.text);
           break;
       case "remove-filter":
         console.log("in remove filter");
@@ -36,24 +36,41 @@ export default class CorDashboard extends Component {
             break;
       case "view":
         console.log("in view");
-          this.update("view", detail.text);
+          this.updateView("view", detail.text);
           break;
+      case "reset":
+        console.log("in reset state");
+        this.setAttribute("view", "");
+        this.setAttribute("filter", "");
     }
   }
 
-  update(key, value) {
-    console.log("in update", key, value);
+  updateView(key, value) {
     if(this[key]){
       this[key] = value;
     } else {
       this.setAttribute(key, value);
     }
+  }
 
+  updateFilter(key, value) {
+    console.log("in update", "key=", key, "value=", value);
+    /*
+    if(this[key]){
+      this[key] = value;
+    } else {
+      this.setAttribute(key, value);
+    }
+    */
+
+    // Check if attribute exists
     let valuesOfAttribute = this.getAttribute(key);
     
     if(valuesOfAttribute) {
+      // Get an array of values
       valuesOfAttribute = valuesOfAttribute.split(' ');
 
+      // Add the new value if it doesn't exist
       if(!valuesOfAttribute.includes(value)) {
         const newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value
         this.setAttribute(key, newListOfVAlues);

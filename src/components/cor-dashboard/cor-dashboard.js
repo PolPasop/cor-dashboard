@@ -1282,6 +1282,7 @@
         }
 
         dispatchUpdate(detail) {
+            console.log("dispatch");
             const event = new CustomEvent("state-update", {
                 detail,
                 bubbles: true,
@@ -1697,10 +1698,15 @@
         `).join('')}
     </ul>
     <!-- /Menu -->
-    
+
+    <hr/>
+    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Search</button>
+      
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
     <!-- /Filtres -->
+    
+    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Search</button>
     `
       },
 
@@ -1719,10 +1725,15 @@
       }
 
       connectedCallback() {
-       
+        this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
+        this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
       }
 
-
+      rootResetAttributes() {
+        const type = "reset";
+        const text = "";
+        this.dispatchUpdate({type, text});
+      }
       
     }
 
@@ -2049,7 +2060,7 @@
                     return `
                 <div class="cor-dashboard-bar-chart__header">
                     <h3>${view}</h3>
-                    <a class="cor-dashboard-chart__backbtn cor_button btn" id="cor-dashboard-chart__backbtn">Back</a>
+                    <a class="cor-dashboard-chart__backbtn cor_button--before cor_button btn" id="cor-dashboard-chart__backbtn">Back</a>
                 </div>
                 <cor-dashboard-chart class="cor-dashboard-chart" data-charttype="barChart2"  data-data="[{
                   &quot;label&quot;: &quot;BG&quot;,
@@ -2669,16 +2680,16 @@
     class CorDashboardSelectedFilters extends Component {
         constructor() {
             super();
-            // this.innerHTML = Template.render(filters);
         }
 
         connectedCallback() {
             const {root} = this.root;
-
-            const filter = "filter";
+            console.log("lààà root",root);
             const update = () => {
-                const filters = root.getAttribute(filter);
-                this.innerHTML = Template$c.render([filters]);
+                
+                const filters = root.getAttribute("filter");
+                console.log("filters:",filters);
+                this.innerHTML = Template$c.render(filters);
             };
 
             new MutationObserver(update).observe(root, {
@@ -2761,7 +2772,7 @@
       }
 
       store({detail}) {
-        console.log("in store");
+        console.log("in store", detail);
         switch (detail.type) {
           case "change-name":
             console.log("in change name");
@@ -2769,7 +2780,7 @@
             break;
           case "filter":
             console.log("in filter");
-              this.update("filter", detail.text);
+              this.updateFilter("filter", detail.text);
               break;
           case "remove-filter":
             console.log("in remove filter");
@@ -2777,24 +2788,41 @@
                 break;
           case "view":
             console.log("in view");
-              this.update("view", detail.text);
+              this.updateView("view", detail.text);
               break;
+          case "reset":
+            console.log("in reset state");
+            this.setAttribute("view", "");
+            this.setAttribute("filter", "");
         }
       }
 
-      update(key, value) {
-        console.log("in update", key, value);
+      updateView(key, value) {
         if(this[key]){
           this[key] = value;
         } else {
           this.setAttribute(key, value);
         }
+      }
 
+      updateFilter(key, value) {
+        console.log("in update", "key=", key, "value=", value);
+        /*
+        if(this[key]){
+          this[key] = value;
+        } else {
+          this.setAttribute(key, value);
+        }
+        */
+
+        // Check if attribute exists
         let valuesOfAttribute = this.getAttribute(key);
         
         if(valuesOfAttribute) {
+          // Get an array of values
           valuesOfAttribute = valuesOfAttribute.split(' ');
 
+          // Add the new value if it doesn't exist
           if(!valuesOfAttribute.includes(value)) {
             const newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value;
             this.setAttribute(key, newListOfVAlues);

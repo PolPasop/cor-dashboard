@@ -49,9 +49,10 @@ body * {
 
 .cor_button {
     display: inline-flex;
+    align-items: center;
 }
 
-.cor_button:before {
+.cor_button--before:before {
     background-image: url("data:image/svg+xml,%3Csvg width='9' height='13' viewBox='0 0 9 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.234822 6.98936L6.22979 12.9843L8.44653 10.7676L4.66328 6.9843L8.44653 3.20106L6.22979 0.984314L0.234822 6.97927L0.239883 6.98431L0.234822 6.98936Z' fill='white'/%3E%3C/svg%3E%0A");
     background-repeat: no-repeat;
     content: "";
@@ -59,6 +60,17 @@ body * {
     margin-right: .5rem;
     width: 12px;
     height: 12px;
+}
+
+.cor_button--after:after {
+    background-image: url("data:image/svg+xml,%3Csvg width='9' height='13' viewBox='0 0 9 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.234822 6.98936L6.22979 12.9843L8.44653 10.7676L4.66328 6.9843L8.44653 3.20106L6.22979 0.984314L0.234822 6.97927L0.239883 6.98431L0.234822 6.98936Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    content: "";
+    display: inline-block;
+    margin-left: .5rem;
+    width: 12px;
+    height: 12px;
+    transform:rotate(-180deg);
 }
 
 .cor_button:hover {

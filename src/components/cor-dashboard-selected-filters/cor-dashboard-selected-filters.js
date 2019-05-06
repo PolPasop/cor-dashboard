@@ -1,21 +1,19 @@
 import Component from '../component.js';
 import Template from './template.js';
 
-const filters = ["news", "no theme", "EN"];
-
 export default class CorDashboardSelectedFilters extends Component {
     constructor() {
         super();
-        // this.innerHTML = Template.render(filters);
     }
 
     connectedCallback() {
         const {root} = this.root;
-
-        const filter = "filter";
+        console.log("lààà root",root);
         const update = () => {
-            const filters = root.getAttribute(filter);
-            this.innerHTML = Template.render([filters]);
+            
+            const filters = root.getAttribute("filter");
+            console.log("filters:",filters);
+            this.innerHTML = Template.render(filters);
         };
 
         new MutationObserver(update).observe(root, {

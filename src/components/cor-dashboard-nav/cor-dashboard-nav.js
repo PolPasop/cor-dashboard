@@ -9,10 +9,15 @@ export default class CorDashboardNav extends Component {
   }
 
   connectedCallback() {
-   
+    this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home')
+    this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
   }
 
-
+  rootResetAttributes() {
+    const type = "reset";
+    const text = "";
+    this.dispatchUpdate({type, text});
+  }
   
 }
 

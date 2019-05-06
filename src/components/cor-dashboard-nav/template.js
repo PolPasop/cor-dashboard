@@ -39,10 +39,15 @@ export default {
         `).join('')}
     </ul>
     <!-- /Menu -->
-    
+
+    <hr/>
+    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Search</button>
+      
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
     <!-- /Filtres -->
+    
+    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Search</button>
     `
   },
 
