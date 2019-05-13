@@ -8,7 +8,6 @@ export default class CorDashboardSelectedFilters extends Component {
 
     connectedCallback() {
         const {root} = this.root;
-        console.log("lààà root",root);
         const update = () => {
             
             const filters = root.getAttribute("filter");

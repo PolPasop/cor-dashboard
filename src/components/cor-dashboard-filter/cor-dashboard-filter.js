@@ -3,6 +3,7 @@ const data = [
         name: "Content Types",
         filterName: "contenttype",
         icon: "contenttypes",
+        expanded: true,
         items: [
             {
                 name: "News",
@@ -228,12 +229,18 @@ export default class CorDashboardFilter extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render(data);
-        
-
                 
     }
 
     connectedCallback() {
+        // already expanded elements
+        const collapsedElements = this.querySelectorAll('[aria-expanded=false]');
+        collapsedElements.forEach(
+            collapsedElement => {
+                this.ExpandCollapse(collapsedElement.dataset.expandtarget);
+            }
+        );
+
         // filters events
         this._triggers = this.querySelectorAll('[data-filter]');
         this._triggers.forEach(
@@ -243,10 +250,10 @@ export default class CorDashboardFilter extends Component {
         // open close events
         this._expandTriggers = this.querySelectorAll('[data-expandtarget]');
         this._expandTriggers.forEach(
-            trigger => trigger.addEventListener('click', e => this.onClickOnExpandCollapse(e))
+            trigger => trigger.addEventListener('click', e => this.ExpandCollapse(event.target.dataset.expandtarget))
         );
-    }  
-    
+    }
+
     onClick(event) {
         // this.show(event.target.dataset.target);
         const text = event.target.dataset.filter;
@@ -263,9 +270,9 @@ export default class CorDashboardFilter extends Component {
         };
     }
 
-    onClickOnExpandCollapse(event) {
-        const expandCollapseTarget = document.querySelector(`#${event.target.dataset.expandtarget}`);
-        const parent = event.target.parentNode.parentNode;
+    ExpandCollapse(target) {
+        const expandCollapseTarget = document.querySelector(`#${target}`);
+        const parent = expandCollapseTarget.parentNode;
 
         console.log(this);
         console.log("is collapsed?",this._collapsed);

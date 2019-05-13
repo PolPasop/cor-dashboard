@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.slider = factory());
+    (global = global || self, global.dashboard = factory());
 }(this, function () { 'use strict';
 
     var Data = {
@@ -1305,7 +1305,7 @@
         ${data.map( filter => `
             <div class="cor-dashboard-filter expandable">
                 <h2 class="cor-dashboard-filter__title">
-                    <button class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" data-toggle="collapse" data-expandtarget="${filter.filterName}" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" data-toggle="collapse" data-expandtarget="${filter.filterName}" aria-expanded="${filter.expanded ? "true" : "false"}" aria-controls="collapseExample">
                         ${filter.name}
                     </button>
                 </h2>
@@ -1368,6 +1368,7 @@
             name: "Content Types",
             filterName: "contenttype",
             icon: "contenttypes",
+            expanded: true,
             items: [
                 {
                     name: "News",
@@ -1590,12 +1591,18 @@
         constructor() {
             super();
             this.innerHTML = Template.render(data);
-            
-
                     
         }
 
         connectedCallback() {
+            // already expanded elements
+            const collapsedElements = this.querySelectorAll('[aria-expanded=false]');
+            collapsedElements.forEach(
+                collapsedElement => {
+                    this.ExpandCollapse(collapsedElement.dataset.expandtarget);
+                }
+            );
+
             // filters events
             this._triggers = this.querySelectorAll('[data-filter]');
             this._triggers.forEach(
@@ -1605,10 +1612,10 @@
             // open close events
             this._expandTriggers = this.querySelectorAll('[data-expandtarget]');
             this._expandTriggers.forEach(
-                trigger => trigger.addEventListener('click', e => this.onClickOnExpandCollapse(e))
+                trigger => trigger.addEventListener('click', e => this.ExpandCollapse(event.target.dataset.expandtarget))
             );
-        }  
-        
+        }
+
         onClick(event) {
             // this.show(event.target.dataset.target);
             const text = event.target.dataset.filter;
@@ -1624,9 +1631,9 @@
                 this.dispatchUpdate({type, text});
             }    }
 
-        onClickOnExpandCollapse(event) {
-            const expandCollapseTarget = document.querySelector(`#${event.target.dataset.expandtarget}`);
-            const parent = event.target.parentNode.parentNode;
+        ExpandCollapse(target) {
+            const expandCollapseTarget = document.querySelector(`#${target}`);
+            const parent = expandCollapseTarget.parentNode;
 
             console.log(this);
             console.log("is collapsed?",this._collapsed);
@@ -2582,6 +2589,57 @@
     }
 
     var Template$b = {
+        render(stroke, radius, circumference, normalizedRadius) {
+            return `
+            ${this.html(stroke, radius, circumference, normalizedRadius)}
+        `
+        },
+
+        html(stroke, radius, circumference, normalizedRadius) {
+            return `
+            <div class="spinner">
+                <div class="sk-fading-circle">
+                    <div class="sk-circle1 sk-circle"></div>
+                    <div class="sk-circle2 sk-circle"></div>
+                    <div class="sk-circle3 sk-circle"></div>
+                    <div class="sk-circle4 sk-circle"></div>
+                    <div class="sk-circle5 sk-circle"></div>
+                    <div class="sk-circle6 sk-circle"></div>
+                    <div class="sk-circle7 sk-circle"></div>
+                    <div class="sk-circle8 sk-circle"></div>
+                    <div class="sk-circle9 sk-circle"></div>
+                    <div class="sk-circle10 sk-circle"></div>
+                    <div class="sk-circle11 sk-circle"></div>
+                    <div class="sk-circle12 sk-circle"></div>
+                </div>
+            </div>
+        `
+        }
+    };
+
+    class CorDashboardSpinner extends Component {
+        constructor() {
+            super();
+            console.log('SPINN !!');
+        }
+
+        connectedCallback() {
+            const stroke = this.getAttribute('stroke');
+            const radius = this.getAttribute('radius');
+            const normalizedRadius = radius - stroke * 2;
+            this._circumference = normalizedRadius * 2 * Math.PI;
+
+            this.innerHTML = Template$b.render(stroke, radius, this._circumference, normalizedRadius);
+
+        }
+
+    }
+
+    if (!customElements.get('cor-dashboard-spinner')) {
+        customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
+    }
+
+    var Template$c = {
         render(view) {
             return `
             ${this.css()}
@@ -2602,6 +2660,7 @@
                 default:
                    return `
                     <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                        <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
                         <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                     </div>
                 `
@@ -2618,14 +2677,14 @@
     class CorDashboardMain extends Component {
        constructor() {
            super();
-           this.innerHTML = Template$b.render();
+           this.innerHTML = Template$c.render();
            this.classList.add('one');
        }
 
        show(view, target) {
         console.log("view:",view,"target:",target);
 
-        this.innerHTML = Template$b.render(view, target);  
+        this.innerHTML = Template$c.render(view, target);  
     }
 
     connectedCallback() {
@@ -2652,7 +2711,7 @@
        customElements.define('cor-dashboard-main', CorDashboardMain);
     }
 
-    var Template$c = {
+    var Template$d = {
         render(filters) {
             return `
             ${this.html(filters)}
@@ -2684,12 +2743,11 @@
 
         connectedCallback() {
             const {root} = this.root;
-            console.log("lààà root",root);
             const update = () => {
                 
                 const filters = root.getAttribute("filter");
                 console.log("filters:",filters);
-                this.innerHTML = Template$c.render(filters);
+                this.innerHTML = Template$d.render(filters);
             };
 
             new MutationObserver(update).observe(root, {
@@ -2704,7 +2762,7 @@
         customElements.define('cor-dashboard-selected-filters', CorDashboardSelectedFilters);
     }
 
-    var Template$d = {
+    var Template$e = {
       render(globalData) {
         return `${this.css()}
     ${this.html(globalData)}`;
@@ -2767,7 +2825,7 @@
       constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$d.render(this.globalData.DATA);
+        this.innerHTML = Template$e.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
       }
 

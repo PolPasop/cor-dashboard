@@ -90,11 +90,12 @@ a{
     margin-left: 1rem;
     width: 10px;
     height: 7px;
+    transform: rotate(180deg);
     transition: transform .2s ease-in-out;
 }
 
 .cor-dashboard-filter.js-collapsed  button:after {
-    transform: rotate(180deg);
+    transform: rotate(0);
 }
 
 .cor-dashboard-filter.expandable ul {

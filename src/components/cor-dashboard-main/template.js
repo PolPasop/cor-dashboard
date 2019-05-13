@@ -1,3 +1,5 @@
+import CorDashboardSpinner from '../cor-dashboard-spinner/cor-dashboard-spinner.js';
+
 export default {
     render(view) {
         return `
@@ -19,6 +21,7 @@ export default {
             default:
                return `
                     <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                        <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
                         <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                     </div>
                 `

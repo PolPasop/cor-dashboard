@@ -20,6 +20,7 @@
 @import "components/cor-dashboard-overview/cor-dashboard-overview.css";
 @import "components/cor-dashboard-topnav/cor-dashboard-topnav.css";
 @import "components/cor-dashboard-selected-filters/cor-dashboard-selected-filters.css";
+@import "components/cor-dashboard-spinner/cor-dashboard-spinner.css";
 
 /* Sharepoint CSS overrides */
 @import "overrides.css";
