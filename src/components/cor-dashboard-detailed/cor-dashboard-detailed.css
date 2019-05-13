@@ -19,3 +19,8 @@
     font-size: var(--global-font-size);
     margin-left: auto;
 }
+
+.cor-dashboard-article__extradetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

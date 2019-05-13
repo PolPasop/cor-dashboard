@@ -15,9 +15,9 @@ a{
     cursor: pointer;
     display: flex;
     font-size: var(--global-font-size);
-    font-weight: 100;
+    font-weight: bold;
     padding: .5rem 1rem;
-    color: var(--gray-500);
+    color: var(--europe);
     text-decoration: none;
     background-color: transparent;
     text-transform: uppercase;

@@ -17,7 +17,6 @@ export default {
                 </h1>
                 <p class="cor-dashboard-article__details">
                     <slot name="date"></slot> 
-                     
                     | 
                     <slot name="theme"></slot> 
                     <slot name="label" class="cor-dashboard-article__details__label"></slot>

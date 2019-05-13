@@ -35,6 +35,13 @@ export default {
                         <span>${item.date}</span>
                         ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
                     </p>
+                    <p class="cor-dashboard-article__extradetails">
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                    </p>
                     <p class="cor-dashboard-detailed-item__intro-container">
                         <span >${item.intro}</span>
                     </p>

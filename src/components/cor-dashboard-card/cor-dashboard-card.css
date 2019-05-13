@@ -2,7 +2,7 @@
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
-    margin: 1.5rem;
+    min-width: 0;
 }
 
 .cor-dashboard-card {
@@ -28,12 +28,11 @@ ol {
 
 /* Title of the card */
 .cor-dashboard-card__title {
-    background-color: var(--cor-secondary);
     border-bottom: solid 1px var(--gray-200);
-    color: var(--europe);
     display: flex;
-    font-size: var(--h5-font-size);
+    font-size: var(--h6-font-size);
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* Number in the title of the carg*/
@@ -57,9 +56,7 @@ ol {
     padding: .5rem;
 }
 
-.cor-dashboard-card li + li {
-  border-top: solid 1px var(--cor-thirdry);
-}
+
 
 /* Multilinguism card */
 .cor-dashboard-multilinguismTable {
@@ -68,13 +65,13 @@ ol {
 }
 
 .cor-dashboard-multilinguismTable h2 {
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: bold;
 }
 
 .cor-dashboard-multilinguismTable h2,
 .cor-dashboard-multilinguismTable > ol li:first-child {
-    padding: 0;
+    padding: .5rem 0;
 }
 
 .cor-dashboard-multilinguismTable > div,
@@ -83,48 +80,22 @@ ol {
     text-align: center;
 }
 
-.cor-dashboard__multilinguismTable__en {
-    background: steelblue;
+.cor-dashboard-multilinguismTable li:nth-of-type(odd) {
+    background-color: rgba(0,0,0,0.03);
 }
 
-.cor-dashboard__multilinguismTable__en a {
-    color: #fff;
+.cor-dashboard__multilinguismTable__en {
+    border: solid 1px var(--cor-thirdry);
+    border-left: none;
+    border-right: none;
 }
+
 /* /Multilinguism card */
 
 
 
 /* Layout */ 
-[size="full"] {
-    min-width: 450px;
-}
-
-@media (min-width: 800px) {
-    .cor-dashboard-card {
-        width: 40%;
-    }
-
-    [size="full"] {
-        width: 100%;
-    }
-}
-
-@media (min-width: 1000px) {
-    .cor-dashboard-card {        
-        width: 40%;
-    }
-
-    [size="full"] {
-        width: 100%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .cor-dashboard-card {        
-        width: 20%;
-    }
-
-    [size="full"] {
-        width: 100%;
-    }
+.cor-dashboard-card[size=full] {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }

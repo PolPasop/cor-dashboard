@@ -19,15 +19,14 @@ export default {
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
       </nav>
       
-        <div class="row no-gutters">
         <!-- Sidebar -->
-        <aside class="col-4 col-md-3 col-xl-2 d-md-block bg-light sidebar cor-dashboard__sidebar">
+        <aside class=" bg-light sidebar cor-dashboard__sidebar">
           <cor-dashboard-nav></cor-dashboard-nav>
         </aside>
         <!-- /Sidebar -->
 
         <!-- Main -->
-        <main role="main" class="col-8 col-md-9 col-xl-10 ml-sm-auto">
+        <main role="main">
           
           <header class="cor-dashboard-header">
             <img src="public/images/CoRlogo.png" />
@@ -42,7 +41,6 @@ export default {
 
         </main>
         <!-- /Main -->
-      </div>
       
     </div>
     `

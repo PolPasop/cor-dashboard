@@ -2414,7 +2414,6 @@
                 </h1>
                 <p class="cor-dashboard-article__details">
                     <slot name="date"></slot> 
-                     
                     | 
                     <slot name="theme"></slot> 
                     <slot name="label" class="cor-dashboard-article__details__label"></slot>
@@ -2490,6 +2489,13 @@
                         ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
                         <span>${item.date}</span>
                         ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                    </p>
+                    <p class="cor-dashboard-article__extradetails">
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
                     </p>
                     <p class="cor-dashboard-detailed-item__intro-container">
                         <span >${item.intro}</span>
@@ -2775,15 +2781,14 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
       </nav>
       
-        <div class="row no-gutters">
         <!-- Sidebar -->
-        <aside class="col-4 col-md-3 col-xl-2 d-md-block bg-light sidebar cor-dashboard__sidebar">
+        <aside class=" bg-light sidebar cor-dashboard__sidebar">
           <cor-dashboard-nav></cor-dashboard-nav>
         </aside>
         <!-- /Sidebar -->
 
         <!-- Main -->
-        <main role="main" class="col-8 col-md-9 col-xl-10 ml-sm-auto">
+        <main role="main">
           
           <header class="cor-dashboard-header">
             <img src="public/images/CoRlogo.png" />
@@ -2798,7 +2803,6 @@
 
         </main>
         <!-- /Main -->
-      </div>
       
     </div>
     `
