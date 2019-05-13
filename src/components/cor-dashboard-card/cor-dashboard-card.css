@@ -18,6 +18,10 @@ ol {
     padding: 0;
 }
 
+.cor-dashboard-card a:visited {
+    color: rgb(0, 123, 255);
+}
+
 /* Layout of the card */
 .cor-dashboard-card__title,
 .cor-dashboard-card__body {
