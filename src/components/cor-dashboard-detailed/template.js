@@ -1,6 +1,7 @@
 import CorDashboardDetailedItem from '../cor-dashboard-detailed-item/cor-dashboard-detailed-item.js';
 import CorDashboardLanguagesOverview from '../cor-dashboard-languages-overview/cor-dashboard-languages-overview.js';
 
+
 export default {
     render(data) {
         return `
@@ -21,7 +22,7 @@ export default {
 
             ${data.map( item => `
 
-            <article class="cor-dashboard-detailed-item">
+            <article class="cor-dashboard-detailed-item" category="${item.category}">
 
                 <p class="cor-dashboard-detailed-item__contenttype">${item.contenttype}</p>
                 
@@ -62,9 +63,11 @@ export default {
 
             </article>
               
-
+            
             
               ` ).join('')}
+
+              
             
         `
     },

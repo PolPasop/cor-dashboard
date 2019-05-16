@@ -38,6 +38,11 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --cor-dark: #474746;
+  --cor-news: rgb(99, 239, 133);
+  --cor-events: rgb(32, 142, 183);
+  --cor-opinions: rgb(194, 13, 166);
+  --cor-studies: rgb(16, 237, 220);
+  --cor-brochures: rgb(66, 51, 166);
 
   /* Fonts */
   --global-baseline: 6px;

@@ -103,3 +103,48 @@ ol {
     grid-column-start: 1;
     grid-column-end: 4;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Colors */
+.cor-dashboard-card{
+    position: relative;
+}
+
+.cor-dashboard-card:after {
+    background: linear-gradient(to right,  var(--cor-news) 0%,var(--cor-events) 25%,var(--cor-opinions) 50%,var(--cor-studies) 75%,var(--cor-brochures) 100%);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+}
+
+.cor-dashboard-card[category=news]:after {
+    background: var(--cor-news);
+}
+
+.cor-dashboard-card[category=events]:after {
+    background: var(--cor-events);
+}
+
+.cor-dashboard-card[category=opinions]:after {
+    background: var(--cor-opinions);
+}
+
+.cor-dashboard-card[category=studies]:after {
+    background: var(--cor-studies);
+}
+
+.cor-dashboard-card[category=brochures]:after {
+    background: var(--cor-brochures);
+}

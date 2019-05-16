@@ -721,6 +721,7 @@ export default {
     ITEMS: [
         {
             contenttype: "News",
+            category: "news",
             title: "Commission report refers to REGHUB initiative and indicates stepping up the collaboration with the Committee of the Regions to contribute to Commission’s policy making  ",
             date: "10/12/2018",
             theme: "Subsidiarity and proportionality",
@@ -828,6 +829,7 @@ export default {
         },
         {
             contenttype: "News",
+            category: "news",
             title: "Take part in our survey on socio-economic transformation and energy transition in EU regions and cities!  ",
             date: "10/12/2018",
             theme: "Energy efficiency, market and technology; Energy Union and infrastructure",
@@ -934,6 +936,7 @@ export default {
             ]
         },{
             contenttype: "News",
+            category: "news",
             title: "Countering Disinformation on Local and Regional Level  ",
             date: "10/12/2018",
             theme: "",

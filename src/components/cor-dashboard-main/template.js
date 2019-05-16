@@ -1,4 +1,5 @@
 import CorDashboardSpinner from '../cor-dashboard-spinner/cor-dashboard-spinner.js';
+import CorDashboardPagination from '../cor-dashboard-pagination/cor-dashboard-pagination.js';
 
 export default {
     render(view) {
@@ -15,6 +16,7 @@ export default {
                 return `
                     <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
+                        <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
                     </div>
                 `;
                 break;

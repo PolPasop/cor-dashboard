@@ -101,3 +101,38 @@
 [data-lang="EN"] {
     font-weight: 800;
 }
+
+/* Colors */
+.cor-dashboard-detailed-item {
+    position: relative;
+}
+
+.cor-dashboard-detailed-item:after {
+    background: linear-gradient(to right,  var(--cor-news) 0%,var(--cor-events) 25%,var(--cor-opinions) 50%,var(--cor-studies) 75%,var(--cor-brochures) 100%);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+}
+
+.cor-dashboard-detailed-item[category=news]:after {
+    background: var(--cor-news);
+}
+
+.cor-dashboard-detailed-item[category=events]:after {
+    background: var(--cor-events);
+}
+
+.cor-dashboard-detailed-item[category=opinions]:after {
+    background: var(--cor-opinions);
+}
+
+.cor-dashboard-detailed-item[category=studies]:after {
+    background: var(--cor-studies);
+}
+
+.cor-dashboard-detailed-item[category=brochures]:after {
+    background: var(--cor-brochures);
+}

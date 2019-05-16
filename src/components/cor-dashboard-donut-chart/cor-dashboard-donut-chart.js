@@ -1,52 +1,34 @@
 import Component from '../component.js';
 import Template from './template.js';
 
+
 const seedData = [{
     "label": "News",
+    "color": "rgb(32,142,183)",
     "value": 80,
     "link": "https://facebook.github.io/react/"
   }, {
     "label": "Events",
+    "color": "rgb(99,239,133)",
     "value": 100,
     "link": "https://redux.js.org/"
   }, {
     "label": "Opinions",
+    "color": "rgb(194,13,166)",
     "value": 25,
     "link": "https://vuejs.org/"
   }, {
     "label": "Studies",
+    "color": "rgb(16,237,220)",
     "value": 15,
     "link": "https://angularjs.org/"
   }, {
     "label": "Brochures",
     "value": 5,
+    "color": "rgb(66,51,166)",
     "link": "https://meteorhacks.com/meteor-js-web-framework-for-everyone"
   }];
 
-
-  const seedData2 = [{
-    "label": "News2",
-    "value": 8,
-    "link": "https://facebook.github.io/react/"
-  }, {
-    "label": "Events",
-    "value": 10,
-    "link": "https://redux.js.org/"
-  }, {
-    "label": "Opinions",
-    "value": 250,
-    "link": "https://vuejs.org/"
-  }, {
-    "label": "Studies",
-    "value": 85,
-    "link": "https://angularjs.org/"
-  }, {
-    "label": "Brochures",
-    "value": 5,
-    "link": "https://meteorhacks.com/meteor-js-web-framework-for-everyone"
-  }];
-
-  
 
 export default class CorDashboardDonutChart extends Component {
     constructor() {
@@ -84,7 +66,7 @@ export default class CorDashboardDonutChart extends Component {
         };
 
         // Define arc colours
-        const colour = d3.scaleOrdinal(d3.schemeCategory10);
+        const colour = d3.scaleOrdinal(["rgb(32,142,183)", "rgb(99,239,133)", "rgb(194,13,166)", "rgb(16,237,220)", "rgb(66,51,166)"]);
         
 
         // Define arc ranges

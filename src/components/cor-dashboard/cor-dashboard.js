@@ -727,6 +727,7 @@
         ITEMS: [
             {
                 contenttype: "News",
+                category: "news",
                 title: "Commission report refers to REGHUB initiative and indicates stepping up the collaboration with the Committee of the Regions to contribute to Commission’s policy making  ",
                 date: "10/12/2018",
                 theme: "Subsidiarity and proportionality",
@@ -834,6 +835,7 @@
             },
             {
                 contenttype: "News",
+                category: "news",
                 title: "Take part in our survey on socio-economic transformation and energy transition in EU regions and cities!  ",
                 date: "10/12/2018",
                 theme: "Energy efficiency, market and technology; Energy Union and infrastructure",
@@ -940,6 +942,7 @@
                 ]
             },{
                 contenttype: "News",
+                category: "news",
                 title: "Countering Disinformation on Local and Regional Level  ",
                 date: "10/12/2018",
                 theme: "",
@@ -1807,27 +1810,31 @@
 
     const seedData = [{
         "label": "News",
+        "color": "rgb(32,142,183)",
         "value": 80,
         "link": "https://facebook.github.io/react/"
       }, {
         "label": "Events",
+        "color": "rgb(99,239,133)",
         "value": 100,
         "link": "https://redux.js.org/"
       }, {
         "label": "Opinions",
+        "color": "rgb(194,13,166)",
         "value": 25,
         "link": "https://vuejs.org/"
       }, {
         "label": "Studies",
+        "color": "rgb(16,237,220)",
         "value": 15,
         "link": "https://angularjs.org/"
       }, {
         "label": "Brochures",
         "value": 5,
+        "color": "rgb(66,51,166)",
         "link": "https://meteorhacks.com/meteor-js-web-framework-for-everyone"
       }];
 
-      
 
     class CorDashboardDonutChart extends Component {
         constructor() {
@@ -1865,7 +1872,7 @@
             };
 
             // Define arc colours
-            const colour = d3.scaleOrdinal(d3.schemeCategory10);
+            const colour = d3.scaleOrdinal(["rgb(32,142,183)", "rgb(99,239,133)", "rgb(194,13,166)", "rgb(16,237,220)", "rgb(66,51,166)"]);
             
 
             // Define arc ranges
@@ -2476,7 +2483,7 @@
 
             ${data.map( item => `
 
-            <article class="cor-dashboard-detailed-item">
+            <article class="cor-dashboard-detailed-item" category="${item.category}">
 
                 <p class="cor-dashboard-detailed-item__contenttype">${item.contenttype}</p>
                 
@@ -2517,9 +2524,11 @@
 
             </article>
               
-
+            
             
               ` ).join('')}
+
+              
             
         `
         },
@@ -2646,6 +2655,39 @@
     }
 
     var Template$c = {
+        render() {
+            return `
+            ${this.html()}
+        `
+        },
+
+        html() {
+            return `
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        `
+        }
+    };
+
+    class CorDashboardPagination extends Component {
+        constructor() {
+            super();
+            this.innerHTML = Template$c.render(); 
+        }
+    }
+
+    if (!customElements.get('cor-dashboard-pagination')) {
+        customElements.define('cor-dashboard-pagination', CorDashboardPagination);
+    }
+
+    var Template$d = {
         render(view) {
             return `
             ${this.css()}
@@ -2660,6 +2702,7 @@
                     return `
                     <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
+                        <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
                     </div>
                 `;
                     break;
@@ -2683,14 +2726,14 @@
     class CorDashboardMain extends Component {
        constructor() {
            super();
-           this.innerHTML = Template$c.render();
+           this.innerHTML = Template$d.render();
            this.classList.add('one');
        }
 
        show(view, target) {
         console.log("view:",view,"target:",target);
 
-        this.innerHTML = Template$c.render(view, target);  
+        this.innerHTML = Template$d.render(view, target);  
     }
 
     connectedCallback() {
@@ -2717,7 +2760,7 @@
        customElements.define('cor-dashboard-main', CorDashboardMain);
     }
 
-    var Template$d = {
+    var Template$e = {
         render(filters) {
             return `
             ${this.html(filters)}
@@ -2753,7 +2796,7 @@
                 
                 const filters = root.getAttribute("filter");
                 console.log("filters:",filters);
-                this.innerHTML = Template$d.render(filters);
+                this.innerHTML = Template$e.render(filters);
             };
 
             new MutationObserver(update).observe(root, {
@@ -2768,7 +2811,7 @@
         customElements.define('cor-dashboard-selected-filters', CorDashboardSelectedFilters);
     }
 
-    var Template$e = {
+    var Template$f = {
       render(globalData) {
         return `${this.css()}
     ${this.html(globalData)}`;
@@ -2829,7 +2872,7 @@
       constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$e.render(this.globalData.DATA);
+        this.innerHTML = Template$f.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
       }
 
