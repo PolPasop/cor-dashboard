@@ -108,7 +108,7 @@ a{
 }
 
 .cor-dashboard-filter.expandable.js-collapsed ul li {
-    transform: translateY(-25px);
+    transform: translateY(-50px);
 }
 
 .cor-dashboard-filter.expandable ul li {
@@ -124,4 +124,40 @@ a{
 
 #languages li {
     border-bottom: 1px dotted var(--gray-300);
+}
+
+/* Colors */
+.cor-dashboard-filter__list__item__link[data-filter] {
+    position: relative;
+    padding-left: .5rem;
+}
+
+.cor-dashboard-filter__list__item__link[data-filter]:before {
+    background: linear-gradient(to right,  var(--cor-news) 0%,var(--cor-events) 25%,var(--cor-opinions) 50%,var(--cor-studies) 75%,var(--cor-brochures) 100%);
+    left: 0;
+    content: "";
+    display: block;
+    width: 2px;
+    position: absolute;
+    height: 100%;
+}
+
+.cor-dashboard-filter__list__item__link[data-filter=news]:before {
+    background: var(--cor-news);
+}
+
+.cor-dashboard-filter__list__item__link[data-filter=events]:before {
+    background: var(--cor-events);
+}
+
+.cor-dashboard-filter__list__item__link[data-filter=opinions]:before {
+    background: var(--cor-opinions);
+}
+
+.cor-dashboard-filter__list__item__link[data-filter=studies]:before {
+    background: var(--cor-studies);
+}
+
+.cor-dashboard-filter__list__item__link[data-filter=brochures]:before {
+    background: var(--cor-brochures);
 }
