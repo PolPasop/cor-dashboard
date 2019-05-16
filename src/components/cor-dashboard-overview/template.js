@@ -39,9 +39,13 @@ export default {
                     <!-- Title of the card -->
                     <h2 class="cor-dashboard-card__title">
                         <span>${card.title}</span>
-                        <span class="cor-dashboard-card__title__total">
-                            <span>${card.total}</span>
-                        </span>
+                        
+                        ${card.total ? `
+                            <span class="cor-dashboard-card__title__total">
+                                <span>${card.total}</span>
+                            </span>
+                        `:``}
+                        
                     </h2>
                     <!-- /Title of the card -->
                     
