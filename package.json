@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "http-server ./  -c-1",
+    "serve": "http-server ./  -c-1",
     "css": "postcss src/style.css -u postcss-import --base src --dir public/stylesheets -w",
     "build": "./node_modules/.bin/rollup src/components/cor-dashboard/src/cor-dashboard.js --file src/components/cor-dashboard/cor-dashboard.js --format umd --name dashboard -m -w",
     "build-ie": "./node_modules/.bin/babel src/components/cor-dashboard/cor-dashboard.js --out-file src/components/cor-dashboard/cor-dashboard.build.js"
-  },
+    },
   "dependencies": {
     "@webcomponents/custom-elements": "^1.2.4",
     "d3": "^5.7.0",

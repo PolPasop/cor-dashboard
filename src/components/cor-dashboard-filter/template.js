@@ -14,7 +14,7 @@ export default {
                         ${filter.name}
                     </button>
                 </h2>
-                <ul class="cor-dashboard-filter__list" id="${filter.filterName}">
+                <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}" id="${filter.filterName}">
                     ${filter.items.map( item => `
                         <li class="cor-dashboard-filter__list__item">
 
