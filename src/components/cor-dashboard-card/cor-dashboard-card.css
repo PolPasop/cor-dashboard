@@ -89,7 +89,8 @@ ol {
 }
 
 .cor-dashboard__multilinguismTable__en {
-    border: solid 1px var(--cor-thirdry);
+    background: var(--cor-thirdry);
+    color: var(--europe);
     border-left: none;
     border-right: none;
 }

@@ -1285,7 +1285,6 @@
         }
 
         dispatchUpdate(detail) {
-            console.log("dispatch");
             const event = new CustomEvent("state-update", {
                 detail,
                 bubbles: true,
@@ -1638,8 +1637,6 @@
             const expandCollapseTarget = document.querySelector(`#${target}`);
             const parent = expandCollapseTarget.parentNode;
 
-            console.log(this);
-            console.log("is collapsed?",this._collapsed);
 
             if(!parent.classList.contains("js-collapsed")) {
                 this.collapse(expandCollapseTarget);
@@ -1651,15 +1648,11 @@
         }
 
         expand(target) {
-            console.log("expand");
-
             target.style.height = "";
             this._collapsed = false;
         }
 
         collapse(target) {
-            console.log("collapse");
-
             target.style.height = 0;
             this._collapsed = true;
         }
@@ -2063,7 +2056,6 @@
         },
 
         html(chart, view) {
-            console.log(chart, view);
             switch (chart) {
                 case "barChart2":
                     return `
@@ -2214,7 +2206,6 @@
         },
 
         html(data) {
-            console.log(data);
             return `
             ${data.map( card => `
                 <!-- Card item -->
@@ -2339,11 +2330,9 @@
         }
 
         show(filter) {
-            console.log("filter:", filter);
             if (filter === "") {
                 this.innerHTML = Template$6.render(this.globalData.DATA);
             } else {
-                console.log("filtering on:",filter);
                 this.innerHTML = Template$6.render(this.globalData.DATA.filter( el => el.category === filter));
             }
         }
@@ -2354,7 +2343,6 @@
             /* Filter update */
             const filter = "filter";
             const update = () => {
-                console.log(`Overview filtered on ${filter}`);
                 this.show(root[filter]);
             };
 
@@ -2362,10 +2350,6 @@
                 attributes: true,
                 attributeFilter: [filter]
             });
-        }
-      
-        chart(data) {
-            console.log(data);
         }
 
     }
@@ -2639,7 +2623,6 @@
     class CorDashboardSpinner extends Component {
         constructor() {
             super();
-            console.log('SPINN !!');
         }
 
         connectedCallback() {
@@ -2735,8 +2718,6 @@
        }
 
        show(view, target) {
-        console.log("view:",view,"target:",target);
-
         this.innerHTML = Template$d.render(view, target);  
     }
 
@@ -2771,19 +2752,20 @@
         `
         },
 
-        html(filters) {        
+        html(filters) { 
+            console.log(filters);      
             return `
             Selected filters: <ul>
-                ${filters ? filters.map(filter => {
+                ${filters ? (filters.map(filter => {
                     if(filter !== "") {
                         return `
-                            <li>
+                            <li data-selectedFilter="${filter}">
                                 ${filter} <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.12556 0L12.381 11.8182L11.2554 13L1.98083e-05 1.18182L1.12556 0Z" fill="#C4C4C4"/>
                                 <path d="M12.381 1.18182L1.12554 13L0 11.8182L11.2554 1.72588e-06L12.381 1.18182Z" fill="#C4C4C4"/>
                                 </svg>
                             </li>`
-                    }                }).join(''): ``}
+                    }                }).join('')) : ``}
             </ul>
         `
         }
@@ -2794,13 +2776,26 @@
             super();
         }
 
+        updateRoot(element) {
+            
+            const text = element.parentNode.dataset.selectedfilter;
+            const type = "filter";
+            console.log(text, type, this);
+            this.dispatchUpdate({type, text});
+            
+        }
+
         connectedCallback() {
             const {root} = this.root;
+            const filter = "filter";
             const update = () => {
                 
                 const filters = root.getAttribute("filter");
                 console.log("filters:",filters);
-                this.innerHTML = Template$e.render(filters);
+                this.innerHTML = Template$e.render(filters.split(' '));
+                const filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
+                console.log(filterBtns);    
+                [...filterBtns].map( filterBtn => filterBtn.addEventListener('click', event => this.updateRoot(event.target)));
             };
 
             new MutationObserver(update).observe(root, {
@@ -2881,26 +2876,20 @@
       }
 
       store({detail}) {
-        console.log("in store", detail);
         switch (detail.type) {
           case "change-name":
-            console.log("in change name");
             this.update("user-name", detail.text);
             break;
           case "filter":
-            console.log("in filter");
               this.updateFilter("filter", detail.text);
               break;
           case "remove-filter":
-            console.log("in remove filter");
                 this.remove("filter", detail.text);
                 break;
           case "view":
-            console.log("in view");
               this.updateView("view", detail.text);
               break;
           case "reset":
-            console.log("in reset state");
             this.setAttribute("view", "");
             this.setAttribute("filter", "");
         }
@@ -2915,15 +2904,6 @@
       }
 
       updateFilter(key, value) {
-        console.log("in update", "key=", key, "value=", value);
-        /*
-        if(this[key]){
-          this[key] = value;
-        } else {
-          this.setAttribute(key, value);
-        }
-        */
-
         // Check if attribute exists
         let valuesOfAttribute = this.getAttribute(key);
         
@@ -2943,13 +2923,11 @@
       }
 
       remove(key, value) {
-        console.log("in remove", key, value);
         this[key] = value;
         let valuesOfAttribute = this.getAttribute(key);
         
         valuesOfAttribute = valuesOfAttribute.split(' ');
 
-        
         valuesOfAttribute = valuesOfAttribute.filter(el => el !== value);
 
         this.setAttribute(key, valuesOfAttribute.join(' '));

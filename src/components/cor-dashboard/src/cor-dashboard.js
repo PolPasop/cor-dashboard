@@ -20,26 +20,20 @@ export default class CorDashboard extends Component {
   }
 
   store({detail}) {
-    console.log("in store", detail);
     switch (detail.type) {
       case "change-name":
-        console.log("in change name");
         this.update("user-name", detail.text);
         break;
       case "filter":
-        console.log("in filter");
           this.updateFilter("filter", detail.text);
           break;
       case "remove-filter":
-        console.log("in remove filter");
             this.remove("filter", detail.text);
             break;
       case "view":
-        console.log("in view");
           this.updateView("view", detail.text);
           break;
       case "reset":
-        console.log("in reset state");
         this.setAttribute("view", "");
         this.setAttribute("filter", "");
     }
@@ -54,15 +48,6 @@ export default class CorDashboard extends Component {
   }
 
   updateFilter(key, value) {
-    console.log("in update", "key=", key, "value=", value);
-    /*
-    if(this[key]){
-      this[key] = value;
-    } else {
-      this.setAttribute(key, value);
-    }
-    */
-
     // Check if attribute exists
     let valuesOfAttribute = this.getAttribute(key);
     
@@ -82,13 +67,11 @@ export default class CorDashboard extends Component {
   }
 
   remove(key, value) {
-    console.log("in remove", key, value);
     this[key] = value;
     let valuesOfAttribute = this.getAttribute(key);
     
     valuesOfAttribute = valuesOfAttribute.split(' ');
 
-    
     valuesOfAttribute = valuesOfAttribute.filter(el => el !== value);
 
     this.setAttribute(key, valuesOfAttribute.join(' '));

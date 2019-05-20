@@ -16,11 +16,9 @@ export default class CorDashboardOverview extends Component {
     }
 
     show(filter) {
-        console.log("filter:", filter);
         if (filter === "") {
             this.innerHTML = Template.render(this.globalData.DATA);
         } else {
-            console.log("filtering on:",filter);
             this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === filter));
         }
     }
@@ -31,7 +29,6 @@ export default class CorDashboardOverview extends Component {
         /* Filter update */
         const filter = "filter";
         const update = () => {
-            console.log(`Overview filtered on ${filter}`);
             this.show(root[filter]);
         };
 
@@ -39,10 +36,6 @@ export default class CorDashboardOverview extends Component {
             attributes: true,
             attributeFilter: [filter]
         });
-    }
-  
-    chart(data) {
-        console.log(data);
     }
 
 }

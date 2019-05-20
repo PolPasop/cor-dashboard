@@ -10,7 +10,6 @@ export default {
     },
 
     html(chart, view) {
-        console.log(chart, view);
         switch (chart) {
             case "barChart2":
                 return `

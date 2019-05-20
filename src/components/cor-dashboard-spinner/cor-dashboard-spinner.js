@@ -4,7 +4,6 @@ import Template from './template.js';
 export default class CorDashboardSpinner extends Component {
     constructor() {
         super();
-        console.log('SPINN !!')
     }
 
     connectedCallback() {

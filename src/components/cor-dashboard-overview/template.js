@@ -30,7 +30,6 @@ export default {
     },
 
     html(data) {
-        console.log(data);
         return `
             ${data.map( card => `
                 <!-- Card item -->

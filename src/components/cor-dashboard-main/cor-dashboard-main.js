@@ -9,8 +9,6 @@ export default class CorDashboardMain extends Component {
    }
 
    show(view, target) {
-    console.log("view:",view,"target:",target);
-
     this.innerHTML = Template.render(view, target);  
 }
 

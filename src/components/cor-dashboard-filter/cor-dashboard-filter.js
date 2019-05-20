@@ -274,8 +274,6 @@ export default class CorDashboardFilter extends Component {
         const expandCollapseTarget = document.querySelector(`#${target}`);
         const parent = expandCollapseTarget.parentNode;
 
-        console.log(this);
-        console.log("is collapsed?",this._collapsed);
 
         if(!parent.classList.contains("js-collapsed")) {
             this.collapse(expandCollapseTarget);
@@ -287,15 +285,11 @@ export default class CorDashboardFilter extends Component {
     }
 
     expand(target) {
-        console.log("expand");
-
         target.style.height = "";
         this._collapsed = false;
     }
 
     collapse(target) {
-        console.log("collapse");
-
         target.style.height = 0;
         this._collapsed = true;
     }
