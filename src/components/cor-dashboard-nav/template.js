@@ -41,13 +41,17 @@ export default {
     <!-- /Menu -->
 
     <hr/>
-    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Search</button>
+    <div class="cor-dahsboard-btncontainer">
+      <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Apply selection</button>
+    </div>
       
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
     <!-- /Filtres -->
     
-    <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Search</button>
+    <div class="cor-dahsboard-btncontainer">
+      <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Apply selection</button>
+    </div>
     `
   },
 

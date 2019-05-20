@@ -34,18 +34,15 @@ export default class CorDashboardDonutChart extends Component {
     constructor() {
         super();
         this.innerHTML = Template.render();
-
     }
 
     connectedCallback() {
         this.chart(seedData);
-        
     }
 
     addTooltip() {
       const tooltip = document.createElement("div");
       document.querySelector("body").appendChild(tooltip).classList.add("toolTip");
-
     }
 
 
