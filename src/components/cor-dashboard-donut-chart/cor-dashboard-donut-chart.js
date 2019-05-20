@@ -63,11 +63,7 @@ export default class CorDashboardDonutChart extends Component {
         const updateChart = event => {
           this.parentNode.setAttribute('view', event.data.label);
           tooltip.style.display = "none";
-        };
-
-        // Define arc colours
-        const colour = d3.scaleOrdinal(["rgb(32,142,183)", "rgb(99,239,133)", "rgb(194,13,166)", "rgb(16,237,220)", "rgb(66,51,166)"]);
-        
+        };   
 
         // Define arc ranges
         const arcText = d3.scaleOrdinal()
@@ -114,9 +110,7 @@ export default class CorDashboardDonutChart extends Component {
         // Append the path to each g
         g.append("path").transition()
         .attr("d", arc)
-        .attr("fill", function(d, i) {
-            return colour(i);
-        });
+        .attr("fill", d => d.data.color);
 
       function handleMouseOver(d, i) { 
         
@@ -155,9 +149,7 @@ export default class CorDashboardDonutChart extends Component {
         .html(d => `<span>${d.label}:</span> <strong>${d.value}</strong>`)
         .on("click", updateChart)
         .append('span')
-        .style("background-color", function(d, i) {
-            return colour(i);
-        });
+        .style("background-color", d => d.color);
 
       
 
