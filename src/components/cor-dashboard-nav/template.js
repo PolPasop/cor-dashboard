@@ -49,9 +49,6 @@ export default {
     <cor-dashboard-filter></cor-dashboard-filter>
     <!-- /Filtres -->
     
-    <div class="cor-dahsboard-btncontainer">
-      <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Apply selection</button>
-    </div>
     `
   },
 

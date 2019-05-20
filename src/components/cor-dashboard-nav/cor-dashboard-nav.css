@@ -93,11 +93,20 @@ cor-dashboard__nav {
 
 /* Filters Button */
 .cor-dahsboard-btncontainer {
-    padding: 1.5rem;
+    padding: 0 1rem 1rem;
 }
 
 .cor-dashboard-filtersbtn {
     background: var(--cor-primary);
+    margin: 0;
     width: 100%;
+}
+
+.cor-dashboard-filtersbtn.disabled {
+    opacity: .35;
+}
+
+.cor-dashboard-filtersbtn.disabled:hover {
+    cursor: not-allowed;
 }
 
