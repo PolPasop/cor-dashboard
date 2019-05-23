@@ -128,6 +128,8 @@ a{
 
 /* Colors */
 .cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter] {
+    align-content: center;
+    display: flex;
     position: relative;
     padding-left: .5rem;
 }
@@ -160,4 +162,19 @@ a{
 
 .cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=brochures]:before {
     background: var(--cor-brochures);
+}
+
+/* Date Filter */
+#date .cor-dashboard-filter__list__item:last-child div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#date .cor-dashboard-filter__list__item:last-child div label {
+    margin: 0;
+}
+
+#date .cor-dashboard-filter__list__item:last-child div input {
+    padding-left: .5rem;
 }
