@@ -7,6 +7,7 @@
 @import "objects/cor-dashboard-sidebar.css";
 
 @import "components/cor-dashboard/cor-dashboard.css";
+@import "components/cor-dashboard-main/cor-dashboard-main.css";
 @import "components/cor-dashboard-bar-chart/cor-dashboard-bar-chart.css";
 @import "components/cor-dashboard-chart/cor-dashboard-chart.css";
 @import "components/cor-dashboard-card/cor-dashboard-card.css";

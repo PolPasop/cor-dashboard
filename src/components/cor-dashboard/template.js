@@ -21,7 +21,14 @@ export default {
       
         <!-- Sidebar -->
         <aside class=" bg-light sidebar cor-dashboard__sidebar">
-          <cor-dashboard-nav></cor-dashboard-nav>
+          <cor-dashboard-nav class="cor-dashboard-nav"></cor-dashboard-nav>
+          
+          <button class="cor-dashboard-slidebtn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
         </aside>
         <!-- /Sidebar -->
 

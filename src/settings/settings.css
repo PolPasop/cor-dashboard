@@ -61,4 +61,7 @@
   --radius: 4px;
   --transition: all 300ms ease-in-out;
 
+  /* Layout */
+  --left-col-width: 280px;
+
 }

@@ -17,6 +17,15 @@ export default class CorDashboard extends Component {
     // this.attachShadow({ mode: 'open' });
     this.innerHTML = Template.render(this.globalData.DATA);
     this.addEventListener("state-update", this.store);
+
+    // Resize event
+    window.onresize = this.ifResize();
+  }
+
+  ifResize() {
+      if (window.innerWidth < 830) {
+        document.querySelector('body').classList.toggle('is-collapsed');
+      };
   }
 
   store({detail}) {

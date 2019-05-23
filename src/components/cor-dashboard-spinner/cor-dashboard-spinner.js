@@ -13,7 +13,6 @@ export default class CorDashboardSpinner extends Component {
         this._circumference = normalizedRadius * 2 * Math.PI;
 
         this.innerHTML = Template.render(stroke, radius, this._circumference, normalizedRadius);
-
     }
 
 }

@@ -1709,8 +1709,7 @@
       
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
-    <!-- /Filtres -->
-    
+    <!-- /Filtres -->    
     `
       },
 
@@ -1731,6 +1730,12 @@
       connectedCallback() {
         this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
         this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
+
+        document.querySelector('.cor-dashboard-slidebtn').addEventListener('click', event => this.clickOnButton());
+      }
+
+      clickOnButton() {
+        document.querySelector('body').classList.toggle('is-collapsed');
       }
 
       rootResetAttributes() {
@@ -2622,7 +2627,6 @@
             this._circumference = normalizedRadius * 2 * Math.PI;
 
             this.innerHTML = Template$b.render(stroke, radius, this._circumference, normalizedRadius);
-
         }
 
     }
@@ -2683,11 +2687,17 @@
                     </div>
                 `;
                     break;
+                case "overview":
+                    return `
+                <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                    <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
+                </div>
+                `;
+                    break;
                 default:
                    return `
-                    <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                    <div class="cor-dashboard-main">
                         <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
-                        <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                     </div>
                 `
             }
@@ -2708,27 +2718,37 @@
        }
 
        show(view, target) {
-        this.innerHTML = Template$d.render(view, target);  
-    }
+            this.innerHTML = Template$d.render(view, target);  
+        }
 
-    connectedCallback() {
-        this.classList.add('two');
+        connectedCallback() {
+            const {root} = this.root;
 
-        const {root} = this.root;
+            /* Filter update */
+            const filter = "filter";
+            const view = "view";
+            const update = () => {
+                this.show(root.getAttribute(view),root.getAttribute(filter));
+            };
 
-        /* Filter update */
-        const filter = "filter";
-        const view = "view";
-        const update = () => {
-            this.show(root.getAttribute(view),root.getAttribute(filter));
-        };
+            new MutationObserver(update).observe(root, {
+                attributes: true,
+                attributeFilter: [view]
+            });
 
-        new MutationObserver(update).observe(root, {
-            attributes: true,
-            attributeFilter: [view]
-        });
+            /* Remove spinner */
+            /*
+            setTimeout(function(){
+                this.innerHTML = Template.render("overview");
+            }, 1000);
+            */
 
-    }
+
+            setTimeout(() => {
+                this.innerHTML = Template$d.render("overview");
+            }, 1000);
+
+        }
     }
 
     if(!customElements.get('cor-dashboard-main')) {
@@ -2815,7 +2835,14 @@
       
         <!-- Sidebar -->
         <aside class=" bg-light sidebar cor-dashboard__sidebar">
-          <cor-dashboard-nav></cor-dashboard-nav>
+          <cor-dashboard-nav class="cor-dashboard-nav"></cor-dashboard-nav>
+          
+          <button class="cor-dashboard-slidebtn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
         </aside>
         <!-- /Sidebar -->
 
@@ -2863,7 +2890,15 @@
         // this.attachShadow({ mode: 'open' });
         this.innerHTML = Template$f.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
+
+        // Resize event
+        window.onresize = this.ifResize();
       }
+
+      ifResize() {
+          if (window.innerWidth < 830) {
+            document.querySelector('body').classList.toggle('is-collapsed');
+          }  }
 
       store({detail}) {
         switch (detail.type) {

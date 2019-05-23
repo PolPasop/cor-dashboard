@@ -47,8 +47,7 @@ export default {
       
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
-    <!-- /Filtres -->
-    
+    <!-- /Filtres -->    
     `
   },
 

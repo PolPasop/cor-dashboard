@@ -20,11 +20,17 @@ export default {
                     </div>
                 `;
                 break;
+            case "overview":
+                return `
+                <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                    <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
+                </div>
+                `;
+                break;
             default:
                return `
-                    <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                    <div class="cor-dashboard-main">
                         <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
-                        <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                     </div>
                 `
         }

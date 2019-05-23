@@ -9,27 +9,37 @@ export default class CorDashboardMain extends Component {
    }
 
    show(view, target) {
-    this.innerHTML = Template.render(view, target);  
-}
+        this.innerHTML = Template.render(view, target);  
+    }
 
-connectedCallback() {
-    this.classList.add('two');
+    connectedCallback() {
+        const {root} = this.root;
 
-    const {root} = this.root;
+        /* Filter update */
+        const filter = "filter";
+        const view = "view";
+        const update = () => {
+            this.show(root.getAttribute(view),root.getAttribute(filter))
+        };
 
-    /* Filter update */
-    const filter = "filter";
-    const view = "view";
-    const update = () => {
-        this.show(root.getAttribute(view),root.getAttribute(filter))
-    };
+        new MutationObserver(update).observe(root, {
+            attributes: true,
+            attributeFilter: [view]
+        });
 
-    new MutationObserver(update).observe(root, {
-        attributes: true,
-        attributeFilter: [view]
-    });
+        /* Remove spinner */
+        /*
+        setTimeout(function(){
+            this.innerHTML = Template.render("overview");
+        }, 1000);
+        */
 
-}
+
+        setTimeout(() => {
+            this.innerHTML = Template.render("overview");
+        }, 1000);
+
+    }
 }
 
 if(!customElements.get('cor-dashboard-main')) {

@@ -11,6 +11,12 @@ export default class CorDashboardNav extends Component {
   connectedCallback() {
     this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home')
     this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
+
+    document.querySelector('.cor-dashboard-slidebtn').addEventListener('click', event => this.clickOnButton());
+  }
+
+  clickOnButton() {
+    document.querySelector('body').classList.toggle('is-collapsed');
   }
 
   rootResetAttributes() {
