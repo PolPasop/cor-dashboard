@@ -108,6 +108,7 @@
 /* Button */
 .cor-dashboard-slidebtn {
     align-items: stretch;
+    background: transparent;
     border: none;
     height: 36px;
     margin: 0;
