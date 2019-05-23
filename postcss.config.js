@@ -6,9 +6,6 @@ module.exports = {
       'autoprefixer': {
         grid: 'autoplace'
       },
-      'cssnano': {
-        preset: 'default'
-      },
       'postcss-reporter': {}
     },
     map: true
