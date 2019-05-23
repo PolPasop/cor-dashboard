@@ -10,6 +10,12 @@ body * {
     box-sizing: border-box;
 }
 
+body:not(.sidebar-false) {
+    padding-left: 188px;
+}
+
+
+
 
 .cor-dashboard-chart__backbtn {
     margin-bottom: 1.5rem;
