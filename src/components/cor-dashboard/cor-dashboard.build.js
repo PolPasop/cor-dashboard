@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -27,7 +35,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 (function (global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.slider = factory());
+  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.dashboard = factory());
 })(void 0, function () {
   'use strict';
 
@@ -569,6 +577,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }],
     ITEMS: [{
       contenttype: "News",
+      category: "news",
       title: "Commission report refers to REGHUB initiative and indicates stepping up the collaboration with the Committee of the Regions to contribute to Commission’s policy making  ",
       date: "10/12/2018",
       theme: "Subsidiarity and proportionality",
@@ -650,6 +659,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }]
     }, {
       contenttype: "News",
+      category: "news",
       title: "Take part in our survey on socio-economic transformation and energy transition in EU regions and cities!  ",
       date: "10/12/2018",
       theme: "Energy efficiency, market and technology; Energy Union and infrastructure",
@@ -731,6 +741,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }]
     }, {
       contenttype: "News",
+      category: "news",
       title: "Countering Disinformation on Local and Regional Level  ",
       date: "10/12/2018",
       theme: "",
@@ -1023,7 +1034,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     },
     html: function html(data) {
       return "\n        \n        ".concat(data.map(function (filter) {
-        return "\n            <div class=\"cor-dashboard-filter expandable\">\n                <h2 class=\"cor-dashboard-filter__title\">\n                    <button class=\"cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--".concat(filter.icon, "\" data-toggle=\"collapse\" data-expandtarget=\"").concat(filter.filterName, "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">\n                        ").concat(filter.name, "\n                    </button>\n                </h2>\n                <ul class=\"cor-dashboard-filter__list\" id=\"").concat(filter.filterName, "\">\n                    ").concat(filter.items.map(function (item) {
+        return "\n            <div class=\"cor-dashboard-filter expandable\">\n                <h2 class=\"cor-dashboard-filter__title\">\n                    <button class=\"cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--".concat(filter.icon, "\" data-toggle=\"collapse\" data-expandtarget=\"").concat(filter.filterName, "\" aria-expanded=\"").concat(filter.expanded ? "true" : "false", "\" aria-controls=\"collapseExample\">\n                        ").concat(filter.name, "\n                    </button>\n                </h2>\n                <ul class=\"cor-dashboard-filter__list cor-dashboard-filter__list--").concat(filter.filterName, "\" id=\"").concat(filter.filterName, "\">\n                    ").concat(filter.items.map(function (item) {
           return "\n                        <li class=\"cor-dashboard-filter__list__item\">\n\n                            ".concat(item.name === "Personalised" ? "\n                                <div>\n                                    <label for=\"start\">Start date:</label>\n\n                                    <input type=\"date\" id=\"start\" name=\"trip-start\"\n                                    value=\"2018-07-22\"\n                                    min=\"2018-01-01\" max=\"2018-12-31\">\n                                </div>\n                                <div>\n                                    <label for=\"start\">End date:</label>\n\n                                    <input type=\"date\" id=\"start\" name=\"trip-start\"\n                                        value=\"2018-07-22\"\n                                        min=\"2018-01-01\" max=\"2018-12-31\">\n                                </div>\n                            " : "\n                            <a class=\"cor-dashboard-filter__list__item__link\" href=\"#\" data-filter=\"".concat(item.target, "\">\n                                ").concat(item.name, "\n                            </a>\n                            "), "\n\n\n                            ").concat(item.subitems ? "\n                            <ul>\n                                ".concat(item.subitems.map(function (item) {
             return "\n                                    <li><a class=\"cor-dashboard-filter__list__item__link\" href=\"#\" data-target=\"".concat(item.target, "\">").concat(item.name, "</a></li>\n                                ");
           }).join(''), " \n                            </ul>") : "", "\n                        </li>\n                    ");
@@ -1038,6 +1049,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     name: "Content Types",
     filterName: "contenttype",
     icon: "contenttypes",
+    expanded: true,
     items: [{
       name: "News",
       target: "news",
@@ -1218,7 +1230,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       value: function connectedCallback() {
         var _this3 = this;
 
-        // filters events
+        // already expanded elements
+        var collapsedElements = this.querySelectorAll('[aria-expanded=false]');
+        collapsedElements.forEach(function (collapsedElement) {
+          _this3.ExpandCollapse(collapsedElement.dataset.expandtarget);
+        }); // filters events
+
         this._triggers = this.querySelectorAll('[data-filter]');
 
         this._triggers.forEach(function (trigger) {
@@ -1232,7 +1249,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
         this._expandTriggers.forEach(function (trigger) {
           return trigger.addEventListener('click', function (e) {
-            return _this3.onClickOnExpandCollapse(e);
+            return _this3.ExpandCollapse(event.target.dataset.expandtarget);
           });
         });
       }
@@ -1259,12 +1276,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         }
       }
     }, {
-      key: "onClickOnExpandCollapse",
-      value: function onClickOnExpandCollapse(event) {
-        var expandCollapseTarget = document.querySelector("#".concat(event.target.dataset.expandtarget));
-        var parent = event.target.parentNode.parentNode;
-        console.log(this);
-        console.log("is collapsed?", this._collapsed);
+      key: "ExpandCollapse",
+      value: function ExpandCollapse(target) {
+        var expandCollapseTarget = document.querySelector("#".concat(target));
+        var parent = expandCollapseTarget.parentNode;
 
         if (!parent.classList.contains("js-collapsed")) {
           this.collapse(expandCollapseTarget);
@@ -1277,14 +1292,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "expand",
       value: function expand(target) {
-        console.log("expand");
         target.style.height = "";
         this._collapsed = false;
       }
     }, {
       key: "collapse",
       value: function collapse(target) {
-        console.log("collapse");
         target.style.height = 0;
         this._collapsed = true;
       }
@@ -1311,7 +1324,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return "\n          <li class=\"cor-dashboard__nav__item\">\n            <a class=\"cor-dashboard__nav-link cor-dashboard__nav-link--".concat(navitem.icon, "\" href=\"#\" data-target=\"").concat(navitem.target, "\">").concat(navitem.name, "</a>\n            \n            <!-- Sub menu -->\n            ").concat(navitem.subitems ? "\n              <ul>".concat(navitem.subitems.map(function (subitem) {
           return "\n                <li>\n                  <a class=\"cor-dashboard__nav-link\">".concat(subitem.name, "</a>\n                </li>");
         }).join(''), "\n              </ul>") : "", "\n            <!-- /Sub menu -->\n\n          </li>\n        ");
-      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n    \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->\n    ");
+      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n\n    <hr/>\n    <div class=\"cor-dahsboard-btncontainer\">\n      <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn disabled\">Apply selection</button>\n    </div>\n      \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->\n    \n    ");
     },
     css: function css() {
       return "\n\n    ";
@@ -1336,7 +1349,25 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
     _createClass(CorDashboardNav, [{
       key: "connectedCallback",
-      value: function connectedCallback() {}
+      value: function connectedCallback() {
+        var _this5 = this;
+
+        this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
+
+        this._resetTrigger.addEventListener("click", function (e) {
+          return _this5.rootResetAttributes(e);
+        });
+      }
+    }, {
+      key: "rootResetAttributes",
+      value: function rootResetAttributes() {
+        var type = "reset";
+        var text = "";
+        this.dispatchUpdate({
+          type: type,
+          text: text
+        });
+      }
     }]);
 
     return CorDashboardNav;
@@ -1364,14 +1395,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardCard, _Component3);
 
     function CorDashboardCard() {
-      var _this5;
+      var _this6;
 
       _classCallCheck(this, CorDashboardCard);
 
-      _this5 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardCard).call(this)); // this.attachShadow({ mode: 'open' });
+      _this6 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardCard).call(this)); // this.attachShadow({ mode: 'open' });
 
-      _this5.innerHTML = Template$2.render();
-      return _this5;
+      _this6.innerHTML = Template$2.render();
+      return _this6;
     }
 
     _createClass(CorDashboardCard, [{
@@ -1403,23 +1434,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
   var seedData = [{
     "label": "News",
+    "color": "rgb(32,142,183)",
     "value": 80,
     "link": "https://facebook.github.io/react/"
   }, {
     "label": "Events",
+    "color": "rgb(99,239,133)",
     "value": 100,
     "link": "https://redux.js.org/"
   }, {
     "label": "Opinions",
+    "color": "rgb(194,13,166)",
     "value": 25,
     "link": "https://vuejs.org/"
   }, {
     "label": "Studies",
+    "color": "rgb(16,237,220)",
     "value": 15,
     "link": "https://angularjs.org/"
   }, {
     "label": "Brochures",
     "value": 5,
+    "color": "rgb(66,51,166)",
     "link": "https://meteorhacks.com/meteor-js-web-framework-for-everyone"
   }];
 
@@ -1429,13 +1465,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDonutChart, _Component4);
 
     function CorDashboardDonutChart() {
-      var _this6;
+      var _this7;
 
       _classCallCheck(this, CorDashboardDonutChart);
 
-      _this6 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDonutChart).call(this));
-      _this6.innerHTML = Template$3.render();
-      return _this6;
+      _this7 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDonutChart).call(this));
+      _this7.innerHTML = Template$3.render();
+      return _this7;
     }
 
     _createClass(CorDashboardDonutChart, [{
@@ -1452,7 +1488,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "chart",
       value: function chart(chartData) {
-        var _this7 = this;
+        var _this8 = this;
 
         this.addTooltip();
         chartData.sort(function (a, b) {
@@ -1464,13 +1500,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var radius = Math.min(width, height) / 2;
 
         var updateChart = function updateChart(event) {
-          _this7.parentNode.setAttribute('view', event.data.label);
+          _this8.parentNode.setAttribute('view', event.data.label);
 
           tooltip.style.display = "none";
-        }; // Define arc colours
+        }; // Define arc ranges
 
-
-        var colour = d3.scaleOrdinal(d3.schemeCategory10); // Define arc ranges
 
         var arcText = d3.scaleOrdinal().range([0, width]); // Determine size of arcs
 
@@ -1488,8 +1522,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var g = svg.selectAll(".arc").data(pie(chartData)).enter().append("g").attr("class", "arc") // Make each arc clickable 
         .on("click", updateChart); // Append the path to each g
 
-        g.append("path").transition().attr("d", arc).attr("fill", function (d, i) {
-          return colour(i);
+        g.append("path").transition().attr("d", arc).attr("fill", function (d) {
+          return d.data.color;
         });
 
         function handleMouseOver(d, i) {
@@ -1515,8 +1549,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           return "#".concat(d.label);
         }).html(function (d) {
           return "<span>".concat(d.label, ":</span> <strong>").concat(d.value, "</strong>");
-        }).on("click", updateChart).append('span').style("background-color", function (d, i) {
-          return colour(i);
+        }).on("click", updateChart).append('span').style("background-color", function (d) {
+          return d.color;
         });
       }
     }]);
@@ -1546,13 +1580,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardBarChart, _Component5);
 
     function CorDashboardBarChart() {
-      var _this8;
+      var _this9;
 
       _classCallCheck(this, CorDashboardBarChart);
 
-      _this8 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardBarChart).call(this));
-      _this8.innerHTML = Template$4.render();
-      return _this8;
+      _this9 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardBarChart).call(this));
+      _this9.innerHTML = Template$4.render();
+      return _this9;
     }
 
     _createClass(CorDashboardBarChart, [{
@@ -1575,12 +1609,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var height = 200;
         var yScale = d3.scaleLinear().domain([0, d3.max(data, function (d) {
           return d.total;
-        })]).range([0, height]); // Creation of the chart
+        })]).range([0, height]); // Transitions
 
-        d3.select(target.querySelector(".chart")).attr('height', height).selectAll('div').data(data).enter().append('div').append('div').style('height', function (d) {
+        var t = d3.transition().duration(750).ease(d3.easeBackInOut); // Creation of the chart
+
+        d3.select(target.querySelector(".chart")).attr('height', height).selectAll('div').data(data).enter().append('div').append('div').transition(t).style('height', function (d) {
           return yScale(d.total) + "px";
-        }).append('span').text(function (d) {
-          return "".concat(d.label, " ").concat(d.total);
         }); // Creation of the list
 
         d3.select(this).append('ol').classed('js-cor-dashboard-barchart__list', true).selectAll(null).data(data).enter().append('li').append('a').attr('href', function (d) {
@@ -1603,15 +1637,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "\n            ".concat(this.css(), "\n            ").concat(this.html(chart, view), "\n        ");
     },
     html: function html(chart, view) {
-      console.log(chart, view);
-
       switch (chart) {
         case "barChart2":
           return "\n                    <cor-dashboard-bar-chart class=\"cor-dashboard-bar-chart\"></cor-dashboard-bar-chart>\n                ";
           break;
 
         case "barChart":
-          return "\n                <div class=\"cor-dashboard-bar-chart__header\">\n                    <h3>".concat(view, "</h3>\n                    <a class=\"cor-dashboard-chart__backbtn cor_button btn\" id=\"cor-dashboard-chart__backbtn\">Back</a>\n                </div>\n                <cor-dashboard-chart class=\"cor-dashboard-chart\" data-charttype=\"barChart2\"  data-data=\"[{\n                  &quot;label&quot;: &quot;BG&quot;,\n                  &quot;total&quot;: 50},{\n                  &quot;label&quot;: &quot;CS&quot;,\n                  &quot;total&quot;: 2},{\n                  &quot;label&quot;: &quot;DA&quot;,\n                  &quot;total&quot;: 7},{\n                  &quot;label&quot;: &quot;DE&quot;,\n                  &quot;total&quot;: 87},{\n                  &quot;label&quot;: &quot;EL&quot;,\n                  &quot;total&quot;: 24},{\n                  &quot;label&quot;: &quot;EN&quot;,\n                  &quot;total&quot;: 6},{\n                  &quot;label&quot;: &quot;ES&quot;,\n                  &quot;total&quot;: 78},{\n                  &quot;label&quot;: &quot;ET&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;FI&quot;,\n                  &quot;total&quot;: 5},{\n                  &quot;label&quot;: &quot;FR&quot;,\n                  &quot;total&quot;: 3},{\n                  &quot;label&quot;: &quot;GA&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;HR&quot;,\n                  &quot;total&quot;: 14},{\n                  &quot;label&quot;: &quot;HU&quot;,\n                  &quot;total&quot;: 3},{\n                  &quot;label&quot;: &quot;IT&quot;,\n                  &quot;total&quot;: 47},{\n                  &quot;label&quot;: &quot;LT&quot;,\n                  &quot;total&quot;: 75},{\n                  &quot;label&quot;: &quot;LV&quot;,\n                  &quot;total&quot;: 26},{\n                  &quot;label&quot;: &quot;MT&quot;,\n                  &quot;total&quot;: 65},{\n                  &quot;label&quot;: &quot;NL&quot;,\n                  &quot;total&quot;: 37},{\n                  &quot;label&quot;: &quot;PL&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;PT&quot;,\n                  &quot;total&quot;: 21},{\n                  &quot;label&quot;: &quot;RO&quot;,\n                  &quot;total&quot;: 48},{\n                  &quot;label&quot;: &quot;SK&quot;,\n                  &quot;total&quot;: 23},{\n                  &quot;label&quot;: &quot;SL&quot;,\n                  &quot;total&quot;: 16},{\n                  &quot;label&quot;: &quot;SV&quot;,\n                  &quot;total&quot;: 9}]\">\n              \n      \n          \n              \n                </cor-dashboard-chart>\n           \n                ");
+          return "\n                <div class=\"cor-dashboard-bar-chart__header\">\n                    <h3>".concat(view, "</h3>\n                    <a class=\"cor-dashboard-chart__backbtn cor_button--before cor_button btn\" id=\"cor-dashboard-chart__backbtn\">Back</a>\n                </div>\n                <cor-dashboard-chart class=\"cor-dashboard-chart\" data-charttype=\"barChart2\"  data-data=\"[{\n                  &quot;label&quot;: &quot;BG&quot;,\n                  &quot;total&quot;: 50},{\n                  &quot;label&quot;: &quot;CS&quot;,\n                  &quot;total&quot;: 2},{\n                  &quot;label&quot;: &quot;DA&quot;,\n                  &quot;total&quot;: 7},{\n                  &quot;label&quot;: &quot;DE&quot;,\n                  &quot;total&quot;: 87},{\n                  &quot;label&quot;: &quot;EL&quot;,\n                  &quot;total&quot;: 24},{\n                  &quot;label&quot;: &quot;EN&quot;,\n                  &quot;total&quot;: 6},{\n                  &quot;label&quot;: &quot;ES&quot;,\n                  &quot;total&quot;: 78},{\n                  &quot;label&quot;: &quot;ET&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;FI&quot;,\n                  &quot;total&quot;: 5},{\n                  &quot;label&quot;: &quot;FR&quot;,\n                  &quot;total&quot;: 3},{\n                  &quot;label&quot;: &quot;GA&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;HR&quot;,\n                  &quot;total&quot;: 14},{\n                  &quot;label&quot;: &quot;HU&quot;,\n                  &quot;total&quot;: 3},{\n                  &quot;label&quot;: &quot;IT&quot;,\n                  &quot;total&quot;: 47},{\n                  &quot;label&quot;: &quot;LT&quot;,\n                  &quot;total&quot;: 75},{\n                  &quot;label&quot;: &quot;LV&quot;,\n                  &quot;total&quot;: 26},{\n                  &quot;label&quot;: &quot;MT&quot;,\n                  &quot;total&quot;: 65},{\n                  &quot;label&quot;: &quot;NL&quot;,\n                  &quot;total&quot;: 37},{\n                  &quot;label&quot;: &quot;PL&quot;,\n                  &quot;total&quot;: 0},{\n                  &quot;label&quot;: &quot;PT&quot;,\n                  &quot;total&quot;: 21},{\n                  &quot;label&quot;: &quot;RO&quot;,\n                  &quot;total&quot;: 48},{\n                  &quot;label&quot;: &quot;SK&quot;,\n                  &quot;total&quot;: 23},{\n                  &quot;label&quot;: &quot;SL&quot;,\n                  &quot;total&quot;: 16},{\n                  &quot;label&quot;: &quot;SV&quot;,\n                  &quot;total&quot;: 9}]\">\n              \n      \n          \n              \n                </cor-dashboard-chart>\n           \n                ");
           break;
 
         default:
@@ -1629,15 +1661,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardChart, _Component6);
 
     function CorDashboardChart() {
-      var _this9;
+      var _this10;
 
       _classCallCheck(this, CorDashboardChart);
 
-      _this9 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardChart).call(this)); // Get the type of chart
+      _this10 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardChart).call(this)); // Get the type of chart
 
-      var typeOfChart = _this9.dataset.charttype;
-      _this9.innerHTML = Template$5.render(typeOfChart);
-      return _this9;
+      var typeOfChart = _this10.dataset.charttype;
+      _this10.innerHTML = Template$5.render(typeOfChart);
+      return _this10;
     }
 
     _createClass(CorDashboardChart, [{
@@ -1649,26 +1681,26 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "backBtn",
       value: function backBtn() {
-        var _this10 = this;
+        var _this11 = this;
 
         var btn = this.querySelector("#cor-dashboard-chart__backbtn");
         btn.addEventListener('click', function (ev) {
-          return _this10.resetState(ev);
+          return _this11.resetState(ev);
         });
       }
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this11 = this;
+        var _this12 = this;
 
         var view = "view";
 
         var update = function update() {
-          var views = _this11.getAttribute(view);
+          var views = _this12.getAttribute(view);
 
-          _this11.innerHTML = Template$5.render("barChart", [views]);
+          _this12.innerHTML = Template$5.render("barChart", [views]);
 
-          _this11.backBtn();
+          _this12.backBtn();
         };
 
         new MutationObserver(update).observe(this, {
@@ -1705,9 +1737,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "".concat(this.css(), "\n        ").concat(this.html(data));
     },
     html: function html(data) {
-      console.log(data);
       return "\n            ".concat(data.map(function (card) {
-        return "\n                <!-- Card item -->\n                <div class=\"cor-dashboard-card\" category=\"".concat(card.category, "\" size=\"").concat(card.size, "\">\n                    \n                    <!-- Title of the card -->\n                    <h2 class=\"cor-dashboard-card__title\">\n                        <span>").concat(card.title, "</span>\n                        <span class=\"cor-dashboard-card__title__total\">\n                            <span>").concat(card.total, "</span>\n                        </span>\n                    </h2>\n                    <!-- /Title of the card -->\n                    \n                    <!-- Content of the card -->\n                    <div class=\"cor-dashboard-card__body\">\n\n                        <!-- Cards with chart -->\n                        ").concat(card.itemdata ? "\n                            <div>\n        \n                                <cor-dashboard-chart class=\"cor-dashboard-chart\" \n                                    data-charttype=\"".concat(card.charttype, "\" \n                                    \n                                    data-data=\n                                '[").concat(createDataAttribute(card.itemdata), "]'>\n                                </cor-dashboard-chart>\n        \n                            </div>\n                            ") : "", "\n                        <!-- /Cards with chart -->\n\n                        <!-- Cards displaying categories -->\n                        ").concat(card.newscategories ? "\n                                ".concat(card.newscategories.map(function (el) {
+        return "\n                <!-- Card item -->\n                <div class=\"cor-dashboard-card\" category=\"".concat(card.category, "\" size=\"").concat(card.size, "\">\n                    \n                    <!-- Title of the card -->\n                    <h2 class=\"cor-dashboard-card__title\">\n                        <span>").concat(card.title, "</span>\n                        \n                        ").concat(card.total ? "\n                            <span class=\"cor-dashboard-card__title__total\">\n                                <span>".concat(card.total, "</span>\n                            </span>\n                        ") : "", "\n                        \n                    </h2>\n                    <!-- /Title of the card -->\n                    \n                    <!-- Content of the card -->\n                    <div class=\"cor-dashboard-card__body\">\n\n                        <!-- Cards with chart -->\n                        ").concat(card.itemdata ? "\n                            <div>\n        \n                                <cor-dashboard-chart class=\"cor-dashboard-chart\" \n                                    data-charttype=\"".concat(card.charttype, "\" \n                                    \n                                    data-data=\n                                '[").concat(createDataAttribute(card.itemdata), "]'>\n                                </cor-dashboard-chart>\n        \n                            </div>\n                            ") : "", "\n                        <!-- /Cards with chart -->\n\n                        <!-- Cards displaying categories -->\n                        ").concat(card.newscategories ? "\n                                ".concat(card.newscategories.map(function (el) {
           return "\n                                <p class=\"cor-dashboard-card__listing-item\">".concat(el.label, " <strong>").concat(el.total, "</strong></p>\n                                ");
         }).join(''), "\n                            ") : "", "\n                        <!-- /Cards displaying categories -->\n\n\n                        <!-- Cards displaying all the languages -->\n                        ").concat(card.cardtype === 'languageOverview' ? "\n                        \n                            \n                            <cor-dashboard-bar-chart class=\"cor-dashboard-bar-chart\" data-data='[".concat(createDataAttribute(card.languages), "]'></cor-dashboard-bar-chart>\n                            \n                            ") : "", "\n                        <!-- /Cards displaying all the languages -->\n\n\n                        <!-- Multilinguism card -->\n                        ").concat(card.cardtype === 'multilinguismOverview' ? "\n                            <div class=\"cor-dashboard-multilinguismTable\">\n                                \n                                \n                                <div>\n                                    <h2>Languages</h2>  \n                                    <ol>\n                                        ".concat(card.multilingualContent[0].translations.map(function (translation) {
           return translation.label === "EN" ? "<li class=\"cor-dashboard__multilinguismTable__en\"><a href=\"#\">".concat(translation.label, "</a></li>") : "<li><a href=\"#\">".concat(translation.label, "</a></li>");
@@ -1733,25 +1764,22 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardOverview, _Component7);
 
     function CorDashboardOverview() {
-      var _this12;
+      var _this13;
 
       _classCallCheck(this, CorDashboardOverview);
 
-      _this12 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardOverview).call(this)); // this.attachShadow({ mode: 'open' });
+      _this13 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardOverview).call(this)); // this.attachShadow({ mode: 'open' });
 
-      _this12.innerHTML = Template$6.render(_this12.globalData.DATA);
-      return _this12;
+      _this13.innerHTML = Template$6.render(_this13.globalData.DATA);
+      return _this13;
     }
 
     _createClass(CorDashboardOverview, [{
       key: "show",
       value: function show(filter) {
-        console.log("filter:", filter);
-
         if (filter === "") {
           this.innerHTML = Template$6.render(this.globalData.DATA);
         } else {
-          console.log("filtering on:", filter);
           this.innerHTML = Template$6.render(this.globalData.DATA.filter(function (el) {
             return el.category === filter;
           }));
@@ -1760,7 +1788,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this13 = this;
+        var _this14 = this;
 
         var root = this.root.root;
         /* Filter update */
@@ -1768,20 +1796,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var filter = "filter";
 
         var update = function update() {
-          console.log("Overview filtered on ".concat(filter));
-
-          _this13.show(root[filter]);
+          _this14.show(root[filter]);
         };
 
         new MutationObserver(update).observe(root, {
           attributes: true,
           attributeFilter: [filter]
         });
-      }
-    }, {
-      key: "chart",
-      value: function chart(data) {
-        console.log(data);
       }
     }]);
 
@@ -1813,13 +1834,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardLanguagesOverview, _Component8);
 
     function CorDashboardLanguagesOverview() {
-      var _this14;
+      var _this15;
 
       _classCallCheck(this, CorDashboardLanguagesOverview);
 
-      _this14 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardLanguagesOverview).call(this));
-      _this14.innerHTML = Template$7.render();
-      return _this14;
+      _this15 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardLanguagesOverview).call(this));
+      _this15.innerHTML = Template$7.render();
+      return _this15;
     }
 
     return CorDashboardLanguagesOverview;
@@ -1834,7 +1855,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "\n            ".concat(this.css(), "\n            ").concat(this.html(), "\n        ");
     },
     html: function html() {
-      return "\n            <article>\n                <p><slot name=\"contenttype\">News</slot></p>\n                <h1 class=\"cor-dashboard-article__title\">\n                    <slot name=\"title\">Title of the news</slot>\n                </h1>\n                <p class=\"cor-dashboard-article__details\">\n                    <slot name=\"date\"></slot> \n                     \n                    | \n                    <slot name=\"theme\"></slot> \n                    <slot name=\"label\" class=\"cor-dashboard-article__details__label\"></slot>\n                </p>\n                <p class=\"cor-dashboard-detailed-item__intro-container\">\n                    <slot name=\"picture\"></slot>\n                    <slot name=\"intro\"></slot>\n                </p>\n                \n                <ul class=\"cor-dashboard-detailed-item__languages-list\" slot=\"languages\">\n                    <slot class=\"cor-dashboard-detailed-item__languages-list__item\" name=\"language\">\n                        <li class=\"cor-dashboard-detailed-item__languages-list__item\">\n                            <cor-dashboard-languages-overview>\n                                <span slot=\"language-label\">lang</slot>\n                            <cor-dashboard-languages-overview>\n                        </li>\n                    </slot>\n                </ul>\n\n            </article>    \n        ";
+      return "\n            <article>\n                <p><slot name=\"contenttype\">News</slot></p>\n                <h1 class=\"cor-dashboard-article__title\">\n                    <slot name=\"title\">Title of the news</slot>\n                </h1>\n                <p class=\"cor-dashboard-article__details\">\n                    <slot name=\"date\"></slot> \n                    | \n                    <slot name=\"theme\"></slot> \n                    <slot name=\"label\" class=\"cor-dashboard-article__details__label\"></slot>\n                </p>\n                <p class=\"cor-dashboard-detailed-item__intro-container\">\n                    <slot name=\"picture\"></slot>\n                    <slot name=\"intro\"></slot>\n                </p>\n                \n                <ul class=\"cor-dashboard-detailed-item__languages-list\" slot=\"languages\">\n                    <slot class=\"cor-dashboard-detailed-item__languages-list__item\" name=\"language\">\n                        <li class=\"cor-dashboard-detailed-item__languages-list__item\">\n                            <cor-dashboard-languages-overview>\n                                <span slot=\"language-label\">lang</slot>\n                            <cor-dashboard-languages-overview>\n                        </li>\n                    </slot>\n                </ul>\n\n            </article>    \n        ";
     },
     css: function css() {
       return "\n\n        ";
@@ -1847,13 +1868,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDetailedItem, _Component9);
 
     function CorDashboardDetailedItem() {
-      var _this15;
+      var _this16;
 
       _classCallCheck(this, CorDashboardDetailedItem);
 
-      _this15 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailedItem).call(this));
-      _this15.innerHTML = Template$8.render();
-      return _this15;
+      _this16 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailedItem).call(this));
+      _this16.innerHTML = Template$8.render();
+      return _this16;
     }
 
     return CorDashboardDetailedItem;
@@ -1869,10 +1890,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     },
     html: function html(data) {
       return "\n            <p class=\"cor-dashboard-card__title cor-dashboard-detailed__title\">\n            ".concat(data.length, " News\n                <select>\n                    <option value=\"\">Sort by</option>\n                    <option value=\"date\">Date</option>\n                </select>\n            </p>\n\n            ").concat(data.map(function (item) {
-        return "\n\n            <article class=\"cor-dashboard-detailed-item\">\n\n                <p class=\"cor-dashboard-detailed-item__contenttype\">".concat(item.contenttype, "</p>\n                \n                <img src=\"").concat(item.picture, "\" />\n                \n                <div>\n                    \n                    <h1 class=\"cor-dashboard-article__title\">").concat(item.title, "</h1>\n                    <p class=\"cor-dashboard-article__details\">\n                        ").concat(item.label ? "<span class=\"cor-dashboard-article__label ".concat(item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : "", " ").concat(item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : "", " ").concat(item.label === "Success story" ? "cor-dashboard-article__label--successstory" : "", " ").concat(item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : "", "\">").concat(item.label, "</span>") : "", "\n                        <span>").concat(item.date, "</span>\n                        ").concat(item.theme ? "&nbsp;|&nbsp;<span>".concat(item.theme, "</span>") : "", "\n                    </p>\n                    <p class=\"cor-dashboard-detailed-item__intro-container\">\n                        <span >").concat(item.intro, "</span>\n                    </p>\n                    \n                </div>\n\n                <ul class=\"cor-dashboard-detailed-item__languages-list\">\n                    \n                        ").concat(item.languages.map(function (language) {
+        return "\n\n            <article class=\"cor-dashboard-detailed-item\" category=\"".concat(item.category, "\">\n\n                <p class=\"cor-dashboard-detailed-item__contenttype\">").concat(item.contenttype, "</p>\n                \n                <img src=\"").concat(item.picture, "\" />\n                \n                <div>\n                    \n                    <h1 class=\"cor-dashboard-article__title\">").concat(item.title, "</h1>\n                    <p class=\"cor-dashboard-article__details\">\n                        ").concat(item.label ? "<span class=\"cor-dashboard-article__label ".concat(item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : "", " ").concat(item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : "", " ").concat(item.label === "Success story" ? "cor-dashboard-article__label--successstory" : "", " ").concat(item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : "", "\">").concat(item.label, "</span>") : "", "\n                        <span>").concat(item.date, "</span>\n                        ").concat(item.theme ? "&nbsp;|&nbsp;<span>".concat(item.theme, "</span>") : "", "\n                    </p>\n                    <p class=\"cor-dashboard-article__extradetails\">\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                    </p>\n                    <p class=\"cor-dashboard-detailed-item__intro-container\">\n                        <span >").concat(item.intro, "</span>\n                    </p>\n                    \n                </div>\n\n                <ul class=\"cor-dashboard-detailed-item__languages-list\">\n                    \n                        ").concat(item.languages.map(function (language) {
           return "\n                            <li class=\"cor-dashboard-detailed-item__languages-list__item\">\n                            <div class=\"cor-dashboard-languages-overview\" data-status=\"".concat(language.status, "\">\n                                <span title=\"language\" data-lang=\"").concat(language.label, "\">").concat(language.label, "</span>\n                            </div>\n                            </li>\n                        ");
-        }).join(''), "\n                        \n                    </ul>\n\n            </article>\n              \n\n            \n              ");
-      }).join(''), "\n            \n        ");
+        }).join(''), "\n                        \n                    </ul>\n\n            </article>\n              \n            \n            \n              ");
+      }).join(''), "\n\n              \n            \n        ");
     },
     css: function css() {
       return "\n            <link rel=\"stylesheet\" href=\"src/components/cor-dashboard-detailed/cor-dashboard-detailed.css\" />\n            <link rel=\"stylesheet\" href=\"src/components/cor-dashboard-detailed-item/cor-dashboard-detailed-item.css\" />\n        ";
@@ -1885,13 +1906,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDetailed, _Component10);
 
     function CorDashboardDetailed() {
-      var _this16;
+      var _this17;
 
       _classCallCheck(this, CorDashboardDetailed);
 
-      _this16 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailed).call(this));
-      _this16.innerHTML = Template$9.render(_this16.globalData.ITEMS);
-      return _this16;
+      _this17 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailed).call(this));
+      _this17.innerHTML = Template$9.render(_this17.globalData.ITEMS);
+      return _this17;
     }
 
     return CorDashboardDetailed;
@@ -1919,25 +1940,25 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardTopnav, _Component11);
 
     function CorDashboardTopnav() {
-      var _this17;
+      var _this18;
 
       _classCallCheck(this, CorDashboardTopnav);
 
-      _this17 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardTopnav).call(this));
-      _this17.innerHTML = Template$a.render();
-      return _this17;
+      _this18 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardTopnav).call(this));
+      _this18.innerHTML = Template$a.render();
+      return _this18;
     }
 
     _createClass(CorDashboardTopnav, [{
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this18 = this;
+        var _this19 = this;
 
         this._triggers = this.querySelectorAll('[data-view]');
 
         this._triggers.forEach(function (trigger) {
           return trigger.addEventListener('click', function (e) {
-            return _this18.onClick(e);
+            return _this19.onClick(e);
           });
         });
       }
@@ -1963,18 +1984,86 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   var Template$b = {
+    render: function render(stroke, radius, circumference, normalizedRadius) {
+      return "\n            ".concat(this.html(stroke, radius, circumference, normalizedRadius), "\n        ");
+    },
+    html: function html(stroke, radius, circumference, normalizedRadius) {
+      return "\n            <div class=\"spinner\">\n                <div class=\"sk-fading-circle\">\n                    <div class=\"sk-circle1 sk-circle\"></div>\n                    <div class=\"sk-circle2 sk-circle\"></div>\n                    <div class=\"sk-circle3 sk-circle\"></div>\n                    <div class=\"sk-circle4 sk-circle\"></div>\n                    <div class=\"sk-circle5 sk-circle\"></div>\n                    <div class=\"sk-circle6 sk-circle\"></div>\n                    <div class=\"sk-circle7 sk-circle\"></div>\n                    <div class=\"sk-circle8 sk-circle\"></div>\n                    <div class=\"sk-circle9 sk-circle\"></div>\n                    <div class=\"sk-circle10 sk-circle\"></div>\n                    <div class=\"sk-circle11 sk-circle\"></div>\n                    <div class=\"sk-circle12 sk-circle\"></div>\n                </div>\n            </div>\n        ";
+    }
+  };
+
+  var CorDashboardSpinner =
+  /*#__PURE__*/
+  function (_Component12) {
+    _inherits(CorDashboardSpinner, _Component12);
+
+    function CorDashboardSpinner() {
+      _classCallCheck(this, CorDashboardSpinner);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardSpinner).call(this));
+    }
+
+    _createClass(CorDashboardSpinner, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        var stroke = this.getAttribute('stroke');
+        var radius = this.getAttribute('radius');
+        var normalizedRadius = radius - stroke * 2;
+        this._circumference = normalizedRadius * 2 * Math.PI;
+        this.innerHTML = Template$b.render(stroke, radius, this._circumference, normalizedRadius);
+      }
+    }]);
+
+    return CorDashboardSpinner;
+  }(Component);
+
+  if (!customElements.get('cor-dashboard-spinner')) {
+    customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
+  }
+
+  var Template$c = {
+    render: function render() {
+      return "\n            ".concat(this.html(), "\n        ");
+    },
+    html: function html() {
+      return "\n            <nav aria-label=\"Page navigation example\">\n                <ul class=\"pagination\">\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li>\n                </ul>\n            </nav>\n        ";
+    }
+  };
+
+  var CorDashboardPagination =
+  /*#__PURE__*/
+  function (_Component13) {
+    _inherits(CorDashboardPagination, _Component13);
+
+    function CorDashboardPagination() {
+      var _this20;
+
+      _classCallCheck(this, CorDashboardPagination);
+
+      _this20 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardPagination).call(this));
+      _this20.innerHTML = Template$c.render();
+      return _this20;
+    }
+
+    return CorDashboardPagination;
+  }(Component);
+
+  if (!customElements.get('cor-dashboard-pagination')) {
+    customElements.define('cor-dashboard-pagination', CorDashboardPagination);
+  }
+
+  var Template$d = {
     render: function render(view) {
       return "\n            ".concat(this.css(), "\n            ").concat(this.html(view), "\n        ");
     },
     html: function html(view) {
       switch (view) {
         case "detailed":
-          console.log("render detailed");
-          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                    </div>\n                ";
+          return "\n                    <div class=\"cor-dashboard-main\" style=\"opacity:0; transform: translateY(-200px);\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                        <cor-dashboard-pagination class=\"cor-dashboard-pagination\"></cor-dashboard-pagination>\n                    </div>\n                ";
           break;
 
         default:
-          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-overview class=\"cor-dashboard-overview\"></cor-dashboard-overview>\n                    </div>\n                ";
+          return "\n                    <div class=\"cor-dashboard-main\" style=\"opacity:0; transform: translateY(-200px);\">\n                        <cor-dashboard-spinner class=\"cor-dashboard-spinner\"></cor-dashboard-spinner>\n                        <cor-dashboard-overview class=\"cor-dashboard-overview\"></cor-dashboard-overview>\n                    </div>\n                ";
       }
     },
     css: function css() {
@@ -1984,49 +2073,33 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboardMain =
   /*#__PURE__*/
-  function (_Component12) {
-    _inherits(CorDashboardMain, _Component12);
+  function (_Component14) {
+    _inherits(CorDashboardMain, _Component14);
 
     function CorDashboardMain() {
-      var _this19;
+      var _this21;
 
       _classCallCheck(this, CorDashboardMain);
 
-      _this19 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardMain).call(this));
-      _this19.innerHTML = Template$b.render();
-      return _this19;
+      _this21 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardMain).call(this));
+      _this21.innerHTML = Template$d.render();
+
+      _this21.classList.add('one');
+
+      return _this21;
     }
 
     _createClass(CorDashboardMain, [{
       key: "show",
       value: function show(view, target) {
-        console.log("view:", view, "target:", target);
-        /*
-        console.log(`filter ${target}`, this.globalData.DATA.filter( el => el.category === target));
-        console.log("show:", target);
-        */
-        // 
-
-        this.innerHTML = Template$b.render(view, target);
-        /*
-        if(view & target) {
-            this.shadowRoot.innerHTML = Template.render(this.globalData.ITEMS);
-        };
-        */
-
-        /*
-        if(target) {
-            this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === target));
-        } else {
-            this.innerHTML = Template.render(this.globalData.DATA);
-        }
-        */
+        this.innerHTML = Template$d.render(view, target);
       }
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this20 = this;
+        var _this22 = this;
 
+        this.classList.add('two');
         var root = this.root.root;
         /* Filter update */
 
@@ -2034,7 +2107,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var view = "view";
 
         var update = function update() {
-          _this20.show(root.getAttribute(view), root.getAttribute(filter));
+          _this22.show(root.getAttribute(view), root.getAttribute(filter));
         };
 
         new MutationObserver(update).observe(root, {
@@ -2051,14 +2124,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     customElements.define('cor-dashboard-main', CorDashboardMain);
   }
 
-  var Template$c = {
+  var Template$e = {
     render: function render(filters) {
       return "\n            ".concat(this.html(filters), "\n        ");
     },
     html: function html(filters) {
+      console.log(filters);
       return "\n            Selected filters: <ul>\n                ".concat(filters ? filters.map(function (filter) {
         if (filter !== "") {
-          return "\n                            <li>\n                                ".concat(filter, " <svg width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M1.12556 0L12.381 11.8182L11.2554 13L1.98083e-05 1.18182L1.12556 0Z\" fill=\"#C4C4C4\"/>\n                                <path d=\"M12.381 1.18182L1.12554 13L0 11.8182L11.2554 1.72588e-06L12.381 1.18182Z\" fill=\"#C4C4C4\"/>\n                                </svg>\n                            </li>");
+          return "\n                            <li data-selectedFilter=\"".concat(filter, "\">\n                                ").concat(filter, " <svg width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M1.12556 0L12.381 11.8182L11.2554 13L1.98083e-05 1.18182L1.12556 0Z\" fill=\"#C4C4C4\"/>\n                                <path d=\"M12.381 1.18182L1.12554 13L0 11.8182L11.2554 1.72588e-06L12.381 1.18182Z\" fill=\"#C4C4C4\"/>\n                                </svg>\n                            </li>");
         }
       }).join('') : "", "\n            </ul>\n        ");
     }
@@ -2066,26 +2140,46 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboardSelectedFilters =
   /*#__PURE__*/
-  function (_Component13) {
-    _inherits(CorDashboardSelectedFilters, _Component13);
+  function (_Component15) {
+    _inherits(CorDashboardSelectedFilters, _Component15);
 
     function CorDashboardSelectedFilters() {
       _classCallCheck(this, CorDashboardSelectedFilters);
 
-      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardSelectedFilters).call(this)); // this.innerHTML = Template.render(filters);
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardSelectedFilters).call(this));
     }
 
     _createClass(CorDashboardSelectedFilters, [{
+      key: "updateRoot",
+      value: function updateRoot(element) {
+        var text = element.parentNode.dataset.selectedfilter;
+        var type = "filter";
+        console.log(text, type, this);
+        this.dispatchUpdate({
+          type: type,
+          text: text
+        });
+      }
+    }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this21 = this;
+        var _this23 = this;
 
         var root = this.root.root;
         var filter = "filter";
 
         var update = function update() {
-          var filters = root.getAttribute(filter);
-          _this21.innerHTML = Template$c.render([filters]);
+          var filters = root.getAttribute("filter");
+          console.log("filters:", filters);
+          _this23.innerHTML = Template$e.render(filters.split(' '));
+          var filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
+          console.log(filterBtns);
+
+          _toConsumableArray(filterBtns).map(function (filterBtn) {
+            return filterBtn.addEventListener('click', function (event) {
+              return _this23.updateRoot(event.target);
+            });
+          });
         };
 
         new MutationObserver(update).observe(root, {
@@ -2102,12 +2196,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     customElements.define('cor-dashboard-selected-filters', CorDashboardSelectedFilters);
   }
 
-  var Template$d = {
+  var Template$f = {
     render: function render(globalData) {
       return "".concat(this.css(), "\n    ").concat(this.html(globalData));
     },
     html: function html(globalData) {
-      return "\n    <div class=\"cor-dashboard\">\n      <nav class=\"cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow\">\n        <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">European Committee of the Regions</a>\n      </nav>\n      \n        <div class=\"row no-gutters\">\n        <!-- Sidebar -->\n        <aside class=\"col-4 col-md-3 col-xl-2 d-md-block bg-light sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav></cor-dashboard-nav>\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\" class=\"col-8 col-md-9 col-xl-10 ml-sm-auto\">\n          \n          <header class=\"cor-dashboard-header\">\n            <img src=\"public/images/CoRlogo.png\" />\n            <h1>Dashboard</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n        \n          <cor-dashboard-main></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      </div>\n      \n    </div>\n    ";
+      return "\n    <div class=\"cor-dashboard\">\n      <nav class=\"cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow\">\n        <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">European Committee of the Regions</a>\n      </nav>\n      \n        <!-- Sidebar -->\n        <aside class=\" bg-light sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav></cor-dashboard-nav>\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\">\n          \n          <header class=\"cor-dashboard-header\">\n            <img src=\"public/images/CoRlogo.png\" />\n            <h1>Dashboard</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n        \n          <cor-dashboard-main></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      \n    </div>\n    ";
     },
     css: function css() {
       return "\n      <link rel=\"stylesheet\" href=\"src/components/cor-dashboard/cor-dashboard.css\"/>\n    ";
@@ -2124,66 +2218,68 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboard =
   /*#__PURE__*/
-  function (_Component14) {
-    _inherits(CorDashboard, _Component14);
+  function (_Component16) {
+    _inherits(CorDashboard, _Component16);
 
     function CorDashboard() {
-      var _this22;
+      var _this24;
 
       _classCallCheck(this, CorDashboard);
 
-      _this22 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboard).call(this)); // this.attachShadow({ mode: 'open' });
+      _this24 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboard).call(this)); // this.attachShadow({ mode: 'open' });
 
-      _this22.innerHTML = Template$d.render(_this22.globalData.DATA);
+      _this24.innerHTML = Template$f.render(_this24.globalData.DATA);
 
-      _this22.addEventListener("state-update", _this22.store);
+      _this24.addEventListener("state-update", _this24.store);
 
-      return _this22;
+      return _this24;
     }
 
     _createClass(CorDashboard, [{
       key: "store",
       value: function store(_ref) {
         var detail = _ref.detail;
-        console.log("in store");
 
         switch (detail.type) {
           case "change-name":
-            console.log("in change name");
             this.update("user-name", detail.text);
             break;
 
           case "filter":
-            console.log("in filter");
-            this.update("filter", detail.text);
+            this.updateFilter("filter", detail.text);
             break;
 
           case "remove-filter":
-            console.log("in remove filter");
             this.remove("filter", detail.text);
             break;
 
           case "view":
-            console.log("in view");
-            this.update("view", detail.text);
+            this.updateView("view", detail.text);
             break;
+
+          case "reset":
+            this.setAttribute("view", "");
+            this.setAttribute("filter", "");
         }
       }
     }, {
-      key: "update",
-      value: function update(key, value) {
-        console.log("in update", key, value);
-
+      key: "updateView",
+      value: function updateView(key, value) {
         if (this[key]) {
           this[key] = value;
         } else {
           this.setAttribute(key, value);
         }
-
+      }
+    }, {
+      key: "updateFilter",
+      value: function updateFilter(key, value) {
+        // Check if attribute exists
         var valuesOfAttribute = this.getAttribute(key);
 
         if (valuesOfAttribute) {
-          valuesOfAttribute = valuesOfAttribute.split(' ');
+          // Get an array of values
+          valuesOfAttribute = valuesOfAttribute.split(' '); // Add the new value if it doesn't exist
 
           if (!valuesOfAttribute.includes(value)) {
             var newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value;
@@ -2194,7 +2290,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "remove",
       value: function remove(key, value) {
-        console.log("in remove", key, value);
         this[key] = value;
         var valuesOfAttribute = this.getAttribute(key);
         valuesOfAttribute = valuesOfAttribute.split(' ');
