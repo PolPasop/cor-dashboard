@@ -41,6 +41,62 @@
                     {
                         label: "Success stories",
                         total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
+                    },
+                    {
+                        label: "Success stories",
+                        total: 12
                     }
                 ]
             },
@@ -2001,7 +2057,9 @@
                 data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
             }
 
-            var height = 200;
+            console.log(this, this.offsetHeight);
+
+            var height = 300;
 
             var yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, d => {
@@ -2225,16 +2283,16 @@
                         <!-- Cards with chart -->
                         ${ (card.itemdata) ?                     
                             `
-                            <div>
+                            
         
-                                <cor-dashboard-chart class="cor-dashboard-chart" 
-                                    data-charttype="${card.charttype}" 
-                                    
-                                    data-data=
-                                '[${createDataAttribute(card.itemdata)}]'>
-                                </cor-dashboard-chart>
+                            <cor-dashboard-chart class="cor-dashboard-chart" 
+                                data-charttype="${card.charttype}" 
+                                
+                                data-data=
+                            '[${createDataAttribute(card.itemdata)}]'>
+                            </cor-dashboard-chart>
         
-                            </div>
+                            
                             ` 
                             : `` }
                         <!-- /Cards with chart -->
@@ -2834,7 +2892,7 @@
       </nav>
       
         <!-- Sidebar -->
-        <aside class=" bg-light sidebar cor-dashboard__sidebar">
+        <aside class="sidebar cor-dashboard__sidebar">
           <cor-dashboard-nav class="cor-dashboard-nav"></cor-dashboard-nav>
           
           <button class="cor-dashboard-slidebtn">

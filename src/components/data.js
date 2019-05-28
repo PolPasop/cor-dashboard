@@ -35,6 +35,62 @@ export default {
                 {
                     label: "Success stories",
                     total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
+                },
+                {
+                    label: "Success stories",
+                    total: 12
                 }
             ]
         },

@@ -2,6 +2,7 @@
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
+    margin-bottom: 1.5rem;
     min-width: 0;
 }
 
@@ -57,7 +58,7 @@ ol {
 .cor-dashboard-card li {
     display: flex;
     justify-content: space-between;
-    padding: .5rem;
+    padding: .1rem;
 }
 
 
@@ -148,4 +149,18 @@ ol {
 
 .cor-dashboard-card[category=brochures]:after {
     background: var(--cor-brochures);
+}
+
+/* full height for lang usage card */
+.cor-dashboard-card[category=lang-usage] {
+    display: flex;
+    flex-direction: column;
+}
+
+.cor-dashboard-card[category=lang-usage] .cor-dashboard-card__title {
+    width: 100%;
+}
+
+.cor-dashboard-card[category=lang-usage] .cor-dashboard-card__body {
+    flex: 1;
 }
