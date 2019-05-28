@@ -2,21 +2,19 @@
  * cor-dashboard
  */
  .cor-dashboard {
-  /*
   display: grid;
-  grid-template-columns: 280px 1fr;
-  */
+  grid-template: 280px 1fr;
   min-height: 100vh;
   position: relative;
  } 
 
  @media (min-width: 830px) {
   .cor-dashboard {
-    padding-left: var(--left-col-width);
+    grid-template: "leftcol main" / var(--left-col-width) 1fr;
   }
 
   .is-collapsed .cor-dashboard {
-    padding-left: 0;
+    grid-template: "leftcol main" / 0 1fr;
   }
  }
 
@@ -31,7 +29,7 @@
 @media (max-width: 830px) {
   .cor-dashboard-nav {
     background: #f8f9fa;
-    position: absolute;
+    /* position: absolute; */
     top: 201px;
     transform-origin: 0 0;
     will-change: transform,opacity;
@@ -57,6 +55,7 @@
     top: 0;
     bottom: 0;
     left: 0;
+    grid-area: leftcol;
     z-index: 100;
     padding: 48px 0 0;
     position: absolute;
@@ -80,7 +79,8 @@
 
 
 [role="main"] {
-    padding-top: 42px;
+  grid-area: main;  
+  padding-top: 42px;
 }
 /*
 .cor-dashboard {
