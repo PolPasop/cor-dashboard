@@ -30,7 +30,9 @@
 }
 
 @media screen and (min-width: 900px) {
-
+    .cor-dashboard-detailed-item__languages-list__item {
+        width: auto;
+    }
 }
 
 .cor-dashboard-detailed-item__contenttype {

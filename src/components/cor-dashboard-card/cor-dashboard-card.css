@@ -164,3 +164,7 @@ ol {
 .cor-dashboard-card[category=lang-usage] .cor-dashboard-card__body {
     flex: 1;
 }
+
+.cor-dashboard p.cor-dashboard-card__listing-item {
+    line-height: 1em;
+}
