@@ -17,6 +17,7 @@ export default class extends HTMLElement {
     }
 
     dispatchUpdate(detail) {
+        console.log("in dispatcher:", detail);
         const event = new CustomEvent("state-update", {
             detail,
             bubbles: true,

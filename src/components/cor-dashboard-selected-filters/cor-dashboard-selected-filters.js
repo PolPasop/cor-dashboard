@@ -8,9 +8,11 @@ export default class CorDashboardSelectedFilters extends Component {
 
     updateRoot(element) {
         
+
         const text = element.parentNode.dataset.selectedfilter;
-        const type = "filter";
-        console.log(text, type, this);
+        console.log("updateRoot", element.parentNode.dataset.selectedfilter);
+        const type = "remove-filter";
+        
         this.dispatchUpdate({type, text});
         
     }

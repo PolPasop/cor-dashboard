@@ -1341,6 +1341,7 @@
         }
 
         dispatchUpdate(detail) {
+            console.log("in dispatcher:", detail);
             const event = new CustomEvent("state-update", {
                 detail,
                 bubbles: true,
@@ -2829,9 +2830,11 @@
 
         updateRoot(element) {
             
+
             const text = element.parentNode.dataset.selectedfilter;
-            const type = "filter";
-            console.log(text, type, this);
+            console.log("updateRoot", element.parentNode.dataset.selectedfilter);
+            const type = "remove-filter";
+            
             this.dispatchUpdate({type, text});
             
         }
@@ -2997,6 +3000,9 @@
         valuesOfAttribute = valuesOfAttribute.filter(el => el !== value);
 
         this.setAttribute(key, valuesOfAttribute.join(' '));
+        
+        // remove active state on filters in left nav
+        document.querySelector(`[data-${key}=${value}]`).classList.remove('active');
 
       }
 
