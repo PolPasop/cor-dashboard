@@ -1,7 +1,19 @@
 .cor-dashboard-donut-chart {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-gap: 1.5rem;;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media (min-width: 830px) {
+    .cor-dashboard-donut-chart {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 1.5rem;;
+    }
+}
+
+.cor-dashboard-donut-chart svg {
+    margin: 0 auto;
 }
 
 polyline{
