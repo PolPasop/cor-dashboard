@@ -1,8 +1,10 @@
 /*
  * Nav
  */
-.cor-dashboard__nav {
-    display: inline-block;
+.cor-dashboard-nav {
+    box-shadow: 0 8px 11px rgba(0,0,0,.3);
+    display: block;
+    min-height: 100%;
 }
 
  

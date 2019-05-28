@@ -2,14 +2,11 @@
     background-color: #E6EDEC;
 }
 
-.cor-dashboard-overview {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1.5rem;
-}
-
 @media (min-width: 800px) {
     .cor-dashboard-overview {
+        display: grid;
+        grid-template: 1fr;
+        grid-gap: 1.5rem;
         grid-template-columns: repeat(3, 1fr);
     }
 }

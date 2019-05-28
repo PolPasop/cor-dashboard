@@ -10,6 +10,10 @@ body * {
     box-sizing: border-box;
 }
 
+p {
+    margin-bottom: .5rem;
+}
+
 .cor-dashboard-chart__backbtn {
     margin-bottom: 1.5rem;
 }

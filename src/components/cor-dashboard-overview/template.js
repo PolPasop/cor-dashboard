@@ -54,16 +54,16 @@ export default {
                         <!-- Cards with chart -->
                         ${ (card.itemdata) ?                     
                             `
-                            <div>
+                            
         
-                                <cor-dashboard-chart class="cor-dashboard-chart" 
-                                    data-charttype="${card.charttype}" 
-                                    
-                                    data-data=
-                                '[${createDataAttribute(card.itemdata)}]'>
-                                </cor-dashboard-chart>
+                            <cor-dashboard-chart class="cor-dashboard-chart" 
+                                data-charttype="${card.charttype}" 
+                                
+                                data-data=
+                            '[${createDataAttribute(card.itemdata)}]'>
+                            </cor-dashboard-chart>
         
-                            </div>
+                            
                             ` 
                             : `` }
                         <!-- /Cards with chart -->
