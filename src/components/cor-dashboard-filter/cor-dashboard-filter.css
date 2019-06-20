@@ -127,14 +127,14 @@ a{
 }
 
 /* Colors */
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter] {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter] {
     align-content: center;
     display: flex;
     position: relative;
     padding-left: .5rem;
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter]:before {
     background: linear-gradient(to right,  var(--cor-news) 0%,var(--cor-events) 25%,var(--cor-opinions) 50%,var(--cor-studies) 75%,var(--cor-brochures) 100%);
     left: 0;
     content: "";
@@ -144,23 +144,23 @@ a{
     height: 100%;
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=news]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter=news]:before {
     background: var(--cor-news);
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=events]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter=events]:before {
     background: var(--cor-events);
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=opinions]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter=opinions]:before {
     background: var(--cor-opinions);
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=studies]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter=studies]:before {
     background: var(--cor-studies);
 }
 
-.cor-dashboard-filter__list--contenttype .cor-dashboard-filter__list__item__link[data-filter=brochures]:before {
+.cor-dashboard-filter__list--contenttypes .cor-dashboard-filter__list__item__link[data-filter=brochures]:before {
     background: var(--cor-brochures);
 }
 

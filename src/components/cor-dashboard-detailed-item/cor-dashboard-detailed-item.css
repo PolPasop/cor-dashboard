@@ -11,8 +11,8 @@
     .cor-dashboard-detailed-item {
         display: grid;
         grid-column-gap: 1.5rem;
-        grid-template-columns: 100px 1fr;
         grid-template-columns: 1fr 200px;
+        grid-template-rows: 2fr;
     }
 }
 
@@ -91,7 +91,7 @@
 }
 
 .cor-dashboard-article__label {
-    background-color: var(--primary);
+    background-color: var(--cor-primary);
     font-size: 11px;
     margin-left: 0;
 }

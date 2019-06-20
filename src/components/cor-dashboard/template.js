@@ -55,7 +55,6 @@ export default {
 
   css() {
     return `
-      <link rel="stylesheet" href="src/components/cor-dashboard/cor-dashboard.css"/>
     `
   }
 }

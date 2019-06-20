@@ -8,6 +8,7 @@
     .cor-dashboard-donut-chart {
         display: grid;
         grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr;
         grid-gap: 1.5rem;;
     }
 }

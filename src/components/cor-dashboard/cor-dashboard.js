@@ -1424,7 +1424,7 @@
     const data = [
         {
             name: "Content Types",
-            filterName: "contenttype",
+            filterName: "contenttypes",
             icon: "contenttypes",
             expanded: true,
             items: [
@@ -2580,8 +2580,7 @@
 
         css() {
             return `
-            <link rel="stylesheet" href="src/components/cor-dashboard-detailed/cor-dashboard-detailed.css" />
-            <link rel="stylesheet" href="src/components/cor-dashboard-detailed-item/cor-dashboard-detailed-item.css" />
+            
         `
         }
     };
@@ -2734,7 +2733,7 @@
             switch(view) {
                 case "detailed":
                     return `
-                    <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                    <div class="cor-dashboard-main">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
                         <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
                     </div>
@@ -2742,7 +2741,7 @@
                     break;
                 case "overview":
                     return `
-                <div class="cor-dashboard-main" style="opacity:0; transform: translateY(-200px);">
+                <div class="cor-dashboard-main">
                     <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
                 </div>
                 `;
@@ -2758,7 +2757,6 @@
 
         css() {
             return `
-            <link rel="stylesheet" href="src/components/cor-dashboard-main/cor-dashboard-main.css" />
         `
         }
     };
@@ -2924,7 +2922,6 @@
 
       css() {
         return `
-      <link rel="stylesheet" href="src/components/cor-dashboard/cor-dashboard.css"/>
     `
       }
     };

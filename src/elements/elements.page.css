@@ -18,6 +18,10 @@ p {
     margin-bottom: 1.5rem;
 }
 
+button:focus {
+    outline: 0;
+}
+
 .btn {
 	display: inline-block;
 	font-weight: 400;

@@ -11,8 +11,14 @@
   <link rel="stylesheet" href="src/corev15.css" />
   <link rel="stylesheet" href="src/bootstrap.min.css">
   
-  <link rel="stylesheet" href="src/style.css" />
+  <link rel="stylesheet" href="public/stylesheets/style.css" />
+  <!-- <link rel="stylesheet" href="src/style.css" /> -->
+
+  <!-- load webcomponents bundle, which includes all the necessary polyfills -->
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@%5E2/webcomponents-bundle.js"></script>
+
   <script type="module" src="src/components/cor-dashboard/cor-dashboard.js"></script>
+  <script nomodule src="src/components/cor-dashboard/cor-dashboard.build.js"></script>
   
 </head>
 <body>

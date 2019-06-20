@@ -9,11 +9,11 @@
  @media (min-width: 830px) {
   .cor-dashboard {
     display: grid;
-    grid-template: "leftcol main" / var(--left-col-width) 1fr;
+    grid-template: "sidebar main" / var(--sidebar-width) 1fr;
   }
 
   .is-collapsed .cor-dashboard {
-    grid-template: "leftcol main" / 0 1fr;
+    grid-template: "sidebar main" / 0 1fr;
   }
  }
 
@@ -61,16 +61,16 @@
     top: 0;
     bottom: 0;
     left: 0;
-    grid-area: leftcol;
+    grid-area: sidebar;
     z-index: 100;
     padding: 48px 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
     transition: transform .2s cubic-bezier(0.38, 0.01, 0.09, 0.98);
-    width: var(--left-col-width);
+    width: var(--sidebar-width);
   }
 
   .is-collapsed .cor-dashboard .sidebar {
-    transform: translateX(calc(var(--left-col-width) * -1));
+    transform: translateX(calc(var(--sidebar-width) * -1));
   }
 }
 

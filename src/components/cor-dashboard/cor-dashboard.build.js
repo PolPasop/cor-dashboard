@@ -67,6 +67,48 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }, {
         label: "Success stories",
         total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
+      }, {
+        label: "Success stories",
+        total: 12
       }]
     }, {
       title: "Lang usage",
@@ -1216,31 +1258,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardFilter, _Component);
 
     function CorDashboardFilter() {
-      var _this2;
-
       _classCallCheck(this, CorDashboardFilter);
 
-      _this2 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardFilter).call(this));
-      _this2.innerHTML = Template.render(data);
-      return _this2;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardFilter).call(this));
     }
 
     _createClass(CorDashboardFilter, [{
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this3 = this;
+        var _this2 = this;
 
-        // already expanded elements
+        this.innerHTML = Template.render(data); // already expanded elements
+
         var collapsedElements = this.querySelectorAll('[aria-expanded=false]');
         collapsedElements.forEach(function (collapsedElement) {
-          _this3.ExpandCollapse(collapsedElement.dataset.expandtarget);
+          _this2.ExpandCollapse(collapsedElement.dataset.expandtarget);
         }); // filters events
 
         this._triggers = this.querySelectorAll('[data-filter]');
 
         this._triggers.forEach(function (trigger) {
           return trigger.addEventListener('click', function (e) {
-            return _this3.onClick(e);
+            return _this2.onClick(e);
           });
         }); // open close events
 
@@ -1249,7 +1288,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
         this._expandTriggers.forEach(function (trigger) {
           return trigger.addEventListener('click', function (e) {
-            return _this3.ExpandCollapse(event.target.dataset.expandtarget);
+            return _this2.ExpandCollapse(event.target.dataset.expandtarget);
           });
         });
       }
@@ -1324,7 +1363,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return "\n          <li class=\"cor-dashboard__nav__item\">\n            <a class=\"cor-dashboard__nav-link cor-dashboard__nav-link--".concat(navitem.icon, "\" href=\"#\" data-target=\"").concat(navitem.target, "\">").concat(navitem.name, "</a>\n            \n            <!-- Sub menu -->\n            ").concat(navitem.subitems ? "\n              <ul>".concat(navitem.subitems.map(function (subitem) {
           return "\n                <li>\n                  <a class=\"cor-dashboard__nav-link\">".concat(subitem.name, "</a>\n                </li>");
         }).join(''), "\n              </ul>") : "", "\n            <!-- /Sub menu -->\n\n          </li>\n        ");
-      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n\n    <hr/>\n    <div class=\"cor-dahsboard-btncontainer\">\n      <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn disabled\">Apply selection</button>\n    </div>\n      \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->\n    \n    ");
+      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n\n    <hr/>\n    <div class=\"cor-dahsboard-btncontainer\">\n      <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn disabled\">Apply selection</button>\n    </div>\n      \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->    \n    ");
     },
     css: function css() {
       return "\n\n    ";
@@ -1337,26 +1376,31 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardNav, _Component2);
 
     function CorDashboardNav() {
-      var _this4;
-
       _classCallCheck(this, CorDashboardNav);
 
-      _this4 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardNav).call(this)); // this.attachShadow({ mode: 'open' });
-
-      _this4.innerHTML = Template$1.render();
-      return _this4;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardNav).call(this)); // this.attachShadow({ mode: 'open' });
     }
 
     _createClass(CorDashboardNav, [{
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this5 = this;
+        var _this3 = this;
 
+        this.innerHTML = Template$1.render();
         this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
 
         this._resetTrigger.addEventListener("click", function (e) {
-          return _this5.rootResetAttributes(e);
+          return _this3.rootResetAttributes(e);
         });
+
+        document.querySelector('.cor-dashboard-slidebtn').addEventListener('click', function (event) {
+          return _this3.clickOnButton();
+        });
+      }
+    }, {
+      key: "clickOnButton",
+      value: function clickOnButton() {
+        document.querySelector('body').classList.toggle('is-collapsed');
       }
     }, {
       key: "rootResetAttributes",
@@ -1395,19 +1439,16 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardCard, _Component3);
 
     function CorDashboardCard() {
-      var _this6;
-
       _classCallCheck(this, CorDashboardCard);
 
-      _this6 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardCard).call(this)); // this.attachShadow({ mode: 'open' });
-
-      _this6.innerHTML = Template$2.render();
-      return _this6;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardCard).call(this)); // this.attachShadow({ mode: 'open' });
     }
 
     _createClass(CorDashboardCard, [{
       key: "connectedCallback",
       value: function connectedCallback() {
+        this.innerHTML = Template$2.render();
+
         if (this.querySelector("#donut-chart")) {
           this.chart();
         }
@@ -1465,18 +1506,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDonutChart, _Component4);
 
     function CorDashboardDonutChart() {
-      var _this7;
-
       _classCallCheck(this, CorDashboardDonutChart);
 
-      _this7 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDonutChart).call(this));
-      _this7.innerHTML = Template$3.render();
-      return _this7;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDonutChart).call(this));
     }
 
     _createClass(CorDashboardDonutChart, [{
       key: "connectedCallback",
       value: function connectedCallback() {
+        this.innerHTML = Template$3.render();
         this.chart(seedData);
       }
     }, {
@@ -1488,7 +1526,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "chart",
       value: function chart(chartData) {
-        var _this8 = this;
+        var _this4 = this;
 
         this.addTooltip();
         chartData.sort(function (a, b) {
@@ -1500,7 +1538,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var radius = Math.min(width, height) / 2;
 
         var updateChart = function updateChart(event) {
-          _this8.parentNode.setAttribute('view', event.data.label);
+          _this4.parentNode.setAttribute('view', event.data.label);
 
           tooltip.style.display = "none";
         }; // Define arc ranges
@@ -1580,18 +1618,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardBarChart, _Component5);
 
     function CorDashboardBarChart() {
-      var _this9;
-
       _classCallCheck(this, CorDashboardBarChart);
 
-      _this9 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardBarChart).call(this));
-      _this9.innerHTML = Template$4.render();
-      return _this9;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardBarChart).call(this));
     }
 
     _createClass(CorDashboardBarChart, [{
       key: "connectedCallback",
       value: function connectedCallback() {
+        this.innerHTML = Template$4.render();
         var data = this.parentNode.getAttribute("data-data");
         this.chart(JSON.parse(data), this);
         this.classList.add('visible');
@@ -1661,15 +1696,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardChart, _Component6);
 
     function CorDashboardChart() {
-      var _this10;
-
       _classCallCheck(this, CorDashboardChart);
 
-      _this10 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardChart).call(this)); // Get the type of chart
-
-      var typeOfChart = _this10.dataset.charttype;
-      _this10.innerHTML = Template$5.render(typeOfChart);
-      return _this10;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardChart).call(this));
     }
 
     _createClass(CorDashboardChart, [{
@@ -1681,26 +1710,29 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "backBtn",
       value: function backBtn() {
-        var _this11 = this;
+        var _this5 = this;
 
         var btn = this.querySelector("#cor-dashboard-chart__backbtn");
         btn.addEventListener('click', function (ev) {
-          return _this11.resetState(ev);
+          return _this5.resetState(ev);
         });
       }
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this12 = this;
+        var _this6 = this;
 
+        // Get the type of chart
+        var typeOfChart = this.dataset.charttype;
+        this.innerHTML = Template$5.render(typeOfChart);
         var view = "view";
 
         var update = function update() {
-          var views = _this12.getAttribute(view);
+          var views = _this6.getAttribute(view);
 
-          _this12.innerHTML = Template$5.render("barChart", [views]);
+          _this6.innerHTML = Template$5.render("barChart", [views]);
 
-          _this12.backBtn();
+          _this6.backBtn();
         };
 
         new MutationObserver(update).observe(this, {
@@ -1738,7 +1770,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     },
     html: function html(data) {
       return "\n            ".concat(data.map(function (card) {
-        return "\n                <!-- Card item -->\n                <div class=\"cor-dashboard-card\" category=\"".concat(card.category, "\" size=\"").concat(card.size, "\">\n                    \n                    <!-- Title of the card -->\n                    <h2 class=\"cor-dashboard-card__title\">\n                        <span>").concat(card.title, "</span>\n                        \n                        ").concat(card.total ? "\n                            <span class=\"cor-dashboard-card__title__total\">\n                                <span>".concat(card.total, "</span>\n                            </span>\n                        ") : "", "\n                        \n                    </h2>\n                    <!-- /Title of the card -->\n                    \n                    <!-- Content of the card -->\n                    <div class=\"cor-dashboard-card__body\">\n\n                        <!-- Cards with chart -->\n                        ").concat(card.itemdata ? "\n                            <div>\n        \n                                <cor-dashboard-chart class=\"cor-dashboard-chart\" \n                                    data-charttype=\"".concat(card.charttype, "\" \n                                    \n                                    data-data=\n                                '[").concat(createDataAttribute(card.itemdata), "]'>\n                                </cor-dashboard-chart>\n        \n                            </div>\n                            ") : "", "\n                        <!-- /Cards with chart -->\n\n                        <!-- Cards displaying categories -->\n                        ").concat(card.newscategories ? "\n                                ".concat(card.newscategories.map(function (el) {
+        return "\n                <!-- Card item -->\n                <div class=\"cor-dashboard-card\" category=\"".concat(card.category, "\" size=\"").concat(card.size, "\">\n                    \n                    <!-- Title of the card -->\n                    <h2 class=\"cor-dashboard-card__title\">\n                        <span>").concat(card.title, "</span>\n                        \n                        ").concat(card.total ? "\n                            <span class=\"cor-dashboard-card__title__total\">\n                                <span>".concat(card.total, "</span>\n                            </span>\n                        ") : "", "\n                        \n                    </h2>\n                    <!-- /Title of the card -->\n                    \n                    <!-- Content of the card -->\n                    <div class=\"cor-dashboard-card__body\">\n\n                        <!-- Cards with chart -->\n                        ").concat(card.itemdata ? "\n                            \n        \n                            <cor-dashboard-chart class=\"cor-dashboard-chart\" \n                                data-charttype=\"".concat(card.charttype, "\" \n                                \n                                data-data=\n                            '[").concat(createDataAttribute(card.itemdata), "]'>\n                            </cor-dashboard-chart>\n        \n                            \n                            ") : "", "\n                        <!-- /Cards with chart -->\n\n                        <!-- Cards displaying categories -->\n                        ").concat(card.newscategories ? "\n                                ".concat(card.newscategories.map(function (el) {
           return "\n                                <p class=\"cor-dashboard-card__listing-item\">".concat(el.label, " <strong>").concat(el.total, "</strong></p>\n                                ");
         }).join(''), "\n                            ") : "", "\n                        <!-- /Cards displaying categories -->\n\n\n                        <!-- Cards displaying all the languages -->\n                        ").concat(card.cardtype === 'languageOverview' ? "\n                        \n                            \n                            <cor-dashboard-bar-chart class=\"cor-dashboard-bar-chart\" data-data='[".concat(createDataAttribute(card.languages), "]'></cor-dashboard-bar-chart>\n                            \n                            ") : "", "\n                        <!-- /Cards displaying all the languages -->\n\n\n                        <!-- Multilinguism card -->\n                        ").concat(card.cardtype === 'multilinguismOverview' ? "\n                            <div class=\"cor-dashboard-multilinguismTable\">\n                                \n                                \n                                <div>\n                                    <h2>Languages</h2>  \n                                    <ol>\n                                        ".concat(card.multilingualContent[0].translations.map(function (translation) {
           return translation.label === "EN" ? "<li class=\"cor-dashboard__multilinguismTable__en\"><a href=\"#\">".concat(translation.label, "</a></li>") : "<li><a href=\"#\">".concat(translation.label, "</a></li>");
@@ -1764,39 +1796,36 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardOverview, _Component7);
 
     function CorDashboardOverview() {
-      var _this13;
-
       _classCallCheck(this, CorDashboardOverview);
 
-      _this13 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardOverview).call(this)); // this.attachShadow({ mode: 'open' });
-
-      _this13.innerHTML = Template$6.render(_this13.globalData.DATA);
-      return _this13;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardOverview).call(this)); // this.attachShadow({ mode: 'open' });
     }
 
     _createClass(CorDashboardOverview, [{
       key: "show",
       value: function show(filter) {
-        if (filter === "") {
+        if (filter[0] === "") {
+          /* If empty */
           this.innerHTML = Template$6.render(this.globalData.DATA);
         } else {
           this.innerHTML = Template$6.render(this.globalData.DATA.filter(function (el) {
-            return el.category === filter;
+            return filter.includes(el.category);
           }));
         }
       }
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this14 = this;
+        var _this7 = this;
 
+        this.innerHTML = Template$6.render(this.globalData.DATA);
         var root = this.root.root;
         /* Filter update */
 
         var filter = "filter";
 
         var update = function update() {
-          _this14.show(root[filter]);
+          _this7.show(root.getAttribute(filter).split(' '));
         };
 
         new MutationObserver(update).observe(root, {
@@ -1834,14 +1863,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardLanguagesOverview, _Component8);
 
     function CorDashboardLanguagesOverview() {
-      var _this15;
-
       _classCallCheck(this, CorDashboardLanguagesOverview);
 
-      _this15 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardLanguagesOverview).call(this));
-      _this15.innerHTML = Template$7.render();
-      return _this15;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardLanguagesOverview).call(this));
     }
+
+    _createClass(CorDashboardLanguagesOverview, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$7.render();
+      }
+    }]);
 
     return CorDashboardLanguagesOverview;
   }(Component);
@@ -1868,14 +1900,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDetailedItem, _Component9);
 
     function CorDashboardDetailedItem() {
-      var _this16;
-
       _classCallCheck(this, CorDashboardDetailedItem);
 
-      _this16 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailedItem).call(this));
-      _this16.innerHTML = Template$8.render();
-      return _this16;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailedItem).call(this));
     }
+
+    _createClass(CorDashboardDetailedItem, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$8.render();
+      }
+    }]);
 
     return CorDashboardDetailedItem;
   }(Component);
@@ -1896,7 +1931,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }).join(''), "\n\n              \n            \n        ");
     },
     css: function css() {
-      return "\n            <link rel=\"stylesheet\" href=\"src/components/cor-dashboard-detailed/cor-dashboard-detailed.css\" />\n            <link rel=\"stylesheet\" href=\"src/components/cor-dashboard-detailed-item/cor-dashboard-detailed-item.css\" />\n        ";
+      return "\n            \n        ";
     }
   };
 
@@ -1906,14 +1941,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardDetailed, _Component10);
 
     function CorDashboardDetailed() {
-      var _this17;
-
       _classCallCheck(this, CorDashboardDetailed);
 
-      _this17 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailed).call(this));
-      _this17.innerHTML = Template$9.render(_this17.globalData.ITEMS);
-      return _this17;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDetailed).call(this));
     }
+
+    _createClass(CorDashboardDetailed, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$9.render(this.globalData.ITEMS);
+      }
+    }]);
 
     return CorDashboardDetailed;
   }(Component);
@@ -1940,25 +1978,22 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardTopnav, _Component11);
 
     function CorDashboardTopnav() {
-      var _this18;
-
       _classCallCheck(this, CorDashboardTopnav);
 
-      _this18 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardTopnav).call(this));
-      _this18.innerHTML = Template$a.render();
-      return _this18;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardTopnav).call(this));
     }
 
     _createClass(CorDashboardTopnav, [{
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this19 = this;
+        var _this8 = this;
 
+        this.innerHTML = Template$a.render();
         this._triggers = this.querySelectorAll('[data-view]');
 
         this._triggers.forEach(function (trigger) {
           return trigger.addEventListener('click', function (e) {
-            return _this19.onClick(e);
+            return _this8.onClick(e);
           });
         });
       }
@@ -1988,7 +2023,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "\n            ".concat(this.html(stroke, radius, circumference, normalizedRadius), "\n        ");
     },
     html: function html(stroke, radius, circumference, normalizedRadius) {
-      return "\n            <div class=\"spinner\">\n                <div class=\"sk-fading-circle\">\n                    <div class=\"sk-circle1 sk-circle\"></div>\n                    <div class=\"sk-circle2 sk-circle\"></div>\n                    <div class=\"sk-circle3 sk-circle\"></div>\n                    <div class=\"sk-circle4 sk-circle\"></div>\n                    <div class=\"sk-circle5 sk-circle\"></div>\n                    <div class=\"sk-circle6 sk-circle\"></div>\n                    <div class=\"sk-circle7 sk-circle\"></div>\n                    <div class=\"sk-circle8 sk-circle\"></div>\n                    <div class=\"sk-circle9 sk-circle\"></div>\n                    <div class=\"sk-circle10 sk-circle\"></div>\n                    <div class=\"sk-circle11 sk-circle\"></div>\n                    <div class=\"sk-circle12 sk-circle\"></div>\n                </div>\n            </div>\n        ";
+      return "\n            <div class=\"cor-dashboard-spinning-loader\"></div>\n        ";
     }
   };
 
@@ -2036,14 +2071,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardPagination, _Component13);
 
     function CorDashboardPagination() {
-      var _this20;
-
       _classCallCheck(this, CorDashboardPagination);
 
-      _this20 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardPagination).call(this));
-      _this20.innerHTML = Template$c.render();
-      return _this20;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardPagination).call(this));
     }
+
+    _createClass(CorDashboardPagination, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$c.render();
+      }
+    }]);
 
     return CorDashboardPagination;
   }(Component);
@@ -2059,15 +2097,19 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     html: function html(view) {
       switch (view) {
         case "detailed":
-          return "\n                    <div class=\"cor-dashboard-main\" style=\"opacity:0; transform: translateY(-200px);\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                        <cor-dashboard-pagination class=\"cor-dashboard-pagination\"></cor-dashboard-pagination>\n                    </div>\n                ";
+          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                        <cor-dashboard-pagination class=\"cor-dashboard-pagination\"></cor-dashboard-pagination>\n                    </div>\n                ";
+          break;
+
+        case "overview":
+          return "\n                <div class=\"cor-dashboard-main\">\n                    <cor-dashboard-overview class=\"cor-dashboard-overview\"></cor-dashboard-overview>\n                </div>\n                ";
           break;
 
         default:
-          return "\n                    <div class=\"cor-dashboard-main\" style=\"opacity:0; transform: translateY(-200px);\">\n                        <cor-dashboard-spinner class=\"cor-dashboard-spinner\"></cor-dashboard-spinner>\n                        <cor-dashboard-overview class=\"cor-dashboard-overview\"></cor-dashboard-overview>\n                    </div>\n                ";
+          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-spinner class=\"cor-dashboard-spinner\"></cor-dashboard-spinner>\n                    </div>\n                ";
       }
     },
     css: function css() {
-      return "\n            <link rel=\"stylesheet\" href=\"src/components/cor-dashboard-main/cor-dashboard-main.css\" />\n        ";
+      return "\n        ";
     }
   };
 
@@ -2077,16 +2119,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboardMain, _Component14);
 
     function CorDashboardMain() {
-      var _this21;
-
       _classCallCheck(this, CorDashboardMain);
 
-      _this21 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardMain).call(this));
-      _this21.innerHTML = Template$d.render();
-
-      _this21.classList.add('one');
-
-      return _this21;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardMain).call(this));
     }
 
     _createClass(CorDashboardMain, [{
@@ -2097,9 +2132,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this22 = this;
+        var _this9 = this;
 
-        this.classList.add('two');
+        this.innerHTML = Template$d.render();
+        this.classList.add('one');
         var root = this.root.root;
         /* Filter update */
 
@@ -2107,13 +2143,24 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var view = "view";
 
         var update = function update() {
-          _this22.show(root.getAttribute(view), root.getAttribute(filter));
+          _this9.show(root.getAttribute(view), root.getAttribute(filter));
         };
 
         new MutationObserver(update).observe(root, {
           attributes: true,
           attributeFilter: [view]
         });
+        /* Remove spinner */
+
+        /*
+        setTimeout(function(){
+            this.innerHTML = Template.render("overview");
+        }, 1000);
+        */
+
+        setTimeout(function () {
+          _this9.innerHTML = Template$d.render("overview");
+        }, 1000);
       }
     }]);
 
@@ -2129,7 +2176,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "\n            ".concat(this.html(filters), "\n        ");
     },
     html: function html(filters) {
-      console.log(filters);
       return "\n            Selected filters: <ul>\n                ".concat(filters ? filters.map(function (filter) {
         if (filter !== "") {
           return "\n                            <li data-selectedFilter=\"".concat(filter, "\">\n                                ").concat(filter, " <svg width=\"13\" height=\"13\" viewBox=\"0 0 13 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M1.12556 0L12.381 11.8182L11.2554 13L1.98083e-05 1.18182L1.12556 0Z\" fill=\"#C4C4C4\"/>\n                                <path d=\"M12.381 1.18182L1.12554 13L0 11.8182L11.2554 1.72588e-06L12.381 1.18182Z\" fill=\"#C4C4C4\"/>\n                                </svg>\n                            </li>");
@@ -2153,8 +2199,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       key: "updateRoot",
       value: function updateRoot(element) {
         var text = element.parentNode.dataset.selectedfilter;
-        var type = "filter";
-        console.log(text, type, this);
+        var type = "remove-filter";
         this.dispatchUpdate({
           type: type,
           text: text
@@ -2163,21 +2208,25 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }, {
       key: "connectedCallback",
       value: function connectedCallback() {
-        var _this23 = this;
+        var _this10 = this;
 
         var root = this.root.root;
         var filter = "filter";
 
         var update = function update() {
           var filters = root.getAttribute("filter");
-          console.log("filters:", filters);
-          _this23.innerHTML = Template$e.render(filters.split(' '));
+
+          if (filters !== "") {
+            _this10.innerHTML = Template$e.render(filters.split(' '));
+          } else {
+            _this10.innerHTML = "";
+          }
+
           var filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
-          console.log(filterBtns);
 
           _toConsumableArray(filterBtns).map(function (filterBtn) {
             return filterBtn.addEventListener('click', function (event) {
-              return _this23.updateRoot(event.target);
+              return _this10.updateRoot(event.target);
             });
           });
         };
@@ -2201,10 +2250,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return "".concat(this.css(), "\n    ").concat(this.html(globalData));
     },
     html: function html(globalData) {
-      return "\n    <div class=\"cor-dashboard\">\n      <nav class=\"cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow\">\n        <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">European Committee of the Regions</a>\n      </nav>\n      \n        <!-- Sidebar -->\n        <aside class=\" bg-light sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav></cor-dashboard-nav>\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\">\n          \n          <header class=\"cor-dashboard-header\">\n            <img src=\"public/images/CoRlogo.png\" />\n            <h1>Dashboard</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n        \n          <cor-dashboard-main></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      \n    </div>\n    ";
+      return "\n    <div class=\"cor-dashboard\">\n      <nav class=\"cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow\">\n        <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">European Committee of the Regions</a>\n      </nav>\n      \n        <!-- Sidebar -->\n        <aside class=\"sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav class=\"cor-dashboard-nav\"></cor-dashboard-nav>\n          \n          <button class=\"cor-dashboard-slidebtn\">\n            <span></span>\n            <span></span>\n            <span></span>\n          </button>\n\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\">\n          \n          <header class=\"cor-dashboard-header\">\n            <img src=\"public/images/CoRlogo.png\" />\n            <h1>Dashboard</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n        \n          <cor-dashboard-main></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      \n    </div>\n    ";
     },
     css: function css() {
-      return "\n      <link rel=\"stylesheet\" href=\"src/components/cor-dashboard/cor-dashboard.css\"/>\n    ";
+      return "\n    ";
     }
   };
   /*
@@ -2222,20 +2271,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _inherits(CorDashboard, _Component16);
 
     function CorDashboard() {
-      var _this24;
-
       _classCallCheck(this, CorDashboard);
 
-      _this24 = _possibleConstructorReturn(this, _getPrototypeOf(CorDashboard).call(this)); // this.attachShadow({ mode: 'open' });
-
-      _this24.innerHTML = Template$f.render(_this24.globalData.DATA);
-
-      _this24.addEventListener("state-update", _this24.store);
-
-      return _this24;
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboard).call(this));
     }
 
     _createClass(CorDashboard, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        // this.attachShadow({ mode: 'open' });
+        this.innerHTML = Template$f.render(this.globalData.DATA);
+        this.addEventListener("state-update", this.store); // Resize event
+
+        window.onresize = this.ifResize();
+      }
+    }, {
+      key: "ifResize",
+      value: function ifResize() {
+        if (window.innerWidth < 830) {
+          document.querySelector('body').classList.toggle('is-collapsed');
+        }
+      }
+    }, {
       key: "store",
       value: function store(_ref) {
         var detail = _ref.detail;
@@ -2285,6 +2342,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             var newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value;
             this.setAttribute(key, newListOfVAlues);
           }
+        } else {
+          this.setAttribute(key, value);
         }
       }
     }, {
@@ -2296,11 +2355,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         valuesOfAttribute = valuesOfAttribute.filter(function (el) {
           return el !== value;
         });
-        this.setAttribute(key, valuesOfAttribute.join(' '));
+        this.setAttribute(key, valuesOfAttribute.join(' ')); // remove active state on filters in left nav
+
+        document.querySelector("[data-".concat(key, "=").concat(value, "]")).classList.remove('active');
       }
-    }, {
-      key: "connectedCallback",
-      value: function connectedCallback() {}
     }]);
 
     return CorDashboard;
