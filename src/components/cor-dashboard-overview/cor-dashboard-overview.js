@@ -16,7 +16,7 @@ export default class CorDashboardOverview extends Component {
     }
 
     show(filter) {
-        if (filter === "") {  
+        if (filter[0] === "") {  /* If empty */
             this.innerHTML = Template.render(this.globalData.DATA);
         } else {
             this.innerHTML = Template.render(this.globalData.DATA.filter( el => filter.includes(el.category)));

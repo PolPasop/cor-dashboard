@@ -2381,7 +2381,7 @@
         }
 
         show(filter) {
-            if (filter === "") {  
+            if (filter[0] === "") {  /* If empty */
                 this.innerHTML = Template$6.render(this.globalData.DATA);
             } else {
                 this.innerHTML = Template$6.render(this.globalData.DATA.filter( el => filter.includes(el.category)));
@@ -2841,7 +2841,11 @@
             const update = () => {
                 
                 const filters = root.getAttribute("filter");
-                this.innerHTML = Template$e.render(filters.split(' '));
+                if (filters !== "") {
+                    this.innerHTML = Template$e.render(filters.split(' '));
+                } else {
+                    this.innerHTML = "";
+                }
                 const filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
                 [...filterBtns].map( filterBtn => filterBtn.addEventListener('click', event => this.updateRoot(event.target)));
             };
@@ -2988,12 +2992,9 @@
           this.setAttribute(key, value);
         }
 
-        
-
       }
 
       remove(key, value) {
-        console.log("in remove");
         this[key] = value;
         let valuesOfAttribute = this.getAttribute(key);
         

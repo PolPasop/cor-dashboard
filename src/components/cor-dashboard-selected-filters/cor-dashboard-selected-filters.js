@@ -21,7 +21,11 @@ export default class CorDashboardSelectedFilters extends Component {
         const update = () => {
             
             const filters = root.getAttribute("filter");
-            this.innerHTML = Template.render(filters.split(' '));
+            if (filters !== "") {
+                this.innerHTML = Template.render(filters.split(' '));
+            } else {
+                this.innerHTML = "";
+            }
             const filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
             [...filterBtns].map( filterBtn => filterBtn.addEventListener('click', event => this.updateRoot(event.target)));
         };

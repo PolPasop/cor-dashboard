@@ -78,12 +78,9 @@ export default class CorDashboard extends Component {
       this.setAttribute(key, value);
     }
 
-    
-
   }
 
   remove(key, value) {
-    console.log("in remove");
     this[key] = value;
     let valuesOfAttribute = this.getAttribute(key);
     
