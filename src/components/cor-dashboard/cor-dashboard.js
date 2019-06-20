@@ -2754,8 +2754,6 @@
     class CorDashboardMain extends Component {
        constructor() {
            super();
-           this.innerHTML = Template$d.render();
-           this.classList.add('one');
        }
 
        show(view, target) {
@@ -2763,6 +2761,9 @@
         }
 
         connectedCallback() {
+            this.innerHTML = Template$d.render();
+            this.classList.add('one');
+
             const {root} = this.root;
 
             /* Filter update */

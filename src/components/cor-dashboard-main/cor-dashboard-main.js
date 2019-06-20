@@ -4,8 +4,6 @@ import Template from './template.js'
 export default class CorDashboardMain extends Component {
    constructor() {
        super();
-       this.innerHTML = Template.render();
-       this.classList.add('one');
    }
 
    show(view, target) {
@@ -13,6 +11,9 @@ export default class CorDashboardMain extends Component {
     }
 
     connectedCallback() {
+        this.innerHTML = Template.render();
+        this.classList.add('one');
+
         const {root} = this.root;
 
         /* Filter update */

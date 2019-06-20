@@ -2,7 +2,7 @@
     padding: 1.5rem;
     opacity: 0;
     transform: translate(200px);
-    transition: opacity .5s ease-in-out,transform .2s ease-out;
+    transition: opacity .5s ease-in-out,transform 2s ease-out;
 }
 
 .cor-dashboard-main:not(:defined) {

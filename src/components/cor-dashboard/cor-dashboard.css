@@ -53,6 +53,7 @@
 
 .cor-dashboard__sidebar {
   position: absolute;
+  z-index: 100;
 }
 
 @media (min-width: 830px) {
