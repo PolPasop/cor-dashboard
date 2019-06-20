@@ -8,8 +8,11 @@ import Template from './template.js'
 export default class CorDashboardLanguagesOverview extends Component {
     constructor() {
         super();
-        this.innerHTML = Template.render();
     }
+    
+    connectedCallback() {
+        this.innerHTML = Template.render();
+    }   
 }
 
 if(!customElements.get('cor-dashboard-languages-overview')) {

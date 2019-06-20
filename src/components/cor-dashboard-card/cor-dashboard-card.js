@@ -5,11 +5,11 @@ export default class CorDashboardCard extends Component {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
-        
+        this.innerHTML = Template.render();
+
         if(this.querySelector("#donut-chart")) {
             this.chart();
         }

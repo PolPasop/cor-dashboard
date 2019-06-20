@@ -1648,11 +1648,11 @@
     class CorDashboardFilter extends Component {
         constructor() {
             super();
-            this.innerHTML = Template.render(data);
-                    
         }
 
         connectedCallback() {
+            this.innerHTML = Template.render(data);
+            
             // already expanded elements
             const collapsedElements = this.querySelectorAll('[aria-expanded=false]');
             collapsedElements.forEach(
@@ -1780,10 +1780,10 @@
       constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$1.render();
       }
 
       connectedCallback() {
+        this.innerHTML = Template$1.render();
         this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
         this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
 
@@ -1828,11 +1828,11 @@
         constructor() {
             super();
             // this.attachShadow({ mode: 'open' });
-            this.innerHTML = Template$2.render();
         }
 
         connectedCallback() {
-            
+            this.innerHTML = Template$2.render();
+
             if(this.querySelector("#donut-chart")) {
                 this.chart();
             }
@@ -1894,11 +1894,11 @@
     class CorDashboardDonutChart extends Component {
         constructor() {
             super();
-            this.innerHTML = Template$3.render();
         }
 
         connectedCallback() {
-            this.chart(seedData);
+          this.innerHTML = Template$3.render();
+          this.chart(seedData);
         }
 
         addTooltip() {
@@ -2041,10 +2041,10 @@
     class CorDashboardBarChart extends Component {
         constructor() {
             super();
-            this.innerHTML = Template$4.render();
         }
 
         connectedCallback() {
+            this.innerHTML = Template$4.render();
             const data = this.parentNode.getAttribute("data-data");
             this.chart(JSON.parse(data), this);
             this.classList.add('visible');
@@ -2193,11 +2193,6 @@
     class CorDashboardChart extends Component {
         constructor() {
             super();
-            
-            // Get the type of chart
-            const typeOfChart = this.dataset.charttype;
-
-            this.innerHTML = Template$5.render(typeOfChart);
         }
 
         resetState(ev) {
@@ -2211,6 +2206,10 @@
         }
 
         connectedCallback() {
+            // Get the type of chart
+            const typeOfChart = this.dataset.charttype;
+
+            this.innerHTML = Template$5.render(typeOfChart);
             
             const view = "view";
             const update = () => {
@@ -2377,7 +2376,6 @@
         constructor() {
             super();
             // this.attachShadow({ mode: 'open' });
-            this.innerHTML = Template$6.render(this.globalData.DATA);
         }
 
         show(filter) {
@@ -2389,6 +2387,8 @@
         }
 
         connectedCallback() {
+            this.innerHTML = Template$6.render(this.globalData.DATA);
+            
             const {root} = this.root;
 
             /* Filter update */
@@ -2435,8 +2435,11 @@
     class CorDashboardLanguagesOverview extends Component {
         constructor() {
             super();
-            this.innerHTML = Template$7.render();
         }
+        
+        connectedCallback() {
+            this.innerHTML = Template$7.render();
+        }   
     }
 
     if(!customElements.get('cor-dashboard-languages-overview')) {
@@ -2494,6 +2497,9 @@
     class CorDashboardDetailedItem extends Component {
         constructor() {
             super();
+        }
+
+        connectedCallback() {
             this.innerHTML = Template$8.render();
         }
     }
@@ -2583,6 +2589,9 @@
     class CorDashboardDetailed extends Component {
         constructor() {
             super();
+        }
+
+        connectedCallback() {
             this.innerHTML = Template$9.render(this.globalData.ITEMS);
         }
     }
@@ -2618,10 +2627,10 @@
     class CorDashboardTopnav extends Component {
         constructor () {
             super();
-            this.innerHTML = Template$a.render();
         }
 
         connectedCallback() {
+            this.innerHTML = Template$a.render();
             this._triggers = this.querySelectorAll('[data-view]');
             this._triggers.forEach(
                 trigger => trigger.addEventListener('click', e => this.onClick(e))
@@ -2701,6 +2710,9 @@
     class CorDashboardPagination extends Component {
         constructor() {
             super();
+        }
+
+        connectedCallback() {
             this.innerHTML = Template$c.render(); 
         }
     }
@@ -2930,7 +2942,6 @@
     class CorDashboard extends Component {
       constructor() {
         super();
-        
       }
 
       connectedCallback() {

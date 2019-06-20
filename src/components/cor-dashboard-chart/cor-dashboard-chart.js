@@ -4,11 +4,6 @@ import Template from './template.js';
 export default class CorDashboardChart extends Component {
     constructor() {
         super();
-        
-        // Get the type of chart
-        const typeOfChart = this.dataset.charttype;
-
-        this.innerHTML = Template.render(typeOfChart);
     }
 
     resetState(ev) {
@@ -22,6 +17,10 @@ export default class CorDashboardChart extends Component {
     }
 
     connectedCallback() {
+        // Get the type of chart
+        const typeOfChart = this.dataset.charttype;
+
+        this.innerHTML = Template.render(typeOfChart);
         
         const view = "view";
         const update = () => {

@@ -33,11 +33,11 @@ const seedData = [{
 export default class CorDashboardDonutChart extends Component {
     constructor() {
         super();
-        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
-        this.chart(seedData);
+      this.innerHTML = Template.render();
+      this.chart(seedData);
     }
 
     addTooltip() {

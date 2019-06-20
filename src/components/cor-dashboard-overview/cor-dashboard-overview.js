@@ -12,7 +12,6 @@ export default class CorDashboardOverview extends Component {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template.render(this.globalData.DATA);
     }
 
     show(filter) {
@@ -24,6 +23,8 @@ export default class CorDashboardOverview extends Component {
     }
 
     connectedCallback() {
+        this.innerHTML = Template.render(this.globalData.DATA);
+        
         const {root} = this.root;
 
         /* Filter update */

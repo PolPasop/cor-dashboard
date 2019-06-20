@@ -4,10 +4,10 @@ import Template from './template.js';
 export default class CorDashboardBarChart extends Component {
     constructor() {
         super();
-        this.innerHTML = Template.render();
     }
 
     connectedCallback() {
+        this.innerHTML = Template.render();
         const data = this.parentNode.getAttribute("data-data");
         this.chart(JSON.parse(data), this);
         this.classList.add('visible');

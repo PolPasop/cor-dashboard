@@ -228,11 +228,11 @@ import Template from './template.js';
 export default class CorDashboardFilter extends Component {
     constructor() {
         super();
-        this.innerHTML = Template.render(data);
-                
     }
 
     connectedCallback() {
+        this.innerHTML = Template.render(data);
+        
         // already expanded elements
         const collapsedElements = this.querySelectorAll('[aria-expanded=false]');
         collapsedElements.forEach(

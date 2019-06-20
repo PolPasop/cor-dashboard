@@ -4,6 +4,9 @@ import Template from './template.js'
 export default class CorDashboardCardDetailed extends Component {
     constructo() {
         super();
+    }
+
+    connectedCallback() {
         this.innerHTML = Template.render();
     }
 

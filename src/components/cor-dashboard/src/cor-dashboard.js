@@ -14,7 +14,6 @@ import Template from '../template.js';
 export default class CorDashboard extends Component {
   constructor() {
     super();
-    
   }
 
   connectedCallback() {

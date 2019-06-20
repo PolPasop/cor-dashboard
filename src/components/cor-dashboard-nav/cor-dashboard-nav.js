@@ -5,10 +5,10 @@ export default class CorDashboardNav extends Component {
   constructor() {
     super();
     // this.attachShadow({ mode: 'open' });
-    this.innerHTML = Template.render();
   }
 
   connectedCallback() {
+    this.innerHTML = Template.render();
     this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home')
     this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
 
