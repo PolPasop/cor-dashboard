@@ -1,7 +1,7 @@
 const data = [
     {
         name: "Content Types",
-        filterName: "contenttype",
+        filterName: "contenttypes",
         icon: "contenttypes",
         expanded: true,
         items: [
