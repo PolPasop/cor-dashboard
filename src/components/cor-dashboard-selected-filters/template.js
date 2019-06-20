@@ -6,7 +6,6 @@ export default {
     },
 
     html(filters) { 
-        console.log(filters);      
         return `
             Selected filters: <ul>
                 ${filters ? (filters.map(filter => {

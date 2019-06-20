@@ -1341,7 +1341,6 @@
         }
 
         dispatchUpdate(detail) {
-            console.log("in dispatcher:", detail);
             const event = new CustomEvent("state-update", {
                 detail,
                 bubbles: true,
@@ -2382,10 +2381,10 @@
         }
 
         show(filter) {
-            if (filter === "") {
+            if (filter === "") {  
                 this.innerHTML = Template$6.render(this.globalData.DATA);
             } else {
-                this.innerHTML = Template$6.render(this.globalData.DATA.filter( el => el.category === filter));
+                this.innerHTML = Template$6.render(this.globalData.DATA.filter( el => filter.includes(el.category)));
             }
         }
 
@@ -2395,7 +2394,7 @@
             /* Filter update */
             const filter = "filter";
             const update = () => {
-                this.show(root[filter]);
+                this.show(root.getAttribute(filter).split(' '));
             };
 
             new MutationObserver(update).observe(root, {
@@ -2805,7 +2804,6 @@
         },
 
         html(filters) { 
-            console.log(filters);      
             return `
             Selected filters: <ul>
                 ${filters ? (filters.map(filter => {
@@ -2830,9 +2828,7 @@
 
         updateRoot(element) {
             
-
             const text = element.parentNode.dataset.selectedfilter;
-            console.log("updateRoot", element.parentNode.dataset.selectedfilter);
             const type = "remove-filter";
             
             this.dispatchUpdate({type, text});
@@ -2845,10 +2841,8 @@
             const update = () => {
                 
                 const filters = root.getAttribute("filter");
-                console.log("filters:",filters);
                 this.innerHTML = Template$e.render(filters.split(' '));
                 const filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
-                console.log(filterBtns);    
                 [...filterBtns].map( filterBtn => filterBtn.addEventListener('click', event => this.updateRoot(event.target)));
             };
 
@@ -2931,6 +2925,10 @@
     class CorDashboard extends Component {
       constructor() {
         super();
+        
+      }
+
+      connectedCallback() {
         // this.attachShadow({ mode: 'open' });
         this.innerHTML = Template$f.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
@@ -2976,6 +2974,7 @@
         // Check if attribute exists
         let valuesOfAttribute = this.getAttribute(key);
         
+        
         if(valuesOfAttribute) {
           // Get an array of values
           valuesOfAttribute = valuesOfAttribute.split(' ');
@@ -2985,13 +2984,16 @@
             const newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value;
             this.setAttribute(key, newListOfVAlues);
           }
-        } 
+        } else {
+          this.setAttribute(key, value);
+        }
 
         
 
       }
 
       remove(key, value) {
+        console.log("in remove");
         this[key] = value;
         let valuesOfAttribute = this.getAttribute(key);
         
@@ -3006,9 +3008,7 @@
 
       }
 
-      connectedCallback() {
-        
-      }
+      
 
     }
 

@@ -16,10 +16,10 @@ export default class CorDashboardOverview extends Component {
     }
 
     show(filter) {
-        if (filter === "") {
+        if (filter === "") {  
             this.innerHTML = Template.render(this.globalData.DATA);
         } else {
-            this.innerHTML = Template.render(this.globalData.DATA.filter( el => el.category === filter));
+            this.innerHTML = Template.render(this.globalData.DATA.filter( el => filter.includes(el.category)));
         }
     }
 
@@ -29,7 +29,7 @@ export default class CorDashboardOverview extends Component {
         /* Filter update */
         const filter = "filter";
         const update = () => {
-            this.show(root[filter]);
+            this.show(root.getAttribute(filter).split(' '));
         };
 
         new MutationObserver(update).observe(root, {

@@ -8,9 +8,7 @@ export default class CorDashboardSelectedFilters extends Component {
 
     updateRoot(element) {
         
-
         const text = element.parentNode.dataset.selectedfilter;
-        console.log("updateRoot", element.parentNode.dataset.selectedfilter);
         const type = "remove-filter";
         
         this.dispatchUpdate({type, text});
@@ -23,10 +21,8 @@ export default class CorDashboardSelectedFilters extends Component {
         const update = () => {
             
             const filters = root.getAttribute("filter");
-            console.log("filters:",filters);
             this.innerHTML = Template.render(filters.split(' '));
             const filterBtns = document.querySelectorAll('.cor-dashboard-selected-filters svg');
-            console.log(filterBtns);    
             [...filterBtns].map( filterBtn => filterBtn.addEventListener('click', event => this.updateRoot(event.target)));
         };
 

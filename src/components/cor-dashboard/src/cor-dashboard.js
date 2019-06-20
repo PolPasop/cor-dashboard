@@ -14,6 +14,10 @@ import Template from '../template.js';
 export default class CorDashboard extends Component {
   constructor() {
     super();
+    
+  }
+
+  connectedCallback() {
     // this.attachShadow({ mode: 'open' });
     this.innerHTML = Template.render(this.globalData.DATA);
     this.addEventListener("state-update", this.store);
@@ -60,6 +64,7 @@ export default class CorDashboard extends Component {
     // Check if attribute exists
     let valuesOfAttribute = this.getAttribute(key);
     
+    
     if(valuesOfAttribute) {
       // Get an array of values
       valuesOfAttribute = valuesOfAttribute.split(' ');
@@ -69,13 +74,16 @@ export default class CorDashboard extends Component {
         const newListOfVAlues = valuesOfAttribute.join(' ') + ' ' + value
         this.setAttribute(key, newListOfVAlues);
       }
-    } 
+    } else {
+      this.setAttribute(key, value);
+    }
 
     
 
   }
 
   remove(key, value) {
+    console.log("in remove");
     this[key] = value;
     let valuesOfAttribute = this.getAttribute(key);
     
@@ -90,9 +98,7 @@ export default class CorDashboard extends Component {
 
   }
 
-  connectedCallback() {
-    
-  }
+  
 
 }
 
