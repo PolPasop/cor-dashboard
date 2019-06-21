@@ -31,6 +31,10 @@
     background-color: transparent;
 }
 
+/* Home */
+.cor-dashboard__nav-link--home {
+    padding-top: 1.5rem;
+}
 
 .cor-dashboard__nav__item ul {
     list-style: none;
@@ -121,8 +125,8 @@
     justify-content: space-between;
     min-width: auto;
     position: absolute;
-    top: 56px;
-    left: 290px;
+    top: 24px;
+    left: 300px;
     width: 36px;
 }
 
@@ -145,7 +149,7 @@
     opacity: 1;
 }
 
-@media (max-width: 830px) {
+@media (max-width: 992px) {
     .cor-dashboard-slidebtn {
         left: 20px;
     }

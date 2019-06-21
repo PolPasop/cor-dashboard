@@ -1336,7 +1336,7 @@
         constructor() {
             super();
             // this.attachShadow({ mode: 'open' }); */
-            this.root = document.body.firstElementChild;
+            this.root = document.body.querySelector('cor-dashboard');
             this.globalData = Data;
         }
 
@@ -1367,46 +1367,51 @@
                         ${filter.name}
                     </button>
                 </h2>
-                <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}" id="${filter.filterName}">
-                    ${filter.items.map( item => `
-                        <li class="cor-dashboard-filter__list__item">
+                <div id="${filter.filterName}" class="cor-dashboard-filter__list-container">
+                    <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}">
+                        ${filter.items.map( item => `
+                            <li class="cor-dashboard-filter__list__item">
 
-                            ${item.name === "Personalised" ? `
-                                <div>
-                                    <label for="start">Start date:</label>
+                                ${item.name === "Personalised" ? `
+                                    <div>
+                                        <label for="start">Start date:</label>
 
-                                    <input type="date" id="start" name="trip-start"
-                                    value="2018-07-22"
-                                    min="2018-01-01" max="2018-12-31">
-                                </div>
-                                <div>
-                                    <label for="start">End date:</label>
-
-                                    <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="start" name="trip-start"
                                         value="2018-07-22"
                                         min="2018-01-01" max="2018-12-31">
-                                </div>
-                            ` : `
-                            <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                ${item.name}
-                            </a>
-                            `}
+                                    </div>
+                                    <div>
+                                        <label for="start">End date:</label>
+
+                                        <input type="date" id="start" name="trip-start"
+                                            value="2018-07-22"
+                                            min="2018-01-01" max="2018-12-31">
+                                    </div>
+                                ` : `
+                                <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
+                                    ${item.name}
+                                </a>
+                                `}
 
 
-                            ${item.subitems ? 
-                            `
-                            <ul>
-                                ${item.subitems.map(
-                                    item => `
-                                    <li><a class="cor-dashboard-filter__list__item__link" href="#" data-target="${item.target}">${item.name}</a></li>
+                                ${item.subitems ? 
                                 `
-                                ).join('')} 
-                            </ul>` : 
-                            ``
-                            }
-                        </li>
-                    `).join('')}
-                </ul>
+                                <ul>
+                                    ${item.subitems.map(
+                                        item => `
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name}</a></li>
+                                    `
+                                    ).join('')} 
+                                </ul>` : 
+                                ``
+                                }
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="cor-dahsboard-btncontainer">
+                        <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Apply selection</button>
+                    </div>
+                </div>
             </div>                     
         `).join('')}
         
@@ -1675,17 +1680,25 @@
         }
 
         onClick(event) {
-            // this.show(event.target.dataset.target);
             const text = event.target.dataset.filter;
             
 
             if (event.target.classList.contains('active')) {
                 const type = "remove-filter";
+                console.log(event.target, "list", event.target.classList.contains('active'));
                 event.target.classList.remove('active');
                 this.dispatchUpdate({type, text});
             } else {
                 const type = "filter";
                 event.target.classList.add('active');
+                
+                if (event.target.nextElementSibling) {
+                    const children = event.target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
+                    children.forEach(
+                        child =>  child.classList.add('active')
+                    );
+                }
+                
                 this.dispatchUpdate({type, text});
             }    }
 
@@ -1757,11 +1770,6 @@
         `).join('')}
     </ul>
     <!-- /Menu -->
-
-    <hr/>
-    <div class="cor-dahsboard-btncontainer">
-      <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn disabled">Apply selection</button>
-    </div>
       
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
@@ -2880,12 +2888,9 @@
       },
 
       html(globalData) {
+        console.log(globalData);
         return `
     <div class="cor-dashboard">
-      <nav class="cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
-      </nav>
-      
         <!-- Sidebar -->
         <aside class="sidebar cor-dashboard__sidebar">
           <cor-dashboard-nav class="cor-dashboard-nav"></cor-dashboard-nav>

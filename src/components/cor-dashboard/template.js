@@ -13,12 +13,9 @@ export default {
   },
 
   html(globalData) {
+    console.log(globalData);
     return `
     <div class="cor-dashboard">
-      <nav class="cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
-      </nav>
-      
         <!-- Sidebar -->
         <aside class="sidebar cor-dashboard__sidebar">
           <cor-dashboard-nav class="cor-dashboard-nav"></cor-dashboard-nav>

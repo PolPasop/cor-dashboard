@@ -255,17 +255,25 @@ export default class CorDashboardFilter extends Component {
     }
 
     onClick(event) {
-        // this.show(event.target.dataset.target);
         const text = event.target.dataset.filter;
         
 
         if (event.target.classList.contains('active')) {
             const type = "remove-filter";
+            console.log(event.target, "list", event.target.classList.contains('active'));
             event.target.classList.remove('active');
             this.dispatchUpdate({type, text});
         } else {
             const type = "filter";
             event.target.classList.add('active');
+            
+            if (event.target.nextElementSibling) {
+                const children = event.target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
+                children.forEach(
+                    child =>  child.classList.add('active')
+                );
+            }
+            
             this.dispatchUpdate({type, text});
         };
     }

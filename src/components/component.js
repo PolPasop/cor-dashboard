@@ -12,7 +12,7 @@ export default class extends HTMLElement {
     constructor() {
         super();
         // this.attachShadow({ mode: 'open' }); */
-        this.root = document.body.firstElementChild;
+        this.root = document.body.querySelector('cor-dashboard');
         this.globalData = Data;
     }
 

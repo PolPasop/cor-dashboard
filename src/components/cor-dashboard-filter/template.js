@@ -14,46 +14,51 @@ export default {
                         ${filter.name}
                     </button>
                 </h2>
-                <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}" id="${filter.filterName}">
-                    ${filter.items.map( item => `
-                        <li class="cor-dashboard-filter__list__item">
+                <div id="${filter.filterName}" class="cor-dashboard-filter__list-container">
+                    <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}">
+                        ${filter.items.map( item => `
+                            <li class="cor-dashboard-filter__list__item">
 
-                            ${item.name === "Personalised" ? `
-                                <div>
-                                    <label for="start">Start date:</label>
+                                ${item.name === "Personalised" ? `
+                                    <div>
+                                        <label for="start">Start date:</label>
 
-                                    <input type="date" id="start" name="trip-start"
-                                    value="2018-07-22"
-                                    min="2018-01-01" max="2018-12-31">
-                                </div>
-                                <div>
-                                    <label for="start">End date:</label>
-
-                                    <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="start" name="trip-start"
                                         value="2018-07-22"
                                         min="2018-01-01" max="2018-12-31">
-                                </div>
-                            ` : `
-                            <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                ${item.name}
-                            </a>
-                            `}
+                                    </div>
+                                    <div>
+                                        <label for="start">End date:</label>
+
+                                        <input type="date" id="start" name="trip-start"
+                                            value="2018-07-22"
+                                            min="2018-01-01" max="2018-12-31">
+                                    </div>
+                                ` : `
+                                <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
+                                    ${item.name}
+                                </a>
+                                `}
 
 
-                            ${item.subitems ? 
-                            `
-                            <ul>
-                                ${item.subitems.map(
-                                    item => `
-                                    <li><a class="cor-dashboard-filter__list__item__link" href="#" data-target="${item.target}">${item.name}</a></li>
+                                ${item.subitems ? 
                                 `
-                                ).join('')} 
-                            </ul>` : 
-                            ``
-                            }
-                        </li>
-                    `).join('')}
-                </ul>
+                                <ul>
+                                    ${item.subitems.map(
+                                        item => `
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name}</a></li>
+                                    `
+                                    ).join('')} 
+                                </ul>` : 
+                                ``
+                                }
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="cor-dahsboard-btncontainer">
+                        <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Apply selection</button>
+                    </div>
+                </div>
             </div>                     
         `).join('')}
         
