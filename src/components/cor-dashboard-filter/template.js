@@ -18,27 +18,32 @@ export default {
                     <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}">
                         ${filter.items.map( item => `
                             <li class="cor-dashboard-filter__list__item">
-
+                                
                                 ${item.name === "Personalised" ? `
                                     <div>
                                         <label for="start">Start date:</label>
 
-                                        <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="start" name="date-start"
                                         value="2018-07-22"
-                                        min="2018-01-01" max="2018-12-31">
+                                        >
                                     </div>
                                     <div>
                                         <label for="start">End date:</label>
 
-                                        <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="end" name="date-end"
                                             value="2018-07-22"
-                                            min="2018-01-01" max="2018-12-31">
+                                            >
                                     </div>
-                                ` : `
-                                <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                    ${item.name} <span>${item.number ? item.number : 0}</span>
+                                ` : ``}
+
+                                <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
+                                    ${item.name} 
+                                    
+                                    ${item.type !== "date" ? `
+                                        <span>${item.number ? item.number : 0}</span>
+                                    ` : ``}
                                 </a>
-                                `}
+                                
 
 
                                 ${item.subitems ? 
@@ -46,7 +51,7 @@ export default {
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 

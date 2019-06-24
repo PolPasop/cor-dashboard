@@ -9,7 +9,10 @@ export default class CorDashboardBarChart extends Component {
     connectedCallback() {
         this.innerHTML = Template.render();
         const data = this.parentNode.getAttribute("data-data");
-        this.chart(JSON.parse(data), this);
+        if (data) {
+            this.chart(JSON.parse(data), this);
+        }
+        
         this.classList.add('visible');
     }
 

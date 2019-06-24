@@ -37,7 +37,7 @@
     transition-property: transform,opacity,-webkit-transform;
     transition-duration: .25s;
     transform-origin: 0 0;
-    transform: translateY(130px);
+    transform: translateY(128px);
     z-index: 100;
     width: 280px;
   }

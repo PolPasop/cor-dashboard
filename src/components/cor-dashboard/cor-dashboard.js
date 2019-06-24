@@ -1371,27 +1371,32 @@
                     <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}">
                         ${filter.items.map( item => `
                             <li class="cor-dashboard-filter__list__item">
-
+                                
                                 ${item.name === "Personalised" ? `
                                     <div>
                                         <label for="start">Start date:</label>
 
-                                        <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="start" name="date-start"
                                         value="2018-07-22"
-                                        min="2018-01-01" max="2018-12-31">
+                                        >
                                     </div>
                                     <div>
                                         <label for="start">End date:</label>
 
-                                        <input type="date" id="start" name="trip-start"
+                                        <input type="date" id="end" name="date-end"
                                             value="2018-07-22"
-                                            min="2018-01-01" max="2018-12-31">
+                                            >
                                     </div>
-                                ` : `
-                                <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                    ${item.name} <span>${item.number ? item.number : 0}</span>
+                                ` : ``}
+
+                                <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
+                                    ${item.name} 
+                                    
+                                    ${item.type !== "date" ? `
+                                        <span>${item.number ? item.number : 0}</span>
+                                    ` : ``}
                                 </a>
-                                `}
+                                
 
 
                                 ${item.subitems ? 
@@ -1399,7 +1404,7 @@
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 
@@ -1534,23 +1539,28 @@
             items: [
                 {
                     name: "Today",
-                    target: ""
+                    target: "today",
+                    type: "date"
                 },
                 {
                     name: "This week",
-                    target: ""
+                    target: "thisweek",
+                    type: "date"
                 },
                 {
                     name: "This month",
-                    target: ""
+                    target: "thismonth",
+                    type: "date"
                 },
                 {
                     name: "This year",
-                    target: ""
+                    target: "thisyear",
+                    type: "date"
                 },
                 {
                     name: "Personalised",
-                    target: ""
+                    target: "custom",
+                    type: "date"
                 }          
             ]
         },
@@ -1696,6 +1706,13 @@
 
         onClick(event) {
             const text = event.target.dataset.filter;
+
+           /*
+            if(event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
+                this.dateUpdate(event.target);
+            } ;
+
+            */
             
 
             if (event.target.classList.contains('active')) {
@@ -1741,8 +1758,49 @@
             this._collapsed = true;
         }
 
-        dateUpdate() {
+        dateUpdate(event) {
+
+            const currentDate = new Date;
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+            /* YYYY-MM-DD  */
             
+
+            switch (event.dataset.filter) {
+                
+                
+                case "today":
+                    console.log("today");
+                    console.log(currentDate);
+                    break;
+                case "thisweek":
+                    console.log("thisweek");    
+                    const firstDayOfTheWeek = (currentDate.getDate() -  currentDate.getDay() ) + 1;
+                    const lastDayOfTheWeek = firstDayOfTheWeek + 4;
+                    console.log(firstDayOfTheWeek,lastDayOfTheWeek);
+                    break;
+                case "thismonth":
+                    console.log("thismonth");    
+                    const month = currentDate.getMonth();
+                        
+                    const firstDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth(), 1);
+                    let lastDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth() + 1, 0);
+                        
+                    console.log(firstDayOfTheMonth,lastDayOfTheMonth);
+                    break;
+                case "thisyear":
+
+                    break;
+                case "custom":
+
+                    break;
+                default:
+                    break;
+            }
+
+            const startDateInput = document.querySelector('input#start');
+            const endDateInput = document.querySelector('input#end');
+            startDateInput = "";
         }
 
     }
@@ -2073,7 +2131,10 @@
         connectedCallback() {
             this.innerHTML = Template$4.render();
             const data = this.parentNode.getAttribute("data-data");
-            this.chart(JSON.parse(data), this);
+            if (data) {
+                this.chart(JSON.parse(data), this);
+            }
+            
             this.classList.add('visible');
         }
 
@@ -3038,8 +3099,10 @@
         this.setAttribute(key, valuesOfAttribute.join(' '));
         
         // remove active state on filters in left nav
-        document.querySelector(`[data-${key}=${value}]`).classList.remove('active');
-
+        if (key & value) {
+          document.querySelector(`[data-${key}=${value}]`).classList.remove('active');
+        }
+        
       }
 
       

@@ -90,8 +90,10 @@ export default class CorDashboard extends Component {
     this.setAttribute(key, valuesOfAttribute.join(' '));
     
     // remove active state on filters in left nav
-    document.querySelector(`[data-${key}=${value}]`).classList.remove('active');
-
+    if (key & value) {
+      document.querySelector(`[data-${key}=${value}]`).classList.remove('active');
+    }
+    
   }
 
   

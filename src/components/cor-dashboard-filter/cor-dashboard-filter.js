@@ -106,23 +106,28 @@ const data = [
         items: [
             {
                 name: "Today",
-                target: ""
+                target: "today",
+                type: "date"
             },
             {
                 name: "This week",
-                target: ""
+                target: "thisweek",
+                type: "date"
             },
             {
                 name: "This month",
-                target: ""
+                target: "thismonth",
+                type: "date"
             },
             {
                 name: "This year",
-                target: ""
+                target: "thisyear",
+                type: "date"
             },
             {
                 name: "Personalised",
-                target: ""
+                target: "custom",
+                type: "date"
             }          
         ]
     },
@@ -271,6 +276,13 @@ export default class CorDashboardFilter extends Component {
 
     onClick(event) {
         const text = event.target.dataset.filter;
+
+       /*
+        if(event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
+            this.dateUpdate(event.target);
+        } ;
+
+        */
         
 
         if (event.target.classList.contains('active')) {
@@ -317,8 +329,59 @@ export default class CorDashboardFilter extends Component {
         this._collapsed = true;
     }
 
-    dateUpdate() {
+    dateUpdate(event) {
+
+        const currentDate = new Date;
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth();
+        let first = `${currentYear}-${currentMonth}`;
+        let start = `${currentYear}-${currentYear}`;
+        /* YYYY-MM-DD  */
         
+
+        switch (event.dataset.filter) {
+            
+            
+            case "today":
+                console.log("today");
+                console.log(currentDate);
+                break;
+            case "thisweek":
+                console.log("thisweek");    
+                const firstDayOfTheWeek = (currentDate.getDate() -  currentDate.getDay() ) + 1;
+                const lastDayOfTheWeek = firstDayOfTheWeek + 4;
+        
+                /*
+                const firstday = new Date(currentDate.setDate(first)).toUTCString();
+                const lastday = new Date(currentDate.setDate(last)).toUTCString();
+                */
+                
+                first = `${firstDayOfTheWeek}`;
+                start = "";
+                console.log(firstDayOfTheWeek,lastDayOfTheWeek);
+                break;
+            case "thismonth":
+                console.log("thismonth");    
+                const month = currentDate.getMonth();
+                    
+                const firstDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth(), 1);
+                let lastDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth() + 1, 0);
+                    
+                console.log(firstDayOfTheMonth,lastDayOfTheMonth);
+                break;
+            case "thisyear":
+
+                break;
+            case "custom":
+
+                break;
+            default:
+                break;
+        }
+
+        const startDateInput = document.querySelector('input#start');
+        const endDateInput = document.querySelector('input#end');
+        startDateInput = "";
     }
 
 }
