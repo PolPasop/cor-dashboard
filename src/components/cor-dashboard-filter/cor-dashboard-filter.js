@@ -8,33 +8,41 @@ const data = [
             {
                 name: "News",
                 target: "news",
+                number: 55,
                 subitems: [
                     {
-                    name: "Regional news"
+                    name: "Regional news",
+                    number: 5
                     },
                     {
-                    name: "Press release"
+                    name: "Press release",
+                    number: 0
                     },
                     {
-                    name: "Success story"
+                    name: "Success story",
+                    number: 15
                     }
                 ]
             },
             {
             name: "Events",
-            target: "events"
+            target: "events",
+            number: 25
             },
             {
             name: "Opinions",
-            target: "opinions"
+            target: "opinions",
+            number: 2
             },
             {
             name: "Studies",
-            target: "studies"
+            target: "studies",
+            number: 9
             },
             {
             name: "Brochures",
-            target: "brochures"
+            target: "brochures",
+            number: 7
             }
         ]
     },
@@ -42,6 +50,7 @@ const data = [
         name: "Themes",
         filterName: "themes",
         icon: "themes",
+        number: 125,
         items: [
             {
                 name: "no theme",
@@ -252,6 +261,12 @@ export default class CorDashboardFilter extends Component {
         this._expandTriggers.forEach(
             trigger => trigger.addEventListener('click', e => this.ExpandCollapse(event.target.dataset.expandtarget))
         );
+
+        // dates events
+        this._dateTriggers = this.querySelectorAll('.cor-dashboard-filter__list cor-dashboard-filter__list--date [data-filter]');
+        this._dateTriggers.forEach(
+            trigger => trigger.addEventListener('click', e => this.dateUpdate(e))
+        );
     }
 
     onClick(event) {
@@ -300,6 +315,10 @@ export default class CorDashboardFilter extends Component {
     collapse(target) {
         target.style.height = 0;
         this._collapsed = true;
+    }
+
+    dateUpdate() {
+        
     }
 
 }

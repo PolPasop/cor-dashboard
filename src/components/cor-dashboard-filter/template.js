@@ -36,7 +36,7 @@ export default {
                                     </div>
                                 ` : `
                                 <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                    ${item.name}
+                                    ${item.name} <span>${item.number}</span>
                                 </a>
                                 `}
 
@@ -46,7 +46,7 @@ export default {
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name}</a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name} <span>${item.number}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 

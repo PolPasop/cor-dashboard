@@ -54,6 +54,16 @@ a{
 .cor-dashboard-filter__list__item__link,
 .cor-dashboard-filter__list__item__sublink {
     font-weight: 500;
+    display: flex;
+}
+
+.cor-dashboard-filter__list__item__link span,
+.cor-dashboard-filter__list__item__sublink span {
+    background: var(--cor-secondary);
+    border-radius: 11px;
+    color: rgba(70, 131, 180, 1);
+    margin-left: auto;
+    padding: 3px 12px;
 }
 
 .cor-dashboard-filter button svg {
