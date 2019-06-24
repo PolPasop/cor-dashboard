@@ -38,6 +38,11 @@ a{
     padding: .5rem 1rem;
 }
 
+.cor-dashboard-filter li li {
+    list-style: none;
+    padding-right: 0;
+}
+
 .cor-dashboard-filter__list a,
 .cor-dashboard-filter__list label {
     color: #333;
@@ -59,9 +64,11 @@ a{
 
 .cor-dashboard-filter__list__item__link span,
 .cor-dashboard-filter__list__item__sublink span {
-    background: var(--cor-secondary);
+    align-self: flex-start;
+    background: rgba(187, 214, 221, .4);
     border-radius: 11px;
     color: rgba(70, 131, 180, 1);
+    font-size: 11px;
     margin-left: auto;
     padding: 3px 12px;
 }
@@ -130,13 +137,17 @@ a{
 }
 
 /* Specific Layout */
-#languages {
+#languages ul {
     display: flex;
     flex-wrap: wrap;
 }
 
 #languages li {
     border-bottom: 1px dotted var(--gray-300);
+}
+
+#languages li span {
+    display: none;
 }
 
 /* Colors */

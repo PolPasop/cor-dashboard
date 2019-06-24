@@ -1389,7 +1389,7 @@
                                     </div>
                                 ` : `
                                 <a class="cor-dashboard-filter__list__item__link" href="#" data-filter="${item.target}">
-                                    ${item.name} <span>${item.number}</span>
+                                    ${item.name} <span>${item.number ? item.number : 0}</span>
                                 </a>
                                 `}
 
@@ -1399,7 +1399,7 @@
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name} <span>${item.number}</span></a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 
