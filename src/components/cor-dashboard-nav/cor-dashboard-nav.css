@@ -48,6 +48,7 @@
 /* Icons */
 .cor-dashboard__nav-link--home:before,
 .cor-dashboard__nav-link--date:before,
+.cor-dashboard-filter__list__item__link--contenttypes:before,
 .cor-dashboard-filter__list__item__link--date:before,
 .cor-dashboard-filter__list__item__link--languages:before,
 .cor-dashboard-filter__list__item__link--themes:before {
@@ -66,6 +67,14 @@
 
 .cor-dashboard__nav-link--home:hover:before {
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='18' viewBox='0 0 20 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 0L0 9.45158L2.43974 10.6878L9.9354 3.09354L17.5606 10.6878L20 9.45158L10 0H10ZM2.97309 10.9357H2.97346L10.01 4.14311L17.0269 10.9357H17.0273V10.936V17.6H11.9016V12.8924H8.05483V17.6H2.97308V10.936V10.9357H2.97309Z' fill='%23616161'/%3E%3C/svg%3E%0A");
+}
+
+.cor-dashboard-filter__list__item__link--contenttypes:before {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='17' viewBox='0 0 22 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.999V2C16 0.896 15.104 0 14 0H2C0.895 0 0 0.896 0 2V10C0 11.104 0.895 12 2 12H4V4.999C4 3.895 4.896 2.999 6 2.999H16ZM8 4.999C6.896 4.999 6 5.895 6 6.999V14.999C6 16.103 6.896 16.999 8 16.999H20C21.104 16.999 22 16.103 22 14.999V6.999C22 5.895 21.104 4.999 20 4.999H8ZM10.828 10.462L8 14.999H20L16.023 8.618L12.85 13.706L10.828 10.462Z' fill='%23B6B6B6'/%3E%3C/svg%3E%0A");
+}
+
+.cor-dashboard-filter__list__item__link--contenttypes:hover:before {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='17' viewBox='0 0 22 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.999V2C16 0.896 15.104 0 14 0H2C0.895 0 0 0.896 0 2V10C0 11.104 0.895 12 2 12H4V4.999C4 3.895 4.896 2.999 6 2.999H16ZM8 4.999C6.896 4.999 6 5.895 6 6.999V14.999C6 16.103 6.896 16.999 8 16.999H20C21.104 16.999 22 16.103 22 14.999V6.999C22 5.895 21.104 4.999 20 4.999H8ZM10.828 10.462L8 14.999H20L16.023 8.618L12.85 13.706L10.828 10.462Z' fill='%23616161'/%3E%3C/svg%3E%0A");
 }
 
 .cor-dashboard-filter__list__item__link--date:before {
