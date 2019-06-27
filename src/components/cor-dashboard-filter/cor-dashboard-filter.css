@@ -219,17 +219,9 @@ a{
     background: var(--cor-brochures);
 }
 
-/* Date Filter */
-#date .cor-dashboard-filter__list__item:last-child div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-#date .cor-dashboard-filter__list__item:last-child div label {
+/* Date */
+.cor-dashboard-filter__list__item:last-child .form-group {
     margin: 0;
-}
-
-#date .cor-dashboard-filter__list__item:last-child div input {
-    padding-left: .5rem;
+    padding: 0;
 }

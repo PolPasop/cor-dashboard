@@ -1373,17 +1373,17 @@
                             <li class="cor-dashboard-filter__list__item">
                                 
                                 ${item.name === "Personalised" ? `
-                                    <div>
+                                    <div class="form-group">
                                         <label for="start">Start date:</label>
 
-                                        <input type="date" id="start" name="date-start"
+                                        <input class="form-control" type="date" id="start" name="date-start"
                                         value="2018-07-22"
                                         >
                                     </div>
-                                    <div>
+                                    <div class="form-group">
                                         <label for="start">End date:</label>
 
-                                        <input type="date" id="end" name="date-end"
+                                        <input class="form-control" type="date" id="end" name="date-end"
                                             value="2018-07-22"
                                             >
                                     </div>
