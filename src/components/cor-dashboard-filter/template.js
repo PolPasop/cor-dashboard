@@ -34,18 +34,16 @@ export default {
                                             value="2018-07-22"
                                             >
                                     </div>
-                                ` : ``}
-
-                                <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
-                                    ${item.name} 
-                                    
-                                    ${item.type !== "date" ? `
-                                        <span>${item.number ? item.number : 0}</span>
-                                    ` : ``}
-                                </a>
+                                ` : `
+                                    <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
+                                        ${item.name} 
+                                        
+                                        ${item.type !== "date" ? `
+                                            <span>${item.number ? item.number : 0}</span>
+                                        ` : ``}
+                                    </a>
+                                `}
                                 
-
-
                                 ${item.subitems ? 
                                 `
                                 <ul>

@@ -1387,18 +1387,16 @@
                                             value="2018-07-22"
                                             >
                                     </div>
-                                ` : ``}
-
-                                <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
-                                    ${item.name} 
-                                    
-                                    ${item.type !== "date" ? `
-                                        <span>${item.number ? item.number : 0}</span>
-                                    ` : ``}
-                                </a>
+                                ` : `
+                                    <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
+                                        ${item.name} 
+                                        
+                                        ${item.type !== "date" ? `
+                                            <span>${item.number ? item.number : 0}</span>
+                                        ` : ``}
+                                    </a>
+                                `}
                                 
-
-
                                 ${item.subitems ? 
                                 `
                                 <ul>
@@ -1705,27 +1703,30 @@
         }
 
         onClick(event) {
-            const text = event.target.dataset.filter;
-
-           /*
+           
             if(event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
                 this.dateUpdate(event.target);
-            } ;
+                event.preventDefault();
+            } else {
+                this.updateActiveState(event.target);
+                event.preventDefault();
+            }
+        }
 
-            */
-            
+        updateActiveState(target) {
+            const text = target.dataset.filter;
 
-            if (event.target.classList.contains('active')) {
+            if (target.classList.contains('active')) {
                 const type = "remove-filter";
-                console.log(event.target, "list", event.target.classList.contains('active'));
-                event.target.classList.remove('active');
+                console.log(target, "list", target.classList.contains('active'));
+                target.classList.remove('active');
                 this.dispatchUpdate({type, text});
             } else {
                 const type = "filter";
-                event.target.classList.add('active');
+                target.classList.add('active');
                 
-                if (event.target.nextElementSibling) {
-                    const children = event.target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
+                if (target.nextElementSibling) {
+                    const children = target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
                     children.forEach(
                         child =>  child.classList.add('active')
                     );
@@ -1762,34 +1763,35 @@
 
             const currentDate = new Date;
             const currentYear = currentDate.getFullYear();
-            const currentMonth = currentDate.getMonth();
-            /* YYYY-MM-DD  */
+            const currentMonth = ('0' + (currentDate.getMonth() + 1) ).slice(-2);
+            let startDate = '';
+            let endDate = '';
             
 
             switch (event.dataset.filter) {
                 
                 
                 case "today":
-                    console.log("today");
-                    console.log(currentDate);
+                    startDate = currentDate.toISOString().substr(0, 10);
+                    endDate = currentDate.toISOString().substr(0, 10);
                     break;
-                case "thisweek":
-                    console.log("thisweek");    
+                case "thisweek":   
                     const firstDayOfTheWeek = (currentDate.getDate() -  currentDate.getDay() ) + 1;
                     const lastDayOfTheWeek = firstDayOfTheWeek + 4;
-                    console.log(firstDayOfTheWeek,lastDayOfTheWeek);
+
+                    startDate = `${currentYear}-${currentMonth}-${firstDayOfTheWeek}`;
+                    endDate = `${currentYear}-${currentMonth}-${lastDayOfTheWeek}`;
                     break;
                 case "thismonth":
-                    console.log("thismonth");    
-                    const month = currentDate.getMonth();
-                        
-                    const firstDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth(), 1);
-                    let lastDayOfTheMonth = new Date(currentDate.getFullYear(),currentDate.getMonth() + 1, 0);
-                        
-                    console.log(firstDayOfTheMonth,lastDayOfTheMonth);
+                    const lastDayOfTheMonth = new Date(2008, currentMonth, 0);
+                    
+                    startDate = `${currentYear}-${currentMonth}-01`;
+                    endDate = `${currentYear}-${currentMonth}-${lastDayOfTheMonth.getDate()}`;
                     break;
                 case "thisyear":
-
+                    
+                    startDate = `${currentYear}-01-01`;
+                    endDate = `${currentYear}-12-31`;
                     break;
                 case "custom":
 
@@ -1800,7 +1802,8 @@
 
             const startDateInput = document.querySelector('input#start');
             const endDateInput = document.querySelector('input#end');
-            startDateInput = "";
+            startDateInput.value = startDate;
+            endDateInput.value = endDate;
         }
 
     }
