@@ -356,7 +356,7 @@ export default class CorDashboardFilter extends Component {
                 endDate = `${currentYear}-${currentMonth}-${('0' + lastDayOfTheWeek).slice(-2)}`;
                 break;
             case "thismonth":
-                const lastDayOfTheMonth = new Date(2008, currentMonth, 0);
+                const lastDayOfTheMonth = new Date(currentYear, currentMonth, 0);
                 
                 startDate = `${currentYear}-${currentMonth}-01`;
                 endDate = `${currentYear}-${currentMonth}-${lastDayOfTheMonth.getDate()}`;
