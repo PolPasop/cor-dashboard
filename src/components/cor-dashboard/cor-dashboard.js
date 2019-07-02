@@ -2492,6 +2492,23 @@
                 attributes: true,
                 attributeFilter: [filter]
             });
+
+            this.multiliguismTable();
+        }
+
+        multiliguismTable() {
+            const cells = document.querySelectorAll(".cor-dashboard-multilinguismTable li");
+            const values = [...cells].map( cell => cell.textContent);
+            console.log(values);
+            /*
+            const values = for (const cell of cells) {
+                cell => cell.texContent
+            };
+            const maxValue = Math.max(values);
+            
+            cells.map( cell => cell.dataset.percentage = (cell.textContent * 100) / maxValue);
+            */
+
         }
 
     }
