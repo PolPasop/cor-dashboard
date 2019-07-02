@@ -5,6 +5,7 @@
     margin: 0 auto 1.5rem;
     padding: 1.5rem;
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
+    max-width: 800px;
 }
 
 @media screen and (min-width: 900px) {

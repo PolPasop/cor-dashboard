@@ -1776,11 +1776,11 @@
                     endDate = currentDate.toISOString().substr(0, 10);
                     break;
                 case "thisweek":   
-                    const firstDayOfTheWeek = (currentDate.getDate() -  currentDate.getDay() ) + 1;
-                    const lastDayOfTheWeek = firstDayOfTheWeek + 4;
+                    let firstDayOfTheWeek = (currentDate.getDate() -  currentDate.getDay() ) + 1;
+                    let lastDayOfTheWeek = firstDayOfTheWeek + 4;
 
-                    startDate = `${currentYear}-${currentMonth}-${firstDayOfTheWeek}`;
-                    endDate = `${currentYear}-${currentMonth}-${lastDayOfTheWeek}`;
+                    startDate = `${currentYear}-${currentMonth}-${('0' + firstDayOfTheWeek).slice(-2)}`;
+                    endDate = `${currentYear}-${currentMonth}-${('0' + lastDayOfTheWeek).slice(-2)}`;
                     break;
                 case "thismonth":
                     const lastDayOfTheMonth = new Date(2008, currentMonth, 0);
