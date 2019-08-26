@@ -1,5 +1,6 @@
 import Component from '../component.js';
 import Template from './template.js';
+import CorDashboardLazyLoading from '../cor-dashboard-lazy-loading/cor-dashboard-lazy-loading.js';
 
 export default class CorDashboardDetailed extends Component {
     constructor() {
@@ -8,6 +9,7 @@ export default class CorDashboardDetailed extends Component {
 
     connectedCallback() {
         this.innerHTML = Template.render(this.globalData.ITEMS);
+        CorDashboardLazyLoading();
     }
 }
 

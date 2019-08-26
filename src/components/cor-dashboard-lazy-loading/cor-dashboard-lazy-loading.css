@@ -1,0 +1,8 @@
+.cor-dashboard-lazy-load__element {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.cor-dashboard-lazy-load--visible {
+    opacity: 1;
+}

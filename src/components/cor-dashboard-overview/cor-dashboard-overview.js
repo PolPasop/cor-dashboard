@@ -42,8 +42,12 @@ export default class CorDashboardOverview extends Component {
     }
 
     multiliguismTable() {
+        const lists = document.querySelectorAll(".cor-dashboard-multilinguismTable ol + ol");
         const cells = document.querySelectorAll(".cor-dashboard-multilinguismTable li");
         const values = [...cells].map( cell => cell.textContent);
+        const addpercentage = list => 
+        [...lists].map( list => addpercentage(list));
+        
         console.log(values);
         /*
         const values = for (const cell of cells) {

@@ -1783,7 +1783,7 @@
                     endDate = `${currentYear}-${currentMonth}-${('0' + lastDayOfTheWeek).slice(-2)}`;
                     break;
                 case "thismonth":
-                    const lastDayOfTheMonth = new Date(2008, currentMonth, 0);
+                    const lastDayOfTheMonth = new Date(currentYear, currentMonth, 0);
                     
                     startDate = `${currentYear}-${currentMonth}-01`;
                     endDate = `${currentYear}-${currentMonth}-${lastDayOfTheMonth.getDate()}`;
@@ -2497,8 +2497,10 @@
         }
 
         multiliguismTable() {
+            const lists = document.querySelectorAll(".cor-dashboard-multilinguismTable ol + ol");
             const cells = document.querySelectorAll(".cor-dashboard-multilinguismTable li");
             const values = [...cells].map( cell => cell.textContent);
+            
             console.log(values);
             /*
             const values = for (const cell of cells) {
@@ -2693,6 +2695,24 @@
         }
     };
 
+    function corDashboardLazyLoading() {
+
+        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('cor-dashboard-lazy-load--visible');
+                }
+            });
+        });
+
+        const articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+        [...articles].map( article => {
+            article.classList.add('cor-dashboard-lazy-load__element');
+            imageObserver.observe(article);
+        });
+        
+    }
+
     class CorDashboardDetailed extends Component {
         constructor() {
             super();
@@ -2700,6 +2720,7 @@
 
         connectedCallback() {
             this.innerHTML = Template$9.render(this.globalData.ITEMS);
+            corDashboardLazyLoading();
         }
     }
 
@@ -2793,20 +2814,19 @@
     }
 
     var Template$c = {
-        render() {
+        render(numberOfPages) {
+            console.log(numberOfPages);
             return `
-            ${this.html()}
+            ${this.html(numberOfPages)}
         `
         },
 
-        html() {
+        html(numberOfPages) {
             return `
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    ${Array(numberOfPages).fill().map( (item,index) => `<li class="page-item"><a class="page-link" href="#">${index + 1}</a></li>`).join('')}
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
             </nav>
@@ -2817,10 +2837,22 @@
     class CorDashboardPagination extends Component {
         constructor() {
             super();
+            
+
         }
 
         connectedCallback() {
-            this.innerHTML = Template$c.render(); 
+            const articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+            const totalItems = [...articles].length;
+            const itemsPerPage = 2;
+
+            
+
+            [...articles].map( article => {
+                article.classList.add('cor-dashboard-lazy-load__element');
+            });
+            
+            this.innerHTML = Template$c.render(Math.floor(totalItems / itemsPerPage));
         }
     }
 
