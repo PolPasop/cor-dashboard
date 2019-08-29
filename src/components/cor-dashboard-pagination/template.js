@@ -1,21 +1,27 @@
 
 export default {
-    render(numberOfPages) {
-        console.log(numberOfPages);
+    render(numberOfPages, currentPage) {
         return `
-            ${this.html(numberOfPages)}
+            ${this.html(numberOfPages, currentPage)}
         `
     },
 
-    html(numberOfPages) {
+    html(numberOfPages, currentPage) {
         return `
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    ${Array(numberOfPages).fill().map( (item,index) => `<li class="page-item"><a class="page-link" href="#">${index + 1}</a></li>`).join('')}
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" data-target="first">First</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-target="-1">Previous</a></li>
+                ${Array(numberOfPages).fill().map((item, index) => `
+                <li class="page-item">
+                    <a class="page-link
+                    ${index + 1 === currentPage ? `active` : ``}
+                    " href="#" data-page="${index + 1}">${index + 1}</a></li>
+                `).join('')}
+                <li class="page-item"><a class="page-link" href="#" data-target="+1">Next</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-target="last">Last</a></li>
+            </ul>
+        </nav>
         `
     }
 }

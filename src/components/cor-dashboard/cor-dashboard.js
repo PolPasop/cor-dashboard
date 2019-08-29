@@ -2148,7 +2148,7 @@
                 data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
             }
 
-            var height = 200;
+            var height = 200;
 
             var yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, d => {
@@ -2814,22 +2814,28 @@
     }
 
     var Template$c = {
-        render(numberOfPages) {
-            console.log(numberOfPages);
+        render(numberOfPages, currentPage) {
             return `
-            ${this.html(numberOfPages)}
+            ${this.html(numberOfPages, currentPage)}
         `
         },
 
-        html(numberOfPages) {
+        html(numberOfPages, currentPage) {
             return `
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    ${Array(numberOfPages).fill().map( (item,index) => `<li class="page-item"><a class="page-link" href="#">${index + 1}</a></li>`).join('')}
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" data-target="first">First</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-target="-1">Previous</a></li>
+                ${Array(numberOfPages).fill().map((item, index) => `
+                <li class="page-item">
+                    <a class="page-link
+                    ${index + 1 === currentPage ? `active` : ``}
+                    " href="#" data-page="${index + 1}">${index + 1}</a></li>
+                `).join('')}
+                <li class="page-item"><a class="page-link" href="#" data-target="+1">Next</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-target="last">Last</a></li>
+            </ul>
+        </nav>
         `
         }
     };
@@ -2837,22 +2843,65 @@
     class CorDashboardPagination extends Component {
         constructor() {
             super();
-            
 
+            this.articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+            this.currentPage = 1;
+            this.totalItems = [...this.articles].length;
+            this.itemsPerPage = 2;
+            this.totalOfPages = Math.floor(this.totalItems / this.itemsPerPage);
         }
 
         connectedCallback() {
-            const articles = document.querySelectorAll('.cor-dashboard-detailed-item');
-            const totalItems = [...articles].length;
-            const itemsPerPage = 2;
+            this.createPagination(this.totalItems, this.itemsPerPage, this.currentPage, this.totalOfPages);
+            this.addEventListener('click', this._onClick);
+        }
 
-            
-
-            [...articles].map( article => {
-                article.classList.add('cor-dashboard-lazy-load__element');
+        reset() {
+            [...this.articles].map((article, index) => {
+                article.hidden = "hidden";
             });
-            
-            this.innerHTML = Template$c.render(Math.floor(totalItems / itemsPerPage));
+
+        }
+
+        _selectArticles(newPage) {
+            this.reset();
+            this.currentPage = newPage;
+
+            const startBatch = this.itemsPerPage * (newPage - 1);
+            const endBatch = (this.itemsPerPage * (newPage - 1)) + this.itemsPerPage;
+
+            [...this.articles].slice(startBatch, endBatch).map((article, index) => {
+                article.hidden = false;
+            });
+
+            this.updatePagination(newPage);
+        }
+
+        _onClick(event) {
+
+            if (event.target.dataset.page) this._selectArticles(parseInt(event.target.dataset.page, 10));
+            // Previous page
+            if (event.target.dataset.target === "-1" && this.currentPage > 1) this._selectArticles(this.currentPage - 1);
+            // Next page
+            if (event.target.dataset.target === "+1" && this.currentPage < this.totalOfPages) this._selectArticles(this.currentPage + 1);
+            // First page
+            if (event.target.dataset.target === "first") this._selectArticles(1);
+            // Last page
+            if (event.target.dataset.target === "last") this._selectArticles(this.totalOfPages);
+        }
+
+        createPagination(totalItems, itemsPerPage, currentPage, totalOfPages) {
+
+            [...this.articles].map((article, index) => {
+                if (index >= itemsPerPage) article.hidden = "hidden";
+            });
+
+            this.innerHTML = Template$c.render(totalOfPages, currentPage);
+        }
+
+        updatePagination(currentPage) {
+            document.querySelector('.active').classList.remove('active');
+            document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
         }
     }
 
