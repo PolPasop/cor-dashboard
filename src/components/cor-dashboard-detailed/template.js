@@ -1,5 +1,6 @@
 import CorDashboardDetailedItem from '../cor-dashboard-detailed-item/cor-dashboard-detailed-item.js';
 import CorDashboardLanguagesOverview from '../cor-dashboard-languages-overview/cor-dashboard-languages-overview.js';
+import CorDashboardPagination from '../cor-dashboard-pagination/cor-dashboard-pagination.js';
 
 
 export default {
@@ -67,7 +68,7 @@ export default {
             
               ` ).join('')}
 
-              
+            <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
             
         `
     },

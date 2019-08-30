@@ -2619,201 +2619,6 @@
     }
 
     var Template$9 = {
-        render(data) {
-            return `
-            ${ this.html(data) }
-            ${ this.css() }
-        `
-        },
-
-        html(data) {
-            return `
-            <p class="cor-dashboard-card__title cor-dashboard-detailed__title">
-            ${data.length} News
-                <select>
-                    <option value="">Sort by</option>
-                    <option value="date">Date</option>
-                </select>
-            </p>
-
-            ${data.map( item => `
-
-            <article class="cor-dashboard-detailed-item" category="${item.category}">
-
-                <p class="cor-dashboard-detailed-item__contenttype">${item.contenttype}</p>
-                
-                <img src="${item.picture}" />
-                
-                <div>
-                    
-                    <h1 class="cor-dashboard-article__title">${item.title}</h1>
-                    <p class="cor-dashboard-article__details">
-                        ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
-                        <span>${item.date}</span>
-                        ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
-                    </p>
-                    <p class="cor-dashboard-article__extradetails">
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                    </p>
-                    <p class="cor-dashboard-detailed-item__intro-container">
-                        <span >${item.intro}</span>
-                    </p>
-                    
-                </div>
-
-                <ul class="cor-dashboard-detailed-item__languages-list">
-                    
-                        ${item.languages.map( language => `
-                            <li class="cor-dashboard-detailed-item__languages-list__item">
-                            <div class="cor-dashboard-languages-overview" data-status="${language.status}">
-                                <span title="language" data-lang="${language.label}">${language.label}</span>
-                            </div>
-                            </li>
-                        `).join('')}
-                        
-                    </ul>
-
-            </article>
-              
-            
-            
-              ` ).join('')}
-
-              
-            
-        `
-        },
-
-        css() {
-            return `
-            
-        `
-        }
-    };
-
-    function corDashboardLazyLoading() {
-
-        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('cor-dashboard-lazy-load--visible');
-                }
-            });
-        });
-
-        const articles = document.querySelectorAll('.cor-dashboard-detailed-item');
-        [...articles].map( article => {
-            article.classList.add('cor-dashboard-lazy-load__element');
-            imageObserver.observe(article);
-        });
-        
-    }
-
-    class CorDashboardDetailed extends Component {
-        constructor() {
-            super();
-        }
-
-        connectedCallback() {
-            this.innerHTML = Template$9.render(this.globalData.ITEMS);
-            corDashboardLazyLoading();
-        }
-    }
-
-    if(!customElements.get('cor-dashboard-detailed')) {
-        customElements.define('cor-dashboard-detailed', CorDashboardDetailed);
-    }
-
-    var Template$a = {
-        render () { 
-            return `
-        ${this.css()}
-        ${this.html()}
-        `
-        },
-
-        html () {
-            return `
-            <nav id="cor-dashboard-topnav">
-                <a data-view="overview" class="active" href="#">Overview</a>
-                <a data-view="detailed" href="#">Detailed</a>
-            </nav>  
-        `
-        },
-
-        css () {
-            return `
-
-        `
-        }
-    };
-
-    class CorDashboardTopnav extends Component {
-        constructor () {
-            super();
-        }
-
-        connectedCallback() {
-            this.innerHTML = Template$a.render();
-            this._triggers = this.querySelectorAll('[data-view]');
-            this._triggers.forEach(
-                trigger => trigger.addEventListener('click', e => this.onClick(e))
-            );
-        }
-
-        onClick(event) {
-            document.querySelector('[data-view].active').classList.remove('active');
-            event.target.classList.add('active');
-            const type = "view";
-            const text = event.target.dataset.view;
-            this.dispatchUpdate({ type, text});
-        }
-
-    }
-
-    if(!customElements.get('cor-dashboard-topnav')) {
-        customElements.define('cor-dashboard-topnav', CorDashboardTopnav);
-    }
-
-    var Template$b = {
-        render(stroke, radius, circumference, normalizedRadius) {
-            return `
-            ${this.html(stroke, radius, circumference, normalizedRadius)}
-        `
-        },
-
-        html(stroke, radius, circumference, normalizedRadius) {
-            return `
-            <div class="cor-dashboard-spinning-loader"></div>
-        `
-        }
-    };
-
-    class CorDashboardSpinner extends Component {
-        constructor() {
-            super();
-        }
-
-        connectedCallback() {
-            const stroke = this.getAttribute('stroke');
-            const radius = this.getAttribute('radius');
-            const normalizedRadius = radius - stroke * 2;
-            this._circumference = normalizedRadius * 2 * Math.PI;
-
-            this.innerHTML = Template$b.render(stroke, radius, this._circumference, normalizedRadius);
-        }
-
-    }
-
-    if (!customElements.get('cor-dashboard-spinner')) {
-        customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
-    }
-
-    var Template$c = {
         render(numberOfPages, currentPage) {
             return `
             ${this.html(numberOfPages, currentPage)}
@@ -2896,7 +2701,7 @@
                 if (index >= itemsPerPage) article.hidden = "hidden";
             });
 
-            this.innerHTML = Template$c.render(totalOfPages, currentPage);
+            this.innerHTML = Template$9.render(totalOfPages, currentPage);
         }
 
         updatePagination(currentPage) {
@@ -2907,6 +2712,201 @@
 
     if (!customElements.get('cor-dashboard-pagination')) {
         customElements.define('cor-dashboard-pagination', CorDashboardPagination);
+    }
+
+    var Template$a = {
+        render(data) {
+            return `
+            ${ this.html(data) }
+            ${ this.css() }
+        `
+        },
+
+        html(data) {
+            return `
+            <p class="cor-dashboard-card__title cor-dashboard-detailed__title">
+            ${data.length} News
+                <select>
+                    <option value="">Sort by</option>
+                    <option value="date">Date</option>
+                </select>
+            </p>
+
+            ${data.map( item => `
+
+            <article class="cor-dashboard-detailed-item" category="${item.category}">
+
+                <p class="cor-dashboard-detailed-item__contenttype">${item.contenttype}</p>
+                
+                <img src="${item.picture}" />
+                
+                <div>
+                    
+                    <h1 class="cor-dashboard-article__title">${item.title}</h1>
+                    <p class="cor-dashboard-article__details">
+                        ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
+                        <span>${item.date}</span>
+                        ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                    </p>
+                    <p class="cor-dashboard-article__extradetails">
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                        <span><strong>Lorem:</strong> ipsum</span>
+                    </p>
+                    <p class="cor-dashboard-detailed-item__intro-container">
+                        <span >${item.intro}</span>
+                    </p>
+                    
+                </div>
+
+                <ul class="cor-dashboard-detailed-item__languages-list">
+                    
+                        ${item.languages.map( language => `
+                            <li class="cor-dashboard-detailed-item__languages-list__item">
+                            <div class="cor-dashboard-languages-overview" data-status="${language.status}">
+                                <span title="language" data-lang="${language.label}">${language.label}</span>
+                            </div>
+                            </li>
+                        `).join('')}
+                        
+                    </ul>
+
+            </article>
+              
+            
+            
+              ` ).join('')}
+
+            <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
+            
+        `
+        },
+
+        css() {
+            return `
+            
+        `
+        }
+    };
+
+    function corDashboardLazyLoading() {
+
+        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('cor-dashboard-lazy-load--visible');
+                }
+            });
+        });
+
+        const articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+        [...articles].map( article => {
+            article.classList.add('cor-dashboard-lazy-load__element');
+            imageObserver.observe(article);
+        });
+        
+    }
+
+    class CorDashboardDetailed extends Component {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML = Template$a.render(this.globalData.ITEMS);
+            corDashboardLazyLoading();
+        }
+    }
+
+    if(!customElements.get('cor-dashboard-detailed')) {
+        customElements.define('cor-dashboard-detailed', CorDashboardDetailed);
+    }
+
+    var Template$b = {
+        render () { 
+            return `
+        ${this.css()}
+        ${this.html()}
+        `
+        },
+
+        html () {
+            return `
+            <nav id="cor-dashboard-topnav">
+                <a data-view="overview" class="active" href="#">Overview</a>
+                <a data-view="detailed" href="#">Detailed</a>
+            </nav>  
+        `
+        },
+
+        css () {
+            return `
+
+        `
+        }
+    };
+
+    class CorDashboardTopnav extends Component {
+        constructor () {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML = Template$b.render();
+            this._triggers = this.querySelectorAll('[data-view]');
+            this._triggers.forEach(
+                trigger => trigger.addEventListener('click', e => this.onClick(e))
+            );
+        }
+
+        onClick(event) {
+            document.querySelector('[data-view].active').classList.remove('active');
+            event.target.classList.add('active');
+            const type = "view";
+            const text = event.target.dataset.view;
+            this.dispatchUpdate({ type, text});
+        }
+
+    }
+
+    if(!customElements.get('cor-dashboard-topnav')) {
+        customElements.define('cor-dashboard-topnav', CorDashboardTopnav);
+    }
+
+    var Template$c = {
+        render(stroke, radius, circumference, normalizedRadius) {
+            return `
+            ${this.html(stroke, radius, circumference, normalizedRadius)}
+        `
+        },
+
+        html(stroke, radius, circumference, normalizedRadius) {
+            return `
+            <div class="cor-dashboard-spinning-loader"></div>
+        `
+        }
+    };
+
+    class CorDashboardSpinner extends Component {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            const stroke = this.getAttribute('stroke');
+            const radius = this.getAttribute('radius');
+            const normalizedRadius = radius - stroke * 2;
+            this._circumference = normalizedRadius * 2 * Math.PI;
+
+            this.innerHTML = Template$c.render(stroke, radius, this._circumference, normalizedRadius);
+        }
+
+    }
+
+    if (!customElements.get('cor-dashboard-spinner')) {
+        customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
     }
 
     var Template$d = {
@@ -2924,7 +2924,6 @@
                     return `
                     <div class="cor-dashboard-main">
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
-                        <cor-dashboard-pagination class="cor-dashboard-pagination"></cor-dashboard-pagination>
                     </div>
                 `;
                     break;
