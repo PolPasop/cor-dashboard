@@ -2148,7 +2148,7 @@
                 data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
             }
 
-            var height = 200;
+            var height = 200;
 
             var yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, d => {
@@ -2848,7 +2848,7 @@
             this.currentPage = 1;
             this.totalItems = [...this.articles].length;
             this.itemsPerPage = 2;
-            this.totalOfPages = Math.floor(this.totalItems / this.itemsPerPage);
+            this.totalOfPages = Math.round(this.totalItems / this.itemsPerPage);
         }
 
         connectedCallback() {

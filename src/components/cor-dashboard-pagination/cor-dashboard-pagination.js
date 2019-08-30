@@ -9,7 +9,7 @@ export default class CorDashboardPagination extends Component {
         this.currentPage = 1;
         this.totalItems = [...this.articles].length;
         this.itemsPerPage = 2;
-        this.totalOfPages = Math.floor(this.totalItems / this.itemsPerPage);
+        this.totalOfPages = Math.round(this.totalItems / this.itemsPerPage);
     }
 
     connectedCallback() {
