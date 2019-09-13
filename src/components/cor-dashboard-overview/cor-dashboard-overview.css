@@ -6,7 +6,7 @@
     .cor-dashboard-overview {
         display: grid;
         grid-template: 1fr;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-gap: 1.5rem;
         grid-auto-flow: row;
         align-items: start;

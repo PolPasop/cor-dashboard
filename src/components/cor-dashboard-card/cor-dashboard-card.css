@@ -4,6 +4,7 @@
     box-shadow: 0 2px 4px 0 rgba(50, 50, 93, .1);
     margin-bottom: 1.5rem;
     min-width: 0;
+    grid-column: span 2;
 }
 
 .cor-dashboard-card {
@@ -103,8 +104,7 @@ ol {
 
 /* Layout */ 
 .cor-dashboard-card[size=full] {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column: span 3;
 }
 
 

@@ -84,29 +84,3 @@ Each item can display:
 By clicking on a language, the item shows the translation.
 
 
-
-
-
-# Web components in action
-
-1. ## The framework without a framework
-2. ## Your first Web component
-3. ## Making you Component Re-Useable
-4. ## The Component Lifecycle
-5. ## Instrumenting a better Web app through Modules
-6. ## Markup Managed
-7. ## Templating your content with HTML
-8. ## The Shadow DOM
-9. ## Shadow CSS
-10. ## Shadow CSS rough edges
-11. ## A real-world UI component
-12. ## Building & Supporting older browsers
-13. ## Component testing
-14. ## Events and application data flow
-    1. ### Test
-15. ## Hidden complexities
-    1. ### Looking to the Web Component future
-    2. ### 3D and mixed reality
-        1. #### A-frame
-        2. #### Model viewer component
-        3. #### Model viewer + Poly search
