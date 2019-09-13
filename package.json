@@ -11,21 +11,21 @@
   "dependencies": {
     "@webcomponents/custom-elements": "^1.2.4",
     "@webcomponents/webcomponentsjs": "=2.1.2",
-    "d3": "^5.7.0",
+    "d3": "^5.12.0",
     "http-server": "^0.11.1",
     "remove": "^0.1.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "autoprefixer": "^9.5.1",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "autoprefixer": "^9.6.1",
     "cssnano": "^4.1.10",
-    "lit-html": "^1.0.0",
-    "nodemon": "^1.18.9",
-    "postcss-cli": "^6.1.1",
+    "lit-html": "^1.1.2",
+    "nodemon": "^1.19.2",
+    "postcss-cli": "^6.1.3",
     "postcss-css-variables": "^0.12.0",
     "postcss-import": "^12.0.1",
-    "rollup": "^1.10.1"
+    "rollup": "^1.21.2"
   }
 }
