@@ -2837,7 +2837,11 @@
             <nav id="cor-dashboard-topnav">
                 <a data-view="overview" class="active" href="#">Overview</a>
                 <a data-view="detailed" href="#">Detailed</a>
-            </nav>  
+                <a class="cor-icon" href="#">
+                    <svg width="20" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book-open" class="svg-inline--fa fa-book-open fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#c6c6c6" d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"></path></svg>
+    Manual</a>
+            </nav>
+            
         `
         },
 
@@ -2923,6 +2927,7 @@
                 case "detailed":
                     return `
                     <div class="cor-dashboard-main">
+                        <button>Today: Sep 17 <svg width="24" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-alt" class="svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg></button>
                         <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
                     </div>
                 `;
@@ -3062,13 +3067,41 @@
     }
 
     var Template$f = {
+        render() {
+            return `${this.html()}`;
+        },
+
+        html() {
+            return `
+            <button class="cor_button btn">
+                This month: Sep
+                <svg width="14" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-alt" class="svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg>
+            </button>
+        `;
+        }
+    };
+
+    class CorDashboardDateBtn extends Component {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML = Template$f.render();
+        }
+    }
+
+    if (!customElements.get('cor-dashboard-date-btn')) {
+        customElements.define('cor-dashboard-date-btn', CorDashboardDateBtn);
+    }
+
+    var Template$g = {
       render(globalData) {
         return `${this.css()}
     ${this.html(globalData)}`;
       },
 
       html(globalData) {
-        console.log(globalData);
         return `
     <div class="cor-dashboard">
         <!-- Sidebar -->
@@ -3094,9 +3127,13 @@
             <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>
 
-          <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
+          <div class="cor-dashboard-top-tools">
+            <cor-dashboard-date-btn class="cor-dashboard-date-btn"></cor-dashboard-date-btn>
+
+            <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
+          </div>
         
-          <cor-dashboard-main></cor-dashboard-main>
+          <cor-dashboard-main class="cor-dashboard-main"></cor-dashboard-main>
 
         </main>
         <!-- /Main -->
@@ -3128,7 +3165,7 @@
 
       connectedCallback() {
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$f.render(this.globalData.DATA);
+        this.innerHTML = Template$g.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
 
         // Resize event

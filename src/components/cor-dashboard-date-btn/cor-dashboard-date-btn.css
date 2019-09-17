@@ -1,0 +1,11 @@
+.cor-dashboard-date-btn {
+    align-self: flex-end;
+}
+
+.cor-dashboard-date-btn button:hover {
+    cursor: pointer;
+}
+
+.cor-dashboard-date-btn svg {
+    margin-left: 5px;
+}

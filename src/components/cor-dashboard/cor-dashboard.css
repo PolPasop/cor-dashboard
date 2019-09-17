@@ -151,6 +151,7 @@
   background: rgba(256,256,256,.5);
   border-bottom: solid 1px var(--gray-300);
   display: flex;
+  margin-bottom: 1.5rem;
   padding: 1.5rem 4rem;
   align-items: center;
 }
@@ -190,4 +191,10 @@ img {
 
 .cor-dashboard-topnav {
   grid-row: 0 / 3;
+}
+
+.cor-dashboard-top-tools {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
 }

@@ -5,6 +5,7 @@ import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detail
 import CorDashboardTopnav from '../cor-dashboard-topnav/cor-dashboard-topnav.js';
 import CorDashboardMain from '../cor-dashboard-main/cor-dashboard-main.js';
 import CorDashboardSelectedFilters from '../cor-dashboard-selected-filters/cor-dashboard-selected-filters.js';
+import CorDashboardDateBtn from '../cor-dashboard-date-btn/cor-dashboard-date-btn.js';
 
 export default {
   render(globalData) {
@@ -13,7 +14,6 @@ export default {
   },
 
   html(globalData) {
-    console.log(globalData);
     return `
     <div class="cor-dashboard">
         <!-- Sidebar -->
@@ -39,9 +39,13 @@ export default {
             <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>
 
-          <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
+          <div class="cor-dashboard-top-tools">
+            <cor-dashboard-date-btn class="cor-dashboard-date-btn"></cor-dashboard-date-btn>
+
+            <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
+          </div>
         
-          <cor-dashboard-main></cor-dashboard-main>
+          <cor-dashboard-main class="cor-dashboard-main"></cor-dashboard-main>
 
         </main>
         <!-- /Main -->

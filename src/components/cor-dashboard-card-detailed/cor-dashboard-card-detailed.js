@@ -2,7 +2,7 @@ import Component from '../component.js'
 import Template from './template.js'
 
 export default class CorDashboardCardDetailed extends Component {
-    constructo() {
+    constructor() {
         super();
     }
 

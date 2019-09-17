@@ -5,3 +5,5 @@
 - filtre eshop
 - checkbox
 - si on quitte le filtre dans lequel on a sélectionné des filtres, afficher un message pour proposer cancel ou apply
+- icone vue carte/détail
+- icône livre doc

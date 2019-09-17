@@ -1,0 +1,8 @@
+.cor-dashboard-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cor-dashboard-icon svg {
+    margin-right: 10px; 
+  }
