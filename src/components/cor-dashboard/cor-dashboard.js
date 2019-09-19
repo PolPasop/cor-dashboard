@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.dashboard = factory());
-}(this, function () { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('assert'), require('worker_threads')) :
+    typeof define === 'function' && define.amd ? define(['assert', 'worker_threads'], factory) :
+    (global = global || self, global.dashboard = factory(global.assert, global.worker_threads));
+}(this, function (assert, worker_threads) { 'use strict';
 
     var Data = {
         DATA : [
@@ -3068,15 +3068,118 @@
 
     var Template$f = {
         render() {
+            return `
+            ${this.html()}
+        `;
+        },
+
+        html() {
+            return `
+        <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--date">
+        <li class="cor-dashboard-filter__list__item">
+          <a
+            class="cor-dashboard-filter__list__item__link "
+            href="#"
+            data-filter="today"
+          >
+            Today
+          </a>
+        </li>
+      
+        <li class="cor-dashboard-filter__list__item">
+          <a
+            class="cor-dashboard-filter__list__item__link "
+            href="#"
+            data-filter="thisweek"
+          >
+            This week
+          </a>
+        </li>
+      
+        <li class="cor-dashboard-filter__list__item">
+          <a
+            class="cor-dashboard-filter__list__item__link "
+            href="#"
+            data-filter="thismonth"
+          >
+            This month
+          </a>
+        </li>
+      
+        <li class="cor-dashboard-filter__list__item">
+          <a
+            class="cor-dashboard-filter__list__item__link "
+            href="#"
+            data-filter="thisyear"
+          >
+            This year
+          </a>
+        </li>
+      
+        <li class="cor-dashboard-filter__list__item">
+          <div class="form-group">
+            <label for="start">Start date:</label>
+      
+            <input
+              class="form-control"
+              type="date"
+              id="start"
+              name="date-start"
+              value="2018-07-22"
+            />
+          </div>
+          <div class="form-group">
+            <label for="start">End date:</label>
+      
+            <input
+              class="form-control"
+              type="date"
+              id="end"
+              name="date-end"
+              value="2018-07-22"
+            />
+          </div>
+        </li>
+      </ul>
+      <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Apply selection</button>
+        `;
+        }
+    };
+
+    class CorDashboardDateFilter extends Component {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML = Template$f.render();
+        }
+    }
+
+    if(!customElements.get('cor-dashboard-date-filter')) {
+        customElements.define('cor-dashboard-date-filter', CorDashboardDateFilter);
+    }
+
+    var Template$g = {
+        render() {
             return `${this.html()}`;
         },
 
         html() {
             return `
-            <button class="cor_button btn">
-                This month: Sep
-                <svg width="14" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-alt" class="svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg>
-            </button>
+            <div class="js-menu cor-dashboard-menu">
+                <div class="js-menu-contents cor-dashboard-menu__contents">
+                    <button class="js-menu-toggle">
+                        <div class="js-menu-title cor_button btn  cor-dashboard-filtersbtn">
+                            <span>This month: Sep</span>
+                            <svg width="14" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-alt" class="svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg>
+                        </div>
+                    </button>
+                    <div class="cor-dashboard-menu-items">
+                        <cor-dashboard-date-filter class="cor-dashboard-date-filter"></cor-dashboard-date-filter>
+                    </div>
+                </div>
+            </div>
         `;
         }
     };
@@ -3087,15 +3190,220 @@
         }
 
         connectedCallback() {
-            this.innerHTML = Template$f.render();
+            this.innerHTML = Template$g.render();
+
+            this._menu = document.querySelector('.js-menu');        
+            this._menuContents = this._menu.querySelector('.js-menu-contents');
+            
+            this._menuToggleButton = this._menu.querySelector('.js-menu-toggle');
+            this._menuTitle = this._menu.querySelector('.js-menu-title');
+
+            this._expanded = true;
+            this._animate = false;
+            this._duration = 200;
+            this._frameTime = 1000/60;
+            this._nFrames = Math.round(this._duration / this._frameTime);
+            this._collapsed;
+
+            this.expand = this.expand.bind(this);
+            this.collapse = this.collapse.bind(this);
+            this.toggle = this.toggle.bind(this);
+
+            this._calculateScales();
+            this._createEaseAnimation();
+            this._addEventListeners();
+
+            this.collapse();
+            this.activate();
+            
         }
+
+        activate() {
+            this._menu.classList.add('menu--active');
+            this._animate = true;
+        }
+
+        collapse() {
+            if (!this._expanded) return;
+            this._expanded = false;
+
+            const {x, y} = this._collapsed;
+            const invX = 1 / x;
+            const invY = 1 / y;
+            this._menu.style.transform = `scale(${x}, ${y})`;
+            this._menuContents.style.transform = `scale(${invX}, ${invY})`;
+
+            if (!this._animate) return;
+
+            this._applyAnimation({expand: false});
+        }
+
+        expand() {
+            if (this._expanded) return;
+            this._expanded = true;
+            this._menu.style.transform = `scale(1, 1)`;
+            this._menuContents.style.transform = `scale(1, 1)`;
+
+            if (!this._animate) return;
+
+            this._applyAnimation({expand: true});
+        }
+
+        toggle() {
+            if (this._expanded) {
+                this.collapse();
+                return;
+            }
+
+            this.expand();
+        }
+
+        _addEventListeners() {
+            this._menuToggleButton.addEventListener('click', this.toggle);
+        }
+
+        _applyAnimation({expand}=opts) {
+            this._menu.classList.remove('menu--expanded');
+            this._menu.classList.remove('menu--collapsed');
+            this._menuContents.classList.remove('menu__contents--expanded');
+            this._menuContents.classList.remove('menu__contents--collapsed');
+
+            // Force a recalc styles here so the classes take hold.
+            window.getComputedStyle(this._menu).transform;
+
+            if (expand) {
+                this._menu.classList.add('menu--expanded');
+                this._menuContents.classList.add('menu__contents--expanded');
+                return;
+            }
+
+            this._menu.classList.add('menu--collapsed');
+            this._menuContents.classList.add('menu__contents--collapsed');
+        }
+
+        _calculateScales() {
+            const collapsed = this._menuTitle.getBoundingClientRect();
+            const expanded = this._menu.getBoundingClientRect();
+
+            this._collapsed = {
+                x: collapsed.width / expanded.width,
+                y: collapsed.height / expanded.height
+            };
+        }
+
+        _createEaseAnimation() {
+            let menuEase = document.querySelector('.menu-ease');
+            if(menuEase) return menuEase;
+
+            menuEase = document.createElement('style');
+            menuEase.classList.add('menu-ease');
+
+            const menuExpandAnimation = [];
+            const menuExpandContentsAnimation = [];
+            const menuCollapseAnimation = [];
+            const menuCollapseContentsAnimation = [];
+
+            const percentIncrement = 100 / this._nFrames;
+
+            for (let i = 0; i <= this._nFrames; i++) {
+                const step = this._ease(i / this._nFrames).toFixed(5);
+                const percentage = (i * percentIncrement).toFixed(5);
+                const startX = this._collapsed.x;
+                const startY = this._collapsed.y;
+                const endX = 1;
+                const endY = 1;
+
+                // Expand animation
+                this._append({
+                    percentage,
+                    step,
+                    startX,
+                    startY,
+                    endX,
+                    endY,
+                    outerAnimation : menuExpandAnimation,
+                    innerAnimation : menuExpandContentsAnimation
+                });
+
+                // Collapse animation
+                this._append({
+                    percentage,
+                    step,
+                    startX: 1,
+                    startY: 1,
+                    endX: this._collapsed.x,
+                    endY: this._collapsed.y,
+                    outerAnimation : menuCollapseAnimation,
+                    innerAnimation : menuCollapseContentsAnimation
+                });
+            }
+
+            menuEase.textContent = `
+            @keyframes menuExpandAnimation {
+                ${menuExpandAnimation.join('')}
+            }
+
+            @keyframes menuExpandContentsAnimation {
+                ${menuExpandContentsAnimation.join('')}
+            }
+
+            @keyframes menuCollapseAnimation {
+                ${menuCollapseAnimation.join('')}
+            }
+          
+            @keyframes menuCollapseContentsAnimation {
+                ${menuCollapseContentsAnimation.join('')}
+            }`;
+
+                document.head.appendChild(menuEase);
+                return menuEase;
+        }
+
+        _append ({
+            percentage,
+            step,
+            startX,
+            startY,
+            endX,
+            endY,
+            outerAnimation,
+            innerAnimation} = opts) {
+
+            const xScale = (startX + (endX - startX) * step).toFixed(5);
+            const yScale = (startY + (endY - startY) * step).toFixed(5);
+
+            const invScaleX = (1 / xScale).toFixed(5);
+            const invScaleY = (1 / yScale).toFixed(5);
+
+            outerAnimation.push(`
+            ${percentage}% {
+                transform: scale(${xScale}, ${yScale});
+        }`);
+
+            innerAnimation.push(`
+            ${percentage}% {
+                transform: scale(${invScaleX}, ${invScaleY});
+        }`);
+        }
+
+        _clamp (value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+
+        _ease (v, pow = 4) {
+            v = this._clamp(v, 0, 1);
+
+            return 1 - Math.pow(1 - v, pow);
+        }
+
+        
     }
 
     if (!customElements.get('cor-dashboard-date-btn')) {
         customElements.define('cor-dashboard-date-btn', CorDashboardDateBtn);
     }
 
-    var Template$g = {
+    var Template$h = {
       render(globalData) {
         return `${this.css()}
     ${this.html(globalData)}`;
@@ -3165,7 +3473,7 @@
 
       connectedCallback() {
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$g.render(this.globalData.DATA);
+        this.innerHTML = Template$h.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store);
 
         // Resize event

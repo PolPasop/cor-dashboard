@@ -25,6 +25,7 @@
 @import "components/cor-dashboard-pagination/cor-dashboard-pagination.css";
 @import "components/cor-dashboard-lazy-loading/cor-dashboard-lazy-loading.css";
 @import "components/cor-dashboard-date-btn/cor-dashboard-date-btn.css";
+@import "components/cor-dashboard-date-filter/cor-dashboard-date-filter.css";
 
 /* Sharepoint CSS overrides */
 @import "overrides.css";

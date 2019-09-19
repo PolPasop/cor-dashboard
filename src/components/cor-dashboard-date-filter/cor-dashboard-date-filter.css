@@ -1,0 +1,27 @@
+.cor-dashboard-date-filter {
+    display: block;
+    
+}
+
+.cor-dashboard-date-filter .cor-dashboard-filter__list__item {
+    margin: 0 1.5rem;
+}
+
+.cor-dashboard-date-filter .cor-dashboard-filter__list__item:not(:first-child) {
+    border-top: solid 1px var(--gray-300);
+}
+
+.cor-dashboard-date-filter .cor-dashboard-filter__list a {
+    margin: .5rem 0;
+}
+
+.cor-dashboard-date-filter .cor-dashboard-filtersbtn {
+    margin: 1.5rem;
+    width: calc(100% - 3rem);
+}
+
+.cor-dashboard-filter__list--date {
+    border-bottom: solid 1px var(--gray-500);
+    margin-bottom: 0;
+    padding-bottom: 1.5rem;
+}
