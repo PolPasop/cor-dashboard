@@ -1,6 +1,6 @@
 .cor-dashboard-selected-filters {
     display: block;
-    margin: 1.5rem 1.5rem 0;
+    justify-self: flex-start;
 }
 
 .cor-dashboard-selected-filters ul {

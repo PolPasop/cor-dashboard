@@ -9,10 +9,12 @@
     "build-ie": "./node_modules/.bin/babel src/components/cor-dashboard/cor-dashboard.js --out-file src/components/cor-dashboard/cor-dashboard.build.js"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
     "@webcomponents/custom-elements": "^1.2.4",
     "@webcomponents/webcomponentsjs": "=2.1.2",
     "d3": "^5.12.0",
     "http-server": "^0.11.1",
+    "intersection-observer": "^0.7.0",
     "remove": "^0.1.5"
   },
   "devDependencies": {

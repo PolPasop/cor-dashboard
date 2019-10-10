@@ -35,8 +35,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 (function (global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.dashboard = factory());
-})(void 0, function () {
+  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('assert'), require('worker_threads')) : typeof define === 'function' && define.amd ? define(['assert', 'worker_threads'], factory) : (global = global || self, global.dashboard = factory(global.assert, global.worker_threads));
+})(void 0, function (assert, worker_threads) {
   'use strict';
 
   var Data = {
@@ -1050,7 +1050,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Component).call(this)); // this.attachShadow({ mode: 'open' }); */
 
-      _this.root = document.body.firstElementChild;
+      _this.root = document.body.querySelector('cor-dashboard');
       _this.globalData = Data;
       return _this;
     }
@@ -1076,11 +1076,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     },
     html: function html(data) {
       return "\n        \n        ".concat(data.map(function (filter) {
-        return "\n            <div class=\"cor-dashboard-filter expandable\">\n                <h2 class=\"cor-dashboard-filter__title\">\n                    <button class=\"cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--".concat(filter.icon, "\" data-toggle=\"collapse\" data-expandtarget=\"").concat(filter.filterName, "\" aria-expanded=\"").concat(filter.expanded ? "true" : "false", "\" aria-controls=\"collapseExample\">\n                        ").concat(filter.name, "\n                    </button>\n                </h2>\n                <ul class=\"cor-dashboard-filter__list cor-dashboard-filter__list--").concat(filter.filterName, "\" id=\"").concat(filter.filterName, "\">\n                    ").concat(filter.items.map(function (item) {
-          return "\n                        <li class=\"cor-dashboard-filter__list__item\">\n\n                            ".concat(item.name === "Personalised" ? "\n                                <div>\n                                    <label for=\"start\">Start date:</label>\n\n                                    <input type=\"date\" id=\"start\" name=\"trip-start\"\n                                    value=\"2018-07-22\"\n                                    min=\"2018-01-01\" max=\"2018-12-31\">\n                                </div>\n                                <div>\n                                    <label for=\"start\">End date:</label>\n\n                                    <input type=\"date\" id=\"start\" name=\"trip-start\"\n                                        value=\"2018-07-22\"\n                                        min=\"2018-01-01\" max=\"2018-12-31\">\n                                </div>\n                            " : "\n                            <a class=\"cor-dashboard-filter__list__item__link\" href=\"#\" data-filter=\"".concat(item.target, "\">\n                                ").concat(item.name, "\n                            </a>\n                            "), "\n\n\n                            ").concat(item.subitems ? "\n                            <ul>\n                                ".concat(item.subitems.map(function (item) {
-            return "\n                                    <li><a class=\"cor-dashboard-filter__list__item__link\" href=\"#\" data-target=\"".concat(item.target, "\">").concat(item.name, "</a></li>\n                                ");
-          }).join(''), " \n                            </ul>") : "", "\n                        </li>\n                    ");
-        }).join(''), "\n                </ul>\n            </div>                     \n        ");
+        return "\n            <div class=\"cor-dashboard-filter expandable\">\n                <h2 class=\"cor-dashboard-filter__title\">\n                    <button class=\"cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--".concat(filter.icon, "\" data-toggle=\"collapse\" data-expandtarget=\"").concat(filter.filterName, "\" aria-expanded=\"").concat(filter.expanded ? "true" : "false", "\" aria-controls=\"collapseExample\">\n                        ").concat(filter.name, "\n                    </button>\n                </h2>\n                <div id=\"").concat(filter.filterName, "\" class=\"cor-dashboard-filter__list-container\">\n                    <ul class=\"cor-dashboard-filter__list cor-dashboard-filter__list--").concat(filter.filterName, "\">\n                        ").concat(filter.items.map(function (item) {
+          return "\n                            <li class=\"cor-dashboard-filter__list__item\">\n                                \n                                ".concat(item.name === "Personalised" ? "\n                                    <div class=\"form-group\">\n                                        <label for=\"start\">Start date:</label>\n\n                                        <input class=\"form-control\" type=\"date\" id=\"start\" name=\"date-start\"\n                                        value=\"2018-07-22\"\n                                        >\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label for=\"start\">End date:</label>\n\n                                        <input class=\"form-control\" type=\"date\" id=\"end\" name=\"date-end\"\n                                            value=\"2018-07-22\"\n                                            >\n                                    </div>\n                                " : "\n                                    <a class=\"cor-dashboard-filter__list__item__link ".concat(item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "", "\" href=\"#\" data-filter=\"").concat(item.target, "\" href=\"#/\">\n                                        ").concat(item.name, " \n                                        \n                                        ").concat(item.type !== "date" ? "\n                                            <span>".concat(item.number ? item.number : 0, "</span>\n                                        ") : "", "\n                                    </a>\n                                "), "\n                                \n                                ").concat(item.subitems ? "\n                                <ul>\n                                    ".concat(item.subitems.map(function (item) {
+            return "\n                                        <li><a class=\"cor-dashboard-filter__list__item__sublink\" href=\"#/\" data-filter=\"".concat(item.target, "\">").concat(item.name, " <span>").concat(item.number ? item.number : 0, "</span></a></li>\n                                    ");
+          }).join(''), " \n                                </ul>") : "", "\n                            </li>\n                        ");
+        }).join(''), "\n                    </ul>\n                    <div class=\"cor-dahsboard-btncontainer\">\n                        <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn\">Apply selection</button>\n                    </div>\n                </div>\n            </div>                     \n        ");
       }).join(''), "\n        \n\n        ");
     },
     css: function css() {
@@ -1089,36 +1089,45 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
   var data = [{
     name: "Content Types",
-    filterName: "contenttype",
+    filterName: "contenttypes",
     icon: "contenttypes",
     expanded: true,
     items: [{
       name: "News",
       target: "news",
+      number: 55,
       subitems: [{
-        name: "Regional news"
+        name: "Regional news",
+        number: 5
       }, {
-        name: "Press release"
+        name: "Press release",
+        number: 0
       }, {
-        name: "Success story"
+        name: "Success story",
+        number: 15
       }]
     }, {
       name: "Events",
-      target: "events"
+      target: "events",
+      number: 25
     }, {
       name: "Opinions",
-      target: "opinions"
+      target: "opinions",
+      number: 2
     }, {
       name: "Studies",
-      target: "studies"
+      target: "studies",
+      number: 9
     }, {
       name: "Brochures",
-      target: "brochures"
+      target: "brochures",
+      number: 7
     }]
   }, {
     name: "Themes",
     filterName: "themes",
     icon: "themes",
+    number: 125,
     items: [{
       name: "no theme",
       target: ""
@@ -1159,19 +1168,24 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     icon: "date",
     items: [{
       name: "Today",
-      target: ""
+      target: "today",
+      type: "date"
     }, {
       name: "This week",
-      target: ""
+      target: "thisweek",
+      type: "date"
     }, {
       name: "This month",
-      target: ""
+      target: "thismonth",
+      type: "date"
     }, {
       name: "This year",
-      target: ""
+      target: "thisyear",
+      type: "date"
     }, {
       name: "Personalised",
-      target: ""
+      target: "custom",
+      type: "date"
     }]
   }, {
     name: "Language",
@@ -1290,24 +1304,52 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           return trigger.addEventListener('click', function (e) {
             return _this2.ExpandCollapse(event.target.dataset.expandtarget);
           });
+        }); // dates events
+
+
+        this._dateTriggers = this.querySelectorAll('.cor-dashboard-filter__list cor-dashboard-filter__list--date [data-filter]');
+
+        this._dateTriggers.forEach(function (trigger) {
+          return trigger.addEventListener('click', function (e) {
+            return _this2.dateUpdate(e);
+          });
         });
       }
     }, {
       key: "onClick",
       value: function onClick(event) {
-        // this.show(event.target.dataset.target);
-        var text = event.target.dataset.filter;
+        if (event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
+          this.dateUpdate(event.target);
+          event.preventDefault();
+        } else {
+          this.updateActiveState(event.target);
+          event.preventDefault();
+        }
+      }
+    }, {
+      key: "updateActiveState",
+      value: function updateActiveState(target) {
+        var text = target.dataset.filter;
 
-        if (event.target.classList.contains('active')) {
+        if (target.classList.contains('active')) {
           var type = "remove-filter";
-          event.target.classList.remove('active');
+          console.log(target, "list", target.classList.contains('active'));
+          target.classList.remove('active');
           this.dispatchUpdate({
             type: type,
             text: text
           });
         } else {
           var _type = "filter";
-          event.target.classList.add('active');
+          target.classList.add('active');
+
+          if (target.nextElementSibling) {
+            var children = target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
+            children.forEach(function (child) {
+              return child.classList.add('active');
+            });
+          }
+
           this.dispatchUpdate({
             type: _type,
             text: text
@@ -1340,6 +1382,51 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         target.style.height = 0;
         this._collapsed = true;
       }
+    }, {
+      key: "dateUpdate",
+      value: function dateUpdate(event) {
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        var startDate = '';
+        var endDate = '';
+
+        switch (event.dataset.filter) {
+          case "today":
+            startDate = currentDate.toISOString().substr(0, 10);
+            endDate = currentDate.toISOString().substr(0, 10);
+            break;
+
+          case "thisweek":
+            var firstDayOfTheWeek = currentDate.getDate() - currentDate.getDay() + 1;
+            var lastDayOfTheWeek = firstDayOfTheWeek + 4;
+            startDate = "".concat(currentYear, "-").concat(currentMonth, "-").concat(('0' + firstDayOfTheWeek).slice(-2));
+            endDate = "".concat(currentYear, "-").concat(currentMonth, "-").concat(('0' + lastDayOfTheWeek).slice(-2));
+            break;
+
+          case "thismonth":
+            var lastDayOfTheMonth = new Date(currentYear, currentMonth, 0);
+            startDate = "".concat(currentYear, "-").concat(currentMonth, "-01");
+            endDate = "".concat(currentYear, "-").concat(currentMonth, "-").concat(lastDayOfTheMonth.getDate());
+            break;
+
+          case "thisyear":
+            startDate = "".concat(currentYear, "-01-01");
+            endDate = "".concat(currentYear, "-12-31");
+            break;
+
+          case "custom":
+            break;
+
+          default:
+            break;
+        }
+
+        var startDateInput = document.querySelector('input#start');
+        var endDateInput = document.querySelector('input#end');
+        startDateInput.value = startDate;
+        endDateInput.value = endDate;
+      }
     }]);
 
     return CorDashboardFilter;
@@ -1363,7 +1450,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return "\n          <li class=\"cor-dashboard__nav__item\">\n            <a class=\"cor-dashboard__nav-link cor-dashboard__nav-link--".concat(navitem.icon, "\" href=\"#\" data-target=\"").concat(navitem.target, "\">").concat(navitem.name, "</a>\n            \n            <!-- Sub menu -->\n            ").concat(navitem.subitems ? "\n              <ul>".concat(navitem.subitems.map(function (subitem) {
           return "\n                <li>\n                  <a class=\"cor-dashboard__nav-link\">".concat(subitem.name, "</a>\n                </li>");
         }).join(''), "\n              </ul>") : "", "\n            <!-- /Sub menu -->\n\n          </li>\n        ");
-      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n\n    <hr/>\n    <div class=\"cor-dahsboard-btncontainer\">\n      <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn disabled\">Apply selection</button>\n    </div>\n      \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->    \n    ");
+      }).join(''), "\n    </ul>\n    <!-- /Menu -->\n      \n    <!-- Filtres -->\n    <cor-dashboard-filter></cor-dashboard-filter>\n    <!-- /Filtres -->    \n    ");
     },
     css: function css() {
       return "\n\n    ";
@@ -1628,7 +1715,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       value: function connectedCallback() {
         this.innerHTML = Template$4.render();
         var data = this.parentNode.getAttribute("data-data");
-        this.chart(JSON.parse(data), this);
+
+        if (data) {
+          this.chart(JSON.parse(data), this);
+        }
+
         this.classList.add('visible');
       }
     }, {
@@ -1832,6 +1923,27 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           attributes: true,
           attributeFilter: [filter]
         });
+        this.multiliguismTable();
+      }
+    }, {
+      key: "multiliguismTable",
+      value: function multiliguismTable() {
+        var lists = document.querySelectorAll(".cor-dashboard-multilinguismTable ol + ol");
+        var cells = document.querySelectorAll(".cor-dashboard-multilinguismTable li");
+
+        var values = _toConsumableArray(cells).map(function (cell) {
+          return cell.textContent;
+        });
+
+        console.log(values);
+        /*
+        const values = for (const cell of cells) {
+            cell => cell.texContent
+        };
+        const maxValue = Math.max(values);
+        
+        cells.map( cell => cell.dataset.percentage = (cell.textContent * 100) / maxValue);
+        */
       }
     }]);
 
@@ -1920,6 +2032,97 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   var Template$9 = {
+    render: function render(numberOfPages, currentPage) {
+      return "\n            ".concat(this.html(numberOfPages, currentPage), "\n        ");
+    },
+    html: function html(numberOfPages, currentPage) {
+      return "\n        <nav aria-label=\"Page navigation example\">\n            <ul class=\"pagination\">\n                <li class=\"page-item\"><a class=\"page-link\" href=\"#\" data-target=\"first\">First</a></li>\n                <li class=\"page-item\"><a class=\"page-link\" href=\"#\" data-target=\"-1\">Previous</a></li>\n                ".concat(Array(numberOfPages).fill().map(function (item, index) {
+        return "\n                <li class=\"page-item\">\n                    <a class=\"page-link\n                    ".concat(index + 1 === currentPage ? "active" : "", "\n                    \" href=\"#\" data-page=\"").concat(index + 1, "\">").concat(index + 1, "</a></li>\n                ");
+      }).join(''), "\n                <li class=\"page-item\"><a class=\"page-link\" href=\"#\" data-target=\"+1\">Next</a></li>\n                <li class=\"page-item\"><a class=\"page-link\" href=\"#\" data-target=\"last\">Last</a></li>\n            </ul>\n        </nav>\n        ");
+    }
+  };
+
+  var CorDashboardPagination =
+  /*#__PURE__*/
+  function (_Component10) {
+    _inherits(CorDashboardPagination, _Component10);
+
+    function CorDashboardPagination() {
+      _classCallCheck(this, CorDashboardPagination);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardPagination).call(this));
+    }
+
+    _createClass(CorDashboardPagination, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+        this.currentPage = 1;
+        this.totalItems = _toConsumableArray(this.articles).length;
+        this.itemsPerPage = 2;
+        this.totalOfPages = Math.round(this.totalItems / this.itemsPerPage);
+        this.createPagination(this.totalItems, this.itemsPerPage, this.currentPage, this.totalOfPages);
+        this.addEventListener('click', this._onClick);
+      }
+    }, {
+      key: "reset",
+      value: function reset() {
+        _toConsumableArray(this.articles).map(function (article, index) {
+          article.hidden = "hidden";
+        });
+      }
+    }, {
+      key: "_selectArticles",
+      value: function _selectArticles(newPage) {
+        this.reset();
+        this.currentPage = newPage;
+        var startBatch = this.itemsPerPage * (newPage - 1);
+        var endBatch = this.itemsPerPage * (newPage - 1) + this.itemsPerPage;
+
+        _toConsumableArray(this.articles).slice(startBatch, endBatch).map(function (article, index) {
+          article.hidden = false;
+        });
+
+        this.updatePagination(newPage);
+      }
+    }, {
+      key: "_onClick",
+      value: function _onClick(event) {
+        if (event.target.dataset.page) this._selectArticles(parseInt(event.target.dataset.page, 10)); // Previous page
+
+        if (event.target.dataset.target === "-1" && this.currentPage > 1) this._selectArticles(this.currentPage - 1); // Next page
+
+        if (event.target.dataset.target === "+1" && this.currentPage < this.totalOfPages) this._selectArticles(this.currentPage + 1); // First page
+
+        if (event.target.dataset.target === "first") this._selectArticles(1); // Last page
+
+        if (event.target.dataset.target === "last") this._selectArticles(this.totalOfPages);
+      }
+    }, {
+      key: "createPagination",
+      value: function createPagination(totalItems, itemsPerPage, currentPage, totalOfPages) {
+        _toConsumableArray(this.articles).map(function (article, index) {
+          if (index >= itemsPerPage) article.hidden = "hidden";
+        });
+
+        this.innerHTML = Template$9.render(totalOfPages, currentPage);
+      }
+    }, {
+      key: "updatePagination",
+      value: function updatePagination(currentPage) {
+        document.querySelector('.active').classList.remove('active');
+        document.querySelector("[data-page=\"".concat(currentPage, "\"]")).classList.add('active');
+      }
+    }]);
+
+    return CorDashboardPagination;
+  }(Component);
+
+  if (!customElements.get('cor-dashboard-pagination')) {
+    customElements.define('cor-dashboard-pagination', CorDashboardPagination);
+  }
+
+  var Template$a = {
     render: function render(data) {
       return "\n            ".concat(this.html(data), "\n            ").concat(this.css(), "\n        ");
     },
@@ -1928,17 +2131,33 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return "\n\n            <article class=\"cor-dashboard-detailed-item\" category=\"".concat(item.category, "\">\n\n                <p class=\"cor-dashboard-detailed-item__contenttype\">").concat(item.contenttype, "</p>\n                \n                <img src=\"").concat(item.picture, "\" />\n                \n                <div>\n                    \n                    <h1 class=\"cor-dashboard-article__title\">").concat(item.title, "</h1>\n                    <p class=\"cor-dashboard-article__details\">\n                        ").concat(item.label ? "<span class=\"cor-dashboard-article__label ".concat(item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : "", " ").concat(item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : "", " ").concat(item.label === "Success story" ? "cor-dashboard-article__label--successstory" : "", " ").concat(item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : "", "\">").concat(item.label, "</span>") : "", "\n                        <span>").concat(item.date, "</span>\n                        ").concat(item.theme ? "&nbsp;|&nbsp;<span>".concat(item.theme, "</span>") : "", "\n                    </p>\n                    <p class=\"cor-dashboard-article__extradetails\">\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                        <span><strong>Lorem:</strong> ipsum</span>\n                    </p>\n                    <p class=\"cor-dashboard-detailed-item__intro-container\">\n                        <span >").concat(item.intro, "</span>\n                    </p>\n                    \n                </div>\n\n                <ul class=\"cor-dashboard-detailed-item__languages-list\">\n                    \n                        ").concat(item.languages.map(function (language) {
           return "\n                            <li class=\"cor-dashboard-detailed-item__languages-list__item\">\n                            <div class=\"cor-dashboard-languages-overview\" data-status=\"".concat(language.status, "\">\n                                <span title=\"language\" data-lang=\"").concat(language.label, "\">").concat(language.label, "</span>\n                            </div>\n                            </li>\n                        ");
         }).join(''), "\n                        \n                    </ul>\n\n            </article>\n              \n            \n            \n              ");
-      }).join(''), "\n\n              \n            \n        ");
+      }).join(''), "\n\n            <cor-dashboard-pagination class=\"cor-dashboard-pagination\"></cor-dashboard-pagination>\n            \n        ");
     },
     css: function css() {
       return "\n            \n        ";
     }
   };
 
+  function corDashboardLazyLoading() {
+    var imageObserver = new IntersectionObserver(function (entries, imgObserver) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('cor-dashboard-lazy-load--visible');
+        }
+      });
+    });
+    var articles = document.querySelectorAll('.cor-dashboard-detailed-item');
+
+    _toConsumableArray(articles).map(function (article) {
+      article.classList.add('cor-dashboard-lazy-load__element');
+      imageObserver.observe(article);
+    });
+  }
+
   var CorDashboardDetailed =
   /*#__PURE__*/
-  function (_Component10) {
-    _inherits(CorDashboardDetailed, _Component10);
+  function (_Component11) {
+    _inherits(CorDashboardDetailed, _Component11);
 
     function CorDashboardDetailed() {
       _classCallCheck(this, CorDashboardDetailed);
@@ -1949,7 +2168,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _createClass(CorDashboardDetailed, [{
       key: "connectedCallback",
       value: function connectedCallback() {
-        this.innerHTML = Template$9.render(this.globalData.ITEMS);
+        this.innerHTML = Template$a.render(this.globalData.ITEMS);
+        corDashboardLazyLoading();
       }
     }]);
 
@@ -1960,12 +2180,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     customElements.define('cor-dashboard-detailed', CorDashboardDetailed);
   }
 
-  var Template$a = {
+  var Template$b = {
     render: function render() {
       return "\n        ".concat(this.css(), "\n        ").concat(this.html(), "\n        ");
     },
     html: function html() {
-      return "\n            <nav id=\"cor-dashboard-topnav\">\n                <a data-view=\"overview\" class=\"active\" href=\"#\">Overview</a>\n                <a data-view=\"detailed\" href=\"#\">Detailed</a>\n            </nav>  \n        ";
+      return "\n            <nav id=\"cor-dashboard-topnav\">\n                <a data-view=\"overview\" class=\"active\" href=\"#\">Overview</a>\n                <a data-view=\"detailed\" href=\"#\">Detailed</a>\n                <a class=\"cor-icon\" href=\"#\">\n                    <svg width=\"20\" height=\"20\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"book-open\" class=\"svg-inline--fa fa-book-open fa-w-18\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\"><path fill=\"#c6c6c6\" d=\"M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z\"></path></svg>\n    Manual</a>\n            </nav>\n            \n        ";
     },
     css: function css() {
       return "\n\n        ";
@@ -1974,8 +2194,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboardTopnav =
   /*#__PURE__*/
-  function (_Component11) {
-    _inherits(CorDashboardTopnav, _Component11);
+  function (_Component12) {
+    _inherits(CorDashboardTopnav, _Component12);
 
     function CorDashboardTopnav() {
       _classCallCheck(this, CorDashboardTopnav);
@@ -1988,7 +2208,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       value: function connectedCallback() {
         var _this8 = this;
 
-        this.innerHTML = Template$a.render();
+        this.innerHTML = Template$b.render();
         this._triggers = this.querySelectorAll('[data-view]');
 
         this._triggers.forEach(function (trigger) {
@@ -2018,7 +2238,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     customElements.define('cor-dashboard-topnav', CorDashboardTopnav);
   }
 
-  var Template$b = {
+  var Template$c = {
     render: function render(stroke, radius, circumference, normalizedRadius) {
       return "\n            ".concat(this.html(stroke, radius, circumference, normalizedRadius), "\n        ");
     },
@@ -2029,8 +2249,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboardSpinner =
   /*#__PURE__*/
-  function (_Component12) {
-    _inherits(CorDashboardSpinner, _Component12);
+  function (_Component13) {
+    _inherits(CorDashboardSpinner, _Component13);
 
     function CorDashboardSpinner() {
       _classCallCheck(this, CorDashboardSpinner);
@@ -2045,7 +2265,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var radius = this.getAttribute('radius');
         var normalizedRadius = radius - stroke * 2;
         this._circumference = normalizedRadius * 2 * Math.PI;
-        this.innerHTML = Template$b.render(stroke, radius, this._circumference, normalizedRadius);
+        this.innerHTML = Template$c.render(stroke, radius, this._circumference, normalizedRadius);
       }
     }]);
 
@@ -2056,40 +2276,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
   }
 
-  var Template$c = {
-    render: function render() {
-      return "\n            ".concat(this.html(), "\n        ");
-    },
-    html: function html() {
-      return "\n            <nav aria-label=\"Page navigation example\">\n                <ul class=\"pagination\">\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li>\n                </ul>\n            </nav>\n        ";
-    }
-  };
-
-  var CorDashboardPagination =
-  /*#__PURE__*/
-  function (_Component13) {
-    _inherits(CorDashboardPagination, _Component13);
-
-    function CorDashboardPagination() {
-      _classCallCheck(this, CorDashboardPagination);
-
-      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardPagination).call(this));
-    }
-
-    _createClass(CorDashboardPagination, [{
-      key: "connectedCallback",
-      value: function connectedCallback() {
-        this.innerHTML = Template$c.render();
-      }
-    }]);
-
-    return CorDashboardPagination;
-  }(Component);
-
-  if (!customElements.get('cor-dashboard-pagination')) {
-    customElements.define('cor-dashboard-pagination', CorDashboardPagination);
-  }
-
   var Template$d = {
     render: function render(view) {
       return "\n            ".concat(this.css(), "\n            ").concat(this.html(view), "\n        ");
@@ -2097,7 +2283,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     html: function html(view) {
       switch (view) {
         case "detailed":
-          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                        <cor-dashboard-pagination class=\"cor-dashboard-pagination\"></cor-dashboard-pagination>\n                    </div>\n                ";
+          return "\n                    <div class=\"cor-dashboard-main\">\n                        <cor-dashboard-detailed class=\"cor-dashboard-detailed\"></cor-dashboard-detailed>\n                    </div>\n                ";
           break;
 
         case "overview":
@@ -2246,11 +2432,277 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   var Template$f = {
+    render: function render() {
+      return "\n            ".concat(this.html(), "\n        ");
+    },
+    html: function html() {
+      return "\n        <ul class=\"cor-dashboard-filter__list cor-dashboard-filter__list--date\">\n        <li class=\"cor-dashboard-filter__list__item\">\n          <a\n            class=\"cor-dashboard-filter__list__item__link \"\n            href=\"#\"\n            data-filter=\"today\"\n          >\n            Today\n          </a>\n        </li>\n      \n        <li class=\"cor-dashboard-filter__list__item\">\n          <a\n            class=\"cor-dashboard-filter__list__item__link \"\n            href=\"#\"\n            data-filter=\"thisweek\"\n          >\n            This week\n          </a>\n        </li>\n      \n        <li class=\"cor-dashboard-filter__list__item\">\n          <a\n            class=\"cor-dashboard-filter__list__item__link \"\n            href=\"#\"\n            data-filter=\"thismonth\"\n          >\n            This month\n          </a>\n        </li>\n      \n        <li class=\"cor-dashboard-filter__list__item\">\n          <a\n            class=\"cor-dashboard-filter__list__item__link \"\n            href=\"#\"\n            data-filter=\"thisyear\"\n          >\n            This year\n          </a>\n        </li>\n      \n        <li class=\"cor-dashboard-filter__list__item\">\n          <div class=\"form-group\">\n            <label for=\"start\">Start date:</label>\n      \n            <input\n              class=\"form-control\"\n              type=\"date\"\n              id=\"start\"\n              name=\"date-start\"\n              value=\"2018-07-22\"\n            />\n          </div>\n          <div class=\"form-group\">\n            <label for=\"start\">End date:</label>\n      \n            <input\n              class=\"form-control\"\n              type=\"date\"\n              id=\"end\"\n              name=\"date-end\"\n              value=\"2018-07-22\"\n            />\n          </div>\n        </li>\n      </ul>\n      <button class=\"cor_button btn cor_button--after cor-dashboard-filtersbtn\">Apply selection</button>\n        ";
+    }
+  };
+
+  var CorDashboardDateFilter =
+  /*#__PURE__*/
+  function (_Component16) {
+    _inherits(CorDashboardDateFilter, _Component16);
+
+    function CorDashboardDateFilter() {
+      _classCallCheck(this, CorDashboardDateFilter);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDateFilter).call(this));
+    }
+
+    _createClass(CorDashboardDateFilter, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$f.render();
+      }
+    }]);
+
+    return CorDashboardDateFilter;
+  }(Component);
+
+  if (!customElements.get('cor-dashboard-date-filter')) {
+    customElements.define('cor-dashboard-date-filter', CorDashboardDateFilter);
+  }
+
+  var Template$g = {
+    render: function render() {
+      return "".concat(this.html());
+    },
+    html: function html() {
+      return "\n            <div class=\"js-menu cor-dashboard-menu\">\n                <div class=\"js-menu-contents cor-dashboard-menu__contents\">\n                    <button class=\"js-menu-toggle\">\n                        <div class=\"js-menu-title cor_button btn  cor-dashboard-filtersbtn\">\n                            <span>This month: Sep</span>\n                            <svg width=\"14\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"far\" data-icon=\"calendar-alt\" class=\"svg-inline--fa fa-calendar-alt fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z\"></path></svg>\n                        </div>\n                    </button>\n                    <div class=\"cor-dashboard-menu-items\">\n                        <cor-dashboard-date-filter class=\"cor-dashboard-date-filter\"></cor-dashboard-date-filter>\n                    </div>\n                </div>\n            </div>\n        ";
+    }
+  };
+
+  var CorDashboardDateBtn =
+  /*#__PURE__*/
+  function (_Component17) {
+    _inherits(CorDashboardDateBtn, _Component17);
+
+    function CorDashboardDateBtn() {
+      _classCallCheck(this, CorDashboardDateBtn);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(CorDashboardDateBtn).call(this));
+    }
+
+    _createClass(CorDashboardDateBtn, [{
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        this.innerHTML = Template$g.render();
+        this._menu = document.querySelector('.js-menu');
+        this._menuContents = this._menu.querySelector('.js-menu-contents');
+        this._menuToggleButton = this._menu.querySelector('.js-menu-toggle');
+        this._menuTitle = this._menu.querySelector('.js-menu-title');
+        this._expanded = true;
+        this._animate = false;
+        this._duration = 200;
+        this._frameTime = 1000 / 60;
+        this._nFrames = Math.round(this._duration / this._frameTime);
+        this._collapsed;
+        this.expand = this.expand.bind(this);
+        this.collapse = this.collapse.bind(this);
+        this.toggle = this.toggle.bind(this);
+
+        this._calculateScales();
+
+        this._createEaseAnimation();
+
+        this._addEventListeners();
+
+        this.collapse();
+        this.activate();
+      }
+    }, {
+      key: "activate",
+      value: function activate() {
+        this._menu.classList.add('menu--active');
+
+        this._animate = true;
+      }
+    }, {
+      key: "collapse",
+      value: function collapse() {
+        if (!this._expanded) return;
+        this._expanded = false;
+        var _this$_collapsed = this._collapsed,
+            x = _this$_collapsed.x,
+            y = _this$_collapsed.y;
+        var invX = 1 / x;
+        var invY = 1 / y;
+        this._menu.style.transform = "scale(".concat(x, ", ").concat(y, ")");
+        this._menuContents.style.transform = "scale(".concat(invX, ", ").concat(invY, ")");
+        if (!this._animate) return;
+
+        this._applyAnimation({
+          expand: false
+        });
+      }
+    }, {
+      key: "expand",
+      value: function expand() {
+        if (this._expanded) return;
+        this._expanded = true;
+        this._menu.style.transform = "scale(1, 1)";
+        this._menuContents.style.transform = "scale(1, 1)";
+        if (!this._animate) return;
+
+        this._applyAnimation({
+          expand: true
+        });
+      }
+    }, {
+      key: "toggle",
+      value: function toggle() {
+        if (this._expanded) {
+          this.collapse();
+          return;
+        }
+
+        this.expand();
+      }
+    }, {
+      key: "_addEventListeners",
+      value: function _addEventListeners() {
+        this._menuToggleButton.addEventListener('click', this.toggle);
+      }
+    }, {
+      key: "_applyAnimation",
+      value: function _applyAnimation() {
+        var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : opts,
+            expand = _ref.expand;
+
+        this._menu.classList.remove('menu--expanded');
+
+        this._menu.classList.remove('menu--collapsed');
+
+        this._menuContents.classList.remove('menu__contents--expanded');
+
+        this._menuContents.classList.remove('menu__contents--collapsed'); // Force a recalc styles here so the classes take hold.
+
+
+        window.getComputedStyle(this._menu).transform;
+
+        if (expand) {
+          this._menu.classList.add('menu--expanded');
+
+          this._menuContents.classList.add('menu__contents--expanded');
+
+          return;
+        }
+
+        this._menu.classList.add('menu--collapsed');
+
+        this._menuContents.classList.add('menu__contents--collapsed');
+      }
+    }, {
+      key: "_calculateScales",
+      value: function _calculateScales() {
+        var collapsed = this._menuTitle.getBoundingClientRect();
+
+        var expanded = this._menu.getBoundingClientRect();
+
+        this._collapsed = {
+          x: collapsed.width / expanded.width,
+          y: collapsed.height / expanded.height
+        };
+      }
+    }, {
+      key: "_createEaseAnimation",
+      value: function _createEaseAnimation() {
+        var menuEase = document.querySelector('.menu-ease');
+        if (menuEase) return menuEase;
+        menuEase = document.createElement('style');
+        menuEase.classList.add('menu-ease');
+        var menuExpandAnimation = [];
+        var menuExpandContentsAnimation = [];
+        var menuCollapseAnimation = [];
+        var menuCollapseContentsAnimation = [];
+        var percentIncrement = 100 / this._nFrames;
+
+        for (var i = 0; i <= this._nFrames; i++) {
+          var step = this._ease(i / this._nFrames).toFixed(5);
+
+          var percentage = (i * percentIncrement).toFixed(5);
+          var startX = this._collapsed.x;
+          var startY = this._collapsed.y;
+          var endX = 1;
+          var endY = 1; // Expand animation
+
+          this._append({
+            percentage: percentage,
+            step: step,
+            startX: startX,
+            startY: startY,
+            endX: endX,
+            endY: endY,
+            outerAnimation: menuExpandAnimation,
+            innerAnimation: menuExpandContentsAnimation
+          }); // Collapse animation
+
+
+          this._append({
+            percentage: percentage,
+            step: step,
+            startX: 1,
+            startY: 1,
+            endX: this._collapsed.x,
+            endY: this._collapsed.y,
+            outerAnimation: menuCollapseAnimation,
+            innerAnimation: menuCollapseContentsAnimation
+          });
+        }
+
+        menuEase.textContent = "\n            @keyframes menuExpandAnimation {\n                ".concat(menuExpandAnimation.join(''), "\n            }\n\n            @keyframes menuExpandContentsAnimation {\n                ").concat(menuExpandContentsAnimation.join(''), "\n            }\n\n            @keyframes menuCollapseAnimation {\n                ").concat(menuCollapseAnimation.join(''), "\n            }\n          \n            @keyframes menuCollapseContentsAnimation {\n                ").concat(menuCollapseContentsAnimation.join(''), "\n            }");
+        document.head.appendChild(menuEase);
+        return menuEase;
+      }
+    }, {
+      key: "_append",
+      value: function _append() {
+        var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : opts,
+            percentage = _ref2.percentage,
+            step = _ref2.step,
+            startX = _ref2.startX,
+            startY = _ref2.startY,
+            endX = _ref2.endX,
+            endY = _ref2.endY,
+            outerAnimation = _ref2.outerAnimation,
+            innerAnimation = _ref2.innerAnimation;
+
+        var xScale = (startX + (endX - startX) * step).toFixed(5);
+        var yScale = (startY + (endY - startY) * step).toFixed(5);
+        var invScaleX = (1 / xScale).toFixed(5);
+        var invScaleY = (1 / yScale).toFixed(5);
+        outerAnimation.push("\n            ".concat(percentage, "% {\n                transform: scale(").concat(xScale, ", ").concat(yScale, ");\n        }"));
+        innerAnimation.push("\n            ".concat(percentage, "% {\n                transform: scale(").concat(invScaleX, ", ").concat(invScaleY, ");\n        }"));
+      }
+    }, {
+      key: "_clamp",
+      value: function _clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+    }, {
+      key: "_ease",
+      value: function _ease(v) {
+        var pow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+        v = this._clamp(v, 0, 1);
+        return 1 - Math.pow(1 - v, pow);
+      }
+    }]);
+
+    return CorDashboardDateBtn;
+  }(Component);
+
+  if (!customElements.get('cor-dashboard-date-btn')) {
+    customElements.define('cor-dashboard-date-btn', CorDashboardDateBtn);
+  }
+
+  var Template$h = {
     render: function render(globalData) {
       return "".concat(this.css(), "\n    ").concat(this.html(globalData));
     },
     html: function html(globalData) {
-      return "\n    <div class=\"cor-dashboard\">\n      <nav class=\"cor-dashboard-navbar navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow\">\n        <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">European Committee of the Regions</a>\n      </nav>\n      \n        <!-- Sidebar -->\n        <aside class=\"sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav class=\"cor-dashboard-nav\"></cor-dashboard-nav>\n          \n          <button class=\"cor-dashboard-slidebtn\">\n            <span></span>\n            <span></span>\n            <span></span>\n          </button>\n\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\">\n          \n          <header class=\"cor-dashboard-header\">\n            <img src=\"public/images/CoRlogo.png\" />\n            <h1>Dashboard</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n        \n          <cor-dashboard-main></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      \n    </div>\n    ";
+      return "\n    <div class=\"cor-dashboard\">\n        <!-- Sidebar -->\n        <aside class=\"sidebar cor-dashboard__sidebar\">\n          <cor-dashboard-nav class=\"cor-dashboard-nav\"></cor-dashboard-nav>\n          \n          <button class=\"cor-dashboard-slidebtn\">\n            <span></span>\n            <span></span>\n            <span></span>\n          </button>\n\n        </aside>\n        <!-- /Sidebar -->\n\n        <!-- Main -->\n        <main role=\"main\">\n          \n          <header class=\"cor-dashboard-header\">\n            <div class=\"cor-dashboard-header-img-container\">\n              <img src=\"public/images/CoRlogo.png\" />\n            </div>\n            <h1>Dashboard 2</h1>\n            \n            <cor-dashboard-topnav class=\"cor-dashboard-topnav\"></cor-dashboard-topnav>\n          </header>\n\n          <div class=\"cor-dashboard-top-tools\">\n            <cor-dashboard-selected-filters class=\"cor-dashboard-selected-filters\"></cor-dashboard-selected-filters>\n            \n            <button class=\"cor_button btn\">\n              <svg width=\"20px\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"grip-horizontal\" class=\"svg-inline--fa fa-grip-horizontal fa-w-14\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M96 288H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zM96 96H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32z\"></path></svg>\n            </button>\n\n            <button class=\"cor_button btn\">\n              <svg width=\"20px\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"grip-lines\" class=\"svg-inline--fa fa-grip-lines fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M496 288H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-128H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z\"></path></svg>\n            </button>\n\n            <cor-dashboard-date-btn class=\"cor-dashboard-date-btn\"></cor-dashboard-date-btn>\n\n            \n          </div>\n        \n          <cor-dashboard-main class=\"cor-dashboard-main\"></cor-dashboard-main>\n\n        </main>\n        <!-- /Main -->\n      \n    </div>\n    ";
     },
     css: function css() {
       return "\n    ";
@@ -2267,8 +2719,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var CorDashboard =
   /*#__PURE__*/
-  function (_Component16) {
-    _inherits(CorDashboard, _Component16);
+  function (_Component18) {
+    _inherits(CorDashboard, _Component18);
 
     function CorDashboard() {
       _classCallCheck(this, CorDashboard);
@@ -2280,7 +2732,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       key: "connectedCallback",
       value: function connectedCallback() {
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$f.render(this.globalData.DATA);
+        this.innerHTML = Template$h.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store); // Resize event
 
         window.onresize = this.ifResize();
@@ -2294,8 +2746,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
     }, {
       key: "store",
-      value: function store(_ref) {
-        var detail = _ref.detail;
+      value: function store(_ref3) {
+        var detail = _ref3.detail;
 
         switch (detail.type) {
           case "change-name":
@@ -2357,7 +2809,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         });
         this.setAttribute(key, valuesOfAttribute.join(' ')); // remove active state on filters in left nav
 
-        document.querySelector("[data-".concat(key, "=").concat(value, "]")).classList.remove('active');
+        if (key & value) {
+          document.querySelector("[data-".concat(key, "=").concat(value, "]")).classList.remove('active');
+        }
       }
     }]);
 

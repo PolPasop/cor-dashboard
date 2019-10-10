@@ -4,15 +4,15 @@ import Template from './template.js';
 export default class CorDashboardPagination extends Component {
     constructor() {
         super();
+    }
 
+    connectedCallback() {
         this.articles = document.querySelectorAll('.cor-dashboard-detailed-item');
         this.currentPage = 1;
         this.totalItems = [...this.articles].length;
         this.itemsPerPage = 2;
         this.totalOfPages = Math.round(this.totalItems / this.itemsPerPage);
-    }
 
-    connectedCallback() {
         this.createPagination(this.totalItems, this.itemsPerPage, this.currentPage, this.totalOfPages);
         this.addEventListener('click', this._onClick);
     }

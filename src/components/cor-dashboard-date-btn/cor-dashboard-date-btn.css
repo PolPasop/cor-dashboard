@@ -1,6 +1,4 @@
 .cor-dashboard-date-btn {
-    align-self: flex-end;
-    position: absolute;
     z-index: 2;
 }
 
@@ -17,7 +15,6 @@
     animation-duration: 200ms;
     animation-timing-function: step-end;
     border-radius: .25rem;
-    box-shadow: 0 1px 3px rgba(60,64,67, 0.3), 0 4px 8px 3px rgba(60,64,67, 0.15);
     contain: content;
     opacity: 0;
     pointer-events: none;
@@ -50,6 +47,7 @@
 
   .menu--expanded {
     animation-name: menuExpandAnimation;
+    box-shadow: 0 1px 3px rgba(60,64,67, 0.3), 0 4px 8px 3px rgba(60,64,67, 0.15);
   }
 
   .menu__contents--expanded {

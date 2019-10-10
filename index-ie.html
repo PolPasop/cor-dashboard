@@ -11,18 +11,22 @@
   <link rel="stylesheet" href="src/corev15.css" />
   <link rel="stylesheet" href="src/bootstrap.min.css">
   
-  <link rel="stylesheet" href="src/style.css" />
+  <link rel="stylesheet" href="public/stylesheets/style.css" />
 
   
-  
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+
   <script src="src/components/cor-dashboard/cor-dashboard.build.js"></script>
   
   
 </head>
 <body>
 
+  <nav class="cor-dashboard-navbar navbar navbar-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
+  </nav>
   <!-- Main app container -->
-  <cor-dashboard filter="no"></cor-dashboard>
+  <cor-dashboard filter=""></cor-dashboard>
   <!-- /Main app container -->
   
   <script src="https://d3js.org/d3.v5.min.js"></script>

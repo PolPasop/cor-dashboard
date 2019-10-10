@@ -23,7 +23,6 @@
 
 .chart > div {
     height: 100%;
-    flex: 0;
     font: 10px sans-serif;
     background-color: rgba(70, 131, 180, 0.308);
     text-align: right;
@@ -33,7 +32,7 @@
     align-items: flex-end;
     justify-content: center;
     text-align: center;
-  }
+}
 
   .chart > div div {
     background-color: rgba(70, 131, 180, 1);
