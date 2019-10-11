@@ -56,6 +56,10 @@
   z-index: 100;
 }
 
+.is-collapsed .cor-dashboard__sidebar {
+  z-index: 0;
+}
+
 @media (min-width: 992px) {
   .cor-dashboard__sidebar {
     top: 0;

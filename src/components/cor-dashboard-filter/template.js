@@ -35,8 +35,13 @@ export default {
                                             >
                                     </div>
                                 ` : `
+                                    <div class="checkbox checkbox-indent" style="display:inline-block;">
+                                        <label>News<input type="checkbox" name="item_type" class="box-2" id="item_type-1329" value="1329" checked="Checked"><span class="badge"></span></label>
+                                    </div>
+
                                     <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
-                                        ${item.name} 
+                                        <input type="checkbox" id="${item.name}" name="${item.name}">
+                                        <label for="${item.name}">${item.name}</label>
                                         
                                         ${item.type !== "date" ? `
                                             <span>${item.number ? item.number : 0}</span>
@@ -49,7 +54,9 @@ export default {
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
+                                            <input type="checkbox" id="scales" name="scales">
+                                            <label for="scales">${item.name}</label> <span>${item.number ? item.number : 0}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 

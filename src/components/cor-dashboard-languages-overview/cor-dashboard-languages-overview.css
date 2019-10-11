@@ -22,7 +22,8 @@
 }
 
 .cor-dashboard-languages-overview[data-status="draft"]:before {
-    border-color: var(--gray-500);
+    background-color: var(--danger);
+    border-color: var(--danger);
 }
 
 .cor-dashboard-languages-overview__label {

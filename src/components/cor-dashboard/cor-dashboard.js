@@ -1388,8 +1388,13 @@
                                             >
                                     </div>
                                 ` : `
+                                    <div class="checkbox checkbox-indent" style="display:inline-block;">
+                                        <label>News<input type="checkbox" name="item_type" class="box-2" id="item_type-1329" value="1329" checked="Checked"><span class="badge"></span></label>
+                                    </div>
+
                                     <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : "" }" href="#" data-filter="${item.target}" href="#/">
-                                        ${item.name} 
+                                        <input type="checkbox" id="${item.name}" name="${item.name}">
+                                        <label for="${item.name}">${item.name}</label>
                                         
                                         ${item.type !== "date" ? `
                                             <span>${item.number ? item.number : 0}</span>
@@ -1402,7 +1407,9 @@
                                 <ul>
                                     ${item.subitems.map(
                                         item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">${item.name} <span>${item.number ? item.number : 0}</span></a></li>
+                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
+                                            <input type="checkbox" id="scales" name="scales">
+                                            <label for="scales">${item.name}</label> <span>${item.number ? item.number : 0}</span></a></li>
                                     `
                                     ).join('')} 
                                 </ul>` : 
@@ -1706,10 +1713,8 @@
            
             if(event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
                 this.dateUpdate(event.target);
-                event.preventDefault();
             } else {
                 this.updateActiveState(event.target);
-                event.preventDefault();
             }
         }
 
@@ -2740,34 +2745,81 @@
                 
                 <img src="${item.picture}" />
                 
-                <div>
+                <div class="cor-dashboard-detailed-item__container"> 
+
+                    <!-- EN -->
+                    <div class="cor-dashboard-detailed-item__content" data-lang="EN">
+                        <h1 class="cor-dashboard-article__title">${item.title}</h1>
+                        <p class="cor-dashboard-article__details">
+                            ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
+                            <span>${item.date}</span>
+                            ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                        </p>
+                        <p class="cor-dashboard-article__extradetails">
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                        </p>
+                        <p class="cor-dashboard-detailed-item__intro-container">
+                            <span >${item.intro}</span>
+                        </p>
+                    </div>
+                    <!-- /EN -->
                     
-                    <h1 class="cor-dashboard-article__title">${item.title}</h1>
-                    <p class="cor-dashboard-article__details">
-                        ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
-                        <span>${item.date}</span>
-                        ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
-                    </p>
-                    <p class="cor-dashboard-article__extradetails">
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                        <span><strong>Lorem:</strong> ipsum</span>
-                    </p>
-                    <p class="cor-dashboard-detailed-item__intro-container">
-                        <span >${item.intro}</span>
-                    </p>
+                    <!-- FR -->
+                    <div class="cor-dashboard-detailed-item__content" data-lang="FR">
+                        <h1 class="cor-dashboard-article__title">FR ${item.title}</h1>
+                        <p class="cor-dashboard-article__details">
+                            ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
+                            <span>${item.date}</span>
+                            ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                        </p>
+                        <p class="cor-dashboard-article__extradetails">
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                        </p>
+                        <p class="cor-dashboard-detailed-item__intro-container">
+                            <span >${item.intro}</span>
+                        </p>
+                    </div>
+                    <!-- /FR -->
                     
+                    <!-- DE -->
+                    <div class="cor-dashboard-detailed-item__content" data-lang="DE">
+                        <h1 class="cor-dashboard-article__title">DE ${item.title}</h1>
+                        <p class="cor-dashboard-article__details">
+                            ${item.label ? `<span class="cor-dashboard-article__label ${item.label === "Press release" ? "cor-dashboard-article__label--pressrelease" : ""} ${item.label === "Regional news" ? "cor-dashboard-article__label--regionalnews" : ""} ${item.label === "Success story" ? "cor-dashboard-article__label--successstory" : ""} ${item.label === "International cooperation" ? "cor-dashboard-article__label--internationalcoop" : ""}">${item.label}</span>`: ``}
+                            <span>${item.date}</span>
+                            ${item.theme ? `&nbsp;|&nbsp;<span>${item.theme}</span>`: ``}
+                        </p>
+                        <p class="cor-dashboard-article__extradetails">
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                            <span><strong>Lorem:</strong> ipsum</span>
+                        </p>
+                        <p class="cor-dashboard-detailed-item__intro-container">
+                            <span >${item.intro}</span>
+                        </p>
+                    </div>
+                    <!-- /DE -->
                 </div>
 
                 <ul class="cor-dashboard-detailed-item__languages-list">
                     
                         ${item.languages.map( language => `
                             <li class="cor-dashboard-detailed-item__languages-list__item">
-                            <div class="cor-dashboard-languages-overview" data-status="${language.status}">
-                                <span title="language" data-lang="${language.label}">${language.label}</span>
-                            </div>
+                                <a href="#">
+                                    <div class="cor-dashboard-languages-overview" data-status="${language.status}">
+                                        <span title="language" data-lang="${language.label}">${language.label}</span>
+                                    </div>
+                                </a>
                             </li>
                         `).join('')}
                         
@@ -2817,6 +2869,30 @@
         connectedCallback() {
             this.innerHTML = Template$a.render(this.globalData.ITEMS);
             corDashboardLazyLoading();
+
+            const languagesLinks = document.querySelectorAll('.cor-dashboard-detailed-item__languages-list__item > a');
+            [...languagesLinks].map( languageLink => {
+                languageLink.addEventListener('click', evt => this.onClick(evt.target));
+            });   
+        }
+
+        onClick(el) {
+            this.switchContent(el.closest('.cor-dashboard-detailed-item'),el.dataset.lang);
+        }
+
+        switchContent(content,newLang) {
+            
+            const flippedEl = content.querySelector('.flip');
+            if (flippedEl) flippedEl.classList.remove('flip');
+
+            [...content.querySelectorAll('.cor-dashboard-detailed-item__content')].map( translation => {
+
+                if (translation.dataset.lang === newLang) {
+                    console.log(translation.dataset.lang , newLang);
+                    translation.classList.add('flip');
+                }
+            });
+            event.preventDefault;
         }
     }
 

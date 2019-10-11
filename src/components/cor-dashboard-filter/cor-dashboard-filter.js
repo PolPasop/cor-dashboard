@@ -278,10 +278,8 @@ export default class CorDashboardFilter extends Component {
        
         if(event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
             this.dateUpdate(event.target);
-            event.preventDefault()
         } else {
             this.updateActiveState(event.target);
-            event.preventDefault()
         }
     }
 
