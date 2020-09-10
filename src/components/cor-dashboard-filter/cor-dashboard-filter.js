@@ -3,7 +3,7 @@ const data = [
         name: "Content Types",
         filterName: "contenttypes",
         icon: "contenttypes",
-        expanded: true,
+        expanded: false,
         items: [
             {
                 name: "News",

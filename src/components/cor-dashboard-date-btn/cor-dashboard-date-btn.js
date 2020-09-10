@@ -1,7 +1,5 @@
 import Component from '../component.js';
 import Template from './template.js';
-import { throws } from 'assert';
-import { threadId } from 'worker_threads';
 
 export default class CorDashboardDateBtn extends Component {
     constructor() {

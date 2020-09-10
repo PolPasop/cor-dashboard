@@ -1,0 +1,41 @@
+// Custom variables
+// @import "custom/mixins";
+// @import "custom/variables";
+
+// Custom components
+
+@import "settings/settings.css";
+
+@import "layout/layout.css";
+
+@import "elements/elements.page.css";
+
+@import "objects/cor-dashboard-sidebar.css";
+@import "objects/cor-dashboard-icon.css";
+@import "objects/cor-dashboard-buttons.css";
+
+@import "../components/cor-dashboard/cor-dashboard.css";
+@import "../components/cor-dashboard-main/cor-dashboard-main.css";
+@import "../components/cor-dashboard-bar-chart/cor-dashboard-bar-chart.css";
+@import "../components/cor-dashboard-chart/cor-dashboard-chart.css";
+@import "../components/cor-dashboard-card/cor-dashboard-card.css";
+@import "../components/cor-dashboard-card-detailed/cor-dashboard-card-detailed.css";
+@import "../components/cor-dashboard-detailed/cor-dashboard-detailed.css";
+@import "../components/cor-dashboard-detailed-item/cor-dashboard-detailed-item.css";
+@import "../components/cor-dashboard-donut-chart/cor-dashboard-donut-chart.css";
+@import "../components/cor-dashboard-filter/cor-dashboard-filter.css";
+@import "../components/cor-dashboard-languages-overview/cor-dashboard-languages-overview.css";
+@import "../components/cor-dashboard-nav/cor-dashboard-nav.css";
+@import "../components/cor-dashboard-overview/cor-dashboard-overview.css";
+@import "../components/cor-dashboard-topnav/cor-dashboard-topnav.css";
+@import "../components/cor-dashboard-selected-filters/cor-dashboard-selected-filters.css";
+@import "../components/cor-dashboard-spinner/cor-dashboard-spinner.css";
+@import "../components/cor-dashboard-pagination/cor-dashboard-pagination.css";
+@import "../components/cor-dashboard-lazy-loading/cor-dashboard-lazy-loading.css";
+@import "../components/cor-dashboard-date-btn/cor-dashboard-date-btn.css";
+@import "../components/cor-dashboard-date-filter/cor-dashboard-date-filter.css";
+
+/* Sharepoint CSS overrides */
+@import "overrides.css";
+
+

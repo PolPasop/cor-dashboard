@@ -1,12 +1,12 @@
 export default {
-    render() {
-        return `
+  render() {
+    return `
             ${this.html()}
         `;
-    },
+  },
 
-    html() {
-        return `
+  html() {
+    return `
         <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--date">
         <li class="cor-dashboard-filter__list__item">
           <a
@@ -50,9 +50,7 @@ export default {
       
         <li class="cor-dashboard-filter__list__item">
           <div class="form-group">
-            <label for="start">Start date:</label>
-      
-            <input
+            <label for="start">Start date:</label><input
               class="form-control"
               type="date"
               id="start"
@@ -61,9 +59,7 @@ export default {
             />
           </div>
           <div class="form-group">
-            <label for="start">End date:</label>
-      
-            <input
+            <label for="start">End date:</label><input
               class="form-control"
               type="date"
               id="end"
@@ -75,5 +71,5 @@ export default {
       </ul>
       <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Apply selection</button>
         `;
-    }
-}
+  },
+};

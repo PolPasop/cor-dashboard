@@ -1,11 +1,11 @@
-import CorDashboardSidebar from '../cor-dashboard-nav/cor-dashboard-nav.js';
-import CorDashboardCard from '../cor-dashboard-card/cor-dashboard-card.js';
-import CorDashboardOverview from '../cor-dashboard-overview/cor-dashboard-overview.js';
-import CorDashboardDetailed from '../cor-dashboard-detailed/cor-dashboard-detailed.js';
-import CorDashboardTopnav from '../cor-dashboard-topnav/cor-dashboard-topnav.js';
-import CorDashboardMain from '../cor-dashboard-main/cor-dashboard-main.js';
-import CorDashboardSelectedFilters from '../cor-dashboard-selected-filters/cor-dashboard-selected-filters.js';
-import CorDashboardDateBtn from '../cor-dashboard-date-btn/cor-dashboard-date-btn.js';
+import CorDashboardSidebar from "../cor-dashboard-nav/cor-dashboard-nav.js";
+import CorDashboardCard from "../cor-dashboard-card/cor-dashboard-card.js";
+import CorDashboardOverview from "../cor-dashboard-overview/cor-dashboard-overview.js";
+import CorDashboardDetailed from "../cor-dashboard-detailed/cor-dashboard-detailed.js";
+import CorDashboardTopnav from "../cor-dashboard-topnav/cor-dashboard-topnav.js";
+import CorDashboardMain from "../cor-dashboard-main/cor-dashboard-main.js";
+import CorDashboardSelectedFilters from "../cor-dashboard-selected-filters/cor-dashboard-selected-filters.js";
+import CorDashboardDateBtn from "../cor-dashboard-date-btn/cor-dashboard-date-btn.js";
 
 export default {
   render(globalData) {
@@ -42,6 +42,12 @@ export default {
           </header>
 
           <div class="cor-dashboard-top-tools">
+
+            <div class="cor-dashboard__btn-group" id="cor-dashboard-topnav">
+                <a data-view="overview" type="button" class="btn btn-sm btn-outline-primary active">Overview</a>
+                <a data-view="detailed" href="#" type="button" class="btn btn-sm btn-outline-primary">Detailed</a>
+            </div>
+          
             <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
             
             <button class="cor_button btn">
@@ -63,11 +69,11 @@ export default {
         <!-- /Main -->
       
     </div>
-    `
+    `;
   },
 
   css() {
     return `
-    `
-  }
-}
+    `;
+  },
+};
