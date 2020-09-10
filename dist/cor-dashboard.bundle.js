@@ -1056,16 +1056,15 @@ var app = (function () {
                                             >
                                     </div>
                                 ` : `
-                                    <div class="checkbox checkbox-indent" style="display:inline-block;">
-                                        <label>News<input type="checkbox" name="item_type" class="box-2" id="item_type-1329" value="1329" checked="Checked"><span class="badge"></span></label>
-                                    </div>
+                                    
 
                                     <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : ""}" href="#" data-filter="${item.target}" href="#/">
-                                        <input type="checkbox" id="${item.name}" name="${item.name}">
-                                        <label for="${item.name}">${item.name}</label>
-                                        
+                                        <span class="form-group">
+                                            <input class="form-check-input" type="checkbox" id="${item.name}" name="${item.name}">
+                                            <label class="form-check-label" for="${item.name}">${item.name}</label>
+                                        </span>
                                         ${item.type !== "date" ? `
-                                            <span>${item.number ? item.number : 0}</span>
+                                            <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
                                         ` : ``}
                                     </a>
                                 `}
@@ -1075,7 +1074,7 @@ var app = (function () {
                                     ${item.subitems.map(item => `
                                         <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
                                             <input type="checkbox" id="scales" name="scales">
-                                            <label for="scales">${item.name}</label> <span>${item.number ? item.number : 0}</span></a></li>
+                                            <label for="scales">${item.name}</label> <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span></a></li>
                                     `).join('')} 
                                 </ul>` : ``}
                             </li>
@@ -3055,6 +3054,7 @@ var app = (function () {
           
             <cor-dashboard-selected-filters class="cor-dashboard-selected-filters"></cor-dashboard-selected-filters>
             
+            <!--
             <button class="cor_button btn">
               <svg width="20px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="grip-horizontal" class="svg-inline--fa fa-grip-horizontal fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M96 288H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zM96 96H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32z"></path></svg>
             </button>
@@ -3062,6 +3062,7 @@ var app = (function () {
             <button class="cor_button btn">
               <svg width="20px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="grip-lines" class="svg-inline--fa fa-grip-lines fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M496 288H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-128H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z"></path></svg>
             </button>
+            -->
 
             <cor-dashboard-date-btn class="cor-dashboard-date-btn"></cor-dashboard-date-btn>
 
