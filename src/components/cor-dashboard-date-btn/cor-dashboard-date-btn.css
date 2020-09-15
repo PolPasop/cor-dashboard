@@ -1,69 +1,71 @@
 .cor-dashboard-date-btn {
-    z-index: 2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
 }
 
 .cor-dashboard-date-btn button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cor-dashboard-date-btn svg {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
-
 .cor-dashboard-menu {
-    animation-duration: 200ms;
-    animation-timing-function: step-end;
-    border-radius: .25rem;
-    contain: content;
-    opacity: 0;
-    pointer-events: none;
-    transform-origin: top right;
-    overflow: hidden;
-    will-change: transform;
+  animation-duration: 200ms;
+  animation-timing-function: step-end;
+  border-radius: 0.25rem;
+  contain: content;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top right;
+  overflow: hidden;
+  will-change: transform;
 }
 
 .cor-dashboard-menu__contents {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-    animation-duration: 200ms;
-    animation-timing-function: step-end;
-    background-color: #fff;
-    contain: content;
-    transform-origin: top right;
-    will-change: transform;
+  animation-duration: 200ms;
+  animation-timing-function: step-end;
+  background-color: #fff;
+  contain: content;
+  transform-origin: top right;
+  will-change: transform;
 }
 
 .cor-dashboard-menu-items {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .menu--active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  opacity: 1;
+  pointer-events: auto;
+}
 
-  .menu--expanded {
-    animation-name: menuExpandAnimation;
-    box-shadow: 0 1px 3px rgba(60,64,67, 0.3), 0 4px 8px 3px rgba(60,64,67, 0.15);
-  }
+.menu--expanded {
+  animation-name: menuExpandAnimation;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
 
-  .menu__contents--expanded {
-    animation-name: menuExpandContentsAnimation;
-  }
+.menu__contents--expanded {
+  animation-name: menuExpandContentsAnimation;
+}
 
-  .menu--collapsed {
-    animation-name: menuCollapseAnimation;
-  }
+.menu--collapsed {
+  animation-name: menuCollapseAnimation;
+}
 
-  .menu__contents--collapsed {
-    animation-name: menuCollapseContentsAnimation;
-  }
+.menu__contents--collapsed {
+  animation-name: menuCollapseContentsAnimation;
+}
 
-  .js-menu-toggle {
-    border: 0;  
-    padding: 0;
-  }
-
+.js-menu-toggle {
+  border: 0;
+  padding: 0;
+}

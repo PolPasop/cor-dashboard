@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cor Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cor Dashboard</title>
 
-  
+    <link rel="stylesheet" href="src/corev15.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
-  <link rel="stylesheet" href="src/corev15.css" />
-  <link rel="stylesheet" href="src/bootstrap.min.css">
-  
-  <link rel="stylesheet" href="public/stylesheets/style.css" />
-  <!-- <link rel="stylesheet" href="src/style.css" /> -->
+    <link rel="stylesheet" href="dist/css/styles.min.css" />
 
-  <!-- load polyfill IntersectionObserver for pagination -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver"></script>
-  
+    <!-- load polyfill IntersectionObserver for pagination -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver"></script>
 
+    <!-- load webcomponents bundle, which includes all the necessary polyfills -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@%5E2/webcomponents-bundle.js"></script>
 
-  <!-- load webcomponents bundle, which includes all the necessary polyfills -->
-  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@%5E2/webcomponents-bundle.js"></script>
+    <script
+      type="module"
+      src="src/components/cor-dashboard/cor-dashboard.js"
+    ></script>
+    <script nomodule src="dist/cor-dashboard.bundle.js"></script>
+  </head>
+  <body>
+    <!-- Main app container -->
+    <cor-dashboard filter=""></cor-dashboard>
+    <!-- /Main app container -->
 
-  <script type="module" src="src/components/cor-dashboard/cor-dashboard.js"></script>
-  <script nomodule src="src/components/cor-dashboard/cor-dashboard.build.js"></script>
-  
-</head>
-<body>
-
-  <nav class="cor-dashboard-navbar navbar navbar-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">European Committee of the Regions</a>
-  </nav>
-  <!-- Main app container -->
-  <cor-dashboard filter=""></cor-dashboard>
-  <!-- /Main app container -->
-  
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-</body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </body>
 </html>
