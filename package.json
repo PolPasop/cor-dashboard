@@ -13,7 +13,7 @@
     "@webcomponents/custom-elements": "^1.2.4",
     "@webcomponents/webcomponentsjs": "=2.1.2",
     "d3": "^5.12.0",
-    "http-server": "^0.11.1",
+    "http-server": "^0.12.3",
     "intersection-observer": "^0.7.0",
     "remove": "^0.1.5"
   },

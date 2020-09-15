@@ -1817,14 +1817,26 @@
         customElements.define('cor-dashboard-filter', CorDashboardFilter);
     }
 
-    const navitems = [
-
-          {
-            name: "Dashboard",
-            icon: "home",
-            target: ""
-          }
-    ];
+    const navitems = {
+      top:  [
+        {
+        name: "Dashboard2",
+        icon: "home",
+        target: ""
+      }],
+      bottom:  [
+        {
+          name: "eShop / Newsletter",
+          icon: "newsletter",
+          target: ""
+        },
+        {
+          name: "Quick start",
+          icon: "home",
+          target: "book"
+        }
+      ]
+    };
 
 
     var Template$1 = {
@@ -1838,7 +1850,7 @@
 
     <!-- Menu -->
     <ul class="cor-dashboard__nav">
-        ${navitems.map(navitem => `
+        ${navitems.top.map(navitem => `
           <li class="cor-dashboard__nav__item">
             <a class="cor-dashboard__nav-link cor-dashboard__nav-link--${navitem.icon}" href="#" data-target="${navitem.target}">${navitem.name}</a>
             
@@ -1858,7 +1870,27 @@
       
     <!-- Filtres -->
     <cor-dashboard-filter></cor-dashboard-filter>
-    <!-- /Filtres -->    
+    <!-- /Filtres -->
+
+    <!-- Menu -->
+    <ul class="cor-dashboard__nav">
+        ${navitems.bottom.map(navitem => `
+          <li class="cor-dashboard__nav__item">
+            <a class="cor-dashboard__nav-link cor-dashboard__nav-link--${navitem.icon}" href="#" data-target="${navitem.target}">${navitem.name}</a>
+            
+            <!-- Sub menu -->
+            ${ navitem.subitems ? `
+              <ul>${navitem.subitems.map(subitem => `
+                <li>
+                  <a class="cor-dashboard__nav-link">${subitem.name}</a>
+                </li>`).join('')}
+              </ul>` : ``}
+            <!-- /Sub menu -->
+
+          </li>
+        `).join('')}
+    </ul>
+    <!-- /Menu -->
     `
       },
 
@@ -2153,7 +2185,7 @@
                 data.sort( (a, b) => (a.total < b.total) ? 1 : -1 );
             }
 
-            var height = 200;
+            var height = 200;
 
             var yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, d => {
@@ -3507,7 +3539,7 @@
             <div class="cor-dashboard-header-img-container">
               <img src="public/images/CoRlogo.png" />
             </div>
-            <h1>Dashboard 2</h1>
+            <h1>Dashboard 3</h1>
             
             <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>
