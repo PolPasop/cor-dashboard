@@ -5,6 +5,11 @@
   z-index: 2;
 }
 
+.cor-dashboard-date-btn .btn {
+  background-color: var(--europe);
+  color: #fff;
+}
+
 .cor-dashboard-date-btn button:hover {
   cursor: pointer;
 }

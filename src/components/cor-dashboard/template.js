@@ -36,7 +36,7 @@ export default {
             <div class="cor-dashboard-header-img-container">
               <img src="public/images/CoRlogo.png" />
             </div>
-            <h1>Dashboard 3</h1>
+            <h1>Dashboard</h1>
             
             <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>

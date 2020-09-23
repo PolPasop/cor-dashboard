@@ -1,8 +1,6 @@
 body {
     background-color: var(--cor-gray);
     color: var(--cor-dark);
-    font-family: var(--font-family-sans-serif);
-    font-size: 1rem;
     min-height: 100%;
 }
 
@@ -22,6 +20,7 @@ button:focus {
     outline: 0;
 }
 
+/*
 .btn {
 	display: inline-block;
 	font-weight: 400;
@@ -39,6 +38,7 @@ button:focus {
 	border-radius: .25rem;
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+*/
 
 .cor_button {
     position: relative;

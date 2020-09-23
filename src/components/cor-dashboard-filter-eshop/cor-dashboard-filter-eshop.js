@@ -1,7 +1,7 @@
 const data = [
     {
         name: "Content Types",
-        filterName: "contenttypes",
+        filterName: "eshopcontenttypes",
         icon: "contenttypes",
         expanded: false,
         items: [
@@ -48,7 +48,7 @@ const data = [
     },
     {
         name: "Themes",
-        filterName: "themes",
+        filterName: "eshopthemes",
         icon: "themes",
         number: 125,
         items: [
@@ -101,7 +101,7 @@ const data = [
     },
     {
         name: "Language",
-        filterName: "languages",
+        filterName: "eshoplanguages",
         icon: "languages",
         items: [
             {
@@ -207,7 +207,7 @@ const data = [
 import Component from '../component.js';
 import Template from './template.js';
 
-export default class CorDashboardFilter extends Component {
+export default class CorDashboardFilterEshop extends Component {
     constructor() {
         super();
     }
@@ -347,6 +347,6 @@ export default class CorDashboardFilter extends Component {
 
 }
 
-if (!customElements.get('cor-dashboard-filter')) {
-    customElements.define('cor-dashboard-filter', CorDashboardFilter);
+if (!customElements.get('cor-dashboard-filter-eshop')) {
+    customElements.define('cor-dashboard-filter-eshop', CorDashboardFilterEshop);
 }

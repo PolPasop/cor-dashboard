@@ -1058,30 +1058,38 @@ var app = (function () {
                                 ` : `
                                     
 
-                                    <a class="cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : ""}" href="#" data-filter="${item.target}" href="#/">
-                                        <span class="form-group">
-                                            <input class="form-check-input" type="checkbox" id="${item.name}" name="${item.name}">
-                                            <label class="form-check-label" for="${item.name}">${item.name}</label>
-                                        </span>
-                                        ${item.type !== "date" ? `
-                                            <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
-                                        ` : ``}
+                                    <a class="form-group cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : ""}" href="#" data-filter="${item.target}" href="#/">
+                                        <label class="form-check-label" for="${item.name}">
+                                            <input class="form-check-input" type="checkbox" id="${item.name}" name="${item.name}"> <span>${item.name}</span>
+                                            ${item.type !== "date" ? `
+                                                <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
+                                            ` : ``}    
+                                        </label>
                                     </a>
                                 `}
                                 
                                 ${item.subitems ? `
                                 <ul>
                                     ${item.subitems.map(item => `
-                                        <li><a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
-                                            <input type="checkbox" id="scales" name="scales">
-                                            <label for="scales">${item.name}</label> <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span></a></li>
+                                        <li>
+                                            <a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
+                                                <label for="scales">
+                                                    <input class="form-check-input" type="checkbox" id="scales" name="scales"> ${item.name} <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
+                                                </label>
+                                            </a>
+                                        </li>
                                     `).join('')} 
                                 </ul>` : ``}
                             </li>
                         `).join('')}
                     </ul>
                     <div class="cor-dahsboard-btncontainer">
-                        <button class="cor_button btn cor_button--after cor-dashboard-filtersbtn">Apply selection</button>
+                        <button type="button" class="btn btn-outline-primary cor-dashboard-filtersbtn">
+                            Apply selection
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>                     
@@ -1173,31 +1181,6 @@ var app = (function () {
       }, {
         name: "Transport",
         target: ""
-      }]
-    }, {
-      name: "Date",
-      filterName: "date",
-      icon: "date",
-      items: [{
-        name: "Today",
-        target: "today",
-        type: "date"
-      }, {
-        name: "This week",
-        target: "thisweek",
-        type: "date"
-      }, {
-        name: "This month",
-        target: "thismonth",
-        type: "date"
-      }, {
-        name: "This year",
-        target: "thisyear",
-        type: "date"
-      }, {
-        name: "Personalised",
-        target: "custom",
-        type: "date"
       }]
     }, {
       name: "Language",
@@ -1413,12 +1396,400 @@ var app = (function () {
       customElements.define('cor-dashboard-filter', CorDashboardFilter);
     }
 
-    const navitems = [{
-      name: "Dashboard",
-      icon: "home",
-      target: ""
-    }];
     var Template$1 = {
+      render(data) {
+        return `${this.css()}
+        ${this.html(data)}`;
+      },
+
+      html(data) {
+        return `
+        
+        ${data.map(filter => `
+            <div class="cor-dashboard-filter expandable">
+                <h2 class="cor-dashboard-filter__title">
+                    <button class="cor-dashboard-filter__list__item__link cor-dashboard-filter__list__item__link--${filter.icon}" data-toggle="collapse" data-expandtarget="${filter.filterName}" aria-expanded="${filter.expanded ? "true" : "false"}" aria-controls="collapseExample">
+                        ${filter.name}
+                    </button>
+                </h2>
+                <div id="${filter.filterName}" class="cor-dashboard-filter__list-container">
+                    <ul class="cor-dashboard-filter__list cor-dashboard-filter__list--${filter.filterName}">
+                        ${filter.items.map(item => `
+                            <li class="cor-dashboard-filter__list__item">
+                                
+                                ${item.name === "Personalised" ? `
+                                    <div class="form-group">
+                                        <label for="start">Start date:</label>
+
+                                        <input class="form-control" type="date" id="start" name="date-start"
+                                        value="2018-07-22"
+                                        >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start">End date:</label>
+
+                                        <input class="form-control" type="date" id="end" name="date-end"
+                                            value="2018-07-22"
+                                            >
+                                    </div>
+                                ` : `
+                                    
+
+                                    <a class="form-group cor-dashboard-filter__list__item__link ${item.subitems ? "cor-dashboard-filter__list__item__link--parent" : ""}" href="#" data-filter="${item.target}" href="#/">
+                                        <label class="form-check-label" for="${item.name}">
+                                            <input class="form-check-input" type="checkbox" id="${item.name}" name="${item.name}"> <span>${item.name}</span>
+                                            ${item.type !== "date" ? `
+                                                <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
+                                            ` : ``}    
+                                        </label>
+                                    </a>
+                                `}
+                                
+                                ${item.subitems ? `
+                                <ul>
+                                    ${item.subitems.map(item => `
+                                        <li>
+                                            <a class="cor-dashboard-filter__list__item__sublink" href="#/" data-filter="${item.target}">
+                                                <label for="scales">
+                                                    <input class="form-check-input" type="checkbox" id="scales" name="scales"> ${item.name} <span class="cor-dashboard-filter__counter">${item.number ? item.number : 0}</span>
+                                                </label>
+                                            </a>
+                                        </li>
+                                    `).join('')} 
+                                </ul>` : ``}
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="cor-dahsboard-btncontainer">
+                        <button type="button" class="btn btn-outline-primary cor-dashboard-filtersbtn">
+                            Apply selection
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>                     
+        `).join('')}
+        
+
+        `;
+      },
+
+      css() {
+        return `
+
+        `;
+      }
+
+    };
+
+    const data$1 = [{
+      name: "Content Types",
+      filterName: "eshopcontenttypes",
+      icon: "contenttypes",
+      expanded: false,
+      items: [{
+        name: "News",
+        target: "news",
+        number: 55,
+        subitems: [{
+          name: "Regional news",
+          number: 5
+        }, {
+          name: "Press release",
+          number: 0
+        }, {
+          name: "Success story",
+          number: 15
+        }]
+      }, {
+        name: "Events",
+        target: "events",
+        number: 25
+      }, {
+        name: "Opinions",
+        target: "opinions",
+        number: 2
+      }, {
+        name: "Studies",
+        target: "studies",
+        number: 9
+      }, {
+        name: "Brochures",
+        target: "brochures",
+        number: 7
+      }]
+    }, {
+      name: "Themes",
+      filterName: "eshopthemes",
+      icon: "themes",
+      number: 125,
+      items: [{
+        name: "no theme",
+        target: ""
+      }, {
+        name: "Agriculture and Fisheries",
+        target: ""
+      }, {
+        name: "Citizenship, Governance and Institutional Affairs",
+        target: ""
+      }, {
+        name: "Cohesion Policy, Structural funds and EU Budget",
+        target: ""
+      }, {
+        name: "Consumer Policy, Health and Tourism",
+        target: ""
+      }, {
+        name: "Economic and monetary policy",
+        target: ""
+      }, {
+        name: "Environment, Climate Change and Energy",
+        target: ""
+      }, {
+        name: "Migration and External relations",
+        target: ""
+      }, {
+        name: "Research, Innovation and Digital Single Market",
+        target: ""
+      }, {
+        name: "Social Policy, Education, Employment and Culture",
+        target: ""
+      }, {
+        name: "Transport",
+        target: ""
+      }]
+    }, {
+      name: "Language",
+      filterName: "eshoplanguages",
+      icon: "languages",
+      items: [{
+        name: "BG",
+        target: ""
+      }, {
+        name: "CS",
+        target: ""
+      }, {
+        name: "DA",
+        target: ""
+      }, {
+        name: "DE",
+        target: ""
+      }, {
+        name: "EL",
+        target: ""
+      }, {
+        name: "EN",
+        target: ""
+      }, {
+        name: "ES",
+        target: ""
+      }, {
+        name: "ET",
+        target: ""
+      }, {
+        name: "FI",
+        target: ""
+      }, {
+        name: "FR",
+        target: ""
+      }, {
+        name: "GA",
+        target: ""
+      }, {
+        name: "HR",
+        target: ""
+      }, {
+        name: "HU",
+        target: ""
+      }, {
+        name: "IT",
+        target: ""
+      }, {
+        name: "LT",
+        target: ""
+      }, {
+        name: "LV",
+        target: ""
+      }, {
+        name: "MT",
+        target: ""
+      }, {
+        name: "NL",
+        target: ""
+      }, {
+        name: "PL",
+        target: ""
+      }, {
+        name: "PT",
+        target: ""
+      }, {
+        name: "RO",
+        target: ""
+      }, {
+        name: "SK",
+        target: ""
+      }, {
+        name: "SL",
+        target: ""
+      }, {
+        name: "SV",
+        target: ""
+      }]
+    }];
+    class CorDashboardFilterEshop extends Component {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.innerHTML = Template$1.render(data$1); // already expanded elements
+
+        const collapsedElements = this.querySelectorAll('[aria-expanded=false]');
+        collapsedElements.forEach(collapsedElement => {
+          this.ExpandCollapse(collapsedElement.dataset.expandtarget);
+        }); // filters events
+
+        this._triggers = this.querySelectorAll('[data-filter]');
+
+        this._triggers.forEach(trigger => trigger.addEventListener('click', e => this.onClick(e))); // open close events
+
+
+        this._expandTriggers = this.querySelectorAll('[data-expandtarget]');
+
+        this._expandTriggers.forEach(trigger => trigger.addEventListener('click', e => this.ExpandCollapse(event.target.dataset.expandtarget))); // dates events
+
+
+        this._dateTriggers = this.querySelectorAll('.cor-dashboard-filter__list cor-dashboard-filter__list--date [data-filter]');
+
+        this._dateTriggers.forEach(trigger => trigger.addEventListener('click', e => this.dateUpdate(e)));
+      }
+
+      onClick(event) {
+        if (event.target.parentNode.parentNode.classList.contains('cor-dashboard-filter__list--date')) {
+          this.dateUpdate(event.target);
+        } else {
+          this.updateActiveState(event.target);
+        }
+      }
+
+      updateActiveState(target) {
+        const text = target.dataset.filter;
+
+        if (target.classList.contains('active')) {
+          const type = "remove-filter";
+          console.log(target, "list", target.classList.contains('active'));
+          target.classList.remove('active');
+          this.dispatchUpdate({
+            type,
+            text
+          });
+        } else {
+          const type = "filter";
+          target.classList.add('active');
+
+          if (target.nextElementSibling) {
+            const children = target.nextElementSibling.querySelectorAll('.cor-dashboard-filter__list__item__sublink');
+            children.forEach(child => child.classList.add('active'));
+          }
+
+          this.dispatchUpdate({
+            type,
+            text
+          });
+        }
+      }
+
+      ExpandCollapse(target) {
+        const expandCollapseTarget = document.querySelector(`#${target}`);
+        const parent = expandCollapseTarget.parentNode;
+
+        if (!parent.classList.contains("js-collapsed")) {
+          this.collapse(expandCollapseTarget);
+          parent.classList.add('js-collapsed');
+        } else {
+          this.expand(expandCollapseTarget);
+          parent.classList.remove('js-collapsed');
+        }
+      }
+
+      expand(target) {
+        target.style.height = "";
+        this._collapsed = false;
+      }
+
+      collapse(target) {
+        target.style.height = 0;
+        this._collapsed = true;
+      }
+
+      dateUpdate(event) {
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        let startDate = '';
+        let endDate = '';
+
+        switch (event.dataset.filter) {
+          case "today":
+            startDate = currentDate.toISOString().substr(0, 10);
+            endDate = currentDate.toISOString().substr(0, 10);
+            break;
+
+          case "thisweek":
+            let firstDayOfTheWeek = currentDate.getDate() - currentDate.getDay() + 1;
+            let lastDayOfTheWeek = firstDayOfTheWeek + 4;
+            startDate = `${currentYear}-${currentMonth}-${('0' + firstDayOfTheWeek).slice(-2)}`;
+            endDate = `${currentYear}-${currentMonth}-${('0' + lastDayOfTheWeek).slice(-2)}`;
+            break;
+
+          case "thismonth":
+            const lastDayOfTheMonth = new Date(currentYear, currentMonth, 0);
+            startDate = `${currentYear}-${currentMonth}-01`;
+            endDate = `${currentYear}-${currentMonth}-${lastDayOfTheMonth.getDate()}`;
+            break;
+
+          case "thisyear":
+            startDate = `${currentYear}-01-01`;
+            endDate = `${currentYear}-12-31`;
+            break;
+
+          case "custom":
+            break;
+
+          default:
+            break;
+        }
+
+        const startDateInput = document.querySelector('input#start');
+        const endDateInput = document.querySelector('input#end');
+        startDateInput.value = startDate;
+        endDateInput.value = endDate;
+      }
+
+    }
+
+    if (!customElements.get('cor-dashboard-filter-eshop')) {
+      customElements.define('cor-dashboard-filter-eshop', CorDashboardFilterEshop);
+    }
+
+    const navitems = {
+      top: [{
+        name: "Dashboard",
+        icon: "home",
+        target: ""
+      }],
+      bottom: [{
+        name: "eShop / Newsletter",
+        icon: "newsletter",
+        target: ""
+      }, {
+        name: "Quick start",
+        icon: "home",
+        target: "book"
+      }]
+    };
+    var Template$2 = {
       render() {
         return `${this.css()}
     ${this.html()}`;
@@ -1429,7 +1800,7 @@ var app = (function () {
 
     <!-- Menu -->
     <ul class="cor-dashboard__nav">
-        ${navitems.map(navitem => `
+        ${navitems.top.map(navitem => `
           <li class="cor-dashboard__nav__item">
             <a class="cor-dashboard__nav-link cor-dashboard__nav-link--${navitem.icon}" href="#" data-target="${navitem.target}">${navitem.name}</a>
             
@@ -1457,24 +1828,31 @@ var app = (function () {
 
     <div class="cor-dahsboard-btncontainer">
       <a type="button" class="cor-dashboard__btn--eshop" data-filter="eshop" href="#"> 
-        <span class="cor-dashboard__sidebar__icon">
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-newspaper" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
-            <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
-          </svg> 
-        </span>  
-        Eshop / Newsletter
+        <svg width="1em" viewBox="0 0 16 16" class="bi bi-newspaper" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+          <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+        </svg> 
+         
+        &nbsp;Eshop / Newsletter
       </a>
+    </div>
+
+    <!-- Filtres -->
+    <cor-dashboard-filter-eshop></cor-dashboard-filter>
+    <!-- /Filtres -->
+
+    <div class="cor-dahsboard-btncontainer">
+      <div class="cor-dashboard__nav__divider"></div>
     </div>
 
     <div class="cor-dahsboard-btncontainer">
       <a type="button" class="cor-dashboard__btn--eshop" data-filter="eshop" href="#"> 
-        <span class="cor-dashboard__sidebar__icon">
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8.5 2.687v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-          </svg> 
-        </span>  
-        Quick start
+        
+        <svg width="1em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.5 2.687v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+        </svg> 
+        
+        &nbsp;Quick start
       </a>
     </div>
     `;
@@ -1494,7 +1872,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$1.render();
+        this.innerHTML = Template$2.render();
         this._resetTrigger = this.querySelector('.cor-dashboard__nav-link--home');
 
         this._resetTrigger.addEventListener("click", e => this.rootResetAttributes(e));
@@ -1521,7 +1899,7 @@ var app = (function () {
       customElements.define('cor-dashboard-nav', CorDashboardNav);
     }
 
-    var Template$2 = {
+    var Template$3 = {
       render() {
         return `${this.css()}
         ${this.html()}`;
@@ -1546,7 +1924,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$2.render();
+        this.innerHTML = Template$3.render();
 
         if (this.querySelector("#donut-chart")) {
           this.chart();
@@ -1559,7 +1937,7 @@ var app = (function () {
       customElements.define('cor-dashboard-card', CorDashboardCard);
     }
 
-    var Template$3 = {
+    var Template$4 = {
       render() {
         return `${this.css()}
         ${this.html()}`;
@@ -1611,7 +1989,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$3.render();
+        this.innerHTML = Template$4.render();
         this.chart(seedData);
       }
 
@@ -1677,7 +2055,7 @@ var app = (function () {
       customElements.define('cor-dashboard-donut-chart', CorDashboardDonutChart);
     }
 
-    var Template$4 = {
+    var Template$5 = {
       render() {
         return `
             ${this.css()}
@@ -1705,7 +2083,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$4.render();
+        this.innerHTML = Template$5.render();
         const data = this.parentNode.getAttribute("data-data");
 
         if (data) {
@@ -1739,7 +2117,7 @@ var app = (function () {
       customElements.define('cor-dashboard-bar-chart', CorDashboardBarChart);
     }
 
-    var Template$5 = {
+    var Template$6 = {
       render(chart, view) {
         return `
             ${this.css()}
@@ -1841,7 +2219,7 @@ var app = (function () {
 
       resetState(ev) {
         this.innerHTML = "";
-        this.innerHTML = Template$5.render(ev.target);
+        this.innerHTML = Template$6.render(ev.target);
       }
 
       backBtn() {
@@ -1852,12 +2230,12 @@ var app = (function () {
       connectedCallback() {
         // Get the type of chart
         const typeOfChart = this.dataset.charttype;
-        this.innerHTML = Template$5.render(typeOfChart);
+        this.innerHTML = Template$6.render(typeOfChart);
         const view = "view";
 
         const update = () => {
           const views = this.getAttribute(view);
-          this.innerHTML = Template$5.render("barChart", [views]);
+          this.innerHTML = Template$6.render("barChart", [views]);
           this.backBtn();
         };
 
@@ -1892,7 +2270,7 @@ var app = (function () {
       return formatedData;
     };
 
-    var Template$6 = {
+    var Template$7 = {
       render(data) {
         return `${this.css()}
         ${this.html(data)}`;
@@ -2011,14 +2389,14 @@ var app = (function () {
       show(filter) {
         if (filter[0] === "") {
           /* If empty */
-          this.innerHTML = Template$6.render(this.globalData.DATA);
+          this.innerHTML = Template$7.render(this.globalData.DATA);
         } else {
-          this.innerHTML = Template$6.render(this.globalData.DATA.filter(el => filter.includes(el.category)));
+          this.innerHTML = Template$7.render(this.globalData.DATA.filter(el => filter.includes(el.category)));
         }
       }
 
       connectedCallback() {
-        this.innerHTML = Template$6.render(this.globalData.DATA);
+        this.innerHTML = Template$7.render(this.globalData.DATA);
         const {
           root
         } = this.root;
@@ -2059,7 +2437,7 @@ var app = (function () {
       customElements.define('cor-dashboard-overview', CorDashboardOverview);
     }
 
-    var Template$7 = {
+    var Template$8 = {
       render() {
         return `
             ${this.css()}
@@ -2088,7 +2466,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$7.render();
+        this.innerHTML = Template$8.render();
       }
 
     }
@@ -2097,7 +2475,7 @@ var app = (function () {
       customElements.define('cor-dashboard-languages-overview', CorDashboardLanguagesOverview);
     }
 
-    var Template$8 = {
+    var Template$9 = {
       render() {
         return `
             ${this.css()}
@@ -2151,7 +2529,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$8.render();
+        this.innerHTML = Template$9.render();
       }
 
     }
@@ -2160,7 +2538,7 @@ var app = (function () {
       customElements.define('cor-dashboard-detailed-item', CorDashboardDetailedItem);
     }
 
-    var Template$9 = {
+    var Template$a = {
       render(numberOfPages, currentPage) {
         return `
             ${this.html(numberOfPages, currentPage)}
@@ -2236,7 +2614,7 @@ var app = (function () {
         [...this.articles].map((article, index) => {
           if (index >= itemsPerPage) article.hidden = "hidden";
         });
-        this.innerHTML = Template$9.render(totalOfPages, currentPage);
+        this.innerHTML = Template$a.render(totalOfPages, currentPage);
       }
 
       updatePagination(currentPage) {
@@ -2250,7 +2628,7 @@ var app = (function () {
       customElements.define('cor-dashboard-pagination', CorDashboardPagination);
     }
 
-    var Template$a = {
+    var Template$b = {
       render(data) {
         return `
             ${this.html(data)}
@@ -2396,7 +2774,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$a.render(this.globalData.ITEMS);
+        this.innerHTML = Template$b.render(this.globalData.ITEMS);
         corDashboardLazyLoading();
         const languagesLinks = document.querySelectorAll('.cor-dashboard-detailed-item__languages-list__item > a');
         [...languagesLinks].map(languageLink => {
@@ -2426,7 +2804,7 @@ var app = (function () {
       customElements.define('cor-dashboard-detailed', CorDashboardDetailed);
     }
 
-    var Template$b = {
+    var Template$c = {
       render() {
         return `
         ${this.css()}
@@ -2455,7 +2833,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$b.render();
+        this.innerHTML = Template$c.render();
         this._triggers = this.querySelectorAll('[data-view]');
 
         this._triggers.forEach(trigger => trigger.addEventListener('click', e => this.onClick(e)));
@@ -2478,7 +2856,7 @@ var app = (function () {
       customElements.define('cor-dashboard-topnav', CorDashboardTopnav);
     }
 
-    var Template$c = {
+    var Template$d = {
       render(stroke, radius, circumference, normalizedRadius) {
         return `
             ${this.html(stroke, radius, circumference, normalizedRadius)}
@@ -2503,7 +2881,7 @@ var app = (function () {
         const radius = this.getAttribute('radius');
         const normalizedRadius = radius - stroke * 2;
         this._circumference = normalizedRadius * 2 * Math.PI;
-        this.innerHTML = Template$c.render(stroke, radius, this._circumference, normalizedRadius);
+        this.innerHTML = Template$d.render(stroke, radius, this._circumference, normalizedRadius);
       }
 
     }
@@ -2512,7 +2890,7 @@ var app = (function () {
       customElements.define('cor-dashboard-spinner', CorDashboardSpinner);
     }
 
-    var Template$d = {
+    var Template$e = {
       render(view) {
         return `
             ${this.css()}
@@ -2524,25 +2902,19 @@ var app = (function () {
         switch (view) {
           case "detailed":
             return `
-                    <div class="cor-dashboard-main">
-                        <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
-                    </div>
+                    <cor-dashboard-detailed class="cor-dashboard-detailed"></cor-dashboard-detailed>
                 `;
             break;
 
           case "overview":
             return `
-                <div class="cor-dashboard-main">
                     <cor-dashboard-overview class="cor-dashboard-overview"></cor-dashboard-overview>
-                </div>
                 `;
             break;
 
           default:
             return `
-                    <div class="cor-dashboard-main">
-                        <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
-                    </div>
+                    <cor-dashboard-spinner class="cor-dashboard-spinner"></cor-dashboard-spinner>
                 `;
         }
       },
@@ -2560,11 +2932,11 @@ var app = (function () {
       }
 
       show(view, target) {
-        this.innerHTML = Template$d.render(view, target);
+        this.innerHTML = Template$e.render(view, target);
       }
 
       connectedCallback() {
-        this.innerHTML = Template$d.render();
+        this.innerHTML = Template$e.render();
         this.classList.add('one');
         const {
           root
@@ -2591,7 +2963,7 @@ var app = (function () {
         */
 
         setTimeout(() => {
-          this.innerHTML = Template$d.render("overview");
+          this.innerHTML = Template$e.render("overview");
         }, 1000);
       }
 
@@ -2601,7 +2973,7 @@ var app = (function () {
       customElements.define('cor-dashboard-main', CorDashboardMain);
     }
 
-    var Template$e = {
+    var Template$f = {
       render(filters) {
         return `
             ${this.html(filters)}
@@ -2652,7 +3024,7 @@ var app = (function () {
           const filters = root.getAttribute("filter");
 
           if (filters !== "") {
-            this.innerHTML = Template$e.render(filters.split(' '));
+            this.innerHTML = Template$f.render(filters.split(' '));
           } else {
             this.innerHTML = "";
           }
@@ -2673,7 +3045,7 @@ var app = (function () {
       customElements.define('cor-dashboard-selected-filters', CorDashboardSelectedFilters);
     }
 
-    var Template$f = {
+    var Template$g = {
       render() {
         return `
             ${this.html()}
@@ -2756,7 +3128,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$f.render();
+        this.innerHTML = Template$g.render();
       }
 
     }
@@ -2765,7 +3137,7 @@ var app = (function () {
       customElements.define('cor-dashboard-date-filter', CorDashboardDateFilter);
     }
 
-    var Template$g = {
+    var Template$h = {
       render() {
         return `${this.html()}`;
       },
@@ -2775,7 +3147,7 @@ var app = (function () {
             <div class="js-menu cor-dashboard-menu">
                 <div class="js-menu-contents cor-dashboard-menu__contents">
                     <button class="js-menu-toggle">
-                        <div class="js-menu-title cor_button btn  cor-dashboard-filtersbtn">
+                        <div class="js-menu-title btn">
                             <span>This month: Sep</span>
                             <svg width="14" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-alt" class="svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg>
                         </div>
@@ -2796,7 +3168,7 @@ var app = (function () {
       }
 
       connectedCallback() {
-        this.innerHTML = Template$g.render();
+        this.innerHTML = Template$h.render();
         this._menu = document.querySelector('.js-menu');
         this._menuContents = this._menu.querySelector('.js-menu-contents');
         this._menuToggleButton = this._menu.querySelector('.js-menu-toggle');
@@ -3011,7 +3383,7 @@ var app = (function () {
       customElements.define('cor-dashboard-date-btn', CorDashboardDateBtn);
     }
 
-    var Template$h = {
+    var Template$i = {
       render(globalData) {
         return `${this.css()}
     ${this.html(globalData)}`;
@@ -3040,7 +3412,7 @@ var app = (function () {
             <div class="cor-dashboard-header-img-container">
               <img src="public/images/CoRlogo.png" />
             </div>
-            <h1>Dashboard 2</h1>
+            <h1>Dashboard</h1>
             
             <cor-dashboard-topnav class="cor-dashboard-topnav"></cor-dashboard-topnav>
           </header>
@@ -3100,7 +3472,7 @@ var app = (function () {
 
       connectedCallback() {
         // this.attachShadow({ mode: 'open' });
-        this.innerHTML = Template$h.render(this.globalData.DATA);
+        this.innerHTML = Template$i.render(this.globalData.DATA);
         this.addEventListener("state-update", this.store); // Resize event
 
         window.onresize = this.ifResize();

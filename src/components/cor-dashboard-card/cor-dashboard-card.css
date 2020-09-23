@@ -2,13 +2,13 @@
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(50, 50, 93, 0.1);
-  margin: 0 1.5rem 1.5rem 1.5rem;
+  margin: 0 0 1.5rem 0;
   min-width: 0;
 }
 
 @media (min-width: 800px) {
   .cor-dashboard-card {
-    width: calc((100% / 3) - 3rem);
+    width: calc((100% / 3) - 1.5rem);
   }
 }
 .cor-dashboard-card {
@@ -45,7 +45,7 @@ ol {
 
 /* Number in the title of the carg*/
 .cor-dashboard-card__title__total {
-  font-weight: 100;
+  font-weight: bold;
   margin-left: auto;
 }
 
